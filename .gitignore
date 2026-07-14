@@ -1,0 +1,25 @@
+# Secrets and private runtime configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# JavaScript / TypeScript
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local tooling
+.codegraph/
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local runtime state and receipts
+.toadaid-local/
+.pond-local/
+*.local.json
