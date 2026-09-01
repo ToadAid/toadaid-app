@@ -109,7 +109,7 @@ Current agent direction:
 - explicit stale, missing, unknown, and conflicting states;
 - fixture-only; no relationship authority or live integration.
 
-### Cross-cutting foundation — Provider-sovereign cognition boundary — CURRENT
+### Cross-cutting foundation — Provider-sovereign cognition boundary — COMPLETE
 
 - vendor, model, harness/runtime, and credential-mechanism distinctions;
 - explicit OpenAI, Google, xAI, Anthropic, and DeepSeek product directions;
@@ -121,13 +121,13 @@ Current agent direction:
 - fixture/policy only; no live inference, authentication, API, credentials, or routing;
 - `Activation: NOT_INCLUDED`.
 
-### A5 — Fixture relationship and revocation/stale/conflict projections — NEXT
+### A5 — Fixture relationship and revocation/stale/conflict projections — CURRENT
 
 - non-authoritative identity, membership, admission, release, grant-applicability, revocation, and expiry projections;
 - reuse canonical outcome names;
 - no canonical relationship store or evaluator in Pond.
 
-### A6 — Multi-principal and scope-isolation proof — FUTURE
+### A6 — Multi-principal and scope-isolation proof — NEXT
 
 - deterministic personal/shared/project/public isolation fixtures;
 - prove shared/project state is not a union of personal scopes;
