@@ -121,19 +121,19 @@ Current agent direction:
 - fixture/policy only; no live inference, authentication, API, credentials, or routing;
 - `Activation: NOT_INCLUDED`.
 
-### A5 — Fixture relationship and revocation/stale/conflict projections — CURRENT
+### A5 — Fixture relationship and revocation/stale/conflict projections — COMPLETE
 
 - non-authoritative identity, membership, admission, release, grant-applicability, revocation, and expiry projections;
 - reuse canonical outcome names;
 - no canonical relationship store or evaluator in Pond.
 
-### A6 — Multi-principal and scope-isolation proof — NEXT
+### A6 — Multi-principal and scope-isolation proof — CURRENT
 
 - deterministic personal/shared/project/public isolation fixtures;
-- prove shared/project state is not a union of personal scopes;
-- establish a cross-cutting test law for later caches, indexes, events, hosts, and persistence; this proof is not "once forever."
+- fixture/type proof that shared/project state is not a union of personal scopes;
+- establish a cross-cutting test law for later caches, indexes, events, hosts, and persistence; this fixture/type proof is not "once forever."
 
-### A7 — Versioned agent descriptors — FUTURE
+### A7 — Versioned agent descriptors — NEXT
 
 - distinguish personal, community, project, specialist, remote-external, and service/tool profiles;
 - separate visibility, declared capability, admission, reachability, and current authority;
