@@ -140,7 +140,7 @@ Current agent direction:
 - include explicit denials, scope relationships, freshness, revocation, refusal, evidence, and version/digest posture;
 - descriptor is not admission or a grant.
 
-### A8 — Deterministic `RouteCandidateProposal` — CURRENT
+### A8 — Deterministic `RouteCandidateProposal` — COMPLETE
 
 - only after source/freshness/applicability/refusal, revocation/stale/conflict, isolation, and descriptor foundations;
 - preserve source principal/scope, destination scope/audience, target, provenance, and refusal evidence;
@@ -162,14 +162,35 @@ versioned descriptor
 
 Multi-principal isolation remains cross-cutting across every later stage.
 
-## Stage B — Host-neutral static Pond — FUTURE
+## Stage B — Host-neutral static Pond — CURRENT
 
-- shared `Snapshot` / `Event` / `CommandIntent` direction;
-- static accessible fixture UI;
-- active scope and agent identity;
-- inventory, explicit denials, source/freshness/refusals, evidence, and receipts;
-- cross-host conformance direction for ChatGPT, desktop, and loopback surfaces;
-- no live tools.
+Stage B remains static and non-authoritative. It introduces host-neutral presentation contracts before any live truth integration.
+
+### B1 — Host-neutral `Snapshot` / `Event` / `CommandIntent` contract — CURRENT
+
+- one typed host-neutral static-state boundary;
+- singular active scope plus exact principal and agent identity references;
+- presentation preserves source scope and does not perform audience change or cross-scope release;
+- deterministic fixture-only events, not a runtime event stream;
+- `CommandIntent` is UI intent only, not dispatch, delivery, approval, or execution;
+- all live-tool, network, persistence, delivery, approval-recording, and execution gates remain false.
+
+### B2 — Static accessible fixture UI — NEXT
+
+- render B1 fixture state without inventing new semantics;
+- visible active scope and agent identity;
+- keyboard-accessible, semantic static presentation;
+- no live tools, host integration, network, persistence, or mutation.
+
+### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
+
+- present already-governed inventory, explicit denials, source/freshness/refusal state, evidence references, and sanitized receipt references;
+- presentation is not authority and does not widen source scope or audience.
+
+### B4 — Cross-host conformance fixture — FUTURE
+
+- prove the same host-neutral fixture semantics across ChatGPT, loopback, and desktop adapter directions;
+- host choice must not invent identity, scope, release, grant, approval, or authority.
 
 ## Stage C — First read-only truth slice — FUTURE
 
