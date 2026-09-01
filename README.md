@@ -92,3 +92,7 @@ git diff --check
 ```
 
 There is no application start command or production deployment in this cut.
+
+## License
+
+ToadAid Pond is licensed under the [Apache License 2.0](LICENSE).
