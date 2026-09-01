@@ -177,16 +177,24 @@ Stage B remains static and non-authoritative. It introduces host-neutral present
 
 ### B2 — Static accessible fixture UI — CURRENT
 
-- **B2-P1:** desktop-first, responsive static shell rendering the exact B1 fixture without inventing new semantics;
+- **B2-P1 — COMPLETE:** desktop-first, responsive static shell rendering the exact B1 fixture without inventing new semantics;
 - visible active scope and agent identity;
 - keyboard-accessible, semantic static presentation;
 - no live tools, host integration, network, persistence, or mutation.
 
-### B2-P2 — Static shell refinement and fixture conformance — NEXT
+### B2-P2 — JARVIS / new-age Pond static visual cut — CURRENT
 
-- visual and accessibility refinement after human screenshot review;
-- exact B1 fixture conformance;
+- approved JARVIS/new-age visual north star applied;
+- exact B1 fixture conformance retained;
+- voice, world, and agent spatial affordances remain static and inert;
 - no live tools or host integration.
+
+### B2-P3 — Launchable desktop host seam — NEXT
+
+- choose and prove the minimal desktop host for the existing static Pond shell;
+- launch Pond as an application window while preserving host-neutral state semantics;
+- no live tools, network, persistence, or agent invocation merely because a host exists;
+- host presence does not create authority.
 
 ### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
 
