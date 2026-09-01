@@ -166,7 +166,7 @@ Multi-principal isolation remains cross-cutting across every later stage.
 
 Stage B remains static and non-authoritative. It introduces host-neutral presentation contracts before any live truth integration.
 
-### B1 — Host-neutral `Snapshot` / `Event` / `CommandIntent` contract — CURRENT
+### B1 — Host-neutral `Snapshot` / `Event` / `CommandIntent` contract — COMPLETE
 
 - one typed host-neutral static-state boundary;
 - singular active scope plus exact principal and agent identity references;
@@ -175,12 +175,18 @@ Stage B remains static and non-authoritative. It introduces host-neutral present
 - `CommandIntent` is UI intent only, not dispatch, delivery, approval, or execution;
 - all live-tool, network, persistence, delivery, approval-recording, and execution gates remain false.
 
-### B2 — Static accessible fixture UI — NEXT
+### B2 — Static accessible fixture UI — CURRENT
 
-- render B1 fixture state without inventing new semantics;
+- **B2-P1:** desktop-first, responsive static shell rendering the exact B1 fixture without inventing new semantics;
 - visible active scope and agent identity;
 - keyboard-accessible, semantic static presentation;
 - no live tools, host integration, network, persistence, or mutation.
+
+### B2-P2 — Static shell refinement and fixture conformance — NEXT
+
+- visual and accessibility refinement after human screenshot review;
+- exact B1 fixture conformance;
+- no live tools or host integration.
 
 ### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
 

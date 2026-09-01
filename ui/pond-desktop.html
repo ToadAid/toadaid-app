@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Pond — Static Project Cockpit</title>
+    <link rel="stylesheet" href="pond-desktop.css">
+  </head>
+  <body>
+    <div
+      class="pond-shell"
+      data-snapshot-ref="fixture:snapshot-b1-001"
+      data-principal-ref="fixture:principal-a"
+      data-scope-ref="fixture:scope-project-x"
+      data-agent-ref="fixture:agent-specialist-a"
+      data-authority="none"
+    >
+      <header class="topbar">
+        <a class="brand" href="#pond-home" aria-label="Pond home">
+          <span class="brand-mark" aria-hidden="true">◒</span>
+          <span>Pond</span>
+        </a>
+
+        <div class="topbar-context" aria-label="Active fixture context">
+          <span class="context-name">Project X</span>
+          <span class="context-kind">Project</span>
+        </div>
+
+        <div class="topbar-agent">
+          <span class="eyebrow">Active agent</span>
+          <strong>Specialist Agent A</strong>
+        </div>
+
+        <div class="fixture-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          Static fixture
+        </div>
+      </header>
+
+      <nav class="side-nav" aria-label="Pond sections">
+        <div class="nav-heading">
+          <span class="eyebrow">Workspace</span>
+          <span class="nav-scope">Project X</span>
+        </div>
+
+        <ul class="nav-list">
+          <li>
+            <a class="nav-item is-current" href="#pond-home" aria-current="page">
+              <span class="nav-icon" aria-hidden="true">⌂</span>
+              <span>Home</span>
+              <span class="current-label">Current</span>
+            </a>
+          </li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">◇</span><span>Chats</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">◎</span><span>Agents</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">◫</span><span>Scopes</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">▱</span><span>Projects</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">↓</span><span>Inbox</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">⌁</span><span>Footprints</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">◈</span><span>Evidence</span><span class="later-label">Later</span></span></li>
+          <li><span class="nav-item is-later"><span class="nav-icon" aria-hidden="true">↔</span><span>Connections</span><span class="later-label">Later</span></span></li>
+        </ul>
+
+        <div class="nav-boundary">
+          <span class="boundary-icon" aria-hidden="true">○</span>
+          <div>
+            <strong>Host neutral</strong>
+            <span>No host integration</span>
+          </div>
+        </div>
+      </nav>
+
+      <main class="workspace" id="pond-home" tabindex="-1">
+        <div class="workspace-heading">
+          <div>
+            <span class="eyebrow">Static home</span>
+            <h1>Pond Home</h1>
+            <p>A host-neutral view of one bounded fixture. No live tools are connected.</p>
+          </div>
+          <span class="authority-chip"><span aria-hidden="true">○</span> Authority: none</span>
+        </div>
+
+        <section class="hero-card" aria-labelledby="active-context-title">
+          <div class="hero-copy">
+            <span class="section-kicker">Active context</span>
+            <h2 id="active-context-title">Project X</h2>
+            <p>One project scope, one fixture principal, and one presented specialist identity.</p>
+          </div>
+          <dl class="context-grid">
+            <div><dt>Principal</dt><dd>Principal A</dd></div>
+            <div><dt>Scope type</dt><dd>Project</dd></div>
+            <div><dt>Agent</dt><dd>Specialist Agent A</dd></div>
+          </dl>
+        </section>
+
+        <div class="card-grid">
+          <section class="panel" aria-labelledby="boundaries-title">
+            <div class="panel-heading">
+              <span class="panel-icon" aria-hidden="true">◫</span>
+              <div>
+                <span class="section-kicker">Presentation</span>
+                <h2 id="boundaries-title">Static boundaries</h2>
+              </div>
+            </div>
+            <ul class="check-list">
+              <li><span aria-hidden="true">✓</span><span><strong>Host neutral</strong><small>No host binding</small></span></li>
+              <li><span aria-hidden="true">✓</span><span><strong>Source scope preserved</strong><small>Presentation does not erase provenance</small></span></li>
+              <li><span aria-hidden="true">—</span><span><strong>Audience change not performed</strong><small>No audience widening</small></span></li>
+              <li><span aria-hidden="true">—</span><span><strong>Cross-scope release not performed</strong><small>Presentation is not release</small></span></li>
+            </ul>
+          </section>
+
+          <section class="panel" aria-labelledby="gates-title">
+            <div class="panel-heading">
+              <span class="panel-icon" aria-hidden="true">⊘</span>
+              <div>
+                <span class="section-kicker">Static state</span>
+                <h2 id="gates-title">All effect gates are off</h2>
+              </div>
+            </div>
+            <div class="gate-grid" role="list" aria-label="Static fixture gates">
+              <div class="gate" role="listitem"><span>Live tools</span><strong>Off</strong></div>
+              <div class="gate" role="listitem"><span>Network</span><strong>Off</strong></div>
+              <div class="gate" role="listitem"><span>Persistence</span><strong>Off</strong></div>
+              <div class="gate" role="listitem"><span>Delivery</span><strong>Off</strong></div>
+              <div class="gate" role="listitem"><span>Approval recording</span><strong>Off</strong></div>
+              <div class="gate" role="listitem"><span>Execution</span><strong>Off</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="later-panel" aria-labelledby="coming-later-title">
+          <div>
+            <span class="section-kicker">Product orientation</span>
+            <h2 id="coming-later-title">Coming later</h2>
+          </div>
+          <ul aria-label="Areas planned for later stages">
+            <li>Inbox</li>
+            <li>Footprints</li>
+            <li>Evidence</li>
+            <li>Connections</li>
+          </ul>
+        </section>
+      </main>
+
+      <aside class="inspector" aria-labelledby="inspector-title">
+        <div class="inspector-heading">
+          <span class="eyebrow">Fixture inspector</span>
+          <h2 id="inspector-title">Context &amp; Safety</h2>
+          <p>Presented context only. No current authority is established.</p>
+        </div>
+
+        <dl class="inspector-list">
+          <div><dt>Principal</dt><dd>Principal A</dd></div>
+          <div><dt>Scope</dt><dd>Project X</dd></div>
+          <div><dt>Scope type</dt><dd>Project</dd></div>
+          <div><dt>Agent</dt><dd>Specialist Agent A</dd></div>
+          <div><dt>Host binding</dt><dd>None · host-neutral</dd></div>
+        </dl>
+
+        <div class="authority-block">
+          <span class="eyebrow">Authority</span>
+          <strong>NONE</strong>
+          <p>Visual context does not grant capability or permission.</p>
+        </div>
+
+        <section class="inspector-gates" aria-labelledby="inspector-gates-title">
+          <h3 id="inspector-gates-title">Static gates</h3>
+          <ul>
+            <li><span>Live tools</span><strong>OFF</strong></li>
+            <li><span>Network</span><strong>OFF</strong></li>
+            <li><span>Persistence</span><strong>OFF</strong></li>
+            <li><span>Delivery</span><strong>OFF</strong></li>
+            <li><span>Approval recording</span><strong>OFF</strong></li>
+            <li><span>Execution</span><strong>OFF</strong></li>
+          </ul>
+        </section>
+
+        <p class="inspector-note"><span aria-hidden="true">i</span> Freshness, evidence, receipts, and runtime health are not presented in this stage.</p>
+      </aside>
+
+      <footer class="composer-region">
+        <form class="composer" aria-label="Disabled agent composer">
+          <div class="composer-target">
+            <span class="eyebrow">Talk to</span>
+            <strong>Specialist Agent A</strong>
+          </div>
+          <div class="composer-control">
+            <label for="static-message">Message</label>
+            <textarea id="static-message" rows="1" disabled>Chat is not active in this static stage.</textarea>
+          </div>
+          <button type="button" disabled>Send</button>
+          <p>Static fixture — no message will be sent.</p>
+        </form>
+      </footer>
+    </div>
+  </body>
+</html>
