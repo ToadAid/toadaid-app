@@ -1,267 +1,231 @@
-# ToadAid App Build List
+# ToadAid Pond Build List
 
-## Status Vocabulary
+## Pond North Stars
 
-- `COMPLETE`: merged and verified repository truth.
-- `CURRENT`: the only active planned cut.
-- `NEXT`: approved ordering, not yet started.
-- `FUTURE`: designed direction, not approved for implementation.
-- `BLOCKED`: requires a separate explicit security or authority decision.
+1. **Humans remain sovereign.** Agents may possess initiative; they never possess sovereignty.
+2. **Pond is the front door, not the authority.** It helps humans understand, coordinate, and propose; it cannot manufacture permission.
+3. **Scopes remain sovereign and distinct.** `personal != shared != project != public`. Shared and project state own only explicitly admitted state; membership never exposes personal memory.
+4. **Relationships do not collapse.** Identity, membership, admission, visibility, capability, grant, approval, routing, and execution remain distinct governed facts.
+5. **Projection is not authority.** Pond shows sourced, scoped, versioned, freshness-bounded state. Stale, missing, unknown, or conflicting authority-relevant projections fail closed.
+6. **Coordination and consequence remain separate.** Messages, routes, proposals, attestations, receipts, or approvals do not themselves authorize execution. Activation advances only through separately proven boundaries.
+7. **One governed truth may support many conforming surfaces.** No host may invent identity, scope, policy, or authority semantics. Public code and open law never make private memory, credentials, trust state, or authority public.
 
-## Product Lock
+> ToadAid Pond is the governed, scope-aware front door through which humans understand, coordinate, and propose across ToadAid agents without transferring sovereignty or manufacturing authority.
+
+Permanent presentation law:
+
+> Copying, summarizing, embedding, indexing, routing, or displaying information never changes its source scope or audience.
+
+## Ecosystem placement
 
 ```text
-Product name: ToadAid Pond
-Repository: ToadAid/toadaid-app
-Visibility: private
+ToadAid Architecture
+  canonical ecosystem law
 
-Primary interface:
-ChatGPT + ToadAid Pond App
-
-Reasoning:
-ChatGPT
-
-Governance:
 Mirror Core
+  reusable governed substrate and shared foundations
 
-Local authority boundary:
+ToadAid Pond
+  host-neutral front door and bounded projections
+
 Mirror Desktop Bridge
+  bounded local trusted-channel and capability boundary where assigned
 
-Specialists:
-ToadAid Coder
-ToadAid Trader
-ToadAid Zora Agent
-Frog-to-Toad Agent
-Future governed ToadAid plugins
-
-Recovery:
-small local Bridge CLI
-minimal loopback Pond
-specialist-native interfaces
+Living / community / project / specialist agents
+  separately governed actors and domain implementations
 ```
 
-## Stage 0 — Foundation and Read-Only Shell
+Pond must reuse governed substrate and must not reimplement Mirror Core governance semantics. Deferred Social Control Plane implementation ownership must not be assigned to Mirror Core, Pond, Bridge, or another repository without current canonical architecture support.
 
-### Stage 0A — Private Repository and Doctrine Seed — COMPLETE
+## Current repository truth
 
-- private repository;
-- README;
-- Pond blueprint;
-- authority and host boundaries;
-- official OpenAI Apps SDK reference map;
-- staged build list;
-- no runtime, dependencies, connection, approval, or execution.
+```text
+Repository: ToadAid/toadaid-app
+Product: ToadAid Pond
+GitHub visibility: Public
+Activation: NOT_INCLUDED
 
-### Stage 0B — Host-Neutral Pond Contracts and Fixture State — CURRENT
+Stage 0B-P1 front-agent projection: COMPLETE
+Stage 0B-P2 scope-context invariants: COMPLETE
+Stage 0B-P2 canonical merge: c02caab2d95fd9ae0741cbe29d4e53bec498f860
+```
 
-- define typed fixture-only contracts for:
-  - navigation;
-  - runtime status;
-  - plugin inventory;
-  - selected target;
-  - gates;
-  - approvals;
-  - receipts;
-- no MCP calls;
-- no network;
-- no persistence;
-- no live Bridge dependency.
+The current implementation is fixture/contract foundation only. It presents one active scope context with membership, admission, release, and delegated authority not established. Capability effects remain read/proposal only and execution remains disabled.
 
-### Stage 0C — Static Pond Navigation and Component Shell — NEXT
+It does not provide live tools, routing or dispatch, plugin invocation or loading, Bridge/MCP connectivity, network access, persistence, authentication, approval recording, mutation, execution, wallet/signing/trading, or deployment.
 
-- static Overview, Coder, Trader, Agents, Approval Queue, Receipts, and Settings views;
-- fixture-only rendering;
-- accessibility and responsive layout;
-- no live tools or mutations.
+Current agent direction:
 
-### Stage 0D — Apps SDK Development Harness — FUTURE
+- ToadAid Living Agent is the principal-bound personal-continuity direction.
+- Community agents and project agents are separate future canonical profiles bound to explicit shared/project scopes.
+- Coder, Zora Agent, Trader, lore/oracle, and future bounded domain agents are specialist directions.
+- Remote external agents require separate identity and admission and have no local authority by default.
+- A service or tool may expose capability without being an autonomous agent.
+- Frog-to-Toad is not active and is not a Living Agent alias. It may return only if a distinct future lifecycle/transformation job is deliberately defined.
 
-- minimal MCP Apps-compatible development host;
-- static tool results only;
-- no local Bridge connection;
-- no authentication or deployment.
+## Status vocabulary
 
-### Stage 0E — Read-Only Mirror Bridge Status Integration — FUTURE
+- `COMPLETE`: merged and verified repository truth.
+- `CURRENT`: the only active bounded cut.
+- `NEXT`: approved ordering, not yet started.
+- `FUTURE`: directional work, not approved for implementation or activation.
+- `BLOCKED`: requires separate architecture, security, authority, or activation decisions.
 
-- Bridge runtime status;
-- selected repository;
-- gate states;
-- process identity summary;
-- recent sanitized receipts;
-- read-only only.
+## Stage A — Foundation projections
 
-### Stage 0F — Plugin Inventory and Capability Projection — FUTURE
+### A0 — Doctrine seed — COMPLETE
 
-- list admitted specialist plugins;
-- show bounded capabilities and disabled authority;
-- no dynamic plugin loading or execution.
+- initial Pond product and authority-boundary documentation;
+- no runtime activation.
 
-## Stage 1 — ToadAid Coder Cockpit
+### A1 — Front-agent projection — COMPLETE
 
-### Stage 1A — Coder Read-Only Repository Cockpit — FUTURE
+- opaque principal, scope, agent, and plugin references;
+- inert specialist inventory;
+- no live effects.
 
-- repository status;
-- tree;
-- history;
-- bounded text reads;
-- capability profile.
+### A2 — Singular scope-context invariants — COMPLETE
 
-### Stage 1B — Coder Diff and Validation Views — FUTURE
+- one active scope context, not a union of scopes;
+- membership, admission, cross-scope release, and delegated authority not established;
+- no execution surface.
 
-- sanitized diffs;
-- deterministic validation descriptions;
-- validation results and receipts.
+### A3 — Public foundation, local builder law, reproducible lock, and minimal CI — CURRENT
 
-### Stage 1C — Governed Coder Draft Submission — BLOCKED
+- truthful public product/current-state documentation;
+- seven durable North Stars and minimal roadmap;
+- architecture-preflight `AGENTS.md`;
+- reproducible TypeScript 5.8.3 dependency lock;
+- read-only GitHub CI for dependency installation, typechecking, and committed-range whitespace validation;
+- `Activation: NOT_INCLUDED`.
 
-- patch, validation, Git, and PR draft intake;
-- exact schema proof required;
-- no approval or execution in the same cut.
+### A4 — Common non-authoritative projection envelope — NEXT
 
-## Stage 2 — Approval Ceremonies
+- source and trust class;
+- source scope and audience/disclosure;
+- contract version and canonical subject revision/digest;
+- observation time, freshness/expiry, and applicability;
+- evidence references, redaction posture, and canonical refusal outcomes;
+- explicit stale, missing, unknown, and conflicting states;
+- fixture-only; no relationship authority or live integration.
 
-### Stage 2A — Approval Queue Display — FUTURE
+### A5 — Fixture relationship and revocation/stale/conflict projections — FUTURE
 
-- read-only queue and detail views;
-- integrity-bound packet presentation;
-- no decision controls.
+- non-authoritative identity, membership, admission, release, grant-applicability, revocation, and expiry projections;
+- reuse canonical outcome names;
+- no canonical relationship store or evaluator in Pond.
 
-### Stage 2B — Exact Human Decision Ceremony — BLOCKED
+### A6 — Multi-principal and scope-isolation proof — FUTURE
 
-- explicit operator interaction;
-- exact payload binding;
-- expiry and replay protection;
-- separate decision receipt.
+- deterministic personal/shared/project/public isolation fixtures;
+- prove shared/project state is not a union of personal scopes;
+- establish a cross-cutting test law for later caches, indexes, events, hosts, and persistence; this proof is not "once forever."
 
-### Stage 2C — Decision and Execution Separation Proof — BLOCKED
+### A7 — Versioned agent descriptors — FUTURE
 
-- prove approval cannot execute;
-- prove gate and preflight remain independently required;
-- preserve local fallback approval.
+- distinguish personal, community, project, specialist, remote-external, and service/tool profiles;
+- separate visibility, declared capability, admission, reachability, and current authority;
+- include explicit denials, scope relationships, freshness, revocation, refusal, evidence, and version/digest posture;
+- descriptor is not admission or a grant.
 
-## Stage 3 — ToadAid Trader Cockpit
+### A8 — Deterministic `RouteCandidateProposal` — FUTURE
 
-### Stage 3A — Read-Only Portfolio Cockpit — FUTURE
+- only after source/freshness/applicability/refusal, revocation/stale/conflict, isolation, and descriptor foundations;
+- preserve source principal/scope, destination scope/audience, target, provenance, and refusal evidence;
+- inert and non-authorizing;
+- no delivery, dispatch, invocation, release, grant, approval, mutation, or execution.
 
-- balances;
-- positions;
-- exposure;
-- source and freshness evidence;
-- no wallet authority.
+Dependency law:
 
-### Stage 3B — Market and Risk Views — FUTURE
+```text
+projection source / freshness / applicability / refusal
+  BEFORE relationship-sensitive UI or route eligibility
 
-- market observations;
-- deterministic risk limits;
-- concentration and liquidity views;
-- no model-owned risk override.
+revocation / stale / conflict representation
+  BEFORE RouteCandidateProposal
 
-### Stage 3C — Trade Simulation and Proposal Packets — BLOCKED
+versioned descriptor
+  BEFORE RouteCandidateProposal
+```
 
-- chain, asset, side, amount, price boundary, slippage, expiry, and expected state;
-- simulation only;
-- no signing or broadcast.
+Multi-principal isolation remains cross-cutting across every later stage.
 
-### Stage 3D — Human-Gated Trade Ceremony — BLOCKED
+## Stage B — Host-neutral static Pond — FUTURE
 
-- explicit operator approval;
-- fresh deterministic preflight;
-- hardware-wallet or equivalent local confirmation where required.
+- shared `Snapshot` / `Event` / `CommandIntent` direction;
+- static accessible fixture UI;
+- active scope and agent identity;
+- inventory, explicit denials, source/freshness/refusals, evidence, and receipts;
+- cross-host conformance direction for ChatGPT, desktop, and loopback surfaces;
+- no live tools.
 
-### Stage 3E — Separately Gated Trade Execution and Receipts — BLOCKED
+## Stage C — First read-only truth slice — FUTURE
 
-- narrow allowlisted adapters;
-- pause and revocation;
-- exposure and loss limits;
-- pre-trade and post-trade receipts;
-- no keys in ChatGPT or Pond.
+- deliberate canonical source-owner assignment before integration;
+- one bounded read-only project/Bridge/Coder cockpit;
+- exact repository and target identity;
+- source, freshness, gates, denial/refusal posture, and sanitized receipts;
+- stale, conflict, and degraded behavior before mutation;
+- no mutation.
 
-## Stage 4 — Additional Specialist Cockpits
+## Stage D — Identity-bound personal and collaborative reads — BLOCKED
 
-### Stage 4A — Frog-to-Toad Lifecycle Cockpit — FUTURE
+- real authentication and local principal binding before private or multi-principal live state;
+- authentication is not membership or authority;
+- read-only Living Agent presence;
+- read-only community/project agent relationships;
+- no personal-memory leakage.
 
-- stage status;
-- ceremony readiness;
-- evidence and receipts;
-- progression proposals.
+## Stage E — Inert proposals — BLOCKED
 
-### Stage 4B — ToadAid Zora Agent Cockpit — FUTURE
+- exact proposal envelopes;
+- cross-scope release proposals;
+- no human-decision recording;
+- no grant creation;
+- no execution.
 
-- profile and campaign state;
-- post drafts;
-- governed publishing proposals;
-- publishing receipts.
+## Stage F — Decisions and consequences — BLOCKED
 
-### Stage 4C — Mirror Core Governance Views — FUTURE
+Any future consequence path must preserve separate ceremonies:
 
-- agent identity;
-- plugin admission;
-- governance policy;
-- lifecycle and memory summaries.
+```text
+informational / current-state projection
+  -> inert draft
+  -> exact proposal
+  -> read-only review
+  -> exact human-decision evidence
+  -> separate grant / current-authority applicability
+  -> fresh deterministic preflight + revocation / e-stop
+  -> one bounded domain-specific execution
+  -> result / uncertainty receipt + reconciliation
+  -> separate acceptance where applicable
+```
 
-## Stage 5 — Reusable Hosts
+No stage may both record the human decision and execute the effect. Trading, signing, payment, publication, deployment, and destructive mutation remain domain-specific and separately authorized. Pond promises no generic executor.
 
-### Stage 5A — Shared Pond UI Core — FUTURE
+Everything beyond the first read-only truth slice remains directional until preceding exit evidence exists.
 
-- reusable components and contracts;
-- host adapters;
-- no duplicated authority logic.
+## Permanent boundaries
 
-### Stage 5B — Minimal Loopback Fallback Host — FUTURE
+Until later architecture and separately authorized evidence prove otherwise:
 
-- recovery and local review;
-- loopback-only;
-- no broad runtime management.
-
-### Stage 5C — Optional Desktop Host — FUTURE
-
-- native notifications;
-- local-device ceremonies;
-- optional hardware-wallet integration;
-- same governed contracts.
-
-## Stage 6 — Identity, Security, and Private Release
-
-### Stage 6A — Authentication and Identity Linking — BLOCKED
-
-- explicit ToadAid identity;
-- least-privilege scopes;
-- server-side token handling;
-- no reuse of ChatGPT browser cookies.
-
-### Stage 6B — Security and Privacy Review — BLOCKED
-
-- prompt injection;
-- data minimization;
-- auth and session review;
-- CSP and frontend isolation;
-- threat model and red-team evidence.
-
-### Stage 6C — ChatGPT Connection and UI Proof — BLOCKED
-
-- fresh-thread tool import;
-- connector-visible schemas;
-- structured UI rendering;
-- no unintended authority.
-
-### Stage 6D — Trusted Toadgang Private Release — BLOCKED
-
-- private distribution only;
-- operator onboarding;
-- rollback and recovery;
-- no public release until separately approved.
-
-## Permanent Boundaries
-
-Until a later stage explicitly proves otherwise:
-
-- no broad authority;
+- no broad or ambient authority;
 - no model-owned approval;
-- no secrets in tool output;
-- no private keys in ChatGPT or Pond;
+- no authority from memory;
+- no authority from visibility or discovery;
+- no authority from membership alone;
+- no provider, browser, or session identity as canonical `PrincipalId` by itself;
+- no private-memory union across scopes;
+- no secrets, private keys, or signing material in Pond;
 - no automatic trading;
 - no automatic publishing;
 - no implicit repository mutation;
-- no silent fallback from bounded tools to shell access;
-- no removal of the small local recovery CLI;
-- no public release.
+- no silent fallback to shell, broader tools, providers, transports, or scopes;
+- no stale or cached authority treated as current;
+- no host-specific policy semantics;
+- no public code implying public access to private state;
+- no consequence activation without later explicit authorization;
+- no duplicated Mirror Core governance semantics in Pond;
+- no assignment of deferred Social Control Plane ownership without canonical architecture support.
+
+Public source visibility is not production service activation and grants no access to private memory, credentials, trust state, or authority.
