@@ -1,0 +1,12 @@
+{
+  "name": "@toadaid/pond-app",
+  "version": "0.0.0-stage0b",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
