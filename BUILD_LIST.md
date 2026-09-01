@@ -99,7 +99,7 @@ Current agent direction:
 - read-only GitHub CI for dependency installation, typechecking, and committed-range whitespace validation;
 - `Activation: NOT_INCLUDED`.
 
-### A4 — Common non-authoritative projection envelope — CURRENT
+### A4 — Common non-authoritative projection envelope — COMPLETE
 
 - source and trust class;
 - source scope and audience/disclosure;
@@ -108,6 +108,18 @@ Current agent direction:
 - evidence references, redaction posture, and canonical refusal outcomes;
 - explicit stale, missing, unknown, and conflicting states;
 - fixture-only; no relationship authority or live integration.
+
+### Cross-cutting foundation — Provider-sovereign cognition boundary — CURRENT
+
+- vendor, model, harness/runtime, and credential-mechanism distinctions;
+- explicit OpenAI, Google, xAI, Anthropic, and DeepSeek product directions;
+- Ollama as a first-class local runtime direction;
+- future Toadgang/community gateway direction;
+- ToadAid authentication, provider credential, and AgentId remain distinct;
+- declared external-cloud, local-operator-controlled, and community-governed data-boundary classes;
+- no silent fallback and no provider semantic authority;
+- fixture/policy only; no live inference, authentication, API, credentials, or routing;
+- `Activation: NOT_INCLUDED`.
 
 ### A5 — Fixture relationship and revocation/stale/conflict projections — NEXT
 
