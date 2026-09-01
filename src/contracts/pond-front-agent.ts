@@ -1,4 +1,4 @@
-// Stage 0B-P1 host-neutral Pond front-agent contract.
+// Stage 0B-P2 host-neutral Pond front-agent contract.
 //
 // Canonical ecosystem law lives in ToadAid/toadaid-architecture. These types
 // are UI/runtime projections only and MUST NOT be treated as authority records.
@@ -16,12 +16,21 @@ export type PondPluginRef = string & { readonly [pluginRefBrand]: "PondPluginRef
 export type PondScopeKind = "personal" | "shared" | "project" | "public";
 export type PondCapabilityEffectClass = "read" | "proposal";
 
+export interface PondNonAuthoritativeRelationshipClaimsProjection {
+  readonly membership: "not_established";
+  readonly agentAdmission: "not_established";
+  readonly crossScopeRelease: "not_established";
+  readonly delegatedAuthority: "not_established";
+}
+
 export interface PondScopeContextProjection {
   readonly principalRef: PondPrincipalRef;
   readonly scopeRef: PondScopeRef;
   readonly scopeKind: PondScopeKind;
   readonly source: "fixture";
+  readonly activeScopePosture: "single_scope_fixture_projection";
   readonly authority: "none";
+  readonly nonAuthoritativeRelationshipClaims: PondNonAuthoritativeRelationshipClaimsProjection;
 }
 
 export interface PondDisabledAuthorityProjection {
@@ -56,7 +65,7 @@ export interface PondStage0BGates {
 }
 
 export interface PondFrontAgentState {
-  readonly contractVersion: "stage0b-p1";
+  readonly contractVersion: "stage0b-p2";
   readonly kind: "pond-front-agent";
   readonly role: "coordinate-explain-propose";
   readonly scopeContext: PondScopeContextProjection;
@@ -65,8 +74,8 @@ export interface PondFrontAgentState {
   readonly gates: PondStage0BGates;
 }
 
-// Compile-time invariants for this cut. The front-facing Pond projection has no
-// execution member, and every effect gate is permanently false at Stage 0B-P1.
+// Compile-time invariants for this cut. Scope selection establishes context
+// only, and every effect gate remains permanently false at Stage 0B-P2.
 type Equal<A, B> =
   (<T>() => T extends A ? 1 : 2) extends
   (<T>() => T extends B ? 1 : 2)
@@ -75,15 +84,33 @@ type Equal<A, B> =
 type Assert<T extends true> = T;
 type HasKey<T, K extends PropertyKey> = K extends keyof T ? true : false;
 
-export type PondStage0BP1Invariant_NoPluginExecuteField = Assert<
+export type PondStage0BP2Invariant_ScopeKindsExact = Assert<
+  Equal<PondScopeKind, "personal" | "shared" | "project" | "public">
+>;
+export type PondStage0BP2Invariant_ScopeAuthorityNone = Assert<
+  Equal<PondScopeContextProjection["authority"], "none">
+>;
+export type PondStage0BP2Invariant_MembershipNotEstablished = Assert<
+  Equal<PondNonAuthoritativeRelationshipClaimsProjection["membership"], "not_established">
+>;
+export type PondStage0BP2Invariant_AgentAdmissionNotEstablished = Assert<
+  Equal<PondNonAuthoritativeRelationshipClaimsProjection["agentAdmission"], "not_established">
+>;
+export type PondStage0BP2Invariant_CrossScopeReleaseNotEstablished = Assert<
+  Equal<PondNonAuthoritativeRelationshipClaimsProjection["crossScopeRelease"], "not_established">
+>;
+export type PondStage0BP2Invariant_DelegatedAuthorityNotEstablished = Assert<
+  Equal<PondNonAuthoritativeRelationshipClaimsProjection["delegatedAuthority"], "not_established">
+>;
+export type PondStage0BP2Invariant_NoPluginExecuteField = Assert<
   Equal<HasKey<PondPluginProjection, "execute">, false>
 >;
-export type PondStage0BP1Invariant_NoFrontAgentExecuteField = Assert<
+export type PondStage0BP2Invariant_NoFrontAgentExecuteField = Assert<
   Equal<HasKey<PondFrontAgentState, "execute">, false>
 >;
-export type PondStage0BP1Invariant_AuthorityDisabled = Assert<
-  Equal<PondDisabledAuthorityProjection["posture"], "disabled">
+export type PondStage0BP2Invariant_NoPluralScopeContexts = Assert<
+  Equal<HasKey<PondFrontAgentState, "scopeContexts">, false>
 >;
-export type PondStage0BP1Invariant_ExecutionGateFalse = Assert<
+export type PondStage0BP2Invariant_ExecutionGateFalse = Assert<
   Equal<PondStage0BGates["execution"], false>
 >;

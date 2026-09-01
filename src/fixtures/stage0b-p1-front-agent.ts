@@ -12,7 +12,7 @@ const coderAgentRef = "agent:fixture:coder" as PondAgentRef;
 const coderPluginRef = "plugin:fixture:coder" as PondPluginRef;
 
 export const stage0bP1FrontAgentFixture = {
-  contractVersion: "stage0b-p1",
+  contractVersion: "stage0b-p2",
   kind: "pond-front-agent",
   role: "coordinate-explain-propose",
   scopeContext: {
@@ -20,7 +20,14 @@ export const stage0bP1FrontAgentFixture = {
     scopeRef: projectScopeRef,
     scopeKind: "project",
     source: "fixture",
+    activeScopePosture: "single_scope_fixture_projection",
     authority: "none",
+    nonAuthoritativeRelationshipClaims: {
+      membership: "not_established",
+      agentAdmission: "not_established",
+      crossScopeRelease: "not_established",
+      delegatedAuthority: "not_established",
+    },
   },
   plugins: [
     {
