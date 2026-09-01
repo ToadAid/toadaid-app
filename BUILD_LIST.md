@@ -127,20 +127,20 @@ Current agent direction:
 - reuse canonical outcome names;
 - no canonical relationship store or evaluator in Pond.
 
-### A6 — Multi-principal and scope-isolation proof — CURRENT
+### A6 — Multi-principal and scope-isolation proof — COMPLETE
 
 - deterministic personal/shared/project/public isolation fixtures;
 - fixture/type proof that shared/project state is not a union of personal scopes;
 - establish a cross-cutting test law for later caches, indexes, events, hosts, and persistence; this fixture/type proof is not "once forever."
 
-### A7 — Versioned agent descriptors — NEXT
+### A7 — Versioned agent descriptors — CURRENT
 
 - distinguish personal, community, project, specialist, remote-external, and service/tool profiles;
 - separate visibility, declared capability, admission, reachability, and current authority;
 - include explicit denials, scope relationships, freshness, revocation, refusal, evidence, and version/digest posture;
 - descriptor is not admission or a grant.
 
-### A8 — Deterministic `RouteCandidateProposal` — FUTURE
+### A8 — Deterministic `RouteCandidateProposal` — NEXT
 
 - only after source/freshness/applicability/refusal, revocation/stale/conflict, isolation, and descriptor foundations;
 - preserve source principal/scope, destination scope/audience, target, provenance, and refusal evidence;
