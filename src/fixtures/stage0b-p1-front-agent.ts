@@ -5,6 +5,7 @@ import type {
   PondPrincipalRef,
   PondScopeRef,
 } from "../contracts/pond-front-agent.js";
+import { stageA4FreshProjectionEnvelopeFixture } from "./stage-a4-projection-envelope.js";
 
 const principalRef = "principal:fixture:operator-a" as PondPrincipalRef;
 const projectScopeRef = "scope:fixture:project-alpha" as PondScopeRef;
@@ -12,7 +13,7 @@ const coderAgentRef = "agent:fixture:coder" as PondAgentRef;
 const coderPluginRef = "plugin:fixture:coder" as PondPluginRef;
 
 export const stage0bP1FrontAgentFixture = {
-  contractVersion: "stage0b-p2",
+  contractVersion: "stage-a4",
   kind: "pond-front-agent",
   role: "coordinate-explain-propose",
   scopeContext: {
@@ -28,6 +29,7 @@ export const stage0bP1FrontAgentFixture = {
       crossScopeRelease: "not_established",
       delegatedAuthority: "not_established",
     },
+    projection: stageA4FreshProjectionEnvelopeFixture,
   },
   plugins: [
     {

@@ -90,7 +90,7 @@ Current agent direction:
 - membership, admission, cross-scope release, and delegated authority not established;
 - no execution surface.
 
-### A3 — Public foundation, local builder law, reproducible lock, and minimal CI — CURRENT
+### A3 — Public foundation, local builder law, reproducible lock, and minimal CI — COMPLETE
 
 - truthful public product/current-state documentation;
 - seven durable North Stars and minimal roadmap;
@@ -99,7 +99,7 @@ Current agent direction:
 - read-only GitHub CI for dependency installation, typechecking, and committed-range whitespace validation;
 - `Activation: NOT_INCLUDED`.
 
-### A4 — Common non-authoritative projection envelope — NEXT
+### A4 — Common non-authoritative projection envelope — CURRENT
 
 - source and trust class;
 - source scope and audience/disclosure;
@@ -109,7 +109,7 @@ Current agent direction:
 - explicit stale, missing, unknown, and conflicting states;
 - fixture-only; no relationship authority or live integration.
 
-### A5 — Fixture relationship and revocation/stale/conflict projections — FUTURE
+### A5 — Fixture relationship and revocation/stale/conflict projections — NEXT
 
 - non-authoritative identity, membership, admission, release, grant-applicability, revocation, and expiry projections;
 - reuse canonical outcome names;

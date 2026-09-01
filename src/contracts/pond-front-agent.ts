@@ -1,15 +1,20 @@
-// Stage 0B-P2 host-neutral Pond front-agent contract.
+// Stage A4 host-neutral Pond front-agent contract.
 //
 // Canonical ecosystem law lives in ToadAid/toadaid-architecture. These types
 // are UI/runtime projections only and MUST NOT be treated as authority records.
 
+import type {
+  PondProjectionEnvelope,
+  PondScopeRef,
+} from "./pond-projection-envelope.js";
+
+export type { PondScopeRef } from "./pond-projection-envelope.js";
+
 declare const principalRefBrand: unique symbol;
-declare const scopeRefBrand: unique symbol;
 declare const agentRefBrand: unique symbol;
 declare const pluginRefBrand: unique symbol;
 
 export type PondPrincipalRef = string & { readonly [principalRefBrand]: "PondPrincipalRef" };
-export type PondScopeRef = string & { readonly [scopeRefBrand]: "PondScopeRef" };
 export type PondAgentRef = string & { readonly [agentRefBrand]: "PondAgentRef" };
 export type PondPluginRef = string & { readonly [pluginRefBrand]: "PondPluginRef" };
 
@@ -31,6 +36,7 @@ export interface PondScopeContextProjection {
   readonly activeScopePosture: "single_scope_fixture_projection";
   readonly authority: "none";
   readonly nonAuthoritativeRelationshipClaims: PondNonAuthoritativeRelationshipClaimsProjection;
+  readonly projection: PondProjectionEnvelope;
 }
 
 export interface PondDisabledAuthorityProjection {
@@ -65,7 +71,7 @@ export interface PondStage0BGates {
 }
 
 export interface PondFrontAgentState {
-  readonly contractVersion: "stage0b-p2";
+  readonly contractVersion: "stage-a4";
   readonly kind: "pond-front-agent";
   readonly role: "coordinate-explain-propose";
   readonly scopeContext: PondScopeContextProjection;
