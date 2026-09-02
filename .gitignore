@@ -18,6 +18,8 @@ coverage/
 *.swo
 .vscode/
 .idea/
+/src-tauri/target/
+/src-tauri/gen/schemas/
 
 # Local runtime state and receipts
 .toadaid-local/

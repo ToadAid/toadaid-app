@@ -1,0 +1,18 @@
+[package]
+name = "toadaid-pond"
+version = "0.0.0"
+description = "Bounded local desktop host for the static ToadAid Pond shell"
+authors = ["ToadAid"]
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[lib]
+name = "toadaid_pond_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "=2.6.3", features = [] }
+
+[dependencies]
+tauri = { version = "=2.11.5", features = [] }

@@ -182,19 +182,30 @@ Stage B remains static and non-authoritative. It introduces host-neutral present
 - keyboard-accessible, semantic static presentation;
 - no live tools, host integration, network, persistence, or mutation.
 
-### B2-P2 — JARVIS / new-age Pond static visual cut — CURRENT
+### B2-P2 — JARVIS / new-age Pond static visual cut — COMPLETE
 
 - approved JARVIS/new-age visual north star applied;
 - exact B1 fixture conformance retained;
 - voice, world, and agent spatial affordances remain static and inert;
 - no live tools or host integration.
 
-### B2-P3 — Launchable desktop host seam — NEXT
+### B2-P3 — Launchable desktop host seam — CURRENT
 
-- choose and prove the minimal desktop host for the existing static Pond shell;
-- launch Pond as an application window while preserving host-neutral state semantics;
-- no live tools, network, persistence, or agent invocation merely because a host exists;
+- Tauri 2 provides the bounded local desktop host seam;
+- the existing B2-P2 UI launches unchanged;
+- the desktop host uses the human-selected Pond lotus artwork as its local icon;
+- bounded Linux launch hygiene removes only allowlisted inherited Snap-path GTK/GIO/XDG entries from the child environment;
+- observed launch proof is Linux-only; the host choice is cross-platform-capable, but Windows, macOS, Android, and iOS proof is not claimed;
+- no live tools, network, persistence, agent invocation, or other live capability activation;
 - host presence does not create authority.
+
+### B2-P4 — Cinematic Pond world asset layer — NEXT
+
+- preserve the approved rich JARVIS/Pond visual north star;
+- replace temporary CSS/SVG world scaffolding with curated presentation assets;
+- floating lands, pond depth, and a detailed guide may be added as presentation;
+- responsive desktop and mobile composition remains required;
+- art creates no live Tobyworld state, 3D runtime, or authority semantics.
 
 ### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
 
