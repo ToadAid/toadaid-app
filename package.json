@@ -5,9 +5,12 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
+    "desktop:dev": "node scripts/desktop-dev.mjs",
+    "desktop:info": "tauri info",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "2.11.4",
     "typescript": "5.8.3"
   }
 }
