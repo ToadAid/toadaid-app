@@ -403,25 +403,6 @@ textarea:focus-visible,
 .presence-aura::before { inset: 9%; }
 .presence-aura::after { inset: 21%; border-style: solid; border-color: rgba(141, 247, 157, 0.19); }
 
-.agent-figure {
-  position: absolute;
-  z-index: 3;
-  top: 13%;
-  left: 50%;
-  width: min(170px, 49%);
-  transform: translateX(-50%);
-  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 17px rgba(78, 233, 183, 0.18));
-}
-
-.agent-figure svg { display: block; width: 100%; }
-.frog-cloak { fill: rgba(3, 38, 35, 0.96); stroke: #2fc7a7; stroke-width: 2; }
-.frog-head { fill: #72e49a; stroke: #b9ff76; stroke-width: 2; }
-.frog-eye { fill: #b8ef7c; stroke: #5adea3; stroke-width: 2; }
-.frog-pupil { fill: #041211; stroke: #d4c258; stroke-width: 3; }
-.frog-mouth, .frog-hands { fill: none; stroke: #07544e; stroke-linecap: round; stroke-width: 4; }
-.frog-sigil { fill: rgba(124, 255, 136, 0.08); stroke: var(--green); stroke-width: 2; }
-.frog-sigil-line { fill: none; stroke: var(--green); stroke-width: 1.6; }
-
 .lily-platform {
   position: absolute;
   z-index: 2;
@@ -654,7 +635,6 @@ textarea:focus-visible,
   .stage-heading { right: 22px; left: 22px; text-align: center; }
   .stage-heading h1 { font-size: 27px; }
   .agent-presence { top: 58%; width: 68%; }
-  .agent-figure { width: 45%; }
   .scope-beacon { top: 29%; left: 16px; padding: 9px 11px; }
   .tagline { padding-inline: 12px; font-size: 9px; letter-spacing: 0.18em; }
   .voice-dock { display: flex; flex-direction: column; }
