@@ -7,10 +7,12 @@
   "scripts": {
     "desktop:dev": "node scripts/desktop-dev.mjs",
     "desktop:info": "tauri info",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "world:vendor": "node scripts/vendor-three.mjs"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4",
+    "three": "0.185.1",
     "typescript": "5.8.3"
   }
 }

@@ -162,9 +162,9 @@ versioned descriptor
 
 Multi-principal isolation remains cross-cutting across every later stage.
 
-## Stage B — Host-neutral static Pond — CURRENT
+## Stage B — Host-neutral Pond presentation — CURRENT
 
-Stage B remains static and non-authoritative. It introduces host-neutral presentation contracts before any live truth integration.
+Stage B remains non-authoritative. It introduces host-neutral presentation contracts and a local visual runtime before any live truth integration.
 
 ### B1 — Host-neutral `Snapshot` / `Event` / `CommandIntent` contract — COMPLETE
 
@@ -189,7 +189,7 @@ Stage B remains static and non-authoritative. It introduces host-neutral present
 - voice, world, and agent spatial affordances remain static and inert;
 - no live tools or host integration.
 
-### B2-P3 — Launchable desktop host seam — CURRENT
+### B2-P3 — Launchable desktop host seam — COMPLETE
 
 - Tauri 2 provides the bounded local desktop host seam;
 - the existing B2-P2 UI launches unchanged;
@@ -199,13 +199,21 @@ Stage B remains static and non-authoritative. It introduces host-neutral present
 - no live tools, network, persistence, agent invocation, or other live capability activation;
 - host presence does not create authority.
 
-### B2-P4 — Cinematic Pond world asset layer — NEXT
+### B2-P4A — Real-time Pond world foundation — CURRENT
 
-- preserve the approved rich JARVIS/Pond visual north star;
-- replace temporary CSS/SVG world scaffolding with curated presentation assets;
-- floating lands, pond depth, and a detailed guide may be added as presentation;
-- responsive desktop and mobile composition remains required;
-- art creates no live Tobyworld state, 3D runtime, or authority semantics.
+- explicitly intermediate foundation, not the intended final visual;
+- local, exactly pinned and vendored Three.js visual runtime with no CDN or localhost;
+- deterministic procedural moving floating lands, waterfalls, water, stars, fog, and holographic depth;
+- current HTML/SVG guide remains temporary and is not a live invocation;
+- presentation only: no live Tobyworld state, tools, authority, or other capability activation.
+
+### B2-P4B — High-fidelity hybrid world/guide refinement — NEXT
+
+- detailed guide inspired by the approved JARVIS/new-frog reference;
+- high-fidelity local island/world assets;
+- refined water and waterfall materials plus premium atmosphere and lighting;
+- performance and responsive-composition polish;
+- remains presentation only and creates no authority or live world state.
 
 ### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
 
