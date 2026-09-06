@@ -209,8 +209,9 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 
 ### B2-P4B — High-fidelity hybrid world/guide refinement — CURRENT
 
-- P4B-P1 refines the procedural world first: organic non-toothed island silhouettes, ribbon waterfalls, richer water response, and layered atmospheric motes;
-- detailed guide refinement remains a later P4B subcut and must not be confused with authority or agent activation;
+- **P4B-P1 — COMPLETE:** organic non-toothed island silhouettes, ribbon waterfalls, richer water response, layered atmospheric motes, and repaired rounded landmark silhouettes;
+- **P4B-P2 — CURRENT:** replace the temporary flat SVG guide with a bounded procedural Three.js robed frog guide while preserving explicit presentation-only and non-invocation semantics;
+- asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
 - refined water and waterfall materials plus premium atmosphere and lighting;
 - performance and responsive-composition polish;

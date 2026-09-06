@@ -211,6 +211,68 @@ if (renderer) {
   const windowMaterial = new THREE.MeshBasicMaterial({ color: 0xd3c56a });
   const ringMaterial = new THREE.MeshBasicMaterial({ color: 0x42e6ef, transparent: true, opacity: 0.44 });
 
+  const guideSkinMaterial = new THREE.MeshStandardMaterial({
+    color: 0x69d78f,
+    emissive: 0x173d2d,
+    emissiveIntensity: 0.34,
+    roughness: 0.58,
+    metalness: 0.03,
+  });
+  const guideSkinLightMaterial = new THREE.MeshStandardMaterial({
+    color: 0xa5e96f,
+    emissive: 0x264a25,
+    emissiveIntensity: 0.28,
+    roughness: 0.5,
+    metalness: 0.02,
+  });
+  const guideEyeMaterial = new THREE.MeshStandardMaterial({
+    color: 0xc7f28a,
+    emissive: 0x29431d,
+    emissiveIntensity: 0.2,
+    roughness: 0.42,
+  });
+  const guidePupilMaterial = new THREE.MeshStandardMaterial({
+    color: 0x03100d,
+    emissive: 0x3a3212,
+    emissiveIntensity: 0.5,
+    roughness: 0.32,
+    metalness: 0.12,
+  });
+  const guideRobeMaterial = new THREE.MeshStandardMaterial({
+    color: 0x092b2b,
+    emissive: 0x06201d,
+    emissiveIntensity: 0.44,
+    roughness: 0.78,
+    metalness: 0.08,
+  });
+  const guideRobePanelMaterial = new THREE.MeshStandardMaterial({
+    color: 0x0e4440,
+    emissive: 0x0a2925,
+    emissiveIntensity: 0.55,
+    roughness: 0.7,
+    metalness: 0.1,
+  });
+  const guideTrimMaterial = new THREE.MeshStandardMaterial({
+    color: 0x60e6c2,
+    emissive: 0x27a68f,
+    emissiveIntensity: 1.5,
+    roughness: 0.32,
+    metalness: 0.28,
+  });
+  const guideGoldMaterial = new THREE.MeshStandardMaterial({
+    color: 0xd8bf62,
+    emissive: 0x756123,
+    emissiveIntensity: 0.82,
+    roughness: 0.3,
+    metalness: 0.42,
+  });
+  const guideHaloMaterial = new THREE.MeshBasicMaterial({
+    color: 0x54f1dc,
+    transparent: true,
+    opacity: 0.32,
+    depthWrite: false,
+  });
+
   const createOrganicIslandGeometry = (radius, height, phase) => {
     const segments = 28;
     const rings = [
@@ -494,6 +556,151 @@ if (renderer) {
     islandGroups.push(group);
   }
 
+  const guideRoot = new THREE.Group();
+  guideRoot.name = "Procedural specialist-agent guide";
+  const guideBaseY = -1.45;
+  guideRoot.position.set(0, guideBaseY, 3.4);
+  guideRoot.scale.setScalar(1.15);
+  scene.add(guideRoot);
+
+  const robe = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.47, 0.84, 1.7, 24, 3, false),
+    guideRobeMaterial,
+  );
+  robe.position.y = 0.35;
+  guideRoot.add(robe);
+
+  const robeFront = new THREE.Mesh(
+    new THREE.BoxGeometry(0.58, 1.24, 0.08, 1, 4, 1),
+    guideRobePanelMaterial,
+  );
+  robeFront.position.set(0, 0.38, 0.77);
+  guideRoot.add(robeFront);
+
+  const mantle = new THREE.Mesh(
+    new THREE.SphereGeometry(0.72, 22, 14),
+    guideRobeMaterial,
+  );
+  mantle.position.set(0, 1.12, 0.02);
+  mantle.scale.set(1, 0.33, 0.78);
+  guideRoot.add(mantle);
+
+  const head = new THREE.Mesh(
+    new THREE.SphereGeometry(0.64, 28, 18),
+    guideSkinMaterial,
+  );
+  head.position.set(0, 1.72, 0.15);
+  head.scale.set(1.08, 0.78, 0.84);
+  guideRoot.add(head);
+
+  const muzzle = new THREE.Mesh(
+    new THREE.SphereGeometry(0.43, 24, 14),
+    guideSkinLightMaterial,
+  );
+  muzzle.position.set(0, 1.58, 0.52);
+  muzzle.scale.set(1.08, 0.48, 0.5);
+  guideRoot.add(muzzle);
+
+  const eyeRoots = [];
+  for (const side of [-1, 1]) {
+    const eyeRoot = new THREE.Group();
+    eyeRoot.position.set(side * 0.37, 2.12, 0.26);
+
+    const eye = new THREE.Mesh(
+      new THREE.SphereGeometry(0.235, 22, 14),
+      guideEyeMaterial,
+    );
+    eye.scale.set(1, 1.05, 0.9);
+
+    const pupil = new THREE.Mesh(
+      new THREE.SphereGeometry(0.095, 16, 10),
+      guidePupilMaterial,
+    );
+    pupil.position.set(side * -0.012, 0.008, 0.205);
+    pupil.scale.set(0.82, 1.18, 0.62);
+
+    const catchlight = new THREE.Mesh(
+      new THREE.SphereGeometry(0.022, 8, 6),
+      guideGoldMaterial,
+    );
+    catchlight.position.set(side * -0.035, 0.055, 0.268);
+
+    eyeRoot.add(eye, pupil, catchlight);
+    guideRoot.add(eyeRoot);
+    eyeRoots.push(eyeRoot);
+  }
+
+  const mouthCurve = new THREE.QuadraticBezierCurve3(
+    new THREE.Vector3(-0.26, 1.53, 0.755),
+    new THREE.Vector3(0, 1.43, 0.81),
+    new THREE.Vector3(0.26, 1.53, 0.755),
+  );
+  const mouth = new THREE.Mesh(
+    new THREE.TubeGeometry(mouthCurve, 18, 0.022, 6, false),
+    guidePupilMaterial,
+  );
+  guideRoot.add(mouth);
+
+  for (const side of [-1, 1]) {
+    const arm = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.085, 0.115, 0.66, 12),
+      guideRobePanelMaterial,
+    );
+    arm.position.set(side * 0.43, 0.78, 0.42);
+    arm.rotation.z = side * -0.64;
+    arm.rotation.x = side * 0.08;
+    guideRoot.add(arm);
+
+    const hand = new THREE.Mesh(
+      new THREE.SphereGeometry(0.145, 16, 10),
+      guideSkinLightMaterial,
+    );
+    hand.position.set(side * 0.25, 0.58, 0.69);
+    hand.scale.set(1.18, 0.72, 0.86);
+    guideRoot.add(hand);
+  }
+
+  const collar = new THREE.Mesh(
+    new THREE.TorusGeometry(0.43, 0.045, 8, 36),
+    guideTrimMaterial,
+  );
+  collar.position.set(0, 1.15, 0.29);
+  collar.rotation.x = 0.3;
+  guideRoot.add(collar);
+
+  const chestSigil = new THREE.Mesh(
+    new THREE.TorusGeometry(0.18, 0.026, 8, 32),
+    guideTrimMaterial,
+  );
+  chestSigil.position.set(0, 0.72, 0.84);
+  guideRoot.add(chestSigil);
+
+  const sigilCore = new THREE.Mesh(
+    new THREE.SphereGeometry(0.07, 12, 8),
+    guideGoldMaterial,
+  );
+  sigilCore.position.set(0, 0.72, 0.87);
+  guideRoot.add(sigilCore);
+
+  const guideHalo = new THREE.Mesh(
+    new THREE.TorusGeometry(0.9, 0.014, 5, 64),
+    guideHaloMaterial,
+  );
+  guideHalo.position.set(0, 1.7, -0.36);
+  guideRoot.add(guideHalo);
+
+  const guideHaloInner = new THREE.Mesh(
+    new THREE.TorusGeometry(0.72, 0.009, 4, 56),
+    guideHaloMaterial,
+  );
+  guideHaloInner.position.set(0, 1.7, -0.34);
+  guideHaloInner.rotation.z = Math.PI / 7;
+  guideRoot.add(guideHaloInner);
+
+  const guideLight = new THREE.PointLight(0x67ffd4, 4.5, 4.2, 2);
+  guideLight.position.set(0, 1.6, 1.25);
+  guideRoot.add(guideLight);
+
   const pointerTarget = new THREE.Vector2();
   const pointerCurrent = new THREE.Vector2();
   const neutralPointer = new THREE.Vector2();
@@ -537,6 +744,14 @@ if (renderer) {
     motes.rotation.y = elapsed * -0.012;
     motes.position.y = Math.sin(elapsed * 0.17) * 0.08;
     moonHalo.rotation.z = elapsed * 0.025;
+
+    guideRoot.position.y = guideBaseY + Math.sin(elapsed * 0.52) * 0.035;
+    head.rotation.y = Math.sin(elapsed * 0.23) * 0.035;
+    head.rotation.x = Math.sin(elapsed * 0.17) * 0.012;
+    eyeRoots[0].rotation.y = Math.sin(elapsed * 0.31) * 0.025;
+    eyeRoots[1].rotation.y = Math.sin(elapsed * 0.31) * 0.025;
+    guideHalo.rotation.z = elapsed * 0.055;
+    guideHaloInner.rotation.z = Math.PI / 7 - elapsed * 0.038;
 
     islandGroups.forEach((group, index) => {
       group.position.y = islandLayouts[index].position[1] + Math.sin(elapsed * 0.34 + index * 1.7) * 0.11;
