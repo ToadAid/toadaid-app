@@ -1,0 +1,2 @@
+# Preserve byte-identical upstream Three.js source while keeping authored whitespace checks strict.
+ui/vendor/three.core.js whitespace=-space-before-tab
