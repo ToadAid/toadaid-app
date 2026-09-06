@@ -199,7 +199,7 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - no live tools, network, persistence, agent invocation, or other live capability activation;
 - host presence does not create authority.
 
-### B2-P4A — Real-time Pond world foundation — CURRENT
+### B2-P4A — Real-time Pond world foundation — COMPLETE
 
 - explicitly intermediate foundation, not the intended final visual;
 - local, exactly pinned and vendored Three.js visual runtime with no CDN or localhost;
@@ -207,10 +207,11 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - current HTML/SVG guide remains temporary and is not a live invocation;
 - presentation only: no live Tobyworld state, tools, authority, or other capability activation.
 
-### B2-P4B — High-fidelity hybrid world/guide refinement — NEXT
+### B2-P4B — High-fidelity hybrid world/guide refinement — CURRENT
 
-- detailed guide inspired by the approved JARVIS/new-frog reference;
-- high-fidelity local island/world assets;
+- P4B-P1 refines the procedural world first: organic non-toothed island silhouettes, ribbon waterfalls, richer water response, and layered atmospheric motes;
+- detailed guide refinement remains a later P4B subcut and must not be confused with authority or agent activation;
+- high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
 - refined water and waterfall materials plus premium atmosphere and lighting;
 - performance and responsive-composition polish;
 - remains presentation only and creates no authority or live world state.
