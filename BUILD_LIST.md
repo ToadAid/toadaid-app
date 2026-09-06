@@ -211,7 +211,8 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 
 - **P4B-P1 — COMPLETE:** organic non-toothed island silhouettes, ribbon waterfalls, richer water response, layered atmospheric motes, and repaired rounded landmark silhouettes;
 - **P4B-P2 — COMPLETE:** the temporary flat SVG guide was retired and replaced with a bounded procedural Three.js robed frog foundation while preserving explicit presentation-only and non-invocation semantics;
-- **P4B-P3 — CURRENT:** refine that procedural guide toward a cinematic robed-guardian silhouette with softer face, draped robe, calmer sleeves/hands, organic sigil language, and better platform/world integration;
+- **P4B-P3 — COMPLETE:** the procedural guide was refined into a calmer cinematic robed-guardian silhouette with repaired eye visibility, draped robe presentation, integrated hands, and organic sigil language;
+- **P4B-P4 — CURRENT:** establish the fail-closed visual-asset admission contract and deterministic proof fixture before any binary/model/texture asset enters Pond;
 - asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
 - refined water and waterfall materials plus premium atmosphere and lighting;
