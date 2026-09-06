@@ -558,72 +558,100 @@ if (renderer) {
 
   const guideRoot = new THREE.Group();
   guideRoot.name = "Procedural specialist-agent guide";
-  const guideBaseY = -1.45;
-  guideRoot.position.set(0, guideBaseY, 3.4);
-  guideRoot.scale.setScalar(1.15);
+  const guideBaseY = -1.52;
+  guideRoot.position.set(0, guideBaseY, 3.32);
+  guideRoot.scale.setScalar(1.08);
   scene.add(guideRoot);
 
+  const robeProfile = [
+    new THREE.Vector2(0.94, 0.00),
+    new THREE.Vector2(0.91, 0.16),
+    new THREE.Vector2(0.82, 0.46),
+    new THREE.Vector2(0.70, 0.82),
+    new THREE.Vector2(0.59, 1.18),
+    new THREE.Vector2(0.54, 1.50),
+    new THREE.Vector2(0.58, 1.72),
+    new THREE.Vector2(0.48, 1.88),
+  ];
   const robe = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.47, 0.84, 1.7, 24, 3, false),
+    new THREE.LatheGeometry(robeProfile, 32),
     guideRobeMaterial,
   );
-  robe.position.y = 0.35;
+  robe.position.y = -0.48;
+  robe.scale.z = 0.82;
   guideRoot.add(robe);
 
-  const robeFront = new THREE.Mesh(
-    new THREE.BoxGeometry(0.58, 1.24, 0.08, 1, 4, 1),
+  const frontDrapeShape = new THREE.Shape();
+  frontDrapeShape.moveTo(-0.46, 1.12);
+  frontDrapeShape.lineTo(0.46, 1.12);
+  frontDrapeShape.lineTo(0.66, 0.18);
+  frontDrapeShape.lineTo(0.82, -0.43);
+  frontDrapeShape.lineTo(-0.82, -0.43);
+  frontDrapeShape.lineTo(-0.66, 0.18);
+  frontDrapeShape.closePath();
+
+  const frontDrape = new THREE.Mesh(
+    new THREE.ShapeGeometry(frontDrapeShape, 8),
     guideRobePanelMaterial,
   );
-  robeFront.position.set(0, 0.38, 0.77);
-  guideRoot.add(robeFront);
+  frontDrape.position.set(0, 0.02, 0.76);
+  guideRoot.add(frontDrape);
 
   const mantle = new THREE.Mesh(
-    new THREE.SphereGeometry(0.72, 22, 14),
+    new THREE.SphereGeometry(0.76, 26, 16),
     guideRobeMaterial,
   );
-  mantle.position.set(0, 1.12, 0.02);
-  mantle.scale.set(1, 0.33, 0.78);
+  mantle.position.set(0, 1.17, 0.03);
+  mantle.scale.set(1.08, 0.28, 0.78);
   guideRoot.add(mantle);
 
+  const shoulderDrape = new THREE.Mesh(
+    new THREE.SphereGeometry(0.67, 24, 14),
+    guideRobePanelMaterial,
+  );
+  shoulderDrape.position.set(0, 1.05, 0.23);
+  shoulderDrape.scale.set(1.0, 0.22, 0.66);
+  guideRoot.add(shoulderDrape);
+
   const head = new THREE.Mesh(
-    new THREE.SphereGeometry(0.64, 28, 18),
+    new THREE.SphereGeometry(0.66, 30, 20),
     guideSkinMaterial,
   );
-  head.position.set(0, 1.72, 0.15);
-  head.scale.set(1.08, 0.78, 0.84);
+  head.position.set(0, 1.84, 0.14);
+  head.scale.set(1.16, 0.76, 0.84);
   guideRoot.add(head);
 
   const muzzle = new THREE.Mesh(
-    new THREE.SphereGeometry(0.43, 24, 14),
+    new THREE.SphereGeometry(0.43, 26, 16),
     guideSkinLightMaterial,
   );
-  muzzle.position.set(0, 1.58, 0.52);
-  muzzle.scale.set(1.08, 0.48, 0.5);
+  muzzle.position.set(0, 1.67, 0.52);
+  muzzle.scale.set(1.24, 0.42, 0.48);
   guideRoot.add(muzzle);
 
   const eyeRoots = [];
   for (const side of [-1, 1]) {
     const eyeRoot = new THREE.Group();
-    eyeRoot.position.set(side * 0.37, 2.12, 0.26);
+    eyeRoot.position.set(side * 0.34, 2.12, 0.62);
 
     const eye = new THREE.Mesh(
-      new THREE.SphereGeometry(0.235, 22, 14),
+      new THREE.SphereGeometry(0.195, 22, 14),
       guideEyeMaterial,
     );
-    eye.scale.set(1, 1.05, 0.9);
+    eye.scale.set(1.0, 0.96, 0.84);
 
     const pupil = new THREE.Mesh(
-      new THREE.SphereGeometry(0.095, 16, 10),
+      new THREE.SphereGeometry(0.068, 16, 10),
       guidePupilMaterial,
     );
-    pupil.position.set(side * -0.012, 0.008, 0.205);
-    pupil.scale.set(0.82, 1.18, 0.62);
+    pupil.position.set(side * -0.008, -0.002, 0.176);
+    pupil.scale.set(0.78, 1.08, 0.58);
 
     const catchlight = new THREE.Mesh(
-      new THREE.SphereGeometry(0.022, 8, 6),
+      new THREE.SphereGeometry(0.018, 8, 6),
       guideGoldMaterial,
     );
-    catchlight.position.set(side * -0.035, 0.055, 0.268);
+    catchlight.position.set(side * -0.026, 0.045, 0.218);
 
     eyeRoot.add(eye, pupil, catchlight);
     guideRoot.add(eyeRoot);
@@ -631,74 +659,89 @@ if (renderer) {
   }
 
   const mouthCurve = new THREE.QuadraticBezierCurve3(
-    new THREE.Vector3(-0.26, 1.53, 0.755),
-    new THREE.Vector3(0, 1.43, 0.81),
-    new THREE.Vector3(0.26, 1.53, 0.755),
+    new THREE.Vector3(-0.24, 1.60, 0.755),
+    new THREE.Vector3(0, 1.53, 0.79),
+    new THREE.Vector3(0.24, 1.60, 0.755),
   );
   const mouth = new THREE.Mesh(
-    new THREE.TubeGeometry(mouthCurve, 18, 0.022, 6, false),
+    new THREE.TubeGeometry(mouthCurve, 18, 0.017, 6, false),
     guidePupilMaterial,
   );
   guideRoot.add(mouth);
 
+  const guideSleeves = [];
   for (const side of [-1, 1]) {
-    const arm = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.085, 0.115, 0.66, 12),
+    const sleeve = new THREE.Mesh(
+      new THREE.SphereGeometry(0.32, 20, 14),
       guideRobePanelMaterial,
     );
-    arm.position.set(side * 0.43, 0.78, 0.42);
-    arm.rotation.z = side * -0.64;
-    arm.rotation.x = side * 0.08;
-    guideRoot.add(arm);
+    sleeve.position.set(side * 0.52, 0.74, 0.31);
+    sleeve.scale.set(0.72, 1.36, 0.72);
+    sleeve.rotation.z = side * -0.43;
+    sleeve.rotation.x = side * 0.04;
+    guideRoot.add(sleeve);
+    guideSleeves.push(sleeve);
 
     const hand = new THREE.Mesh(
-      new THREE.SphereGeometry(0.145, 16, 10),
+      new THREE.SphereGeometry(0.13, 18, 12),
       guideSkinLightMaterial,
     );
-    hand.position.set(side * 0.25, 0.58, 0.69);
-    hand.scale.set(1.18, 0.72, 0.86);
+    hand.position.set(side * 0.30, 0.76, 0.73);
+    hand.scale.set(1.08, 0.66, 0.84);
     guideRoot.add(hand);
   }
 
   const collar = new THREE.Mesh(
-    new THREE.TorusGeometry(0.43, 0.045, 8, 36),
+    new THREE.TorusGeometry(0.41, 0.032, 8, 40),
     guideTrimMaterial,
   );
-  collar.position.set(0, 1.15, 0.29);
-  collar.rotation.x = 0.3;
+  collar.position.set(0, 1.19, 0.31);
+  collar.rotation.x = 0.28;
   guideRoot.add(collar);
 
-  const chestSigil = new THREE.Mesh(
-    new THREE.TorusGeometry(0.18, 0.026, 8, 32),
+  const leafSigilShape = new THREE.Shape();
+  leafSigilShape.moveTo(0, -0.20);
+  leafSigilShape.bezierCurveTo(-0.18, -0.10, -0.19, 0.08, 0, 0.23);
+  leafSigilShape.bezierCurveTo(0.19, 0.08, 0.18, -0.10, 0, -0.20);
+
+  const leafSigil = new THREE.Mesh(
+    new THREE.ShapeGeometry(leafSigilShape, 8),
     guideTrimMaterial,
   );
-  chestSigil.position.set(0, 0.72, 0.84);
-  guideRoot.add(chestSigil);
+  leafSigil.position.set(0, 0.92, 0.82);
+  leafSigil.scale.setScalar(0.78);
+  guideRoot.add(leafSigil);
 
-  const sigilCore = new THREE.Mesh(
-    new THREE.SphereGeometry(0.07, 12, 8),
+  const sigilStemCurve = new THREE.QuadraticBezierCurve3(
+    new THREE.Vector3(0, 0.74, 0.835),
+    new THREE.Vector3(-0.022, 0.91, 0.845),
+    new THREE.Vector3(0, 1.08, 0.835),
+  );
+  const sigilStem = new THREE.Mesh(
+    new THREE.TubeGeometry(sigilStemCurve, 12, 0.014, 5, false),
     guideGoldMaterial,
   );
-  sigilCore.position.set(0, 0.72, 0.87);
-  guideRoot.add(sigilCore);
+  guideRoot.add(sigilStem);
 
   const guideHalo = new THREE.Mesh(
-    new THREE.TorusGeometry(0.9, 0.014, 5, 64),
+    new THREE.TorusGeometry(0.86, 0.011, 5, 72),
     guideHaloMaterial,
   );
-  guideHalo.position.set(0, 1.7, -0.36);
+  guideHalo.position.set(0, 1.83, -0.40);
+  guideHalo.scale.set(1.0, 1.08, 1.0);
   guideRoot.add(guideHalo);
 
   const guideHaloInner = new THREE.Mesh(
-    new THREE.TorusGeometry(0.72, 0.009, 4, 56),
+    new THREE.TorusGeometry(0.66, 0.007, 4, 64),
     guideHaloMaterial,
   );
-  guideHaloInner.position.set(0, 1.7, -0.34);
-  guideHaloInner.rotation.z = Math.PI / 7;
+  guideHaloInner.position.set(0, 1.83, -0.38);
+  guideHaloInner.scale.set(1.0, 1.08, 1.0);
+  guideHaloInner.rotation.z = Math.PI / 8;
   guideRoot.add(guideHaloInner);
 
-  const guideLight = new THREE.PointLight(0x67ffd4, 4.5, 4.2, 2);
-  guideLight.position.set(0, 1.6, 1.25);
+  const guideLight = new THREE.PointLight(0x67ffd4, 4.1, 4.0, 2);
+  guideLight.position.set(0, 1.55, 1.22);
   guideRoot.add(guideLight);
 
   const pointerTarget = new THREE.Vector2();
@@ -745,13 +788,16 @@ if (renderer) {
     motes.position.y = Math.sin(elapsed * 0.17) * 0.08;
     moonHalo.rotation.z = elapsed * 0.025;
 
-    guideRoot.position.y = guideBaseY + Math.sin(elapsed * 0.52) * 0.035;
-    head.rotation.y = Math.sin(elapsed * 0.23) * 0.035;
-    head.rotation.x = Math.sin(elapsed * 0.17) * 0.012;
-    eyeRoots[0].rotation.y = Math.sin(elapsed * 0.31) * 0.025;
-    eyeRoots[1].rotation.y = Math.sin(elapsed * 0.31) * 0.025;
-    guideHalo.rotation.z = elapsed * 0.055;
-    guideHaloInner.rotation.z = Math.PI / 7 - elapsed * 0.038;
+    guideRoot.position.y = guideBaseY + Math.sin(elapsed * 0.46) * 0.028;
+    guideRoot.rotation.y = Math.sin(elapsed * 0.16) * 0.012;
+    head.rotation.y = Math.sin(elapsed * 0.21) * 0.025;
+    head.rotation.x = Math.sin(elapsed * 0.15) * 0.009;
+    eyeRoots[0].rotation.y = Math.sin(elapsed * 0.28) * 0.018;
+    eyeRoots[1].rotation.y = Math.sin(elapsed * 0.28) * 0.018;
+    guideSleeves[0].rotation.z = 0.43 + Math.sin(elapsed * 0.19) * 0.012;
+    guideSleeves[1].rotation.z = -0.43 - Math.sin(elapsed * 0.19) * 0.012;
+    guideHalo.rotation.z = elapsed * 0.042;
+    guideHaloInner.rotation.z = Math.PI / 8 - elapsed * 0.031;
 
     islandGroups.forEach((group, index) => {
       group.position.y = islandLayouts[index].position[1] + Math.sin(elapsed * 0.34 + index * 1.7) * 0.11;
