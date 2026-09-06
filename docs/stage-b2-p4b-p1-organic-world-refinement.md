@@ -28,8 +28,9 @@ This subcut deliberately addresses the world before the detailed frog guide.
 
 ## Changes
 
-- replace the angular island underside primitive with deterministic 24-segment
-  multi-ring organic geometry that tapers smoothly toward a bounded lower tip;
+- replace the angular island underside primitive with deterministic 28-segment,
+  seven-ring organic geometry with laterally drifting contours and a shallow
+  terminal cap;
 - raise rim and garden radial segmentation from 12 to 24;
 - replace point-only waterfalls with animated translucent waterfall ribbons plus
   a smaller bounded spray particle layer;
