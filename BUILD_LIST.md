@@ -204,13 +204,14 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - explicitly intermediate foundation, not the intended final visual;
 - local, exactly pinned and vendored Three.js visual runtime with no CDN or localhost;
 - deterministic procedural moving floating lands, waterfalls, water, stars, fog, and holographic depth;
-- current HTML/SVG guide remains temporary and is not a live invocation;
+- at P4A completion, the HTML/SVG guide was explicitly temporary and not a live invocation;
 - presentation only: no live Tobyworld state, tools, authority, or other capability activation.
 
 ### B2-P4B — High-fidelity hybrid world/guide refinement — CURRENT
 
 - **P4B-P1 — COMPLETE:** organic non-toothed island silhouettes, ribbon waterfalls, richer water response, layered atmospheric motes, and repaired rounded landmark silhouettes;
-- **P4B-P2 — CURRENT:** replace the temporary flat SVG guide with a bounded procedural Three.js robed frog guide while preserving explicit presentation-only and non-invocation semantics;
+- **P4B-P2 — COMPLETE:** the temporary flat SVG guide was retired and replaced with a bounded procedural Three.js robed frog foundation while preserving explicit presentation-only and non-invocation semantics;
+- **P4B-P3 — CURRENT:** refine that procedural guide toward a cinematic robed-guardian silhouette with softer face, draped robe, calmer sleeves/hands, organic sigil language, and better platform/world integration;
 - asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
 - refined water and waterfall materials plus premium atmosphere and lighting;
