@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
-    <title>Pond — Static Spatial Shell</title>
+    <title>Pond — Real-Time World Foundation</title>
     <link rel="stylesheet" href="pond-desktop.css">
   </head>
   <body>
@@ -24,7 +24,7 @@
           </svg>
           <span class="brand-word">POND</span>
         </a>
-        <p class="topbar-title">Static spatial Pond</p>
+        <p class="topbar-title">Pond · Real-time world</p>
         <div class="topbar-context" aria-label="Active fixture context">
           <span>Project X</span>
           <small>Project · static fixture</small>
@@ -52,14 +52,13 @@
       </nav>
 
       <main class="spatial-stage" id="pond-home" tabindex="-1">
-        <div class="star-field" aria-hidden="true"></div>
-        <div class="horizon-grid" aria-hidden="true"></div>
-        <div class="orbit orbit-one" aria-hidden="true"></div>
-        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <canvas class="pond-world-canvas" aria-hidden="true"></canvas>
+        <p class="pond-world-fallback" role="status" hidden>3D world unavailable on this host.</p>
+        <div class="world-vignette" aria-hidden="true"></div>
         <div class="stage-heading">
-          <span class="eyebrow">World visualization — concept only</span>
+          <span class="eyebrow">Real-time visualization · fixture only</span>
           <h1>Spatial Pond</h1>
-          <p>One bounded, host-neutral fixture presented as a calm navigational space.</p>
+          <p>3D presentation · no live world state</p>
         </div>
 
         <section class="agent-presence" aria-labelledby="agent-presence-title">
@@ -79,9 +78,9 @@
           <div class="lily-platform" aria-hidden="true"><span></span></div>
           <div class="presence-copy">
             <span class="presence-rule" aria-hidden="true"></span>
-            <p id="agent-presence-title">Static specialist-agent presence</p>
+            <p id="agent-presence-title">Intermediate specialist-agent guide</p>
             <strong>Specialist Agent A</strong>
-            <small>Presented identity · not a live invocation</small>
+            <small>Temporary visual · not a live invocation</small>
           </div>
         </section>
 
@@ -136,5 +135,6 @@
         </form>
       </footer>
     </div>
+    <script type="module" src="pond-world.js"></script>
   </body>
 </html>
