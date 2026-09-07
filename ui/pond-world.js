@@ -1,4 +1,9 @@
 import * as THREE from "./vendor/three.module.js";
+import {
+  getPondRenderProfile,
+  shouldPondAnimate,
+  shouldRenderPondFrame,
+} from "./pond-render-policy.js";
 
 const canvas = document.querySelector(".pond-world-canvas");
 const fallback = document.querySelector(".pond-world-fallback");
@@ -39,7 +44,6 @@ if (renderer) {
   camera.lookAt(0, 0.4, -3.5);
 
   renderer.setClearColor(0x02090d, 0);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.16;
@@ -751,13 +755,31 @@ if (renderer) {
   let animationFrame = 0;
   let elapsed = 0;
   let disposed = false;
+  let stageVisible = true;
+  let currentPixelRatio = 0;
+  let lastRenderedAt = 0;
+  let renderProfile = getPondRenderProfile({
+    width: Math.max(stage.clientWidth, 1),
+    devicePixelRatio: window.devicePixelRatio || 1,
+    reducedMotion: reducedMotion.matches,
+  });
 
   const resize = () => {
     const width = Math.max(stage.clientWidth, 1);
     const height = Math.max(stage.clientHeight, 1);
+    renderProfile = getPondRenderProfile({
+      width,
+      devicePixelRatio: window.devicePixelRatio || 1,
+      reducedMotion: reducedMotion.matches,
+    });
+    if (renderProfile.pixelRatio !== currentPixelRatio) {
+      currentPixelRatio = renderProfile.pixelRatio;
+      renderer.setPixelRatio(currentPixelRatio);
+    }
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    lastRenderedAt = 0;
   };
 
   const onPointerMove = (event) => {
@@ -768,11 +790,29 @@ if (renderer) {
     );
   };
 
-  const render = () => {
-    if (disposed || document.hidden) {
+  const onPointerLeave = () => {
+    pointerTarget.copy(neutralPointer);
+  };
+
+  const render = (timestamp) => {
+    if (!shouldPondAnimate({
+      disposed,
+      documentHidden: document.hidden,
+      stageVisible,
+    })) {
       animationFrame = 0;
       return;
     }
+
+    if (!shouldRenderPondFrame({
+      nowMs: timestamp,
+      lastFrameMs: lastRenderedAt,
+      maxFps: renderProfile.maxFps,
+    })) {
+      animationFrame = window.requestAnimationFrame(render);
+      return;
+    }
+    lastRenderedAt = timestamp;
 
     const delta = Math.min(clock.getDelta(), 0.05);
     const motionScale = reducedMotion.matches ? 0.04 : 1;
@@ -820,16 +860,46 @@ if (renderer) {
     animationFrame = window.requestAnimationFrame(render);
   };
 
-  const onVisibilityChange = () => {
-    if (document.hidden) {
+  const syncAnimationState = () => {
+    const shouldAnimate = shouldPondAnimate({
+      disposed,
+      documentHidden: document.hidden,
+      stageVisible,
+    });
+
+    if (!shouldAnimate) {
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
       animationFrame = 0;
+      lastRenderedAt = 0;
       clock.stop();
       return;
     }
+
     clock.start();
+    lastRenderedAt = 0;
     if (!animationFrame) animationFrame = window.requestAnimationFrame(render);
   };
+
+  const onVisibilityChange = () => {
+    syncAnimationState();
+  };
+
+  const onReducedMotionChange = () => {
+    resize();
+    syncAnimationState();
+  };
+
+  const resizeObserver = typeof ResizeObserver === "function"
+    ? new ResizeObserver(() => resize())
+    : null;
+
+  const intersectionObserver = typeof IntersectionObserver === "function"
+    ? new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      stageVisible = Boolean(entry?.isIntersecting && entry.intersectionRatio > 0);
+      syncAnimationState();
+    }, { threshold: 0.01 })
+    : null;
 
   const dispose = () => {
     if (disposed) return;
@@ -837,7 +907,15 @@ if (renderer) {
     if (animationFrame) window.cancelAnimationFrame(animationFrame);
     window.removeEventListener("resize", resize);
     stage.removeEventListener("pointermove", onPointerMove);
+    stage.removeEventListener("pointerleave", onPointerLeave);
     document.removeEventListener("visibilitychange", onVisibilityChange);
+    if (typeof reducedMotion.removeEventListener === "function") {
+      reducedMotion.removeEventListener("change", onReducedMotionChange);
+    } else {
+      reducedMotion.removeListener?.(onReducedMotionChange);
+    }
+    resizeObserver?.disconnect();
+    intersectionObserver?.disconnect();
     scene.traverse((object) => {
       object.geometry?.dispose();
       if (Array.isArray(object.material)) object.material.forEach((material) => material.dispose());
@@ -854,8 +932,16 @@ if (renderer) {
   window.addEventListener("resize", resize);
   window.addEventListener("pagehide", dispose, { once: true });
   stage.addEventListener("pointermove", onPointerMove, { passive: true });
+  stage.addEventListener("pointerleave", onPointerLeave, { passive: true });
   document.addEventListener("visibilitychange", onVisibilityChange);
+  if (typeof reducedMotion.addEventListener === "function") {
+    reducedMotion.addEventListener("change", onReducedMotionChange);
+  } else {
+    reducedMotion.addListener?.(onReducedMotionChange);
+  }
+  resizeObserver?.observe(stage);
+  intersectionObserver?.observe(stage);
 
   resize();
-  animationFrame = window.requestAnimationFrame(render);
+  syncAnimationState();
 }
