@@ -36,7 +36,7 @@ try {
 
 if (renderer) {
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x031418, 0.028);
+  scene.fog = new THREE.FogExp2(0x031418, 0.022);
 
   const camera = new THREE.PerspectiveCamera(39, 1, 0.1, 80);
   const cameraBase = new THREE.Vector3(0, 3.4, 18);
@@ -46,7 +46,7 @@ if (renderer) {
   renderer.setClearColor(0x02090d, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.16;
+  renderer.toneMappingExposure = 1.34;
   renderer.shadowMap.enabled = false;
 
   const world = new THREE.Group();
@@ -57,6 +57,14 @@ if (renderer) {
   const moonLight = new THREE.DirectionalLight(0xb9dfff, 1.35);
   moonLight.position.set(-6, 10, 7);
   scene.add(moonLight);
+
+  const frontFill = new THREE.DirectionalLight(0x73ffe2, 1.05);
+  frontFill.position.set(2, 2.5, 13);
+  scene.add(frontFill);
+
+  const loreFill = new THREE.DirectionalLight(0xffd08a, 0.62);
+  loreFill.position.set(-9, 4, 8);
+  scene.add(loreFill);
 
   for (const [color, intensity, position] of [
     [0x55f3dd, 14, [-6, 1, -1]],
@@ -107,15 +115,18 @@ if (renderer) {
           vec2 centered = waterUv - vec2(.5);
           float distanceFromCenter = length(centered);
           float ripple = sin(distanceFromCenter * 92.0 - time * 1.15) * .032;
+          float crossing = sin(distanceFromCenter * 47.0 + time * .72) * .024;
           float diagonal = sin((waterUv.x * .7 + waterUv.y) * 74.0 + time * .31) * .018;
-          float edgeGlow = smoothstep(.62, .08, distanceFromCenter) * .16;
+          float caustic = pow(max(0.0, sin(waterUv.x * 116.0 + time * .55) * cos(waterUv.y * 94.0 - time * .43)), 8.0);
+          float horizon = smoothstep(.08, .78, waterUv.y) * .08;
+          float edgeGlow = smoothstep(.62, .08, distanceFromCenter) * .19;
           vec3 deep = vec3(.004, .034, .058);
           vec3 teal = vec3(.018, .24, .27);
-          vec3 cyan = vec3(.08, .62, .62);
-          float mixValue = clamp(.16 + wave * 2.6 + ripple + diagonal + edgeGlow, 0.0, .72);
+          vec3 cyan = vec3(.08, .72, .69);
+          float mixValue = clamp(.17 + wave * 2.6 + ripple + crossing + diagonal + edgeGlow + horizon, 0.0, .76);
           vec3 color = mix(deep, teal, mixValue);
-          color = mix(color, cyan, max(0.0, ripple + wave) * 1.35);
-          gl_FragColor = vec4(color, .86);
+          color = mix(color, cyan, clamp(max(0.0, ripple + crossing + wave) * 1.45 + caustic * .22, 0.0, .78));
+          gl_FragColor = vec4(color, .9);
         }
       `,
     }),
@@ -124,18 +135,54 @@ if (renderer) {
   water.position.set(0, -3.15, -5);
   world.add(water);
 
+  const waterLightPools = new THREE.Group();
+  for (const [x, z, radius, color] of [
+    [-6.1, -4.5, 2.8, 0x42e8f2],
+    [6.2, -5.5, 3.0, 0x70f59a],
+    [0, 1.1, 3.4, 0x5cf1d2],
+    [-7.4, 1.4, 2.2, 0x43cbea],
+    [7.2, 1.1, 2.3, 0xe6c76d],
+  ]) {
+    const pool = new THREE.Mesh(
+      new THREE.CircleGeometry(radius, 40),
+      new THREE.MeshBasicMaterial({
+        color,
+        transparent: true,
+        opacity: 0.055,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      }),
+    );
+    pool.rotation.x = -Math.PI / 2;
+    pool.position.set(x, -3.04, z);
+    waterLightPools.add(pool);
+  }
+  world.add(waterLightPools);
+
   const starCount = 1050;
   const starPositions = new Float32Array(starCount * 3);
+  const starColors = new Float32Array(starCount * 3);
+  const starPalette = [
+    new THREE.Color(0x8deff2),
+    new THREE.Color(0x9cffb1),
+    new THREE.Color(0xe8c86e),
+    new THREE.Color(0x79a9ff),
+  ];
   for (let index = 0; index < starCount; index += 1) {
     starPositions[index * 3] = (random() - 0.5) * 52;
     starPositions[index * 3 + 1] = random() * 22 - 1;
     starPositions[index * 3 + 2] = -5 - random() * 34;
+    const starColor = starPalette[Math.floor(random() * starPalette.length)];
+    starColors[index * 3] = starColor.r;
+    starColors[index * 3 + 1] = starColor.g;
+    starColors[index * 3 + 2] = starColor.b;
   }
   const starGeometry = new THREE.BufferGeometry();
   starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+  starGeometry.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
   const stars = new THREE.Points(
     starGeometry,
-    new THREE.PointsMaterial({ color: 0x8deff2, size: 0.055, transparent: true, opacity: 0.82 }),
+    new THREE.PointsMaterial({ vertexColors: true, size: 0.055, transparent: true, opacity: 0.86 }),
   );
   scene.add(stars);
 
@@ -173,6 +220,33 @@ if (renderer) {
   );
   moonHalo.position.copy(moon.position);
   scene.add(moonHalo);
+
+  const worldArcs = new THREE.Group();
+  worldArcs.name = "Tobyworld celestial depth arcs";
+  for (let arcIndex = 0; arcIndex < 4; arcIndex += 1) {
+    const radius = 7.3 + arcIndex * 2.05;
+    const arc = new THREE.Mesh(
+      new THREE.RingGeometry(
+        radius,
+        radius + 0.018 + arcIndex * 0.004,
+        96,
+        1,
+        Math.PI * 0.08,
+        Math.PI * 0.84,
+      ),
+      new THREE.MeshBasicMaterial({
+        color: arcIndex % 2 === 0 ? 0x4de8e8 : 0x76f59c,
+        transparent: true,
+        opacity: 0.1 - arcIndex * 0.012,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      }),
+    );
+    arc.rotation.z = Math.PI * 0.08;
+    worldArcs.add(arc);
+  }
+  worldArcs.position.set(0, -2.4, -23);
+  scene.add(worldArcs);
 
   const rockMaterial = new THREE.MeshStandardMaterial({
     color: 0x5a3c2d,
@@ -410,6 +484,8 @@ if (renderer) {
   const islandGroups = [];
   const ringGroups = [];
   const waterfalls = [];
+  const waterfallSplashes = [];
+  const loreCores = [];
 
   const addLandmark = (group, x, z, scale, islandIndex, featureIndex) => {
     const landmark = new THREE.Group();
@@ -549,6 +625,24 @@ if (renderer) {
     );
     points.position.set(radius * 0.58, 0, radius * 0.71);
     group.add(points);
+
+    const splashRoot = new THREE.Group();
+    for (const scale of [0.72, 1.0]) {
+      const splash = new THREE.Mesh(
+        new THREE.TorusGeometry(Math.max(0.22, radius * 0.18) * scale, 0.018, 4, 30),
+        new THREE.MeshBasicMaterial({
+          color: 0x86f5ff,
+          transparent: true,
+          opacity: scale === 1 ? 0.24 : 0.42,
+          depthWrite: false,
+        }),
+      );
+      splash.rotation.x = Math.PI / 2;
+      splashRoot.add(splash);
+    }
+    splashRoot.position.set(radius * 0.58, -drop, radius * 0.71);
+    group.add(splashRoot);
+    waterfallSplashes.push(splashRoot);
     waterfalls.push({ points, positions, phases, drop, ribbonUniforms });
   };
 
@@ -628,6 +722,7 @@ if (renderer) {
     coreRoot.position.set(0, -layout.height * 0.43, layout.radius * 0.72);
     coreRoot.rotation.x = -0.08;
     detailRoot.add(coreRoot);
+    loreCores.push({ coreRoot, crystal, phase: islandIndex * 0.91 });
 
     for (const side of [-1, 1]) {
       const satelliteCrystal = new THREE.Mesh(
@@ -1088,6 +1183,7 @@ if (renderer) {
     motes.rotation.y = elapsed * -0.012;
     motes.position.y = Math.sin(elapsed * 0.17) * 0.08;
     moonHalo.rotation.z = elapsed * 0.025;
+    worldArcs.rotation.z = Math.sin(elapsed * 0.035) * 0.012;
 
     guideRoot.position.y = guideBaseY + Math.sin(elapsed * 0.46) * 0.028;
     guideRoot.rotation.y = Math.sin(elapsed * 0.16) * 0.012;
@@ -1106,6 +1202,17 @@ if (renderer) {
     ringGroups.forEach((rings, index) => {
       rings.rotation.y = elapsed * (index % 2 === 0 ? 0.12 : -0.1);
       rings.rotation.z = Math.sin(elapsed * 0.18 + index) * 0.08;
+    });
+    waterfallSplashes.forEach((splash, index) => {
+      const pulse = 0.96 + Math.sin(elapsed * 0.74 + index * 0.83) * 0.08;
+      splash.scale.setScalar(pulse);
+      splash.rotation.y = elapsed * (index % 2 === 0 ? 0.07 : -0.06);
+    });
+    loreCores.forEach(({ coreRoot, crystal, phase }) => {
+      const pulse = 1 + Math.sin(elapsed * 0.64 + phase) * 0.055;
+      coreRoot.scale.setScalar(pulse);
+      crystal.rotation.y = elapsed * 0.21 + phase;
+      crystal.rotation.z = Math.sin(elapsed * 0.31 + phase) * 0.08;
     });
 
     for (const waterfall of waterfalls) {
