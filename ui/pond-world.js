@@ -404,6 +404,30 @@ if (renderer) {
     opacity: 0.32,
     depthWrite: false,
   });
+  const guideDaisMaterial = new THREE.MeshStandardMaterial({
+    color: 0x123f39,
+    emissive: 0x0b453c,
+    emissiveIntensity: 0.92,
+    roughness: 0.48,
+    metalness: 0.18,
+  });
+  const guidePetalMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x3bcf9d,
+    emissive: 0x156b55,
+    emissiveIntensity: 0.92,
+    transparent: true,
+    opacity: 0.82,
+    roughness: 0.38,
+    metalness: 0.12,
+    side: THREE.DoubleSide,
+  });
+  const guideBeamMaterial = new THREE.MeshBasicMaterial({
+    color: 0x72ffe0,
+    transparent: true,
+    opacity: 0.045,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
 
   const createOrganicIslandGeometry = (radius, height, phase) => {
     const segments = 28;
@@ -923,6 +947,71 @@ if (renderer) {
   guideRoot.scale.setScalar(1.08);
   scene.add(guideRoot);
 
+  const guideDais = new THREE.Group();
+  guideDais.name = "Procedural ceremonial lily dais";
+  guideDais.position.y = -0.51;
+  guideRoot.add(guideDais);
+
+  const daisBeam = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.68, 1.18, 2.8, 32, 1, true),
+    guideBeamMaterial,
+  );
+  daisBeam.position.y = 1.38;
+  guideDais.add(daisBeam);
+
+  const daisBase = new THREE.Mesh(
+    new THREE.CylinderGeometry(1.16, 1.34, 0.16, 40),
+    guideDaisMaterial,
+  );
+  daisBase.position.y = 0.02;
+  guideDais.add(daisBase);
+
+  const daisCenter = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.88, 1.06, 0.13, 36),
+    guidePetalMaterial,
+  );
+  daisCenter.position.y = 0.13;
+  guideDais.add(daisCenter);
+
+  const petalShape = new THREE.Shape();
+  petalShape.moveTo(0, 0.08);
+  petalShape.bezierCurveTo(-0.28, 0.18, -0.44, 0.62, 0, 1.08);
+  petalShape.bezierCurveTo(0.44, 0.62, 0.28, 0.18, 0, 0.08);
+  const daisPetals = new THREE.Group();
+  for (let petalIndex = 0; petalIndex < 10; petalIndex += 1) {
+    const angle = (petalIndex / 10) * Math.PI * 2;
+    const petal = new THREE.Mesh(
+      new THREE.ShapeGeometry(petalShape, 10),
+      guidePetalMaterial,
+    );
+    petal.position.set(Math.sin(angle) * 0.28, 0.2, Math.cos(angle) * 0.28);
+    petal.rotation.set(-Math.PI / 2, 0, -angle);
+    petal.scale.set(0.72, 0.82, 0.72);
+    daisPetals.add(petal);
+  }
+  guideDais.add(daisPetals);
+
+  const guideDaisRings = [];
+  for (const [ringIndex, radius] of [1.08, 1.38, 1.72].entries()) {
+    const ringMaterial = new THREE.MeshBasicMaterial({
+      color: ringIndex === 1 ? 0xd9c76a : 0x62f5d2,
+      transparent: true,
+      opacity: 0.24 - ringIndex * 0.045,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, 0.012 + ringIndex * 0.003, 5, 72),
+      ringMaterial,
+    );
+    ring.position.y = 0.1 - ringIndex * 0.035;
+    ring.rotation.x = Math.PI / 2;
+    ring.userData.baseOpacity = ringMaterial.opacity;
+    ring.userData.phase = ringIndex * 1.17;
+    guideDais.add(ring);
+    guideDaisRings.push(ring);
+  }
+
   const robeProfile = [
     new THREE.Vector2(0.94, 0.00),
     new THREE.Vector2(0.91, 0.16),
@@ -972,6 +1061,15 @@ if (renderer) {
   shoulderDrape.position.set(0, 1.05, 0.23);
   shoulderDrape.scale.set(1.0, 0.22, 0.66);
   guideRoot.add(shoulderDrape);
+
+  const hood = new THREE.Mesh(
+    new THREE.TorusGeometry(0.67, 0.16, 12, 44, Math.PI * 1.76),
+    guideRobePanelMaterial,
+  );
+  hood.position.set(0, 1.84, -0.02);
+  hood.rotation.z = Math.PI * 0.12;
+  hood.scale.set(1.12, 0.94, 0.82);
+  guideRoot.add(hood);
 
   const head = new THREE.Mesh(
     new THREE.SphereGeometry(0.66, 30, 20),
@@ -1049,6 +1147,20 @@ if (renderer) {
     hand.position.set(side * 0.30, 0.76, 0.73);
     hand.scale.set(1.08, 0.66, 0.84);
     guideRoot.add(hand);
+
+    for (let fingerIndex = 0; fingerIndex < 3; fingerIndex += 1) {
+      const finger = new THREE.Mesh(
+        new THREE.SphereGeometry(0.045, 12, 8),
+        guideSkinLightMaterial,
+      );
+      finger.position.set(
+        side * (0.25 + fingerIndex * 0.04),
+        0.72 - Math.abs(fingerIndex - 1) * 0.014,
+        0.82,
+      );
+      finger.scale.set(0.78, 0.5, 1.2);
+      guideRoot.add(finger);
+    }
   }
 
   const collar = new THREE.Mesh(
@@ -1191,10 +1303,21 @@ if (renderer) {
     head.rotation.x = Math.sin(elapsed * 0.15) * 0.009;
     eyeRoots[0].rotation.y = Math.sin(elapsed * 0.28) * 0.018;
     eyeRoots[1].rotation.y = Math.sin(elapsed * 0.28) * 0.018;
+    const blink = 1 - Math.pow(Math.max(0, Math.sin(elapsed * 0.67)), 42) * 0.82;
+    eyeRoots[0].scale.y = blink;
+    eyeRoots[1].scale.y = blink;
     guideSleeves[0].rotation.z = 0.43 + Math.sin(elapsed * 0.19) * 0.012;
     guideSleeves[1].rotation.z = -0.43 - Math.sin(elapsed * 0.19) * 0.012;
     guideHalo.rotation.z = elapsed * 0.042;
     guideHaloInner.rotation.z = Math.PI / 8 - elapsed * 0.031;
+    daisPetals.rotation.y = elapsed * 0.018;
+    guideDaisRings.forEach((ring, index) => {
+      const pulse = 1 + Math.sin(elapsed * 0.72 + ring.userData.phase) * 0.045;
+      ring.scale.setScalar(pulse);
+      ring.rotation.z = elapsed * (index % 2 === 0 ? 0.055 : -0.045);
+      ring.material.opacity = ring.userData.baseOpacity
+        + Math.sin(elapsed * 0.58 + ring.userData.phase) * 0.035;
+    });
 
     islandGroups.forEach((group, index) => {
       group.position.y = islandLayouts[index].position[1] + Math.sin(elapsed * 0.34 + index * 1.7) * 0.11;
