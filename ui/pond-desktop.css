@@ -40,6 +40,17 @@ body {
 
 a { color: inherit; }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 a:focus-visible,
 button:focus-visible,
 textarea:focus-visible,
@@ -340,7 +351,7 @@ textarea:focus-visible,
   top: clamp(25px, 4vh, 48px);
   left: clamp(25px, 4vw, 58px);
   max-width: 360px;
-  padding: 12px 15px;
+  padding: 8px 13px;
   border-left: 1px solid rgba(67, 232, 242, 0.48);
   background: linear-gradient(90deg, rgba(2, 15, 19, 0.72), transparent);
   text-shadow: 0 2px 12px #02090c;
@@ -354,19 +365,6 @@ textarea:focus-visible,
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-
-.stage-heading h1 {
-  margin: 6px 0 3px;
-  color: #d9fff1;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 300;
-  letter-spacing: 0.13em;
-  line-height: 1.08;
-  text-transform: uppercase;
-  text-shadow: 0 0 23px rgba(141, 247, 157, 0.28);
-}
-
-.stage-heading p { margin: 0; color: var(--text-soft); font-size: 11px; }
 
 .agent-presence {
   position: absolute;

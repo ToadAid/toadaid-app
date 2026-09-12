@@ -175,22 +175,71 @@ if (renderer) {
   scene.add(moonHalo);
 
   const rockMaterial = new THREE.MeshStandardMaterial({
-    color: 0x10292a,
-    roughness: 0.93,
-    metalness: 0.04,
+    color: 0x5a3c2d,
+    emissive: 0x17120e,
+    emissiveIntensity: 0.18,
+    roughness: 0.96,
+    metalness: 0.02,
     flatShading: false,
   });
   const edgeMaterial = new THREE.MeshStandardMaterial({
-    color: 0x245c4d,
-    roughness: 0.76,
-    metalness: 0.08,
+    color: 0x8b6843,
+    emissive: 0x21180e,
+    emissiveIntensity: 0.16,
+    roughness: 0.9,
+    metalness: 0.03,
   });
   const grassMaterial = new THREE.MeshStandardMaterial({
-    color: 0x327551,
-    emissive: 0x123d30,
-    emissiveIntensity: 0.72,
+    color: 0x4f8f55,
+    emissive: 0x173f2b,
+    emissiveIntensity: 0.66,
     roughness: 0.82,
   });
+  const turfMaterial = new THREE.MeshStandardMaterial({
+    color: 0x74b860,
+    emissive: 0x1b492d,
+    emissiveIntensity: 0.54,
+    roughness: 0.9,
+  });
+  const cliffFacetMaterials = [
+    new THREE.MeshStandardMaterial({ color: 0xb07848, roughness: 0.98 }),
+    new THREE.MeshStandardMaterial({ color: 0x7d4935, roughness: 0.98 }),
+    new THREE.MeshStandardMaterial({ color: 0x6b6254, roughness: 0.98 }),
+  ];
+  const vineMaterial = new THREE.MeshStandardMaterial({
+    color: 0x2f7650,
+    emissive: 0x0d2f21,
+    emissiveIntensity: 0.45,
+    roughness: 0.9,
+  });
+  const basinMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x179aa7,
+    emissive: 0x075b67,
+    emissiveIntensity: 0.7,
+    transparent: true,
+    opacity: 0.82,
+    roughness: 0.2,
+    metalness: 0.04,
+  });
+  const pathStoneMaterial = new THREE.MeshStandardMaterial({
+    color: 0xbba987,
+    emissive: 0x2c2a20,
+    emissiveIntensity: 0.2,
+    roughness: 0.94,
+  });
+  const sanctuaryWallMaterial = new THREE.MeshStandardMaterial({
+    color: 0xb9915e,
+    emissive: 0x2b1d11,
+    emissiveIntensity: 0.26,
+    roughness: 0.94,
+  });
+  const sanctuaryRoofMaterial = new THREE.MeshStandardMaterial({
+    color: 0x315f42,
+    emissive: 0x112f21,
+    emissiveIntensity: 0.5,
+    roughness: 0.88,
+  });
+  const lanternMaterial = new THREE.MeshBasicMaterial({ color: 0xffd56a });
   const towerMaterial = new THREE.MeshStandardMaterial({
     color: 0x4ee3c6,
     emissive: 0x24a994,
@@ -214,6 +263,11 @@ if (renderer) {
   });
   const windowMaterial = new THREE.MeshBasicMaterial({ color: 0xd3c56a });
   const ringMaterial = new THREE.MeshBasicMaterial({ color: 0x42e6ef, transparent: true, opacity: 0.44 });
+  const loreCoreMaterials = [
+    new THREE.MeshBasicMaterial({ color: 0x53f5df }),
+    new THREE.MeshBasicMaterial({ color: 0x9afa72 }),
+    new THREE.MeshBasicMaterial({ color: 0xffa34d }),
+  ];
 
   const guideSkinMaterial = new THREE.MeshStandardMaterial({
     color: 0x69d78f,
@@ -498,6 +552,211 @@ if (renderer) {
     waterfalls.push({ points, positions, phases, drop, ribbonUniforms });
   };
 
+  const addLoreLandCharacter = (group, layout, islandIndex) => {
+    const detailRoot = new THREE.Group();
+    detailRoot.name = `${layout.name} lore-land character`;
+
+    const cliffFacetCount = 7;
+    for (let facetIndex = 0; facetIndex < cliffFacetCount; facetIndex += 1) {
+      const angle = (facetIndex / cliffFacetCount) * Math.PI * 2 + islandIndex * 0.41;
+      const facet = new THREE.Mesh(
+        new THREE.DodecahedronGeometry(layout.radius * (0.13 + random() * 0.035), 0),
+        cliffFacetMaterials[(islandIndex + facetIndex) % cliffFacetMaterials.length],
+      );
+      facet.position.set(
+        Math.cos(angle) * layout.radius * 0.82,
+        -0.38 - random() * layout.height * 0.42,
+        Math.sin(angle) * layout.radius * 0.82,
+      );
+      facet.scale.set(1.05, 1.45 + random() * 0.7, 0.48);
+      facet.rotation.set(random() * 0.25, -angle, random() * 0.2);
+      detailRoot.add(facet);
+    }
+
+    const turfLip = new THREE.Mesh(
+      new THREE.TorusGeometry(layout.radius * 0.91, 0.105, 7, 40),
+      turfMaterial,
+    );
+    turfLip.rotation.x = Math.PI / 2;
+    turfLip.position.y = 0.38;
+    turfLip.scale.z = 0.94;
+    detailRoot.add(turfLip);
+
+    const vineCount = 5 + (islandIndex % 3);
+    for (let vineIndex = 0; vineIndex < vineCount; vineIndex += 1) {
+      const angle = (vineIndex / vineCount) * Math.PI * 2 + islandIndex * 0.69;
+      const start = new THREE.Vector3(
+        Math.cos(angle) * layout.radius * 0.86,
+        0.3,
+        Math.sin(angle) * layout.radius * 0.86,
+      );
+      const vineLength = 0.48 + random() * Math.min(1.1, layout.height * 0.34);
+      const sway = (random() - 0.5) * 0.22;
+      const curve = new THREE.QuadraticBezierCurve3(
+        start,
+        new THREE.Vector3(start.x + sway, 0.3 - vineLength * 0.48, start.z),
+        new THREE.Vector3(start.x - sway * 0.35, 0.3 - vineLength, start.z + sway),
+      );
+      detailRoot.add(new THREE.Mesh(
+        new THREE.TubeGeometry(curve, 8, 0.018, 4, false),
+        vineMaterial,
+      ));
+    }
+
+    const coreRoot = new THREE.Group();
+    const coreMaterial = loreCoreMaterials[islandIndex % loreCoreMaterials.length];
+    const portal = new THREE.Mesh(
+      new THREE.TorusGeometry(layout.radius * 0.19, 0.052, 6, 30),
+      guideGoldMaterial,
+    );
+    const portalGlow = new THREE.Mesh(
+      new THREE.CircleGeometry(layout.radius * 0.165, 28),
+      new THREE.MeshBasicMaterial({
+        color: coreMaterial.color,
+        transparent: true,
+        opacity: 0.2,
+        depthWrite: false,
+      }),
+    );
+    const crystal = new THREE.Mesh(
+      new THREE.OctahedronGeometry(layout.radius * 0.115, 0),
+      coreMaterial,
+    );
+    crystal.scale.y = 1.25;
+    crystal.position.z = 0.035;
+    coreRoot.add(portalGlow, portal, crystal);
+    coreRoot.position.set(0, -layout.height * 0.43, layout.radius * 0.72);
+    coreRoot.rotation.x = -0.08;
+    detailRoot.add(coreRoot);
+
+    for (const side of [-1, 1]) {
+      const satelliteCrystal = new THREE.Mesh(
+        new THREE.OctahedronGeometry(layout.radius * 0.055, 0),
+        coreMaterial,
+      );
+      satelliteCrystal.position.set(
+        side * layout.radius * 0.31,
+        -layout.height * (0.47 + random() * 0.16),
+        layout.radius * 0.7,
+      );
+      satelliteCrystal.scale.set(0.72, 1.45, 0.72);
+      satelliteCrystal.rotation.z = side * 0.16;
+      detailRoot.add(satelliteCrystal);
+    }
+
+    if (islandIndex === 0 || islandIndex === 2 || islandIndex === 4) {
+      const basin = new THREE.Mesh(
+        new THREE.CircleGeometry(layout.radius * 0.25, 30),
+        basinMaterial,
+      );
+      basin.rotation.x = -Math.PI / 2;
+      basin.position.set(-layout.radius * 0.23, 0.402, layout.radius * 0.08);
+      detailRoot.add(basin);
+
+      const basinRim = new THREE.Mesh(
+        new THREE.TorusGeometry(layout.radius * 0.25, 0.045, 6, 30),
+        pathStoneMaterial,
+      );
+      basinRim.rotation.x = Math.PI / 2;
+      basinRim.position.copy(basin.position);
+      detailRoot.add(basinRim);
+
+      for (let stoneIndex = 0; stoneIndex < 3; stoneIndex += 1) {
+        const stone = new THREE.Mesh(
+          new THREE.SphereGeometry(layout.radius * 0.075, 12, 8),
+          pathStoneMaterial,
+        );
+        stone.scale.set(1.35, 0.24, 0.86);
+        stone.position.set(
+          layout.radius * (0.12 + stoneIndex * 0.17),
+          0.43,
+          layout.radius * (0.02 - stoneIndex * 0.04),
+        );
+        stone.rotation.y = islandIndex * 0.38 + stoneIndex * 0.24;
+        detailRoot.add(stone);
+      }
+    }
+
+    const groveCount = Math.min(5, 3 + Math.floor(layout.radius));
+    for (let groveIndex = 0; groveIndex < groveCount; groveIndex += 1) {
+      const angle = (groveIndex / groveCount) * Math.PI * 2 + islandIndex * 0.52;
+      const grove = new THREE.Group();
+      for (let crownIndex = 0; crownIndex < 3; crownIndex += 1) {
+        const crown = new THREE.Mesh(
+          new THREE.SphereGeometry(layout.radius * (0.075 + crownIndex * 0.012), 10, 7),
+          crownIndex === 2 ? turfMaterial : foliageMaterial,
+        );
+        crown.position.set(
+          (crownIndex - 1) * layout.radius * 0.085,
+          layout.radius * (0.09 + crownIndex * 0.025),
+          Math.sin(crownIndex * 2.1) * layout.radius * 0.035,
+        );
+        crown.scale.y = 0.72;
+        grove.add(crown);
+      }
+      grove.position.set(
+        Math.cos(angle) * layout.radius * 0.65,
+        0.39,
+        Math.sin(angle) * layout.radius * 0.65,
+      );
+      detailRoot.add(grove);
+    }
+
+    if (islandIndex === 0 || islandIndex === 2) {
+      const sanctuary = new THREE.Group();
+      const width = layout.radius * 0.31;
+      const walls = new THREE.Mesh(
+        new THREE.CylinderGeometry(width * 0.78, width, width * 0.92, 12),
+        sanctuaryWallMaterial,
+      );
+      walls.position.y = width * 0.46;
+      const roof = new THREE.Mesh(
+        new THREE.ConeGeometry(width * 1.24, width * 0.62, 14),
+        sanctuaryRoofMaterial,
+      );
+      roof.position.y = width * 1.04;
+      const door = new THREE.Mesh(
+        new THREE.CircleGeometry(width * 0.26, 18, 0, Math.PI),
+        guideRobeMaterial,
+      );
+      door.position.set(0, width * 0.36, width * 0.79);
+      const windowGlow = new THREE.Mesh(
+        new THREE.CircleGeometry(width * 0.12, 16),
+        lanternMaterial,
+      );
+      windowGlow.position.set(width * 0.38, width * 0.56, width * 0.68);
+      sanctuary.add(walls, roof, door, windowGlow);
+      sanctuary.position.set(
+        layout.radius * 0.14,
+        0.4,
+        -layout.radius * 0.2,
+      );
+      sanctuary.rotation.y = islandIndex === 0 ? 0.12 : -0.28;
+      detailRoot.add(sanctuary);
+
+      for (const side of [-1, 1]) {
+        const lanternPost = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.018, 0.025, width * 0.72, 6),
+          edgeMaterial,
+        );
+        lanternPost.position.set(
+          layout.radius * (0.43 + side * 0.08),
+          0.4 + width * 0.36,
+          layout.radius * (0.08 + side * 0.16),
+        );
+        const lantern = new THREE.Mesh(
+          new THREE.SphereGeometry(width * 0.075, 10, 7),
+          lanternMaterial,
+        );
+        lantern.position.copy(lanternPost.position);
+        lantern.position.y += width * 0.34;
+        detailRoot.add(lanternPost, lantern);
+      }
+    }
+
+    group.add(detailRoot);
+  };
+
   for (const [layoutIndex, layout] of islandLayouts.entries()) {
     const group = new THREE.Group();
     group.name = layout.name;
@@ -521,6 +780,8 @@ if (renderer) {
     );
     garden.position.y = 0.3;
     group.add(garden);
+
+    addLoreLandCharacter(group, layout, layoutIndex);
 
     for (let towerIndex = 0; towerIndex < layout.towers; towerIndex += 1) {
       const angle = (towerIndex / layout.towers) * Math.PI * 2 + layoutIndex * 0.47;
