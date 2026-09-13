@@ -162,7 +162,7 @@ versioned descriptor
 
 Multi-principal isolation remains cross-cutting across every later stage.
 
-## Stage B — Host-neutral Pond presentation — CURRENT
+## Stage B — Host-neutral Pond presentation — COMPLETE
 
 Stage B remains non-authoritative. It introduces host-neutral presentation contracts and a local visual runtime before any live truth integration.
 
@@ -241,15 +241,15 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **B3-P4B — COMPLETE:** present the bounded P4A fixture without receipt retrieval, body disclosure, verification, approval, or authority claims;
 - presentation is not authority and does not widen source scope or audience.
 
-### B4 — Cross-host conformance fixture — CURRENT
+### B4 — Cross-host conformance fixture — COMPLETE
 
-- **B4-P1 — CURRENT:** prove by exact type/fixture reuse that ChatGPT App, loopback web, and Tauri desktop direction labels preserve the same B1 snapshot, events, command intents, gates, scope, and authority-none semantics without activating any host adapter;
+- **B4-P1 — COMPLETE:** prove by exact type/fixture reuse that ChatGPT App, loopback web, and Tauri desktop direction labels preserve the same B1 snapshot, events, command intents, gates, scope, and authority-none semantics without activating any host adapter;
 - live host adapters, SDK integration, loopback serving, transport, and cross-host runtime proof remain future bounded work;
 - host choice must not invent identity, scope, release, grant, approval, or authority.
 
-## Stage C — First read-only truth slice — FUTURE
+## Stage C — First read-only truth slice — CURRENT
 
-- deliberate canonical source-owner assignment before integration;
+- **C-P0 — CURRENT:** bind each first-slice truth concern to its canonical logical runtime responsibility while preserving that concrete source identity, storage ownership, exact API/protocol, trusted channel, freshness observation, and live integration are not yet established;
 - one bounded read-only project/Bridge/Coder cockpit;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;
