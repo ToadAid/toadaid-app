@@ -255,7 +255,8 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **C-P3 — COMPLETE:** establish deterministic fail-closed intake behavior for Bridge `blocked`, `client_error`, and `ready` states while freshness remains unavailable: every case degrades visibly, admits no current repository snapshot, and forbids direct Git, filesystem, or alternate-source fallback;
 - **C-P4 — COMPLETE:** rebind Pond to the exact merged Bridge Stage 1I-R1 source contract and admit only its source-owned observation-time metadata, while currentness remains blocked pending a separate Pond freshness policy, target comparison, and trusted-channel proof;
 - **C-P5 — COMPLETE:** derive deterministic fresh, stale, and unknown observation-age classifications from exact Bridge metadata, an explicit evaluation time, and a fixture maximum-age policy while continuing to withhold current truth until target comparison and trusted-channel proof exist;
-- **C-P6 — CURRENT:** compare age-fresh sanitized Bridge repository fields with the exact C-P1 target, derive projected-field conflicts, and refuse an exact target match because repository owner and full-HEAD identity remain unobservable and no trusted channel exists;
+- **C-P6 — COMPLETE:** compare age-fresh sanitized Bridge repository fields with the exact C-P1 target, derive projected-field conflicts, and refuse an exact target match because repository owner and full-HEAD identity remain unobservable and no trusted channel exists;
+- **C-P7 — CURRENT:** rebind to the merged Bridge Stage 1I-R2 full-HEAD source contract, compare its exact full commit with the C-P1 fixture target, and continue to refuse exact repository identity and current truth because repository owner and trusted delivery remain unestablished;
 - one bounded read-only project/Bridge/Coder cockpit;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;

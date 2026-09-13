@@ -38,6 +38,9 @@ jobs:
       - name: Verify Stage C-P6 target comparison
         run: npm run test:stage-c-p6
 
+      - name: Verify Stage C-P7 full-HEAD target comparison
+        run: npm run test:stage-c-p7
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -74,6 +77,9 @@ jobs:
 
       - name: Verify Stage C-P6 target comparison
         run: npm run test:stage-c-p6
+
+      - name: Verify Stage C-P7 full-HEAD target comparison
+        run: npm run test:stage-c-p7
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
