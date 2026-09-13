@@ -159,6 +159,157 @@ if (renderer) {
   }
   world.add(waterLightPools);
 
+  const foregroundEcology = new THREE.Group();
+  foregroundEcology.name = "Procedural foreground pond ecology";
+  foregroundEcology.position.y = -3.02;
+  world.add(foregroundEcology);
+
+  const lilyPadMaterials = [
+    new THREE.MeshStandardMaterial({
+      color: 0x245f45,
+      emissive: 0x0b392c,
+      emissiveIntensity: 0.68,
+      roughness: 0.78,
+      side: THREE.DoubleSide,
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0x3b7c4b,
+      emissive: 0x123f2d,
+      emissiveIntensity: 0.62,
+      roughness: 0.82,
+      side: THREE.DoubleSide,
+    }),
+  ];
+  const lotusPetalMaterial = new THREE.MeshStandardMaterial({
+    color: 0xf0c7d8,
+    emissive: 0x7d345d,
+    emissiveIntensity: 0.72,
+    roughness: 0.5,
+  });
+  const lotusInnerMaterial = new THREE.MeshStandardMaterial({
+    color: 0xffe7a0,
+    emissive: 0xa86924,
+    emissiveIntensity: 1.15,
+    roughness: 0.38,
+  });
+  const reedMaterial = new THREE.MeshStandardMaterial({
+    color: 0x4d8d58,
+    emissive: 0x173b26,
+    emissiveIntensity: 0.52,
+    roughness: 0.88,
+  });
+  const reedTipMaterial = new THREE.MeshStandardMaterial({
+    color: 0xb38d50,
+    emissive: 0x51361d,
+    emissiveIntensity: 0.32,
+    roughness: 0.9,
+  });
+
+  const lilyPadShape = new THREE.Shape();
+  lilyPadShape.moveTo(0, 0);
+  const lilyPadSegments = 32;
+  for (let segment = 0; segment <= lilyPadSegments; segment += 1) {
+    const angle = 0.24 + (segment / lilyPadSegments) * (Math.PI * 2 - 0.48);
+    lilyPadShape.lineTo(Math.cos(angle), Math.sin(angle));
+  }
+  lilyPadShape.lineTo(0, 0);
+  const lilyPadGeometry = new THREE.ShapeGeometry(lilyPadShape, 8);
+  const lilyPadLayouts = [
+    [-8.2, 4.6, 1.48, 0.18, 0],
+    [-6.55, 6.65, 1.08, 1.72, 1],
+    [-4.7, 8.05, 0.72, 2.54, 0],
+    [-9.15, 1.55, 0.94, 0.86, 1],
+    [-5.0, 5.0, 0.58, 3.16, 1],
+    [-3.15, 7.18, 0.48, 4.04, 0],
+    [-5.72, 2.08, 0.78, 2.62, 1],
+    [8.15, 4.85, 1.42, 2.98, 1],
+    [6.35, 6.5, 1.12, 4.46, 0],
+    [4.62, 8.12, 0.76, 5.22, 1],
+    [9.2, 1.7, 0.92, 2.32, 0],
+    [5.08, 4.84, 0.62, 0.42, 0],
+    [3.12, 7.28, 0.5, 1.36, 1],
+    [5.72, 2.08, 0.78, 5.78, 0],
+  ];
+  for (const [x, z, scale, rotation, materialIndex] of lilyPadLayouts) {
+    const pad = new THREE.Mesh(lilyPadGeometry, lilyPadMaterials[materialIndex]);
+    pad.position.set(x, 0, z);
+    pad.rotation.set(-Math.PI / 2, 0, rotation);
+    pad.scale.set(scale * 1.18, scale, scale);
+    foregroundEcology.add(pad);
+  }
+
+  const lotusBlooms = [];
+  const addLotusBloom = (x, z, scale, phase) => {
+    const bloom = new THREE.Group();
+    bloom.position.set(x, 0.11, z);
+    bloom.userData.baseY = bloom.position.y;
+    bloom.userData.phase = phase;
+
+    for (let layer = 0; layer < 2; layer += 1) {
+      const petalCount = layer === 0 ? 9 : 6;
+      const distance = layer === 0 ? 0.3 : 0.18;
+      for (let petalIndex = 0; petalIndex < petalCount; petalIndex += 1) {
+        const angle = (petalIndex / petalCount) * Math.PI * 2 + layer * 0.28;
+        const petal = new THREE.Mesh(
+          new THREE.SphereGeometry(0.2, 12, 8),
+          lotusPetalMaterial,
+        );
+        petal.position.set(Math.cos(angle) * distance, layer * 0.1, Math.sin(angle) * distance);
+        petal.rotation.y = -angle;
+        petal.rotation.z = layer === 0 ? 0.08 : 0.2;
+        petal.scale.set(0.68, 0.23, layer === 0 ? 1.62 : 1.2);
+        bloom.add(petal);
+      }
+    }
+
+    const center = new THREE.Mesh(
+      new THREE.SphereGeometry(0.13, 14, 9),
+      lotusInnerMaterial,
+    );
+    center.position.y = 0.19;
+    center.scale.y = 0.62;
+    bloom.add(center);
+    bloom.scale.setScalar(scale);
+    foregroundEcology.add(bloom);
+    lotusBlooms.push(bloom);
+  };
+
+  addLotusBloom(-5.72, 2.08, 0.94, 0.4);
+  addLotusBloom(5.72, 2.08, 0.9, 2.1);
+  addLotusBloom(-6.5, 6.58, 0.7, 4.3);
+
+  const reedLayouts = [];
+  for (const side of [-1, 1]) {
+    for (let reedIndex = 0; reedIndex < 13; reedIndex += 1) {
+      reedLayouts.push([
+        side * (7.2 + random() * 2.1),
+        2.0 + random() * 5.2,
+        0.58 + random() * 0.62,
+        (random() - 0.5) * 0.18,
+      ]);
+    }
+  }
+  const reedGeometry = new THREE.CylinderGeometry(0.018, 0.03, 1, 6);
+  const reedTipGeometry = new THREE.SphereGeometry(0.065, 8, 6);
+  const reeds = new THREE.InstancedMesh(reedGeometry, reedMaterial, reedLayouts.length);
+  const reedTips = new THREE.InstancedMesh(reedTipGeometry, reedTipMaterial, reedLayouts.length);
+  const reedTransform = new THREE.Object3D();
+  const reedTipTransform = new THREE.Object3D();
+  reedLayouts.forEach(([x, z, height, lean], index) => {
+    reedTransform.position.set(x, height * 0.5, z);
+    reedTransform.rotation.z = lean;
+    reedTransform.scale.set(1, height, 1);
+    reedTransform.updateMatrix();
+    reeds.setMatrixAt(index, reedTransform.matrix);
+
+    reedTipTransform.position.set(x - Math.sin(lean) * height * 0.5, height, z);
+    reedTipTransform.rotation.z = lean;
+    reedTipTransform.scale.set(0.82, 1.65, 0.82);
+    reedTipTransform.updateMatrix();
+    reedTips.setMatrixAt(index, reedTipTransform.matrix);
+  });
+  foregroundEcology.add(reeds, reedTips);
+
   const starCount = 1050;
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
@@ -1296,6 +1447,13 @@ if (renderer) {
     motes.position.y = Math.sin(elapsed * 0.17) * 0.08;
     moonHalo.rotation.z = elapsed * 0.025;
     worldArcs.rotation.z = Math.sin(elapsed * 0.035) * 0.012;
+    foregroundEcology.rotation.y = pointerCurrent.x * -0.006;
+    foregroundEcology.position.z = pointerCurrent.y * 0.045;
+    lotusBlooms.forEach((bloom) => {
+      bloom.position.y = bloom.userData.baseY
+        + Math.sin(elapsed * 0.52 + bloom.userData.phase) * 0.025;
+      bloom.rotation.y = Math.sin(elapsed * 0.18 + bloom.userData.phase) * 0.035;
+    });
 
     guideRoot.position.y = guideBaseY + Math.sin(elapsed * 0.46) * 0.028;
     guideRoot.rotation.y = Math.sin(elapsed * 0.16) * 0.012;
