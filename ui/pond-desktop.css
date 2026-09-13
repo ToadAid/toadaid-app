@@ -687,6 +687,23 @@ textarea:focus-visible,
 .evidence-reference-panel dd { margin: 0; color: var(--text-soft); font-size: 7px; text-align: right; }
 .evidence-reference-panel p { margin: 7px 0 0; color: var(--gold); font-size: 7px; line-height: 1.45; }
 
+.receipt-reference-panel {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid rgba(215, 189, 98, 0.22);
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(61, 52, 25, 0.24), rgba(2, 15, 18, 0.56));
+}
+
+.receipt-reference-panel header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.receipt-reference-panel h5 { margin: 0; color: var(--gold); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-align: right; text-transform: uppercase; }
+.receipt-reference-panel > code { display: block; margin-top: 7px; color: var(--text); font: 7px/1.5 var(--mono); overflow-wrap: anywhere; }
+.receipt-reference-panel dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; margin: 8px 0 0; }
+.receipt-reference-panel dl div { display: flex; justify-content: space-between; gap: 7px; padding: 5px 0; border-top: 1px solid rgba(215, 189, 98, 0.1); }
+.receipt-reference-panel dt { color: var(--text-muted); font-family: var(--mono); font-size: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+.receipt-reference-panel dd { margin: 0; color: var(--text-soft); font-size: 7px; text-align: right; }
+.receipt-reference-panel p { margin: 7px 0 0; color: var(--gold); font-size: 7px; line-height: 1.45; }
+
 .voice-dock {
   z-index: 18;
   grid-area: voice;
@@ -812,7 +829,8 @@ textarea:focus-visible,
   .composer { width: 100%; }
   .projection-source-facts,
   .projection-state-grid,
-  .evidence-reference-panel dl { grid-template-columns: 1fr; }
+  .evidence-reference-panel dl,
+  .receipt-reference-panel dl { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
