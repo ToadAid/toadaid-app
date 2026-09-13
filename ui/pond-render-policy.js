@@ -12,6 +12,11 @@ export const getPondRenderProfile = ({
 
   let pixelRatioCap = 1.5;
   let maxFps = 60;
+  let worldDetail = "full";
+
+  if (safeWidth <= 1180) {
+    worldDetail = "balanced";
+  }
 
   if (safeWidth <= 800) {
     pixelRatioCap = 1.25;
@@ -20,6 +25,7 @@ export const getPondRenderProfile = ({
 
   if (safeWidth <= 540) {
     pixelRatioCap = 1;
+    worldDetail = "essential";
   }
 
   if (reducedMotion) {
@@ -30,6 +36,22 @@ export const getPondRenderProfile = ({
   return Object.freeze({
     pixelRatio: Math.min(safeDevicePixelRatio, pixelRatioCap),
     maxFps,
+    worldDetail,
+  });
+};
+
+export const getPondDecorativeVisibility = (worldDetail) => {
+  const full = worldDetail === "full";
+  const balanced = worldDetail === "balanced";
+
+  return Object.freeze({
+    celestialDepth: full,
+    cloudStrata: full,
+    mistStrata: full,
+    distantArchipelago: full || balanced,
+    foregroundEcology: full || balanced,
+    waterLightPools: full || balanced,
+    atmosphericMotes: full || balanced,
   });
 };
 

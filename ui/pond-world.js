@@ -1,5 +1,6 @@
 import * as THREE from "./vendor/three.module.js";
 import {
+  getPondDecorativeVisibility,
   getPondRenderProfile,
   shouldPondAnimate,
   shouldRenderPondFrame,
@@ -1564,6 +1565,21 @@ if (renderer) {
     reducedMotion: reducedMotion.matches,
   });
 
+  const applyWorldDetail = () => {
+    const visibility = getPondDecorativeVisibility(renderProfile.worldDetail);
+    worldArcs.visible = visibility.celestialDepth;
+    cloudBanks.forEach((bank) => {
+      bank.visible = visibility.cloudStrata;
+    });
+    islandMistRings.forEach((mistRing) => {
+      mistRing.visible = visibility.mistStrata;
+    });
+    distantArchipelago.visible = visibility.distantArchipelago;
+    foregroundEcology.visible = visibility.foregroundEcology;
+    waterLightPools.visible = visibility.waterLightPools;
+    motes.visible = visibility.atmosphericMotes;
+  };
+
   const resize = () => {
     const width = Math.max(stage.clientWidth, 1);
     const height = Math.max(stage.clientHeight, 1);
@@ -1572,6 +1588,7 @@ if (renderer) {
       devicePixelRatio: window.devicePixelRatio || 1,
       reducedMotion: reducedMotion.matches,
     });
+    applyWorldDetail();
     if (renderProfile.pixelRatio !== currentPixelRatio) {
       currentPixelRatio = renderProfile.pixelRatio;
       renderer.setPixelRatio(currentPixelRatio);

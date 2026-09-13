@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  getPondDecorativeVisibility,
   getPondRenderProfile,
   shouldPondAnimate,
   shouldRenderPondFrame,
@@ -10,35 +11,82 @@ const desktop = getPondRenderProfile({
   devicePixelRatio: 2,
   reducedMotion: false,
 });
-assert.deepEqual(desktop, { pixelRatio: 1.5, maxFps: 60 });
+assert.deepEqual(desktop, { pixelRatio: 1.5, maxFps: 60, worldDetail: "full" });
+
+const compactDesktop = getPondRenderProfile({
+  width: 1000,
+  devicePixelRatio: 2,
+  reducedMotion: false,
+});
+assert.deepEqual(compactDesktop, {
+  pixelRatio: 1.5,
+  maxFps: 60,
+  worldDetail: "balanced",
+});
 
 const tablet = getPondRenderProfile({
   width: 760,
   devicePixelRatio: 2,
   reducedMotion: false,
 });
-assert.deepEqual(tablet, { pixelRatio: 1.25, maxFps: 30 });
+assert.deepEqual(tablet, { pixelRatio: 1.25, maxFps: 30, worldDetail: "balanced" });
 
 const phone = getPondRenderProfile({
   width: 420,
   devicePixelRatio: 3,
   reducedMotion: false,
 });
-assert.deepEqual(phone, { pixelRatio: 1, maxFps: 30 });
+assert.deepEqual(phone, { pixelRatio: 1, maxFps: 30, worldDetail: "essential" });
 
 const reduced = getPondRenderProfile({
   width: 1600,
   devicePixelRatio: 3,
   reducedMotion: true,
 });
-assert.deepEqual(reduced, { pixelRatio: 1, maxFps: 12 });
+assert.deepEqual(reduced, { pixelRatio: 1, maxFps: 12, worldDetail: "full" });
 
 const invalidInput = getPondRenderProfile({
   width: Number.NaN,
   devicePixelRatio: 0,
   reducedMotion: false,
 });
-assert.deepEqual(invalidInput, { pixelRatio: 1, maxFps: 30 });
+assert.deepEqual(invalidInput, {
+  pixelRatio: 1,
+  maxFps: 30,
+  worldDetail: "essential",
+});
+
+assert.deepEqual(getPondDecorativeVisibility("full"), {
+  celestialDepth: true,
+  cloudStrata: true,
+  mistStrata: true,
+  distantArchipelago: true,
+  foregroundEcology: true,
+  waterLightPools: true,
+  atmosphericMotes: true,
+});
+assert.deepEqual(getPondDecorativeVisibility("balanced"), {
+  celestialDepth: false,
+  cloudStrata: false,
+  mistStrata: false,
+  distantArchipelago: true,
+  foregroundEcology: true,
+  waterLightPools: true,
+  atmosphericMotes: true,
+});
+assert.deepEqual(getPondDecorativeVisibility("essential"), {
+  celestialDepth: false,
+  cloudStrata: false,
+  mistStrata: false,
+  distantArchipelago: false,
+  foregroundEcology: false,
+  waterLightPools: false,
+  atmosphericMotes: false,
+});
+assert.deepEqual(
+  getPondDecorativeVisibility("unexpected"),
+  getPondDecorativeVisibility("essential"),
+);
 
 assert.equal(
   shouldPondAnimate({
