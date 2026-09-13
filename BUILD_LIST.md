@@ -175,7 +175,7 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - `CommandIntent` is UI intent only, not dispatch, delivery, approval, or execution;
 - all live-tool, network, persistence, delivery, approval-recording, and execution gates remain false.
 
-### B2 — Static accessible fixture UI — CURRENT
+### B2 — Static accessible fixture UI — COMPLETE
 
 - **B2-P1 — COMPLETE:** desktop-first, responsive static shell rendering the exact B1 fixture without inventing new semantics;
 - visible active scope and agent identity;
@@ -207,7 +207,7 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - at P4A completion, the HTML/SVG guide was explicitly temporary and not a live invocation;
 - presentation only: no live Tobyworld state, tools, authority, or other capability activation.
 
-### B2-P4B — High-fidelity hybrid world/guide refinement — CURRENT
+### B2-P4B — High-fidelity hybrid world/guide refinement — COMPLETE
 
 - **P4B-P1 — COMPLETE:** organic non-toothed island silhouettes, ribbon waterfalls, richer water response, layered atmospheric motes, and repaired rounded landmark silhouettes;
 - **P4B-P2 — COMPLETE:** the temporary flat SVG guide was retired and replaced with a bounded procedural Three.js robed frog foundation while preserving explicit presentation-only and non-invocation semantics;
@@ -225,16 +225,17 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **P4B-P14 — COMPLETE:** establish distant procedural archipelago depth through nine simplified floating-land silhouettes, small beacon spires, sparse groves, and faint orbit rings while preserving foreground hierarchy, the P4B-P8 lifecycle, and authority-none posture;
 - **P4B-P15 — COMPLETE:** introduce restrained procedural atmosphere through seven low-opacity cloud banks and six under-island mist rings while preserving waterfall legibility, foreground hierarchy, the P4B-P8 lifecycle, and authority-none posture;
 - **P4B-P16 — COMPLETE:** extend the deterministic P4B-P8 render profile with full, balanced, and essential visual-density tiers so narrower stages suppress only nonessential depth layers while retaining the guide, primary world, fixture content, and authority-none posture;
-- **P4B-P17 — CURRENT:** improve the procedural central guide's desktop-scale facial legibility through soft brow ridges, eye rims, cheek planes, nostrils, mouth corners, and a restrained throat/bib plane while preserving the P4B-P8 lifecycle, reduced-motion behavior, presentation-only role, and authority-none posture;
+- **P4B-P17 — COMPLETE:** improve the procedural central guide's desktop-scale facial legibility through soft brow ridges, eye rims, cheek planes, nostrils, mouth corners, and a restrained throat/bib plane while preserving the P4B-P8 lifecycle, reduced-motion behavior, presentation-only role, and authority-none posture;
 - asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
-- further guide, world, atmosphere, lighting, ecology, and shell refinement remains future until P4B-P17 visual review;
+- further guide, world, atmosphere, lighting, ecology, and shell refinement requires a separately approved future bounded cut;
 - further measured performance and responsive-composition proof remains future;
 - remains presentation only and creates no authority or live world state.
 
-### B3 — Inventory / denial / evidence / refusal / receipt presentation — FUTURE
+### B3 — Inventory / denial / evidence / refusal / receipt presentation — CURRENT
 
-- present already-governed inventory, explicit denials, source/freshness/refusal state, evidence references, and sanitized receipt references;
+- **B3-P1 — CURRENT:** present the existing A7 six-profile descriptor inventory and the specialist fixture's exact declared-not-granted capabilities and explicit denials in one inert inspector instrument;
+- source/freshness/refusal state, evidence references, and sanitized receipt references remain future B3 cuts bound to their existing canonical owners;
 - presentation is not authority and does not widen source scope or audience.
 
 ### B4 — Cross-host conformance fixture — FUTURE
