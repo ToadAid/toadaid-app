@@ -232,18 +232,19 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - further measured performance and responsive-composition proof remains future;
 - remains presentation only and creates no authority or live world state.
 
-### B3 — Inventory / denial / evidence / refusal / receipt presentation — CURRENT
+### B3 — Inventory / denial / evidence / refusal / receipt presentation — COMPLETE
 
 - **B3-P1 — COMPLETE:** present the existing A7 six-profile descriptor inventory and the specialist fixture's exact declared-not-granted capabilities and explicit denials in one inert inspector instrument;
 - **B3-P2 — COMPLETE:** present the featured descriptor's A4 fixture source/freshness posture beside the existing A8 stale-descriptor refusal, preserving `target_descriptor_not_current` and `insufficient_evidence` without performing a live freshness check or route decision;
 - **B3-P3 — COMPLETE:** present the featured descriptor's existing A4/A7 specialist-manifest evidence reference with its exact `reference_only_not_verified` posture, without displaying an evidence body or implying verification, attestation, approval, or authority;
 - **B3-P4A — COMPLETE:** establish one host-neutral, fixture-only sanitized receipt-reference projection whose body absence is structurally enforced and whose receipt state, verification, applicability, acceptance, and authority remain unevaluated or unestablished;
-- **B3-P4B — CURRENT:** present the bounded P4A fixture without receipt retrieval, body disclosure, verification, approval, or authority claims;
+- **B3-P4B — COMPLETE:** present the bounded P4A fixture without receipt retrieval, body disclosure, verification, approval, or authority claims;
 - presentation is not authority and does not widen source scope or audience.
 
-### B4 — Cross-host conformance fixture — FUTURE
+### B4 — Cross-host conformance fixture — CURRENT
 
-- prove the same host-neutral fixture semantics across ChatGPT, loopback, and desktop adapter directions;
+- **B4-P1 — CURRENT:** prove by exact type/fixture reuse that ChatGPT App, loopback web, and Tauri desktop direction labels preserve the same B1 snapshot, events, command intents, gates, scope, and authority-none semantics without activating any host adapter;
+- live host adapters, SDK integration, loopback serving, transport, and cross-host runtime proof remain future bounded work;
 - host choice must not invent identity, scope, release, grant, approval, or authority.
 
 ## Stage C — First read-only truth slice — FUTURE
