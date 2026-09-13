@@ -251,7 +251,8 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 
 - **C-P0 — COMPLETE:** bind each first-slice truth concern to its canonical logical runtime responsibility while preserving that concrete source identity, storage ownership, exact API/protocol, trusted channel, freshness observation, and live integration are not yet established;
 - **C-P1 — COMPLETE:** establish one exact, fixture-only read-only repository target identity for `ToadAid/toadaid-app`, `main`, the bound parent HEAD, and repository-root path class while preserving project-scope association, source responsibility, and the absence of membership, Grant, approval, mutation, or live observation claims;
-- **C-P2 — CURRENT:** bind Pond's first repository-status source projection to the existing merged Mirror Desktop Bridge live-integration result contract and an explicit sanitized field allowlist, while refusing any current-truth claim because the bound source contract provides no observation timestamp or freshness field and no Pond transport is established;
+- **C-P2 — COMPLETE:** bind Pond's first repository-status source projection to the existing merged Mirror Desktop Bridge live-integration result contract and an explicit sanitized field allowlist, while refusing any current-truth claim because the bound source contract provides no observation timestamp or freshness field and no Pond transport is established;
+- **C-P3 — CURRENT:** establish deterministic fail-closed intake behavior for Bridge `blocked`, `client_error`, and `ready` states while freshness remains unavailable: every case degrades visibly, admits no current repository snapshot, and forbids direct Git, filesystem, or alternate-source fallback;
 - one bounded read-only project/Bridge/Coder cockpit;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;
