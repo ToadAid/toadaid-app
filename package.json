@@ -7,6 +7,7 @@
   "scripts": {
     "desktop:dev": "node scripts/desktop-dev.mjs",
     "desktop:info": "tauri info",
+    "test:stage-c-p5": "node scripts/pond-bridge-repo-status-observation-age-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "world:vendor": "node scripts/vendor-three.mjs"
   },

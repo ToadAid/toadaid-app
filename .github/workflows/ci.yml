@@ -32,6 +32,9 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Verify Stage C-P5 observation-age classifier
+        run: npm run test:stage-c-p5
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -62,6 +65,9 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Verify Stage C-P5 observation-age classifier
+        run: npm run test:stage-c-p5
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
