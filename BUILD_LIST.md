@@ -224,10 +224,11 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **P4B-P13 — COMPLETE:** add bounded procedural foreground pond ecology through notched lily pads, layered lotus blooms, instanced reeds, and restrained near-field parallax while preserving the P4B-P8 lifecycle, reduced-motion behavior, and authority-none posture;
 - **P4B-P14 — COMPLETE:** establish distant procedural archipelago depth through nine simplified floating-land silhouettes, small beacon spires, sparse groves, and faint orbit rings while preserving foreground hierarchy, the P4B-P8 lifecycle, and authority-none posture;
 - **P4B-P15 — COMPLETE:** introduce restrained procedural atmosphere through seven low-opacity cloud banks and six under-island mist rings while preserving waterfall legibility, foreground hierarchy, the P4B-P8 lifecycle, and authority-none posture;
-- **P4B-P16 — CURRENT:** extend the deterministic P4B-P8 render profile with full, balanced, and essential visual-density tiers so narrower stages suppress only nonessential depth layers while retaining the guide, primary world, fixture content, and authority-none posture;
+- **P4B-P16 — COMPLETE:** extend the deterministic P4B-P8 render profile with full, balanced, and essential visual-density tiers so narrower stages suppress only nonessential depth layers while retaining the guide, primary world, fixture content, and authority-none posture;
+- **P4B-P17 — CURRENT:** improve the procedural central guide's desktop-scale facial legibility through soft brow ridges, eye rims, cheek planes, nostrils, mouth corners, and a restrained throat/bib plane while preserving the P4B-P8 lifecycle, reduced-motion behavior, presentation-only role, and authority-none posture;
 - asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
-- further guide, world, atmosphere, lighting, ecology, and shell refinement remains future until P4B-P16 visual review;
+- further guide, world, atmosphere, lighting, ecology, and shell refinement remains future until P4B-P17 visual review;
 - further measured performance and responsive-composition proof remains future;
 - remains presentation only and creates no authority or live world state.
 

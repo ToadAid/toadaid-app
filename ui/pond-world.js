@@ -1420,6 +1420,35 @@ if (renderer) {
   muzzle.scale.set(1.24, 0.42, 0.48);
   guideRoot.add(muzzle);
 
+  const throat = new THREE.Mesh(
+    new THREE.SphereGeometry(0.36, 22, 14),
+    guideSkinLightMaterial,
+  );
+  throat.position.set(0, 1.3, 0.43);
+  throat.scale.set(1.08, 0.3, 0.48);
+  guideRoot.add(throat);
+
+  const guideBrows = [];
+  for (const side of [-1, 1]) {
+    const brow = new THREE.Mesh(
+      new THREE.SphereGeometry(0.23, 18, 10),
+      guideSkinMaterial,
+    );
+    brow.position.set(side * 0.34, 2.27, 0.56);
+    brow.scale.set(1.08, 0.28, 0.7);
+    brow.rotation.z = side * -0.1;
+    guideRoot.add(brow);
+    guideBrows.push(brow);
+
+    const cheek = new THREE.Mesh(
+      new THREE.SphereGeometry(0.13, 16, 10),
+      guideSkinLightMaterial,
+    );
+    cheek.position.set(side * 0.47, 1.69, 0.5);
+    cheek.scale.set(0.72, 0.38, 0.5);
+    guideRoot.add(cheek);
+  }
+
   const eyeRoots = [];
   for (const side of [-1, 1]) {
     const eyeRoot = new THREE.Group();
@@ -1444,7 +1473,14 @@ if (renderer) {
     );
     catchlight.position.set(side * -0.026, 0.045, 0.218);
 
-    eyeRoot.add(eye, pupil, catchlight);
+    const eyeRim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.205, 0.009, 5, 36),
+      guideTrimMaterial,
+    );
+    eyeRim.position.z = 0.15;
+    eyeRim.scale.y = 0.96;
+
+    eyeRoot.add(eye, eyeRim, pupil, catchlight);
     guideRoot.add(eyeRoot);
     eyeRoots.push(eyeRoot);
   }
@@ -1459,6 +1495,23 @@ if (renderer) {
     guidePupilMaterial,
   );
   guideRoot.add(mouth);
+
+  for (const side of [-1, 1]) {
+    const nostril = new THREE.Mesh(
+      new THREE.SphereGeometry(0.035, 10, 7),
+      guidePupilMaterial,
+    );
+    nostril.position.set(side * 0.12, 1.73, 0.728);
+    nostril.scale.set(1, 0.58, 0.5);
+
+    const mouthCorner = new THREE.Mesh(
+      new THREE.SphereGeometry(0.025, 10, 7),
+      guidePupilMaterial,
+    );
+    mouthCorner.position.set(side * 0.245, 1.595, 0.77);
+    mouthCorner.scale.set(0.72, 0.72, 0.5);
+    guideRoot.add(nostril, mouthCorner);
+  }
 
   const guideSleeves = [];
   for (const side of [-1, 1]) {
@@ -1668,6 +1721,9 @@ if (renderer) {
     const blink = 1 - Math.pow(Math.max(0, Math.sin(elapsed * 0.67)), 42) * 0.82;
     eyeRoots[0].scale.y = blink;
     eyeRoots[1].scale.y = blink;
+    throat.scale.y = 0.3 + Math.sin(elapsed * 0.38) * 0.008;
+    guideBrows[0].rotation.z = 0.1 + Math.sin(elapsed * 0.17) * 0.008;
+    guideBrows[1].rotation.z = -0.1 - Math.sin(elapsed * 0.17) * 0.008;
     guideSleeves[0].rotation.z = 0.43 + Math.sin(elapsed * 0.19) * 0.012;
     guideSleeves[1].rotation.z = -0.43 - Math.sin(elapsed * 0.19) * 0.012;
     guideHalo.rotation.z = elapsed * 0.042;
