@@ -249,7 +249,8 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 
 ## Stage C — First read-only truth slice — CURRENT
 
-- **C-P0 — CURRENT:** bind each first-slice truth concern to its canonical logical runtime responsibility while preserving that concrete source identity, storage ownership, exact API/protocol, trusted channel, freshness observation, and live integration are not yet established;
+- **C-P0 — COMPLETE:** bind each first-slice truth concern to its canonical logical runtime responsibility while preserving that concrete source identity, storage ownership, exact API/protocol, trusted channel, freshness observation, and live integration are not yet established;
+- **C-P1 — CURRENT:** establish one exact, fixture-only read-only repository target identity for `ToadAid/toadaid-app`, `main`, the bound parent HEAD, and repository-root path class while preserving project-scope association, source responsibility, and the absence of membership, Grant, approval, mutation, or live observation claims;
 - one bounded read-only project/Bridge/Coder cockpit;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;
