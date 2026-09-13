@@ -399,6 +399,56 @@ if (renderer) {
   worldArcs.position.set(0, -2.4, -23);
   scene.add(worldArcs);
 
+  const cloudMaterials = [
+    new THREE.MeshBasicMaterial({
+      color: 0x8edfd9,
+      transparent: true,
+      opacity: 0.042,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    }),
+    new THREE.MeshBasicMaterial({
+      color: 0xc8e8dc,
+      transparent: true,
+      opacity: 0.032,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    }),
+  ];
+  const cloudPuffGeometry = new THREE.SphereGeometry(1, 14, 9);
+  const cloudBanks = [];
+  const cloudLayouts = [
+    [-10.8, 5.1, -12.8, 1.15, 0.2],
+    [10.2, 4.4, -15.8, 1.3, 1.1],
+    [-5.8, 1.4, -19.2, 1.45, 2.0],
+    [6.6, 7.2, -24.6, 1.18, 2.8],
+    [0.2, 9.3, -30.0, 1.5, 3.7],
+    [-13.4, -0.2, -7.2, 0.95, 4.5],
+    [13.2, 0.4, -9.1, 1.02, 5.4],
+  ];
+  for (const [x, y, z, scale, phase] of cloudLayouts) {
+    const bank = new THREE.Group();
+    bank.position.set(x, y, z);
+    bank.userData.baseX = x;
+    bank.userData.baseY = y;
+    bank.userData.phase = phase;
+    for (let puffIndex = 0; puffIndex < 6; puffIndex += 1) {
+      const puff = new THREE.Mesh(
+        cloudPuffGeometry,
+        cloudMaterials[(puffIndex + Math.round(phase)) % cloudMaterials.length],
+      );
+      puff.position.set(
+        (puffIndex - 2.5) * scale * 0.72,
+        Math.sin(puffIndex * 1.8 + phase) * scale * 0.2,
+        Math.cos(puffIndex * 1.3 + phase) * scale * 0.24,
+      );
+      puff.scale.set(scale * (0.82 + puffIndex * 0.04), scale * 0.3, scale * 0.5);
+      bank.add(puff);
+    }
+    scene.add(bank);
+    cloudBanks.push(bank);
+  }
+
   const rockMaterial = new THREE.MeshStandardMaterial({
     color: 0x5a3c2d,
     emissive: 0x17120e,
@@ -1115,6 +1165,32 @@ if (renderer) {
     islandGroups.push(group);
   }
 
+  const islandMistRings = [];
+  for (const [islandIndex, layout] of islandLayouts.entries()) {
+    const mistMaterial = new THREE.MeshBasicMaterial({
+      color: islandIndex % 2 === 0 ? 0x7cebdc : 0x9fc8d8,
+      transparent: true,
+      opacity: 0.045 + (islandIndex % 3) * 0.008,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+    });
+    const mistRing = new THREE.Mesh(
+      new THREE.RingGeometry(layout.radius * 1.04, layout.radius * 1.58, 56),
+      mistMaterial,
+    );
+    mistRing.position.set(
+      layout.position[0],
+      layout.position[1] - layout.height * 0.38,
+      layout.position[2],
+    );
+    mistRing.rotation.x = -Math.PI / 2;
+    mistRing.userData.baseOpacity = mistMaterial.opacity;
+    mistRing.userData.phase = islandIndex * 0.86;
+    world.add(mistRing);
+    islandMistRings.push(mistRing);
+  }
+
   const distantArchipelago = new THREE.Group();
   distantArchipelago.name = "Procedural distant archipelago depth";
   const distantIslandGroups = [];
@@ -1552,6 +1628,12 @@ if (renderer) {
     motes.position.y = Math.sin(elapsed * 0.17) * 0.08;
     moonHalo.rotation.z = elapsed * 0.025;
     worldArcs.rotation.z = Math.sin(elapsed * 0.035) * 0.012;
+    cloudBanks.forEach((bank) => {
+      bank.position.x = bank.userData.baseX
+        + Math.sin(elapsed * 0.045 + bank.userData.phase) * 0.16;
+      bank.position.y = bank.userData.baseY
+        + Math.sin(elapsed * 0.07 + bank.userData.phase) * 0.05;
+    });
     foregroundEcology.rotation.y = pointerCurrent.x * -0.006;
     foregroundEcology.position.z = pointerCurrent.y * 0.045;
     lotusBlooms.forEach((bloom) => {
@@ -1588,6 +1670,13 @@ if (renderer) {
     ringGroups.forEach((rings, index) => {
       rings.rotation.y = elapsed * (index % 2 === 0 ? 0.12 : -0.1);
       rings.rotation.z = Math.sin(elapsed * 0.18 + index) * 0.08;
+    });
+    islandMistRings.forEach((mistRing) => {
+      const pulse = 1 + Math.sin(elapsed * 0.16 + mistRing.userData.phase) * 0.035;
+      mistRing.scale.setScalar(pulse);
+      mistRing.rotation.z = elapsed * 0.012 + mistRing.userData.phase;
+      mistRing.material.opacity = mistRing.userData.baseOpacity
+        + Math.sin(elapsed * 0.2 + mistRing.userData.phase) * 0.009;
     });
     waterfallSplashes.forEach((splash, index) => {
       const pulse = 0.96 + Math.sin(elapsed * 0.74 + index * 0.83) * 0.08;
