@@ -493,6 +493,30 @@ if (renderer) {
     new THREE.MeshBasicMaterial({ color: 0x9afa72 }),
     new THREE.MeshBasicMaterial({ color: 0xffa34d }),
   ];
+  const distantRockMaterial = new THREE.MeshStandardMaterial({
+    color: 0x33413b,
+    emissive: 0x0b1e1c,
+    emissiveIntensity: 0.36,
+    roughness: 0.96,
+  });
+  const distantRimMaterial = new THREE.MeshStandardMaterial({
+    color: 0x466b52,
+    emissive: 0x123c2f,
+    emissiveIntensity: 0.62,
+    roughness: 0.9,
+  });
+  const distantBeaconMaterial = new THREE.MeshBasicMaterial({
+    color: 0x7ff6dc,
+    transparent: true,
+    opacity: 0.72,
+  });
+  const distantRingMaterial = new THREE.MeshBasicMaterial({
+    color: 0x52dfea,
+    transparent: true,
+    opacity: 0.13,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
 
   const guideSkinMaterial = new THREE.MeshStandardMaterial({
     color: 0x69d78f,
@@ -1091,6 +1115,87 @@ if (renderer) {
     islandGroups.push(group);
   }
 
+  const distantArchipelago = new THREE.Group();
+  distantArchipelago.name = "Procedural distant archipelago depth";
+  const distantIslandGroups = [];
+  const distantBeacons = [];
+  const distantOrbitRings = [];
+  const distantIslandLayouts = [
+    [-11.8, 5.8, -16.2, 1.08, 1.26, 0.2],
+    [11.4, 6.6, -18.4, 0.94, 1.18, 1.1],
+    [-14.2, 1.5, -13.6, 0.78, 1.06, 2.0],
+    [14.5, 2.4, -15.2, 0.82, 1.08, 2.8],
+    [-7.7, 8.7, -22.6, 0.7, 0.92, 3.7],
+    [7.9, 9.1, -24.1, 0.66, 0.88, 4.4],
+    [0.4, 7.4, -28.0, 0.78, 1.04, 5.3],
+    [-16.0, 5.0, -23.8, 0.58, 0.78, 6.1],
+    [16.2, 5.8, -25.2, 0.56, 0.76, 6.9],
+  ];
+
+  for (const [islandIndex, [x, y, z, radius, height, phase]] of distantIslandLayouts.entries()) {
+    const distantIsland = new THREE.Group();
+    distantIsland.position.set(x, y, z);
+
+    const underside = new THREE.Mesh(
+      createOrganicIslandGeometry(radius, height, phase),
+      distantRockMaterial,
+    );
+    const rim = new THREE.Mesh(
+      new THREE.CylinderGeometry(radius * 0.86, radius, 0.22, 18),
+      distantRimMaterial,
+    );
+    const garden = new THREE.Mesh(
+      new THREE.CylinderGeometry(radius * 0.72, radius * 0.86, 0.1, 18),
+      grassMaterial,
+    );
+    garden.position.y = 0.15;
+
+    const spire = new THREE.Mesh(
+      new THREE.CylinderGeometry(radius * 0.045, radius * 0.12, radius * 0.72, 8),
+      towerMaterial,
+    );
+    spire.position.y = radius * 0.48;
+    const beacon = new THREE.Mesh(
+      new THREE.SphereGeometry(radius * 0.07, 10, 7),
+      distantBeaconMaterial,
+    );
+    beacon.position.y = radius * 0.9;
+    beacon.userData.phase = phase;
+    distantBeacons.push(beacon);
+
+    distantIsland.add(underside, rim, garden, spire, beacon);
+
+    for (let groveIndex = 0; groveIndex < 3; groveIndex += 1) {
+      const angle = phase + (groveIndex / 3) * Math.PI * 2;
+      const grove = new THREE.Mesh(
+        new THREE.SphereGeometry(radius * 0.14, 8, 6),
+        foliageMaterial,
+      );
+      grove.position.set(
+        Math.cos(angle) * radius * 0.46,
+        radius * 0.2,
+        Math.sin(angle) * radius * 0.46,
+      );
+      grove.scale.y = 0.62;
+      distantIsland.add(grove);
+    }
+
+    if (islandIndex < 5) {
+      const orbit = new THREE.Mesh(
+        new THREE.TorusGeometry(radius * 1.22, 0.009, 4, 40),
+        distantRingMaterial,
+      );
+      orbit.rotation.x = Math.PI / 2;
+      orbit.position.y = -0.08;
+      distantIsland.add(orbit);
+      distantOrbitRings.push({ orbit, phase });
+    }
+
+    distantArchipelago.add(distantIsland);
+    distantIslandGroups.push({ distantIsland, baseY: y, phase });
+  }
+  world.add(distantArchipelago);
+
   const guideRoot = new THREE.Group();
   guideRoot.name = "Procedural specialist-agent guide";
   const guideBaseY = -1.52;
@@ -1494,6 +1599,17 @@ if (renderer) {
       coreRoot.scale.setScalar(pulse);
       crystal.rotation.y = elapsed * 0.21 + phase;
       crystal.rotation.z = Math.sin(elapsed * 0.31 + phase) * 0.08;
+    });
+    distantIslandGroups.forEach(({ distantIsland, baseY, phase }) => {
+      distantIsland.position.y = baseY + Math.sin(elapsed * 0.19 + phase) * 0.055;
+      distantIsland.rotation.y = Math.sin(elapsed * 0.08 + phase) * 0.025;
+    });
+    distantOrbitRings.forEach(({ orbit, phase }) => {
+      orbit.rotation.z = elapsed * 0.018 + phase;
+    });
+    distantBeacons.forEach((beacon) => {
+      const pulse = 0.88 + Math.sin(elapsed * 0.53 + beacon.userData.phase) * 0.16;
+      beacon.scale.setScalar(pulse);
     });
 
     for (const waterfall of waterfalls) {

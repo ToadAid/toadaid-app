@@ -221,10 +221,11 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **P4B-P10 — COMPLETE:** deepen the procedural Tobyworld composition with bounded cinematic illumination, multi-color stellar depth, celestial framing arcs, layered water caustics, reflected island light pools, waterfall splash rings, and gently animated lore cores while preserving the P4B-P8 render lifecycle and authority-none posture;
 - **P4B-P11 — COMPLETE:** strengthen the procedural central guide as a ceremonial presentation anchor through a layered lily dais, luminous concentric choreography, a clearer hooded silhouette, articulated fingertips, and bounded blink motion while preserving the P4B-P8 render lifecycle and authority-none posture;
 - **P4B-P12 — COMPLETE:** converge the wide-screen shell toward the approved sci-fi desktop composition by extending the procedural world behind the full interface and presenting navigation, context, and voice regions as bounded floating glass instruments while preserving the established accessible medium/narrow flow and authority-none posture;
-- **P4B-P13 — CURRENT:** add bounded procedural foreground pond ecology through notched lily pads, layered lotus blooms, instanced reeds, and restrained near-field parallax while preserving the P4B-P8 lifecycle, reduced-motion behavior, and authority-none posture;
+- **P4B-P13 — COMPLETE:** add bounded procedural foreground pond ecology through notched lily pads, layered lotus blooms, instanced reeds, and restrained near-field parallax while preserving the P4B-P8 lifecycle, reduced-motion behavior, and authority-none posture;
+- **P4B-P14 — CURRENT:** establish distant procedural archipelago depth through nine simplified floating-land silhouettes, small beacon spires, sparse groves, and faint orbit rings while preserving foreground hierarchy, the P4B-P8 lifecycle, and authority-none posture;
 - asset-based guide refinement remains deferred until explicit provenance, license, hash, size, and performance admission;
 - high-fidelity local island/world assets remain admissible only after explicit provenance, license, hash, size, and performance review;
-- further guide, world, atmosphere, lighting, ecology, and shell refinement remains future until P4B-P13 visual review;
+- further guide, world, atmosphere, lighting, ecology, and shell refinement remains future until P4B-P14 visual review;
 - performance and responsive-composition polish;
 - remains presentation only and creates no authority or live world state.
 
