@@ -8,6 +8,7 @@
     "desktop:dev": "node scripts/desktop-dev.mjs",
     "desktop:info": "tauri info",
     "test:stage-c-p5": "node scripts/pond-bridge-repo-status-observation-age-selftest.mjs",
+    "test:stage-c-p6": "node scripts/pond-bridge-repo-status-target-comparison-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "world:vendor": "node scripts/vendor-three.mjs"
   },
