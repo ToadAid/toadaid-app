@@ -618,6 +618,58 @@ textarea:focus-visible,
 .denial-list { display: flex; flex-wrap: wrap; gap: 4px; }
 .denial-list li { padding: 4px 6px; border: 1px solid rgba(164, 190, 185, 0.16); border-radius: 4px; color: #91aaa6; font-size: 7px; }
 
+.projection-state-panel {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid rgba(215, 189, 98, 0.2);
+  border-radius: 9px;
+  background: linear-gradient(145deg, rgba(55, 68, 42, 0.16), rgba(2, 16, 20, 0.46));
+}
+
+.projection-state-panel header h4 {
+  margin: 4px 0 3px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.projection-state-panel header p { margin: 0; color: var(--text-muted); font-size: 8px; line-height: 1.45; }
+
+.projection-source-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 10px;
+  margin: 10px 0;
+}
+
+.projection-source-facts div,
+.projection-state-card dl div { display: flex; justify-content: space-between; gap: 7px; padding: 5px 0; border-top: 1px solid rgba(67, 232, 242, 0.08); }
+.projection-source-facts dt,
+.projection-state-card dt { color: var(--text-muted); font-family: var(--mono); font-size: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+.projection-source-facts dd,
+.projection-state-card dd { margin: 0; color: var(--text-soft); font-size: 7px; text-align: right; }
+
+.projection-state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+
+.projection-state-card {
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid rgba(67, 232, 242, 0.14);
+  border-radius: 7px;
+  background: rgba(2, 15, 18, 0.56);
+}
+
+.projection-state-card.is-fresh { border-top-color: rgba(141, 247, 157, 0.6); }
+.projection-state-card.is-refused { border-top-color: rgba(215, 189, 98, 0.68); }
+.projection-state-card .state-kicker { display: block; color: var(--text-muted); font-family: var(--mono); font-size: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+.projection-state-card > strong { display: block; margin-top: 3px; color: var(--green); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+.projection-state-card.is-refused > strong { color: var(--gold); }
+.projection-state-card dl { margin: 7px 0 0; }
+.projection-state-card p { margin: 7px 0 0; color: #819f9b; font-size: 6px; line-height: 1.45; }
+.projection-state-card code { color: var(--cyan); font-family: var(--mono); font-size: inherit; overflow-wrap: anywhere; }
+
 .voice-dock {
   z-index: 18;
   grid-area: voice;
@@ -741,6 +793,8 @@ textarea:focus-visible,
   .voice-dock { display: flex; flex-direction: column; }
   .waveform { width: 100%; height: 42px; }
   .composer { width: 100%; }
+  .projection-source-facts,
+  .projection-state-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -234,8 +234,9 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 
 ### B3 — Inventory / denial / evidence / refusal / receipt presentation — CURRENT
 
-- **B3-P1 — CURRENT:** present the existing A7 six-profile descriptor inventory and the specialist fixture's exact declared-not-granted capabilities and explicit denials in one inert inspector instrument;
-- source/freshness/refusal state, evidence references, and sanitized receipt references remain future B3 cuts bound to their existing canonical owners;
+- **B3-P1 — COMPLETE:** present the existing A7 six-profile descriptor inventory and the specialist fixture's exact declared-not-granted capabilities and explicit denials in one inert inspector instrument;
+- **B3-P2 — CURRENT:** present the featured descriptor's A4 fixture source/freshness posture beside the existing A8 stale-descriptor refusal, preserving `target_descriptor_not_current` and `insufficient_evidence` without performing a live freshness check or route decision;
+- evidence references and sanitized receipt references remain future B3 cuts bound to their existing canonical owners;
 - presentation is not authority and does not widen source scope or audience.
 
 ### B4 — Cross-host conformance fixture — FUTURE

@@ -145,6 +145,51 @@
               <li>No repository mutation authority</li>
             </ul>
           </div>
+          <section
+            class="projection-state-panel"
+            aria-labelledby="projection-state-title"
+            data-projection-source-ref="projection-source:fixture:stage-a7:agent-descriptors"
+            data-featured-subject-ref="descriptor:fixture:stage-a7:specialist"
+            data-featured-observation-state="fresh"
+            data-refusal-candidate-ref="route-candidate:fixture:stage-a8:stale-descriptor"
+            data-refusal-condition="target_descriptor_not_current"
+            data-refusal-outcome="insufficient_evidence"
+            data-authority="none"
+          >
+            <header>
+              <span class="eyebrow">A4 + A8 fixture posture</span>
+              <h4 id="projection-state-title">Source &amp; refusal state</h4>
+              <p>Fixture projections only. No live freshness check or route decision is performed.</p>
+            </header>
+            <dl class="projection-source-facts">
+              <div><dt>Source</dt><dd>Fixture · non-authoritative</dd></div>
+              <div><dt>Source scope</dt><dd>Project X fixture</dd></div>
+              <div><dt>Audience</dt><dd>Not established</dd></div>
+              <div><dt>Disclosure</dt><dd>No release established</dd></div>
+            </dl>
+            <div class="projection-state-grid">
+              <article class="projection-state-card is-fresh">
+                <span class="state-kicker">Featured descriptor</span>
+                <strong>Fresh</strong>
+                <dl>
+                  <div><dt>Basis</dt><dd>Fixture-declared interval</dd></div>
+                  <div><dt>Applicability</dt><dd>Applicable</dd></div>
+                  <div><dt>Outcome</dt><dd>None</dd></div>
+                </dl>
+                <p>Descriptor revision <code>fixture-a7-specialist-r1</code></p>
+              </article>
+              <article class="projection-state-card is-refused">
+                <span class="state-kicker">Stale descriptor variant</span>
+                <strong>Refused</strong>
+                <dl>
+                  <div><dt>Observation</dt><dd>Stale</dd></div>
+                  <div><dt>Condition</dt><dd>Target descriptor not current</dd></div>
+                  <div><dt>Outcome</dt><dd>Insufficient evidence</dd></div>
+                </dl>
+                <p>Fail-closed fixture route candidate · no delivery or invocation</p>
+              </article>
+            </div>
+          </section>
         </section>
       </aside>
 
