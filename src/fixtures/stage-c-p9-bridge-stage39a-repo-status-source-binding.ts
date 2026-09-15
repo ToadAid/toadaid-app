@@ -1,0 +1,48 @@
+import type { PondBridgeStage39ARepoStatusSourceBindingFixture } from "../contracts/pond-bridge-stage39a-repo-status-source-binding.js";
+
+export const stageCP9BridgeStage39ARepoStatusSourceBinding = {
+  contractVersion: "pond-bridge-stage39a-repo-status-source-binding-c-p9",
+  sourceIdentity: {
+    repositoryOwner: "ToadAid",
+    repositoryName: "mirror-desktop-bridge",
+    branch: "main",
+    commit: "595016262507d21aa34997277b9197ce89fda378",
+    modulePath: "src/stage39PortableReadOnlyMcpVisibility.ts",
+    stage: "stage_39a_portable_readonly_mcp_visibility",
+    toolName: "mirror_repo_status",
+    transport: "stdio",
+    bindingPosture: "exact_merged_source_contract_identity",
+  },
+  requiredEvidenceFields: [
+    "repo_root_label",
+    "configured_origin_identity",
+    "origin_identity_posture",
+    "branch_name",
+    "head_sha_short",
+    "head_sha_full",
+    "upstream_available",
+    "observation_metadata",
+    "evidence_reference",
+    "truncation_report",
+    "delivery_evidence",
+    "receipt_id",
+    "mutation_performed",
+    "authority_granted",
+  ],
+  deliveryEvidenceContract: {
+    structuralChannel: "mcp_structured_tool_result",
+    targetBindingField: "target_identity_sha256",
+    producerAuthorityPosture: "not_established_by_producer",
+  },
+  toolInventoryCount: 4,
+  readOnlyToolInventory: [
+    "mirror_bridge_status",
+    "mirror_repo_status",
+    "mirror_repo_tree",
+    "mirror_read_text_file",
+  ],
+  rawOriginUrlProjected: false,
+  remoteVerification: "not_performed",
+  pondClientRuntimePosture: "not_included",
+  authority: "none",
+} as const satisfies PondBridgeStage39ARepoStatusSourceBindingFixture;

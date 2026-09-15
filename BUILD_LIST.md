@@ -257,7 +257,8 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **C-P5 — COMPLETE:** derive deterministic fresh, stale, and unknown observation-age classifications from exact Bridge metadata, an explicit evaluation time, and a fixture maximum-age policy while continuing to withhold current truth until target comparison and trusted-channel proof exist;
 - **C-P6 — COMPLETE:** compare age-fresh sanitized Bridge repository fields with the exact C-P1 target, derive projected-field conflicts, and refuse an exact target match because repository owner and full-HEAD identity remain unobservable and no trusted channel exists;
 - **C-P7 — COMPLETE:** rebind to the merged Bridge Stage 1I-R2 full-HEAD source contract, compare its exact full commit with the C-P1 fixture target, and continue to refuse exact repository identity and current truth because repository owner and trusted delivery remain unestablished;
-- **C-P8 — CURRENT:** rebind to the merged Bridge Stage 1I-R3 sanitized configured-origin identity source, compare owner/name/branch/full HEAD against C-P1, establish only an exact supplied-fixture match, and continue to refuse current truth because remote verification and trusted delivery are absent;
+- **C-P8 — COMPLETE:** rebind to the merged Bridge Stage 1I-R3 sanitized configured-origin identity source, compare owner/name/branch/full HEAD against C-P1, establish only an exact supplied-fixture match, and continue to refuse current truth because remote verification and trusted delivery are absent;
+- **C-P9 — CURRENT:** bind the merged Bridge Stage 39A-R1 structured STDIO repository-status source and define consumer-owned trusted-delivery admission checks while refusing producer self-attestation, production proof, runtime activation, and current truth;
 - one bounded read-only project/Bridge/Coder cockpit;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;

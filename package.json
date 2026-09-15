@@ -11,6 +11,7 @@
     "test:stage-c-p6": "node scripts/pond-bridge-repo-status-target-comparison-selftest.mjs",
     "test:stage-c-p7": "node scripts/pond-bridge-repo-status-full-head-target-comparison-selftest.mjs",
     "test:stage-c-p8": "node scripts/pond-bridge-repo-status-origin-identity-target-comparison-selftest.mjs",
+    "test:stage-c-p9": "node scripts/pond-bridge-stdio-delivery-admission-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "world:vendor": "node scripts/vendor-three.mjs"
   },
