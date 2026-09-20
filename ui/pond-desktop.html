@@ -52,29 +52,64 @@
       </nav>
 
       <main class="spatial-stage" id="pond-home" tabindex="-1" data-pond-view="home">
-        <canvas class="pond-world-canvas" aria-hidden="true"></canvas>
-        <p class="pond-world-fallback" role="status" hidden>3D world unavailable on this host.</p>
-        <img
-          class="imagined-world-art"
-          src="assets/tobyworld/imagined-lore-world-03.png"
-          width="1254"
-          height="1254"
-          alt=""
-          aria-hidden="true"
-        >
+        <div class="lore-world-scene">
+          <img
+            class="lore-island lore-island-grove"
+            src="assets/tobyworld/imagined-lore-land-715.png"
+            width="1254"
+            height="1254"
+            alt=""
+            decoding="async"
+            role="button"
+            tabindex="0"
+            title="Center the grove land"
+            aria-label="Center the grove land"
+          >
+          <img
+            class="lore-island lore-island-lotus"
+            src="assets/tobyworld/imagined-lore-land-717.png"
+            width="1254"
+            height="1254"
+            alt=""
+            decoding="async"
+            role="button"
+            tabindex="0"
+            title="Center the lotus land"
+            aria-label="Center the lotus land"
+          >
+          <div class="imagined-world-hero">
+            <img
+              class="imagined-world-art"
+              src="assets/tobyworld/imagined-lore-world-03-cutout.png"
+              width="1254"
+              height="1254"
+              alt=""
+            >
+          </div>
+          <img
+            class="lore-island lore-island-ember"
+            src="assets/tobyworld/imagined-lore-land-890.png"
+            width="1254"
+            height="1254"
+            alt=""
+            decoding="async"
+            role="button"
+            tabindex="0"
+            title="Center the ember land"
+            aria-label="Center the ember land"
+          >
+        </div>
         <div class="world-vignette" aria-hidden="true"></div>
         <div class="stage-heading">
           <span class="eyebrow">Presentation world · fixture only</span>
           <h1 class="visually-hidden">Pond Tobyworld</h1>
-          <p class="visually-hidden">Procedural three-dimensional presentation with no live world state.</p>
+          <p class="visually-hidden">Imagined Lore Land presentation with no live world state.</p>
         </div>
 
         <section class="agent-presence" aria-labelledby="agent-presence-title">
-          <div class="presence-aura" aria-hidden="true"></div>
-          <div class="lily-platform" aria-hidden="true"><span></span></div>
           <div class="presence-copy">
             <span class="presence-rule" aria-hidden="true"></span>
-            <p id="agent-presence-title">Procedural 3D specialist-agent guide</p>
+            <p id="agent-presence-title">Imagined lore-world specialist guide</p>
             <strong>Specialist Agent A</strong>
             <small>Presentation only · not a live invocation</small>
           </div>
@@ -356,7 +391,6 @@
         </form>
       </footer>
     </div>
-    <script type="module" src="pond-world.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>
