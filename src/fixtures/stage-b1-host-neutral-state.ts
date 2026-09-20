@@ -191,6 +191,25 @@ export const stageB1CommandIntents = [
   {
     contractVersion: "pond-host-neutral-state-b1",
     kind: "command_intent",
+    commandIntentRef: commandIntentRef("fixture:intent-b1-navigate-world"),
+    sourceSnapshotRef: stageB1Snapshot.snapshotRef,
+    principalRef: principalA,
+    sourceScopeRef: projectX,
+    intentClass: "navigate",
+    target: {
+      kind: "view",
+      viewRef: "pond.world",
+    },
+    posture: "ui_intent_only_not_command_dispatch",
+    dispatchPosture: "not_performed",
+    deliveryPosture: "not_performed",
+    approvalRecordingPosture: "not_performed",
+    executionPosture: "not_performed",
+    authority: "none",
+  },
+  {
+    contractVersion: "pond-host-neutral-state-b1",
+    kind: "command_intent",
     commandIntentRef: commandIntentRef("fixture:intent-b1-select-scope"),
     sourceSnapshotRef: stageB1Snapshot.snapshotRef,
     principalRef: principalA,
@@ -261,8 +280,8 @@ export type PondStageB1FixtureInvariant_NoReleaseByPresentation = Assert<
 export type PondStageB1FixtureInvariant_EventCountThree = Assert<
   Equal<typeof stageB1Events["length"], 3>
 >;
-export type PondStageB1FixtureInvariant_CommandIntentCountThree = Assert<
-  Equal<typeof stageB1CommandIntents["length"], 3>
+export type PondStageB1FixtureInvariant_CommandIntentCountFour = Assert<
+  Equal<typeof stageB1CommandIntents["length"], 4>
 >;
 export type PondStageB1FixtureInvariant_EventClassesExact = Assert<
   Equal<

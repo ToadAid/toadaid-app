@@ -33,8 +33,8 @@
 
       <nav class="side-nav" aria-label="Pond sections">
         <ul class="nav-list">
-          <li><a class="nav-item is-current" href="#pond-home" aria-current="page"><span class="nav-symbol" aria-hidden="true">⌂</span><span>Home</span><small>Current</small></a></li>
-          <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◎</span><span>Worlds</span><small>Later</small></span></li>
+          <li><a class="nav-item is-current" href="#pond-home" aria-current="page" data-pond-view-link="home" data-resting-label="Ready"><span class="nav-symbol" aria-hidden="true">⌂</span><span>Home</span><small>Current</small></a></li>
+          <li><a class="nav-item" href="#pond-world" data-pond-view-link="world" data-resting-label="Read-only"><span class="nav-symbol" aria-hidden="true">◎</span><span>World</span><small>Read-only</small></a></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">♙</span><span>Agents</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◉</span><span>Scopes</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◌</span><span>Voice</span><small>Later</small></span></li>
@@ -51,9 +51,17 @@
         <p class="host-note"><span aria-hidden="true">○</span><span><strong>Host neutral</strong><small>No host integration</small></span></p>
       </nav>
 
-      <main class="spatial-stage" id="pond-home" tabindex="-1">
+      <main class="spatial-stage" id="pond-home" tabindex="-1" data-pond-view="home">
         <canvas class="pond-world-canvas" aria-hidden="true"></canvas>
         <p class="pond-world-fallback" role="status" hidden>3D world unavailable on this host.</p>
+        <img
+          class="imagined-world-art"
+          src="assets/tobyworld/imagined-lore-world-03.png"
+          width="1254"
+          height="1254"
+          alt=""
+          aria-hidden="true"
+        >
         <div class="world-vignette" aria-hidden="true"></div>
         <div class="stage-heading">
           <span class="eyebrow">Presentation world · fixture only</span>
@@ -79,7 +87,99 @@
         <p class="tagline">EXPLORE · LEARN · PROPOSE</p>
       </main>
 
-      <aside class="context-panel" aria-labelledby="context-panel-title">
+      <main
+        class="world-stage"
+        id="pond-world"
+        tabindex="-1"
+        data-pond-view="world"
+        data-chain="base"
+        data-collection-contract="0x0495601af6f86efb14c9d478ea46b2aa09cb164a"
+        data-observation-posture="fixture_only_not_live_observation"
+        data-wallet-connection="not_required"
+        data-authority="none"
+        hidden
+      >
+        <div class="world-stage-glow" aria-hidden="true"></div>
+        <header class="world-hero">
+          <div>
+            <span class="eyebrow">Tobyworld · public read projection</span>
+            <h1>Lore Land World</h1>
+            <p>Explore real Canonical Lore Land Deeds by public wallet address. Viewing an address never connects, signs, logs in, or proves identity.</p>
+          </div>
+          <div class="read-only-seal" aria-label="Read-only posture">
+            <span>Mode</span>
+            <strong>READ ONLY</strong>
+            <small>No wallet connection</small>
+          </div>
+        </header>
+
+        <section class="world-source-strip" aria-labelledby="world-source-title">
+          <div>
+            <span class="source-light" aria-hidden="true"></span>
+            <span><strong id="world-source-title">Canonical collection</strong><small>Base · 2,869 deeds · holder count changes over time</small></span>
+          </div>
+          <code>0x0495601af6f86efb14c9d478ea46b2aa09cb164a</code>
+          <nav aria-label="Lore Land external sources">
+            <a href="https://opensea.io/collection/tobyworld-canonical-lore-land-deeds/overview" target="_blank" rel="noreferrer">OpenSea</a>
+            <a href="https://basescan.org/address/0x0495601af6f86efb14c9d478ea46b2aa09cb164a" target="_blank" rel="noreferrer">BaseScan</a>
+          </nav>
+        </section>
+
+        <section class="wallet-observer" aria-labelledby="wallet-observer-title">
+          <div class="wallet-observer-copy">
+            <span class="eyebrow">Public address observer</span>
+            <h2 id="wallet-observer-title">Which lands does this address hold?</h2>
+            <p>Paste any Base wallet address. This first cut validates it locally and preserves the future lookup shape without transmitting or storing it.</p>
+          </div>
+          <form class="wallet-lookup-form" novalidate>
+            <label for="viewed-wallet">Viewed wallet address</label>
+            <div class="wallet-input-row">
+              <input
+                id="viewed-wallet"
+                name="viewed-wallet"
+                type="text"
+                inputmode="text"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-describedby="wallet-helper wallet-status"
+                placeholder="0x…"
+              >
+              <button type="submit">Check lands</button>
+            </div>
+            <p id="wallet-helper">Public observation only. Connection, signature, authentication, membership, and authority are not requested.</p>
+            <p class="wallet-status" id="wallet-status" role="status" aria-live="polite">Live ownership retrieval is not activated in this cut.</p>
+          </form>
+        </section>
+
+        <section class="deed-gallery" aria-labelledby="deed-gallery-title">
+          <header>
+            <div>
+              <span class="eyebrow">User-supplied deed references</span>
+              <h2 id="deed-gallery-title">Lore Land specimens</h2>
+            </div>
+            <p>Fixture preview · images are real deed captures; current ownership and metadata are not evaluated here.</p>
+          </header>
+          <div class="deed-grid">
+            <article class="deed-card">
+              <img data-src="assets/tobyworld/lore-land-715.png" width="1254" height="1254" loading="lazy" alt="Canonical Lore Land Deed 715, a floating green island with crystalline lore features">
+              <div><span>Lore Land</span><strong>#715</strong><small>Owner not evaluated</small></div>
+            </article>
+            <article class="deed-card">
+              <img data-src="assets/tobyworld/lore-land-717.png" width="1254" height="1254" loading="lazy" alt="Canonical Lore Land Deed 717, a floating island landscape with distinct terrain and lore features">
+              <div><span>Lore Land</span><strong>#717</strong><small>Owner not evaluated</small></div>
+            </article>
+            <article class="deed-card">
+              <img data-src="assets/tobyworld/lore-land-890.png" width="1254" height="1254" loading="lazy" alt="Canonical Lore Land Deed 890, a floating island landscape with distinct terrain and lore features">
+              <div><span>Lore Land</span><strong>#890</strong><small>Owner not evaluated</small></div>
+            </article>
+          </div>
+        </section>
+
+        <p class="world-boundary-note"><strong>Truth boundary:</strong> OpenSea is an indexed presentation source. A future live result must bind ownership to the Base contract at an observed block and time.</p>
+      </main>
+
+      <aside class="context-panel" aria-labelledby="context-panel-title" data-home-surface>
         <div class="panel-corners" aria-hidden="true"></div>
         <header class="context-heading">
           <span class="eyebrow">Static fixture</span>
@@ -242,7 +342,7 @@
         </section>
       </aside>
 
-      <footer class="voice-dock">
+      <footer class="voice-dock" data-home-surface>
         <div class="waveform" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <div class="voice-control">
           <button class="mic-button" type="button" disabled aria-label="Microphone disabled; voice is not active"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="7" width="14" height="24" rx="7"/><path d="M11 24c0 8 5 13 13 13s13-5 13-13M24 37v6m-7 0h14"/></svg></button>
@@ -257,5 +357,6 @@
       </footer>
     </div>
     <script type="module" src="pond-world.js"></script>
+    <script type="module" src="pond-shell.js"></script>
   </body>
 </html>
