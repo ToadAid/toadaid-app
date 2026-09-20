@@ -27,7 +27,11 @@ export type PondCommandIntentRef = string & {
   readonly [commandIntentRefBrand]: "PondCommandIntentRef";
 };
 
-export type PondStaticViewRef = "pond.home" | "pond.scope" | "pond.agent";
+export type PondStaticViewRef =
+  | "pond.home"
+  | "pond.world"
+  | "pond.scope"
+  | "pond.agent";
 
 export interface PondHostNeutralPresentationPosture {
   readonly hostBinding: "none_host_neutral";

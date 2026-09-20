@@ -270,7 +270,7 @@ The fixture bundle contains exactly:
 ```text
 1 Snapshot
 3 Events
-3 CommandIntents
+4 CommandIntents
 ```
 
 The snapshot displays:
@@ -283,7 +283,7 @@ Specialist Agent A
 
 The three events present snapshot/scope/agent identity.
 
-The three intents cover navigate/select-scope/select-agent.
+The four intents cover home/world navigation, select-scope, and select-agent.
 
 Every object carries authority `none`.
 
