@@ -20,7 +20,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self'; connect-src 'none'; img-src 'self' data:; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'"
+      "csp": "default-src 'self'; connect-src https://mainnet.base.org https://base-rpc.publicnode.com https://gateway.pinata.cloud https://base.blockscout.com; img-src 'self' data: https://gateway.pinata.cloud; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'"
     }
   },
   "bundle": {

@@ -138,7 +138,14 @@ walletInput?.addEventListener("input", () => {
 });
 walletForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!validateWallet({ announceEmpty: true })) walletInput?.focus();
+  if (!validateWallet({ announceEmpty: true })) {
+    walletInput?.focus();
+    return;
+  }
+  const value = walletInput?.value.trim() || "";
+  // Live read-only observation: the lookup module reads public chain and IPFS
+  // data for the pasted address. No connection, signing, or storage.
+  window.pondDeedLookup?.lookup(value);
 });
 
 setView(viewFromHash());

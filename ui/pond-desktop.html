@@ -129,7 +129,7 @@
         data-pond-view="world"
         data-chain="base"
         data-collection-contract="0x0495601af6f86efb14c9d478ea46b2aa09cb164a"
-        data-observation-posture="fixture_only_not_live_observation"
+        data-observation-posture="live_read_only_observation"
         data-wallet-connection="not_required"
         data-authority="none"
         hidden
@@ -164,7 +164,7 @@
           <div class="wallet-observer-copy">
             <span class="eyebrow">Public address observer</span>
             <h2 id="wallet-observer-title">Which lands does this address hold?</h2>
-            <p>Paste any Base wallet address. This first cut validates it locally and preserves the future lookup shape without transmitting or storing it.</p>
+            <p>Paste any Base wallet address to observe its Canonical Lore Land Deeds live. Viewing an address never connects, signs, or stores it; the check reads public chain and IPFS data only.</p>
           </div>
           <form class="wallet-lookup-form" novalidate>
             <label for="viewed-wallet">Viewed wallet address</label>
@@ -182,18 +182,18 @@
               >
               <button type="submit">Check lands</button>
             </div>
-            <p id="wallet-helper">Public observation only. Connection, signature, authentication, membership, and authority are not requested.</p>
-            <p class="wallet-status" id="wallet-status" role="status" aria-live="polite">Live ownership retrieval is not activated in this cut.</p>
+            <p id="wallet-helper">Reads ownership from the Base contract through a public node and metadata from a public IPFS gateway. Connection, signature, authentication, membership, and authority are not requested.</p>
+            <p class="wallet-status" id="wallet-status" role="status" aria-live="polite">Enter an address and check its deeds live — read-only, bound to the observed block shown with the result.</p>
           </form>
         </section>
 
         <section class="deed-gallery" aria-labelledby="deed-gallery-title">
           <header>
             <div>
-              <span class="eyebrow">User-supplied deed references</span>
+              <span class="eyebrow">Canonical collection specimens</span>
               <h2 id="deed-gallery-title">Lore Land specimens</h2>
             </div>
-            <p>Fixture preview · images are real deed captures; current ownership and metadata are not evaluated here.</p>
+            <p>Resting fixture preview · running a lookup above swaps this for the live, block-stamped observation.</p>
           </header>
           <div class="deed-grid">
             <article class="deed-card">
@@ -211,7 +211,7 @@
           </div>
         </section>
 
-        <p class="world-boundary-note"><strong>Truth boundary:</strong> OpenSea is an indexed presentation source. A future live result must bind ownership to the Base contract at an observed block and time.</p>
+        <p class="world-boundary-note"><strong>Truth boundary:</strong> every live result binds ownership to the Base contract at the observed block shown with it. OpenSea and Tobyworld links are presentation sources; nothing here proves identity, membership, or authority.</p>
       </main>
 
       <aside class="context-panel" aria-labelledby="context-panel-title" data-home-surface>
@@ -391,6 +391,7 @@
         </form>
       </footer>
     </div>
+    <script src="pond-deed-lookup.js" defer></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>
