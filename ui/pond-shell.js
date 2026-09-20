@@ -7,6 +7,8 @@ const topbarContext = document.querySelector(".topbar-context");
 const walletForm = document.querySelector(".wallet-lookup-form");
 const walletInput = document.querySelector("#viewed-wallet");
 const walletStatus = document.querySelector("#wallet-status");
+const heroArt = document.querySelector(".imagined-world-art");
+const loreIslands = [...document.querySelectorAll(".lore-island")];
 
 const supportedViews = new Set(["home", "world"]);
 
@@ -74,6 +76,28 @@ for (const link of viewLinks) {
 }
 
 window.addEventListener("popstate", () => setView(viewFromHash(), { moveFocus: true }));
+
+// Presentation-only land swap: clicking a side land moves its artwork into the
+// centered hero and the previous hero artwork into that land's place. No state
+// is stored, transmitted, or interpreted as any world or ownership truth.
+const centerLand = (land) => {
+  if (!heroArt || !land) return;
+  const heroSrc = heroArt.getAttribute("src");
+  heroArt.setAttribute("src", land.getAttribute("src"));
+  land.setAttribute("src", heroSrc);
+  heroArt.classList.remove("land-just-centered");
+  void heroArt.offsetWidth;
+  heroArt.classList.add("land-just-centered");
+};
+
+for (const land of loreIslands) {
+  land.addEventListener("click", () => centerLand(land));
+  land.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    centerLand(land);
+  });
+}
 
 const setWalletStatus = (message, state) => {
   if (!walletStatus) return;

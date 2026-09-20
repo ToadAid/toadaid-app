@@ -80,6 +80,17 @@ textarea:focus-visible,
   box-shadow: 0 0 110px rgba(0, 0, 0, 0.72);
 }
 
+/* Home fits one screen: the long fixture panel scrolls inside its rail
+   instead of stretching the stage row (and the whole page) with it */
+.pond-shell[data-active-view="home"] {
+  height: 100vh;
+}
+
+.pond-shell[data-active-view="home"] .context-panel {
+  min-height: 0;
+  overflow-y: auto;
+}
+
 .pond-shell::before,
 .pond-shell::after {
   position: absolute;
@@ -282,32 +293,97 @@ textarea:focus-visible,
   perspective: 900px;
 }
 
-.pond-world-canvas {
+.lore-world-scene {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* stage center, nudged for the nav/context panel asymmetry */
+  --lore-cx: calc(50% - 78px);
+  --lore-cy: 51%;
+}
+
+.imagined-world-hero {
+  position: absolute;
+  z-index: 2;
+  top: var(--lore-cy);
+  left: var(--lore-cx);
+  width: min(32vw, 430px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.imagined-world-art {
   display: block;
   width: 100%;
   height: 100%;
-  outline: none;
+  object-fit: contain;
+  filter: saturate(0.92) contrast(1.08) brightness(0.78) drop-shadow(0 0 56px rgba(71, 231, 210, 0.2));
 }
 
-.pond-world-canvas[hidden] { display: none; }
+.imagined-world-art.land-just-centered {
+  animation: land-settle 0.45s ease-out;
+}
 
-.imagined-world-art {
+@keyframes land-settle {
+  from { opacity: 0.15; transform: scale(0.93); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lore-island {
   position: absolute;
-  z-index: 1;
-  top: 47%;
-  left: 50%;
-  width: min(76vw, 920px);
+  display: block;
+  width: 300px;
   height: auto;
   aspect-ratio: 1;
   object-fit: contain;
-  opacity: 0.38;
-  filter: saturate(0.92) contrast(1.08) brightness(0.72) drop-shadow(0 0 55px rgba(71, 231, 210, 0.16));
-  transform: translate(-50%, -50%) scale(1.04);
-  mask-image: radial-gradient(circle at 50% 48%, black 43%, rgba(0, 0, 0, 0.72) 64%, transparent 82%);
-  pointer-events: none;
+  filter: saturate(0.78) brightness(0.54) contrast(1.08) drop-shadow(0 18px 38px rgba(0, 8, 12, 0.74));
+  animation: lore-island-drift 11s ease-in-out infinite alternate;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.lore-island:hover,
+.lore-island:focus-visible {
+  opacity: 1;
+}
+
+/* the archipelago hugs the hero: fixed pixel offsets from the stage center
+   so a tall window never stretches the cluster apart */
+.lore-island-grove {
+  z-index: 1;
+  top: calc(var(--lore-cy) - 270px);
+  left: calc(var(--lore-cx) - 500px);
+  width: min(24vw, 330px);
+  opacity: 0.68;
+  animation-delay: -4s;
+}
+
+.lore-island-lotus {
+  z-index: 0;
+  top: calc(var(--lore-cy) - 255px);
+  right: calc(100% - var(--lore-cx) - 455px);
+  width: min(20vw, 270px);
+  opacity: 0.5;
+  filter: saturate(0.68) brightness(0.48) contrast(1.05) blur(0.25px) drop-shadow(0 16px 34px rgba(0, 8, 12, 0.7));
+  animation-delay: -8s;
+  animation-duration: 14s;
+}
+
+.lore-island-ember {
+  z-index: 3;
+  top: calc(var(--lore-cy) - 45px);
+  right: calc(100% - var(--lore-cx) - 500px);
+  width: min(23vw, 310px);
+  opacity: 0.64;
+  animation-delay: -6s;
+  animation-duration: 12.5s;
+}
+
+@keyframes lore-island-drift {
+  from { transform: translate3d(0, 5px, 0); }
+  to { transform: translate3d(0, -5px, 0); }
 }
 
 .world-vignette {
@@ -316,29 +392,10 @@ textarea:focus-visible,
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 54%, transparent 34%, rgba(1, 9, 12, 0.2) 72%, rgba(1, 7, 10, 0.58)),
+    radial-gradient(ellipse at 45% 52%, transparent 32%, rgba(1, 9, 12, 0.23) 70%, rgba(1, 7, 10, 0.62)),
     linear-gradient(90deg, rgba(1, 9, 12, 0.64), transparent 22%, transparent 76%, rgba(1, 9, 12, 0.48)),
     linear-gradient(180deg, rgba(1, 8, 12, 0.42), transparent 24%, transparent 70%, rgba(1, 10, 13, 0.68));
   box-shadow: inset 0 0 110px rgba(1, 6, 9, 0.7);
-}
-
-.pond-world-fallback {
-  position: absolute;
-  z-index: 2;
-  top: 49%;
-  left: 50%;
-  width: min(360px, 80%);
-  margin: 0;
-  padding: 18px 22px;
-  border: 1px solid var(--line-bright);
-  border-radius: 10px;
-  color: var(--text-soft);
-  background: rgba(3, 22, 26, 0.94);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-align: center;
-  transform: translate(-50%, -50%);
 }
 
 .spatial-stage::before {
@@ -425,72 +482,23 @@ textarea:focus-visible,
 .agent-presence {
   position: absolute;
   z-index: 4;
-  top: 52%;
-  left: 50%;
-  width: min(350px, 43%);
-  height: min(430px, 63%);
+  bottom: 92px;
+  left: calc(50% - 78px);
+  width: min(410px, 42%);
   pointer-events: none;
-  transform: translate(-50%, -47%);
-}
-
-.presence-aura {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  width: 58%;
-  aspect-ratio: 1;
-  border: 1px solid rgba(79, 239, 224, 0.36);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(107, 255, 166, 0.13), transparent 67%);
-  box-shadow: inset 0 0 45px rgba(67, 232, 242, 0.1), 0 0 44px rgba(67, 232, 242, 0.08);
   transform: translateX(-50%);
 }
-
-.presence-aura::before,
-.presence-aura::after {
-  position: absolute;
-  content: "";
-  border: 1px dashed rgba(67, 232, 242, 0.23);
-  border-radius: 50%;
-}
-
-.presence-aura::before { inset: 9%; }
-.presence-aura::after { inset: 21%; border-style: solid; border-color: rgba(141, 247, 157, 0.19); }
-
-.lily-platform {
-  position: absolute;
-  z-index: 2;
-  right: 2%;
-  bottom: 14%;
-  left: 2%;
-  height: 24%;
-  border: 1px solid var(--cyan);
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse, rgba(89, 208, 91, 0.3) 0 37%, transparent 39%),
-    repeating-radial-gradient(ellipse, transparent 0 12%, rgba(67, 232, 242, 0.22) 12.5% 13%, transparent 13.5% 21%);
-  box-shadow: 0 0 24px rgba(67, 232, 242, 0.3), inset 0 0 31px rgba(67, 232, 242, 0.11);
-  transform: rotateX(62deg);
-}
-
-.lily-platform::before,
-.lily-platform::after {
-  position: absolute;
-  content: "";
-  border-radius: 50%;
-}
-
-.lily-platform::before { inset: 14%; border: 2px solid rgba(141, 247, 157, 0.48); }
-.lily-platform::after { inset: 29%; background: radial-gradient(ellipse, rgba(100, 213, 84, 0.38), rgba(19, 85, 58, 0.26)); }
 
 .presence-copy {
-  position: absolute;
+  position: relative;
   z-index: 4;
-  bottom: -4%;
-  left: 50%;
-  width: 90%;
+  width: 100%;
+  padding: 9px 18px 8px;
+  border: 1px solid rgba(67, 232, 242, 0.13);
+  border-radius: 8px;
+  background: linear-gradient(90deg, transparent, rgba(2, 18, 22, 0.72) 20% 80%, transparent);
   text-align: center;
-  transform: translateX(-50%);
+  text-shadow: 0 2px 12px #02090c;
 }
 
 .presence-rule { display: block; width: 62%; height: 1px; margin: 0 auto 8px; background: linear-gradient(90deg, transparent, var(--green), transparent); box-shadow: 0 0 8px var(--green); }
@@ -965,13 +973,20 @@ textarea:focus-visible,
   }
   .pond-shell::before,
   .pond-shell::after { display: none; }
+  .pond-shell[data-active-view="home"] { height: auto; }
+  .pond-shell[data-active-view="home"] .context-panel { overflow: visible; }
   .topbar { grid-template-columns: 245px 1fr 250px; }
   .brand { padding-left: 20px; }
   .brand-word { font-size: 23px; }
   .side-nav { margin: 0; border-block: 0; border-left: 0; border-radius: 0; }
   .spatial-stage { grid-area: stage; }
   .stage-heading { top: clamp(25px, 4vh, 48px); left: clamp(25px, 4vw, 58px); }
-  .agent-presence { top: 59%; }
+  .lore-world-scene { --lore-cx: 50%; }
+  .imagined-world-hero { width: min(52vw, 430px); }
+  .lore-island-grove { left: calc(var(--lore-cx) - 460px); width: min(30vw, 310px); }
+  .lore-island-lotus { right: calc(100% - var(--lore-cx) - 430px); width: min(25vw, 250px); }
+  .lore-island-ember { right: calc(100% - var(--lore-cx) - 470px); width: min(28vw, 290px); }
+  .agent-presence { bottom: 72px; left: 50%; width: min(410px, 52%); }
   .scope-beacon { top: 37%; left: 5%; }
   .tagline { bottom: 17px; }
   .context-panel { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 22px; margin: 0; overflow: visible; border-top: 1px solid var(--line-bright); border-right: 0; border-bottom: 0; border-left: 0; border-radius: 0; }
@@ -999,7 +1014,12 @@ textarea:focus-visible,
   .nav-item { width: 104px; min-height: 50px; }
   .nav-divider, .nav-subtitle, .nav-secondary, .host-note { display: none; }
   .spatial-stage { min-height: 650px; }
-  .agent-presence { width: min(360px, 58%); }
+  .lore-world-scene { --lore-cx: 50%; --lore-cy: 49%; }
+  .imagined-world-hero { width: min(64vw, 430px); }
+  .lore-island-grove { top: calc(var(--lore-cy) - 235px); left: -8%; width: min(38vw, 260px); opacity: 0.5; }
+  .lore-island-lotus { top: calc(var(--lore-cy) - 215px); right: -8%; width: min(34vw, 230px); opacity: 0.42; }
+  .lore-island-ember { top: calc(var(--lore-cy) - 30px); right: -3%; width: min(38vw, 260px); opacity: 0.5; }
+  .agent-presence { width: min(410px, 72%); }
   .context-panel { display: block; padding: 28px 24px; }
   .authority-seal { margin-block: 20px; }
   .gate-panel { margin-top: 20px; }
@@ -1024,7 +1044,13 @@ textarea:focus-visible,
   .spatial-stage { min-height: 600px; }
   .stage-heading { right: 22px; left: 22px; text-align: center; }
   .stage-heading h1 { font-size: 27px; }
-  .agent-presence { top: 58%; width: 68%; }
+  .lore-world-scene { --lore-cx: 50%; --lore-cy: 48%; }
+  .imagined-world-hero { width: min(92vw, 430px); }
+  .imagined-world-art { opacity: 0.84; }
+  .lore-island-grove { top: calc(var(--lore-cy) - 205px); left: -14%; width: 42vw; opacity: 0.38; }
+  .lore-island-lotus { display: none; }
+  .lore-island-ember { top: calc(var(--lore-cy) - 20px); right: -12%; width: 44vw; opacity: 0.4; }
+  .agent-presence { bottom: 54px; width: 86%; }
   .scope-beacon { top: 29%; left: 16px; padding: 9px 11px; }
   .tagline { padding-inline: 12px; font-size: 9px; letter-spacing: 0.18em; }
   .voice-dock { display: flex; flex-direction: column; }
@@ -1034,7 +1060,6 @@ textarea:focus-visible,
   .projection-state-grid,
   .evidence-reference-panel dl,
   .receipt-reference-panel dl { grid-template-columns: 1fr; }
-  .imagined-world-art { width: min(125vw, 720px); opacity: 0.31; }
   .world-stage { padding: 26px 16px 40px; }
   .world-hero,
   .deed-gallery > header { flex-direction: column; align-items: stretch; }
