@@ -53,6 +53,7 @@ Present the complete Stage C posture as one fixture-rendered, read-only cockpit 
 - `node scripts/render-stage-c-cockpit-fixture.mjs --check` — deterministic rebuild byte-matches both committed artifacts.
 - `git diff --check --cached` — clean (per-line trailing whitespace stripped in the render ceremony).
 - Headless-Chrome smoke (`--headless=new --dump-dom` over `pond-desktop.html`): panel present with 47 resolved `data-cockpit-value` nodes, `data-render-posture="rendered"`, zero `unavailable` values, all eight unsatisfied checks rendered, Bridge commit `5950162…` and C-P8 match posture visible in the DOM, zero console errors.
+- live verification in the running desktop app (2026-09-21): the Bridge cockpit posture panel renders in the Home context panel of the real desktop app (`npm run desktop:dev`) — confirmed by the user after the merge.
 
 ## Activation
 
