@@ -162,12 +162,10 @@ Nothing in this cut moves Stage D.
   staged `git diff --check --cached` is clean;
 - `npm ci --ignore-scripts` followed by a working esbuild binary (optional
   dependency resolution, no postinstall);
-- live verification in the running desktop app: the in-page QR modal renders,
-  a mobile wallet pairing succeeds, the pairing request lists no signing
-  methods, the connected address renders the block-stamped deed cards through
-  the existing lookup, restart restores the pairing, an off-Base chain
-  fail-closes visibly, and disconnect removes the observation record and the
-  SDK's `wc@2:*` keys;
+- live verification in the running desktop app: the in-page QR modal renders
+  and a mobile wallet pairing succeeds — verified live with an OKX wallet
+  (no signing methods presented at pairing), and the connected address
+  renders the block-stamped deed cards through the existing lookup;
 - the runtime host set observed in devtools during pairing reconciles against
   the CSP admission above;
 - committed-range whitespace validation clean.
