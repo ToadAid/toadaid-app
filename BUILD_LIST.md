@@ -252,7 +252,7 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - live host adapters, SDK integration, loopback serving, transport, and cross-host runtime proof remain future bounded work;
 - host choice must not invent identity, scope, release, grant, approval, or authority.
 
-## Stage C — First read-only truth slice — CURRENT
+## Stage C — First read-only truth slice — COMPLETE
 
 - **C-P0 — COMPLETE:** bind each first-slice truth concern to its canonical logical runtime responsibility while preserving that concrete source identity, storage ownership, exact API/protocol, trusted channel, freshness observation, and live integration are not yet established;
 - **C-P1 — COMPLETE:** establish one exact, fixture-only read-only repository target identity for `ToadAid/toadaid-app`, `main`, the bound parent HEAD, and repository-root path class while preserving project-scope association, source responsibility, and the absence of membership, Grant, approval, mutation, or live observation claims;
@@ -264,11 +264,13 @@ Stage B remains non-authoritative. It introduces host-neutral presentation contr
 - **C-P7 — COMPLETE:** rebind to the merged Bridge Stage 1I-R2 full-HEAD source contract, compare its exact full commit with the C-P1 fixture target, and continue to refuse exact repository identity and current truth because repository owner and trusted delivery remain unestablished;
 - **C-P8 — COMPLETE:** rebind to the merged Bridge Stage 1I-R3 sanitized configured-origin identity source, compare owner/name/branch/full HEAD against C-P1, establish only an exact supplied-fixture match, and continue to refuse current truth because remote verification and trusted delivery are absent;
 - **C-P9 — COMPLETE:** bind the merged Bridge Stage 39A-R1 structured STDIO repository-status source and define consumer-owned trusted-delivery admission checks while refusing producer self-attestation, production proof, runtime activation, and current truth;
-- **C-P10 — CURRENT:** present the complete Stage C posture as one fixture-rendered, read-only Bridge cockpit panel in the Home context panel — generated from the canonical C-P1..C-P9 fixture chain with a node parity selftest as the drift guard — while preserving fail-closed rendering, withheld current truth, all eight receiver-owned admission checks unsatisfied, and authority-none with no transport, mutation, runtime activation, or receipt body;
+- **C-P10 — COMPLETE:** present the complete Stage C posture as one fixture-rendered, read-only Bridge cockpit panel in the Home context panel — generated from the canonical C-P1..C-P9 fixture chain with a node parity selftest as the drift guard — while preserving fail-closed rendering, withheld current truth, all eight receiver-owned admission checks unsatisfied, and authority-none with no transport, mutation, runtime activation, or receipt body;
 - exact repository and target identity;
 - source, freshness, gates, denial/refusal posture, and sanitized receipts;
 - stale, conflict, and degraded behavior before mutation;
 - no mutation.
+
+Stage C completion posture: the first read-only truth slice is complete as governed fixture contracts, selftests, and presentation — the exact C-P1 repository target, source bindings through Bridge Stage 1I-R1/1I-R2/1I-R3/39A-R1, the C-P5 freshness policy, the C-P6→C-P7→C-P8 target-comparison chain, the C-P9 STDIO trusted-delivery admission, and the C-P10 cockpit panel — all authority-none with `Activation: NOT_INCLUDED` and live verification recorded in the desktop app. Live trusted delivery, remote verification, any Bridge transport, and current-truth admission remain unestablished and are refused by the C-P9 receiver-owned admission checks; this refusal posture is the completion, not a gap in it. Stage D remains blocked on real authentication and local principal binding.
 
 ## Stage D — Identity-bound personal and collaborative reads — BLOCKED
 
