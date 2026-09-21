@@ -50,6 +50,9 @@ jobs:
       - name: Verify Stage B2-P4B-P21 wallet-connect policy
         run: npm run test:stage-b2-p4b-p21
 
+      - name: Verify Stage B2-P4B-P22 deed detail policy
+        run: npm run test:stage-b2-p4b-p22
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -98,6 +101,9 @@ jobs:
 
       - name: Verify Stage B2-P4B-P21 wallet-connect policy
         run: npm run test:stage-b2-p4b-p21
+
+      - name: Verify Stage B2-P4B-P22 deed detail policy
+        run: npm run test:stage-b2-p4b-p22
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
