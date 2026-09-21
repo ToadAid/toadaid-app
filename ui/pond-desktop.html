@@ -207,6 +207,25 @@
             <p id="wallet-helper">Reads ownership from the Base contract through a public node and metadata from a public IPFS gateway. Connecting is optional and observation-only; signature, transaction, authentication, membership, and authority are not requested.</p>
             <p class="wallet-status" id="wallet-status" role="status" aria-live="polite">Enter an address and check its deeds live — read-only, bound to the observed block shown with the result.</p>
           </form>
+          <form class="wallet-lookup-form deed-id-lookup-form" novalidate>
+            <label for="viewed-deed-id">Direct deed lookup</label>
+            <div class="wallet-input-row">
+              <input
+                id="viewed-deed-id"
+                name="viewed-deed-id"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-describedby="deed-id-helper deed-id-status"
+                placeholder="1 – 6000"
+              >
+              <button type="submit">Look up deed</button>
+            </div>
+            <p id="deed-id-helper">Observes one Canonical Lore Land Deed by id straight from the Base contract. This point-in-time read never touches the observed index and never signs anything.</p>
+            <p class="wallet-status" id="deed-id-status" role="status" aria-live="polite">Enter a deed id (1 – 6000) to observe it directly in a detail view.</p>
+          </form>
         </section>
 
         <section class="deed-gallery" aria-labelledby="deed-gallery-title">
@@ -234,6 +253,31 @@
         </section>
 
         <p class="world-boundary-note"><strong>Truth boundary:</strong> every live result binds ownership to the Base contract at the observed block shown with it. OpenSea and Tobyworld links are presentation sources; nothing here proves identity, membership, or authority.</p>
+
+        <div class="deed-detail-backdrop" id="deed-detail-backdrop" hidden>
+          <section class="deed-detail-modal" role="dialog" aria-modal="true" aria-labelledby="deed-detail-title" aria-describedby="deed-detail-description" tabindex="-1">
+            <header class="deed-detail-head">
+              <div>
+                <span class="eyebrow">Canonical Lore Land Deed</span>
+                <h3 id="deed-detail-title"></h3>
+              </div>
+              <button type="button" class="deed-detail-close" id="deed-detail-close">Close</button>
+            </header>
+            <div class="deed-detail-body">
+              <img id="deed-detail-image" width="1000" height="1000" alt="" referrerpolicy="no-referrer" hidden>
+              <p class="deed-detail-description" id="deed-detail-description"></p>
+              <dl class="deed-detail-facts">
+                <div><dt>Observed owner</dt><dd><code id="deed-detail-owner"></code></dd></div>
+                <div><dt>Observed at block</dt><dd id="deed-detail-block"></dd></div>
+                <div><dt>Metadata read</dt><dd id="deed-detail-fetched"></dd></div>
+              </dl>
+              <p class="deed-detail-image-note" id="deed-detail-image-note" hidden></p>
+              <dl class="deed-traits" id="deed-detail-traits" hidden></dl>
+              <div class="deed-links" id="deed-detail-links"></div>
+              <p class="deed-detail-note">Point-in-time read-only observation. The owner shown carries the same epistemic status as the address observer above — it is presentation, never identity, membership, or authority.</p>
+            </div>
+          </section>
+        </div>
       </main>
 
       <aside class="context-panel" aria-labelledby="context-panel-title" data-home-surface>
@@ -413,7 +457,7 @@
         </form>
       </footer>
     </div>
-    <script src="pond-deed-lookup.js" defer></script>
+    <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>

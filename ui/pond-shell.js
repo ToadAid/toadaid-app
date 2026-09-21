@@ -24,6 +24,10 @@ const viewFromHash = () => {
 const setView = (view, { moveFocus = false } = {}) => {
   if (!supportedViews.has(view)) return;
 
+  // The deed detail modal belongs to the World view; leaving the view must
+  // never leave it floating over the Home stage.
+  window.pondDeedLookup?.closeDeedDetail?.();
+
   shell.dataset.activeView = view;
 
   for (const surface of views) {
