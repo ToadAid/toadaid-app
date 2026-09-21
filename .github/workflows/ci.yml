@@ -47,6 +47,9 @@ jobs:
       - name: Verify Stage C-P9 STDIO delivery admission
         run: npm run test:stage-c-p9
 
+      - name: Verify Stage B2-P4B-P21 wallet-connect policy
+        run: npm run test:stage-b2-p4b-p21
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -92,6 +95,9 @@ jobs:
 
       - name: Verify Stage C-P9 STDIO delivery admission
         run: npm run test:stage-c-p9
+
+      - name: Verify Stage B2-P4B-P21 wallet-connect policy
+        run: npm run test:stage-b2-p4b-p21
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

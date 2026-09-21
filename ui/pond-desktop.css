@@ -890,6 +890,27 @@ textarea:focus-visible,
 .wallet-lookup-form .wallet-status.is-error { border-left-color: #ff9a8f; color: #ffc1ba; background: rgba(132, 42, 36, 0.12); }
 .wallet-lookup-form .wallet-status.is-valid { border-left-color: var(--green); color: var(--green); background: rgba(66, 157, 104, 0.1); }
 
+.wallet-connection { display: grid; gap: 14px; margin-top: 18px; padding: 16px 18px; border: 1px solid rgba(67, 232, 242, 0.18); border-radius: 14px 5px 14px 5px; background: rgba(3, 20, 23, 0.6); }
+.wallet-connection-copy p { margin: 6px 0 0; color: var(--text-muted); font-size: 9.5px; line-height: 1.55; }
+.wallet-connection-disconnected { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.wallet-connection-disconnected button { padding: 9px 16px; border: 1px solid rgba(141, 247, 157, 0.4); border-radius: 8px; color: #06231a; background: linear-gradient(135deg, #9cf7aa, #58d9c2); font-size: 11px; font-weight: 750; letter-spacing: 0.05em; cursor: pointer; }
+.wallet-connection-disconnected button:hover { filter: brightness(1.08); }
+.wallet-connection-disconnected button:disabled { opacity: 0.55; cursor: progress; }
+.wallet-connection-disconnected small { color: var(--text-muted); font-size: 9px; line-height: 1.5; }
+.wallet-connection-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.wallet-connection-facts dt { color: var(--text-muted); font: 8px/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.wallet-connection-facts dd { margin: 4px 0 0; color: #d9efe6; font-size: 10.5px; overflow-wrap: anywhere; }
+.wallet-connection-facts dd code { color: var(--green); font-family: var(--mono); font-size: 10.5px; }
+.wallet-connection-facts dd.chain-not-admitted { color: #ffc1ba; }
+.wallet-connection-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.wallet-connection-actions button { padding: 8px 14px; border: 1px solid rgba(67, 232, 242, 0.24); border-radius: 7px; color: var(--text-soft); background: transparent; font-size: 10px; cursor: pointer; }
+.wallet-connection-actions button:hover { border-color: var(--cyan); color: var(--text); background: rgba(67, 232, 242, 0.08); }
+.wallet-connection-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
+.wallet-connection-actions #wallet-disconnect-button:hover { border-color: #ff9a8f; color: #ffc1ba; background: rgba(132, 42, 36, 0.1); }
+.wallet-connect-status { min-height: 18px; margin: 0; padding: 6px 8px; border-left: 2px solid rgba(107, 89, 36, 0.4); color: var(--text-muted); background: rgba(107, 89, 36, 0.06); font-family: var(--mono); font-size: 9.5px; line-height: 1.5; }
+.wallet-connect-status.is-error { border-left-color: #ff9a8f; color: #ffc1ba; background: rgba(132, 42, 36, 0.12); }
+.wallet-connect-status.is-valid { border-left-color: var(--green); color: var(--green); background: rgba(66, 157, 104, 0.1); }
+
 .deed-gallery { position: relative; max-width: 1220px; margin: 0 auto; }
 .deed-gallery > header { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 14px; }
 .deed-gallery h2 { margin: 4px 0 0; color: var(--text); font-size: 24px; font-weight: 350; letter-spacing: 0.04em; }
@@ -1089,6 +1110,7 @@ textarea:focus-visible,
   .world-source-strip nav { grid-row: auto; grid-column: auto; }
   .world-source-strip nav a { flex: 1; text-align: center; }
   .wallet-input-row { grid-template-columns: 1fr; }
+  .wallet-connection-facts { grid-template-columns: 1fr; }
   .deed-gallery header p { text-align: left; }
   .deed-grid { grid-template-columns: 1fr; }
 }

@@ -20,7 +20,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self'; connect-src https://mainnet.base.org https://base-rpc.publicnode.com https://gateway.pinata.cloud https://base.blockscout.com; img-src 'self' data: https://gateway.pinata.cloud; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'"
+      "csp": "default-src 'self'; connect-src https://mainnet.base.org https://base-rpc.publicnode.com https://gateway.pinata.cloud https://base.blockscout.com wss://relay.walletconnect.org wss://relay.walletconnect.com https://verify.walletconnect.org https://verify.walletconnect.com https://rpc.walletconnect.org https://echo.walletconnect.com https://pulse.walletconnect.org https://api.web3modal.org; img-src 'self' data: https://gateway.pinata.cloud; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'"
     }
   },
   "bundle": {

@@ -1,8 +1,9 @@
 // Live read-only deed observation for the World view.
 // Batch-reads ownerOf over the Canonical Lore Land Deeds id range through
 // Multicall3 on a public Base RPC, then resolves tokenURI metadata through a
-// public IPFS gateway. No keys, no wallet connection, no signing, no
-// transactions; the only local persistence is the deed-index cache in
+// public IPFS gateway. No keys, no signing, no transactions; a connected
+// address from the optional WalletConnect observation is treated identically
+// to a pasted address. The only local persistence is the deed-index cache in
 // localStorage. Observed results bind to the block stamped on the cache.
 (() => {
   "use strict";
