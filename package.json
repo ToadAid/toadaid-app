@@ -13,10 +13,14 @@
     "test:stage-c-p8": "node scripts/pond-bridge-repo-status-origin-identity-target-comparison-selftest.mjs",
     "test:stage-c-p9": "node scripts/pond-bridge-stdio-delivery-admission-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "world:vendor": "node scripts/vendor-three.mjs"
+    "test:stage-b2-p4b-p21": "node scripts/pond-wallet-connect-policy-selftest.mjs",
+    "world:vendor": "node scripts/vendor-three.mjs",
+    "wallet:vendor": "node scripts/vendor-walletconnect.mjs"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4",
+    "@walletconnect/ethereum-provider": "2.25.0",
+    "esbuild": "0.28.2",
     "three": "0.185.1",
     "typescript": "5.8.3"
   }

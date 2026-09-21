@@ -130,7 +130,7 @@
         data-chain="base"
         data-collection-contract="0x0495601af6f86efb14c9d478ea46b2aa09cb164a"
         data-observation-posture="live_read_only_observation"
-        data-wallet-connection="not_required"
+        data-wallet-connection="optional_observation_only_connection"
         data-authority="none"
         hidden
       >
@@ -139,12 +139,12 @@
           <div>
             <span class="eyebrow">Tobyworld · public read projection</span>
             <h1>Lore Land World</h1>
-            <p>Explore real Canonical Lore Land Deeds by public wallet address. Viewing an address never connects, signs, logs in, or proves identity.</p>
+            <p>Explore real Canonical Lore Land Deeds by public wallet address. Viewing an address never signs, logs in, or proves identity. An optional wallet connection observes only that address.</p>
           </div>
           <div class="read-only-seal" aria-label="Read-only posture">
             <span>Mode</span>
             <strong>READ ONLY</strong>
-            <small>No wallet connection</small>
+            <small id="read-only-seal-note">Observation only</small>
           </div>
         </header>
 
@@ -164,7 +164,29 @@
           <div class="wallet-observer-copy">
             <span class="eyebrow">Public address observer</span>
             <h2 id="wallet-observer-title">Which lands does this address hold?</h2>
-            <p>Paste any Base wallet address to observe its Canonical Lore Land Deeds live. Viewing an address never connects, signs, or stores it; the check reads public chain and IPFS data only.</p>
+            <p>Paste any Base wallet address to observe its Canonical Lore Land Deeds live. Viewing a pasted address never signs or stores it; the check reads public chain and IPFS data only.</p>
+          </div>
+          <div class="wallet-connection" id="wallet-connection" data-connection-posture="observation_only" data-authority="none">
+            <div class="wallet-connection-copy">
+              <span class="eyebrow">Optional wallet connection</span>
+              <p>Connect to observe this wallet's own deeds without pasting. Connecting never signs, transacts, or authenticates; presentation is not authority.</p>
+            </div>
+            <div class="wallet-connection-disconnected" id="wallet-connection-disconnected">
+              <button type="button" id="wallet-connect-button">Connect wallet</button>
+              <small>Read-only pairing through the WalletConnect relay.</small>
+            </div>
+            <div class="wallet-connection-connected" id="wallet-connection-connected" hidden>
+              <dl class="wallet-connection-facts">
+                <div><dt>Address</dt><dd><code id="wallet-connection-address"></code></dd></div>
+                <div><dt>Chain</dt><dd id="wallet-connection-chain"></dd></div>
+                <div><dt>Connected</dt><dd id="wallet-connection-since"></dd></div>
+              </dl>
+              <div class="wallet-connection-actions">
+                <button type="button" id="wallet-use-address-button">Use connected address</button>
+                <button type="button" id="wallet-disconnect-button">Disconnect</button>
+              </div>
+            </div>
+            <p class="wallet-connect-status" id="wallet-connect-status" role="status" aria-live="polite"></p>
           </div>
           <form class="wallet-lookup-form" novalidate>
             <label for="viewed-wallet">Viewed wallet address</label>
@@ -182,7 +204,7 @@
               >
               <button type="submit">Check lands</button>
             </div>
-            <p id="wallet-helper">Reads ownership from the Base contract through a public node and metadata from a public IPFS gateway. Connection, signature, authentication, membership, and authority are not requested.</p>
+            <p id="wallet-helper">Reads ownership from the Base contract through a public node and metadata from a public IPFS gateway. Connecting is optional and observation-only; signature, transaction, authentication, membership, and authority are not requested.</p>
             <p class="wallet-status" id="wallet-status" role="status" aria-live="polite">Enter an address and check its deeds live — read-only, bound to the observed block shown with the result.</p>
           </form>
         </section>
@@ -392,6 +414,7 @@
       </footer>
     </div>
     <script src="pond-deed-lookup.js" defer></script>
+    <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+{
+  "source": "@walletconnect/ethereum-provider",
+  "version": "2.25.0",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "transitive": {
+    "@reown/appkit": "1.8.19",
+    "@walletconnect/jsonrpc-types": "1.0.4",
+    "@walletconnect/keyvaluestorage": "1.1.1",
+    "@walletconnect/types": "2.25.0",
+    "@walletconnect/universal-provider": "2.25.0",
+    "@walletconnect/utils": "2.25.0",
+    "events": "3.3.0"
+  },
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "methodsAllowlist": [
+    "eth_accounts",
+    "eth_requestAccounts",
+    "eth_chainId"
+  ],
+  "note": "Pairing-time methods enforcement, not this bundle, is the read-only guarantee; the bundle may contain unrelated signing-method names from shared upstream code."
+}
