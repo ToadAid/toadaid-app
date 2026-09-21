@@ -145,9 +145,21 @@ Nothing in this cut moves Stage D.
   test:stage-b2-p4b-p21`), asserting the methods allowlist rejects every
   signing/transaction method, chain admission, address extraction, record
   corruption cases, and all connection states;
-- `npm run typecheck` clean; `node --check` clean on the new scripts;
-- vendored bundle staged and `git diff --check --cached` clean with the
-  `.gitattributes` exception;
+- `npm run typecheck` clean; `node --check` clean on the new scripts and on
+  the generated bundle;
+- the vendored bundle is 4,014,002 bytes (unminified for reviewability),
+  esbuild 0.28.2 in 355 ms; provenance in
+  `ui/vendor/walletconnect-provenance.json` records the exact dependency
+  versions (`@reown/appkit` 1.8.19, `@walletconnect/universal-provider`
+  2.25.0, …) and the build shape;
+- the bundle textually contains signing-method names from shared upstream
+  code (`eth_sendTransaction` ×11, `personal_sign` ×9); as stated in the
+  admission section, the enforceable read-only guarantee is the pairing-time
+  methods allowlist, not the bundle text;
+- the vendor script strips per-line trailing whitespace from the generated
+  bundle before it is committed (the gitattributes `whitespace` attribute was
+  measured not to suppress `git diff --check` detection on current git);
+  staged `git diff --check --cached` is clean;
 - `npm ci --ignore-scripts` followed by a working esbuild binary (optional
   dependency resolution, no postinstall);
 - live verification in the running desktop app: the in-page QR modal renders,
