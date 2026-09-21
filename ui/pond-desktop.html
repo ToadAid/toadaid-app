@@ -441,6 +441,110 @@
             </section>
           </section>
         </section>
+        <section
+          class="stage-c-cockpit-panel"
+          aria-labelledby="stage-c-cockpit-title"
+          data-cockpit-record-version="pond-stage-c-cockpit-record-c-p10"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage C fixture projection</span>
+            <h3 id="stage-c-cockpit-title">Bridge cockpit posture</h3>
+            <p>Fixture-rendered presentation only — no transport, no mutation, no current truth.</p>
+          </header>
+          <section class="cockpit-section" aria-labelledby="cockpit-source-title">
+            <h4 id="cockpit-source-title">Source binding</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Repository</dt><dd><span data-cockpit-value="sourceBinding.repositoryOwner"></span> / <span data-cockpit-value="sourceBinding.repositoryName"></span></dd></div>
+              <div><dt>Branch</dt><dd data-cockpit-value="sourceBinding.branch"></dd></div>
+              <div><dt>Source commit</dt><dd><code data-cockpit-value="sourceBinding.commit"></code></dd></div>
+              <div><dt>Module</dt><dd><code data-cockpit-value="sourceBinding.modulePath"></code></dd></div>
+              <div><dt>Stage</dt><dd data-cockpit-value="sourceBinding.stage"></dd></div>
+              <div><dt>Tool · transport</dt><dd><span data-cockpit-value="sourceBinding.toolName"></span> · <span data-cockpit-value="sourceBinding.transport"></span></dd></div>
+              <div><dt>Structural channel</dt><dd data-cockpit-value="sourceBinding.structuralChannel"></dd></div>
+              <div><dt>Producer authority</dt><dd data-cockpit-value="sourceBinding.producerAuthorityPosture"></dd></div>
+              <div><dt>Pond client runtime</dt><dd data-cockpit-value="sourceBinding.pondClientRuntimePosture"></dd></div>
+              <div><dt>Raw origin URL projected</dt><dd data-cockpit-value="sourceBinding.rawOriginUrlProjected"></dd></div>
+              <div><dt>Remote verification</dt><dd data-cockpit-value="sourceBinding.remoteVerification"></dd></div>
+              <div><dt>Required evidence fields</dt><dd data-cockpit-value="sourceBinding.requiredEvidenceFieldsCount"></dd></div>
+            </dl>
+            <p class="cockpit-note">Read-only tool inventory (<span data-cockpit-value="sourceBinding.toolInventoryCount"></span>):</p>
+            <ul class="cockpit-tool-list" data-cockpit-list="tool-inventory"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="cockpit-freshness-title">
+            <h4 id="cockpit-freshness-title">Freshness</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Observation age</dt><dd data-cockpit-value="freshness.observationAgeState"></dd></div>
+              <div><dt>Age · maximum</dt><dd><span data-cockpit-value="freshness.observationAgeMs"></span> / <span data-cockpit-value="freshness.maximumAgeMs"></span> ms</dd></div>
+              <div><dt>Freshness basis</dt><dd data-cockpit-value="freshness.freshnessBasis"></dd></div>
+              <div><dt>Snapshot presentation</dt><dd data-cockpit-value="freshness.snapshotPresentation"></dd></div>
+              <div><dt>Canonical outcome</dt><dd data-cockpit-value="freshness.canonicalOutcome"></dd></div>
+            </dl>
+            <p class="cockpit-note">Observed <span data-cockpit-value="freshness.observedAtEpochMs"></span> · evaluated <span data-cockpit-value="freshness.evaluatedAtEpochMs"></span> (epoch ms).</p>
+          </section>
+          <section class="cockpit-section" aria-labelledby="cockpit-target-title">
+            <h4 id="cockpit-target-title">Target identity</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Expected repository</dt><dd><span data-cockpit-value="targetComparisonChain.expectedTarget.repositoryOwner"></span> / <span data-cockpit-value="targetComparisonChain.expectedTarget.repositoryName"></span></dd></div>
+              <div><dt>Expected HEAD</dt><dd><code data-cockpit-value="targetComparisonChain.expectedTarget.headCommit"></code></dd></div>
+              <div><dt>Head binding</dt><dd data-cockpit-value="targetComparisonChain.expectedTarget.headBindingPosture"></dd></div>
+            </dl>
+            <ol class="cockpit-chain">
+              <li class="cockpit-chain-item" data-cockpit-chain="targetComparisonChain.partialHeadPrefix">
+                <span class="cockpit-chain-kicker">C-P6 prefix-only</span>
+                <strong data-cockpit-value="targetComparisonChain.partialHeadPrefix.targetComparisonState"></strong>
+                <span class="cockpit-reason" data-cockpit-value="targetComparisonChain.partialHeadPrefix.reason"></span>
+              </li>
+              <li class="cockpit-chain-item" data-cockpit-chain="targetComparisonChain.fullHead">
+                <span class="cockpit-chain-kicker">C-P7 full HEAD</span>
+                <strong data-cockpit-value="targetComparisonChain.fullHead.targetComparisonState"></strong>
+                <span class="cockpit-reason" data-cockpit-value="targetComparisonChain.fullHead.reason"></span>
+                <span class="cockpit-note">HEAD comparison: <span data-cockpit-value="targetComparisonChain.fullHead.fieldComparisons.headCommitFull"></span> · owner: <span data-cockpit-value="targetComparisonChain.fullHead.fieldComparisons.repositoryOwner"></span></span>
+              </li>
+              <li class="cockpit-chain-item" data-cockpit-chain="targetComparisonChain.originIdentity">
+                <span class="cockpit-chain-kicker">C-P8 origin identity</span>
+                <strong data-cockpit-value="targetComparisonChain.originIdentity.targetComparisonState"></strong>
+                <span class="cockpit-reason" data-cockpit-value="targetComparisonChain.originIdentity.reason"></span>
+                <span class="cockpit-note">Match posture: <span data-cockpit-value="targetComparisonChain.originIdentity.exactTargetMatchPosture"></span> · remote verification: <span data-cockpit-value="targetComparisonChain.originIdentity.remoteVerificationPosture"></span></span>
+              </li>
+            </ol>
+          </section>
+          <section class="cockpit-section" aria-labelledby="cockpit-delivery-title">
+            <h4 id="cockpit-delivery-title">Delivery admission</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Admission</dt><dd data-cockpit-value="deliveryAdmission.admissionState"></dd></div>
+              <div><dt>Reason</dt><dd data-cockpit-value="deliveryAdmission.reason"></dd></div>
+              <div><dt>Producer authority as proof</dt><dd data-cockpit-value="deliveryAdmission.producerAuthorityAcceptedAsProof"></dd></div>
+              <div><dt>Production proof</dt><dd data-cockpit-value="deliveryAdmission.productionProofEstablished"></dd></div>
+              <div><dt>Current truth admitted</dt><dd data-cockpit-value="deliveryAdmission.currentTruthAdmitted"></dd></div>
+              <div><dt>Snapshot presentation</dt><dd data-cockpit-value="deliveryAdmission.snapshotPresentation"></dd></div>
+              <div><dt>Runtime activation</dt><dd data-cockpit-value="deliveryAdmission.runtimeActivationPosture"></dd></div>
+            </dl>
+            <p class="cockpit-note">Receiver-owned admission checks (state from the record, never inferred):</p>
+            <ul class="cockpit-checks" data-cockpit-list="delivery-checks"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="cockpit-denial-title">
+            <h4 id="cockpit-denial-title">Denial &amp; receipt posture</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Renderer failure</dt><dd data-cockpit-value="denialPosture.rendererFailurePosture"></dd></div>
+              <div><dt>Fallback rendering</dt><dd data-cockpit-value="denialPosture.fallbackRenderingForbidden"></dd></div>
+              <div><dt>Mutation performed</dt><dd data-cockpit-value="denialPosture.mutationPerformed"></dd></div>
+              <div><dt>Runtime activation</dt><dd data-cockpit-value="denialPosture.runtimeActivationPosture"></dd></div>
+              <div><dt>Authority</dt><dd data-cockpit-value="denialPosture.authority"></dd></div>
+            </dl>
+            <section class="cockpit-receipt" aria-labelledby="cockpit-receipt-title" data-authority="none">
+              <h5 id="cockpit-receipt-title">Sanitized receipt reference</h5>
+              <code data-cockpit-value="sanitizedReceiptReference.receiptRef"></code>
+              <dl class="cockpit-facts">
+                <div><dt>Receipt body</dt><dd data-cockpit-value="sanitizedReceiptReference.receiptBodyPresentation"></dd></div>
+                <div><dt>Verification</dt><dd data-cockpit-value="sanitizedReceiptReference.verificationPosture"></dd></div>
+                <div><dt>Acceptance</dt><dd data-cockpit-value="sanitizedReceiptReference.acceptancePosture"></dd></div>
+              </dl>
+              <p class="cockpit-note">Reference only — not receipt truth, approval, or authority.</p>
+            </section>
+          </section>
+          <p class="cockpit-footnote">Fixture values only · current truth withheld (<span data-cockpit-value="deliveryAdmission.canonicalOutcome"></span>) · <span data-cockpit-value="authority"></span> authority.</p>
+        </section>
       </aside>
 
       <footer class="voice-dock" data-home-surface>
@@ -459,6 +563,7 @@
     </div>
     <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
+    <script type="module" src="pond-stage-c-cockpit.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>

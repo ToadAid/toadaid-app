@@ -1,0 +1,49 @@
+{
+  "record": "src/cockpit/pond-stage-c-cockpit-record.ts",
+  "inputs": [
+    "src/fixtures/stage-c-p1-read-only-repository-target.ts",
+    "src/fixtures/stage-c-p6-bridge-repo-status-target-comparison.ts",
+    "src/fixtures/stage-c-p7-bridge-repo-status-full-head-target-comparison.ts",
+    "src/fixtures/stage-c-p8-bridge-repo-status-origin-identity-target-comparison.ts",
+    "src/fixtures/stage-c-p9-bridge-stage39a-repo-status-source-binding.ts",
+    "src/fixtures/stage-c-p9-bridge-stdio-delivery-admission.ts"
+  ],
+  "renderedStages": [
+    "C-P1",
+    "C-P5",
+    "C-P6",
+    "C-P7",
+    "C-P8",
+    "C-P9"
+  ],
+  "contractVersions": [
+    "pond-bridge-repo-status-full-head-source-binding-c-p7",
+    "pond-bridge-repo-status-full-head-target-comparison-c-p7",
+    "pond-bridge-repo-status-observation-age-c-p5",
+    "pond-bridge-repo-status-observation-source-binding-c-p4",
+    "pond-bridge-repo-status-origin-identity-source-binding-c-p8",
+    "pond-bridge-repo-status-origin-identity-target-comparison-c-p8",
+    "pond-bridge-repo-status-source-binding-c-p2",
+    "pond-bridge-repo-status-target-comparison-c-p6",
+    "pond-bridge-stage39a-repo-status-source-binding-c-p9",
+    "pond-bridge-stdio-delivery-admission-c-p9",
+    "pond-read-only-repository-target-c-p1",
+    "pond-read-only-truth-source-responsibility-c-p0",
+    "pond-stage-c-cockpit-record-c-p10"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Fixture-rendered presentation only; the record binds the canonical C-P1..C-P9 fixture chain and admits no transport, mutation, or current truth."
+}
