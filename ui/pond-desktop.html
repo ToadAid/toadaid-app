@@ -316,6 +316,70 @@
           <div class="forge-source-name"><span data-forge-value="sourceBinding.repository">ToadAid/knowledge-forge</span><small>main · P5A</small></div>
         </section>
 
+
+        <section
+          class="forge-library-shell"
+          aria-labelledby="forge-library-title"
+          data-forge-library
+          data-library-source="fixture_metadata_not_live_registry_truth"
+          data-authority="knowledge_only"
+          data-execution-authority="none"
+        >
+          <header class="forge-library-header">
+            <div>
+              <span class="eyebrow">P5C · metadata-only fixture browser</span>
+              <h2 id="forge-library-title">Skill Library</h2>
+              <p>Browse governed skill identity and current-state metadata without loading claim bodies or source text.</p>
+            </div>
+            <div class="forge-library-count" data-forge-library-count>0 fixture skills</div>
+          </header>
+
+          <div class="forge-library-toolbar" aria-label="Skill library filters">
+            <label>
+              <span>Search metadata</span>
+              <input
+                type="search"
+                placeholder="Title, skill id, knowledge id…"
+                autocomplete="off"
+                data-forge-library-search
+              >
+            </label>
+            <label>
+              <span>Lifecycle</span>
+              <select data-forge-library-state>
+                <option value="ALL">All states</option>
+                <option value="PROMOTED">Promoted</option>
+                <option value="SUSPENDED">Suspended</option>
+              </select>
+            </label>
+            <label>
+              <span>Unit kind</span>
+              <select data-forge-library-kind>
+                <option value="ALL">All kinds</option>
+                <option value="REFERENCE">Reference</option>
+                <option value="PROCEDURE">Procedure</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="forge-library-layout">
+            <div
+              class="forge-library-results"
+              role="list"
+              aria-label="Skill metadata results"
+              data-forge-library-results
+            ></div>
+            <aside
+              class="forge-library-detail"
+              aria-live="polite"
+              aria-label="Selected skill metadata"
+              data-forge-library-detail
+            ></aside>
+          </div>
+
+          <p class="forge-library-truth-note"><strong>Library boundary:</strong> stopped-state skills may remain visible for operator inspection. Visibility is not discovery, loading, execution authority, or current-use eligibility. This P5C fixture contains no claim bodies and no source bodies.</p>
+        </section>
+
         <section class="forge-grid" aria-label="Knowledge Forge desktop projection">
           <article class="forge-card">
             <span class="eyebrow">Source binding</span>
@@ -644,6 +708,7 @@
     <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
+    <script type="module" src="pond-knowledge-forge-library.js"></script>
     <script type="module" src="pond-knowledge-forge.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
