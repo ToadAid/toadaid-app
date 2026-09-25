@@ -125,6 +125,16 @@ const fact = (documentRef, label, value) => {
   return row;
 };
 
+const emitSkillSelection = (documentRef, skillId) => {
+  const EventCtor = documentRef.defaultView?.CustomEvent ?? globalThis.CustomEvent;
+  if (!EventCtor || !skillId) return;
+  documentRef.dispatchEvent(
+    new EventCtor("knowledge-forge-skill-selected", {
+      detail: { skillId },
+    }),
+  );
+};
+
 const renderSkillDetail = (documentRef, skill) => {
   const panel = documentRef.querySelector("[data-forge-library-detail]");
   if (!panel) return;
@@ -276,6 +286,7 @@ export const renderKnowledgeForgeLibrary = (
       documentRef,
       filtered.find((skill) => skill.skillId === selectedSkillId) ?? null,
     );
+    emitSkillSelection(documentRef, selectedSkillId);
   };
 
   search.addEventListener("input", rerender);
