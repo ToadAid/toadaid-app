@@ -35,6 +35,7 @@
         <ul class="nav-list">
           <li><a class="nav-item is-current" href="#pond-home" aria-current="page" data-pond-view-link="home" data-resting-label="Ready"><span class="nav-symbol" aria-hidden="true">⌂</span><span>Home</span><small>Current</small></a></li>
           <li><a class="nav-item" href="#pond-world" data-pond-view-link="world" data-resting-label="Read-only"><span class="nav-symbol" aria-hidden="true">◎</span><span>World</span><small>Read-only</small></a></li>
+          <li><a class="nav-item" href="#pond-knowledge" data-pond-view-link="knowledge" data-resting-label="Projection"><span class="nav-symbol" aria-hidden="true">◇</span><span>Knowledge</span><small>Projection</small></a></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">♙</span><span>Agents</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◉</span><span>Scopes</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◌</span><span>Voice</span><small>Later</small></span></li>
@@ -278,6 +279,85 @@
             </div>
           </section>
         </div>
+      </main>
+
+
+      <main
+        class="world-stage knowledge-stage"
+        id="pond-knowledge"
+        tabindex="-1"
+        data-pond-view="knowledge"
+        data-authority="none"
+        data-runtime-connection="not_included"
+        data-mutation="none"
+        data-activation="not_included"
+        hidden
+      >
+        <div class="world-stage-glow" aria-hidden="true"></div>
+        <header class="world-hero">
+          <div>
+            <span class="eyebrow">Governed knowledge · fixture-bound projection</span>
+            <h1>Knowledge Forge</h1>
+            <p>Inspect the shape and safety posture of ToadAid's governed knowledge system. This desktop cut presents a bound snapshot of the Forge product contract; it does not invoke the Forge runtime.</p>
+          </div>
+          <div class="read-only-seal" aria-label="Knowledge authority posture">
+            <span>Knowledge</span>
+            <strong data-forge-value="posture.knowledgeAuthority">KNOWLEDGE_ONLY</strong>
+            <small>Execution <span data-forge-value="posture.executionAuthority">NONE</span></small>
+          </div>
+        </header>
+
+        <section class="world-source-strip forge-source-strip" aria-labelledby="forge-source-title">
+          <div>
+            <span class="source-light" aria-hidden="true"></span>
+            <span><strong id="forge-source-title">Bound product source</strong><small data-forge-value="sourceBinding.projectionPosture">fixture_bound_snapshot_not_current_truth</small></span>
+          </div>
+          <code data-forge-value="sourceBinding.commit">41a15164f091f63e9a4d3b06c5ac4e43c9d4755b</code>
+          <div class="forge-source-name"><span data-forge-value="sourceBinding.repository">ToadAid/knowledge-forge</span><small>main · P5A</small></div>
+        </section>
+
+        <section class="forge-grid" aria-label="Knowledge Forge desktop projection">
+          <article class="forge-card">
+            <span class="eyebrow">Source binding</span>
+            <h2>What this screen represents</h2>
+            <dl class="forge-facts">
+              <div><dt>Repository</dt><dd data-forge-value="sourceBinding.repository"></dd></div>
+              <div><dt>Branch</dt><dd data-forge-value="sourceBinding.branch"></dd></div>
+              <div><dt>Forge stage</dt><dd data-forge-value="sourceBinding.stage"></dd></div>
+              <div><dt>Milestone</dt><dd data-forge-value="sourceBinding.milestone"></dd></div>
+              <div><dt>Tree</dt><dd><code data-forge-value="sourceBinding.tree"></code></dd></div>
+              <div><dt>Architecture</dt><dd><code data-forge-value="architectureBinding.commit"></code></dd></div>
+            </dl>
+          </article>
+
+          <article class="forge-card">
+            <span class="eyebrow">P5A operator surface</span>
+            <h2>Read-only CLI contract</h2>
+            <p>The desktop presents the current operator surface without calling it in this cut.</p>
+            <ul class="forge-command-list" data-forge-list="operator-cli"></ul>
+          </article>
+
+          <article class="forge-card">
+            <span class="eyebrow">Non-negotiable boundaries</span>
+            <h2>Knowledge never becomes authority</h2>
+            <ul class="forge-boundary-list" data-forge-list="boundaries"></ul>
+          </article>
+
+          <article class="forge-card">
+            <span class="eyebrow">Desktop posture</span>
+            <h2>Projection only</h2>
+            <dl class="forge-facts">
+              <div><dt>Instruction authority</dt><dd data-forge-value="posture.instructionAuthority"></dd></div>
+              <div><dt>Execution authority</dt><dd data-forge-value="posture.executionAuthority"></dd></div>
+              <div><dt>Runtime connection</dt><dd data-forge-value="posture.runtimeConnection"></dd></div>
+              <div><dt>Host integration</dt><dd data-forge-value="posture.hostIntegration"></dd></div>
+              <div><dt>Mutation</dt><dd data-forge-value="posture.mutation"></dd></div>
+              <div><dt>Activation</dt><dd data-forge-value="posture.activation"></dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <p class="world-boundary-note"><strong>Truth boundary:</strong> this view is a fixture-bound product projection tied to exact Forge and architecture commits. It is not a live registry, not current runtime truth, and not authority. P5C may build the library browser on this surface without changing those laws.</p>
       </main>
 
       <aside class="context-panel" aria-labelledby="context-panel-title" data-home-surface>
@@ -564,6 +644,7 @@
     <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
+    <script type="module" src="pond-knowledge-forge.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>

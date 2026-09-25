@@ -10,16 +10,19 @@ const walletStatus = document.querySelector("#wallet-status");
 const heroArt = document.querySelector(".imagined-world-art");
 const loreIslands = [...document.querySelectorAll(".lore-island")];
 
-const supportedViews = new Set(["home", "world"]);
+const supportedViews = new Set(["home", "world", "knowledge"]);
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
-const viewFromHash = () => {
-  const candidate = window.location.hash === "#pond-world" ? "world" : "home";
-  return supportedViews.has(candidate) ? candidate : "home";
-};
+const viewByHash = Object.freeze({
+  "#pond-home": "home",
+  "#pond-world": "world",
+  "#pond-knowledge": "knowledge",
+});
+
+const viewFromHash = () => viewByHash[window.location.hash] || "home";
 
 const setView = (view, { moveFocus = false } = {}) => {
   if (!supportedViews.has(view)) return;
@@ -55,13 +58,19 @@ const setView = (view, { moveFocus = false } = {}) => {
   }
 
   if (topbarTitle) {
-    topbarTitle.textContent = view === "world" ? "Lore Land World" : "Tobyworld";
+    topbarTitle.textContent = view === "world"
+      ? "Lore Land World"
+      : view === "knowledge"
+        ? "Knowledge Forge"
+        : "Tobyworld";
   }
 
   if (topbarContext) {
     topbarContext.innerHTML = view === "world"
       ? "<span>Public observation</span><small>Fixture · network inactive</small>"
-      : "<span>Project X</span><small>Project · static fixture</small>";
+      : view === "knowledge"
+        ? "<span>Governed knowledge</span><small>Fixture projection · no runtime connection</small>"
+        : "<span>Project X</span><small>Project · static fixture</small>";
   }
 
   if (moveFocus) {
@@ -73,7 +82,11 @@ for (const link of viewLinks) {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     const view = link.dataset.pondViewLink;
-    const hash = view === "world" ? "#pond-world" : "#pond-home";
+    const hash = view === "world"
+      ? "#pond-world"
+      : view === "knowledge"
+        ? "#pond-knowledge"
+        : "#pond-home";
     window.history.pushState({ pondView: view }, "", hash);
     setView(view, { moveFocus: true });
   });
