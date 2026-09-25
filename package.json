@@ -13,6 +13,7 @@
     "test:stage-c-p8": "node scripts/pond-bridge-repo-status-origin-identity-target-comparison-selftest.mjs",
     "test:stage-c-p9": "node scripts/pond-bridge-stdio-delivery-admission-selftest.mjs",
     "test:stage-c-p10": "node scripts/pond-stage-c-cockpit-fixture-selftest.mjs",
+    "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:stage-b2-p4b-p21": "node scripts/pond-wallet-connect-policy-selftest.mjs",
     "test:stage-b2-p4b-p22": "node scripts/pond-deed-detail-policy-selftest.mjs",
