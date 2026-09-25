@@ -15,6 +15,7 @@
     "test:stage-c-p10": "node scripts/pond-stage-c-cockpit-fixture-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
+    "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:stage-b2-p4b-p21": "node scripts/pond-wallet-connect-policy-selftest.mjs",
     "test:stage-b2-p4b-p22": "node scripts/pond-deed-detail-policy-selftest.mjs",

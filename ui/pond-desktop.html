@@ -377,6 +377,49 @@
             ></aside>
           </div>
 
+          <section
+            class="forge-inspector-shell"
+            aria-labelledby="forge-inspector-heading"
+            data-forge-inspector
+            data-inspector-source="fixture_evidence_not_live_registry_truth"
+            data-authority="knowledge_only"
+            data-execution-authority="none"
+          >
+            <header class="forge-inspector-header">
+              <div>
+                <span class="eyebrow">P5D · evidence microscope</span>
+                <h3 id="forge-inspector-heading" data-forge-inspector-title>Inspection</h3>
+                <code data-forge-inspector-identity>NO_SKILL_SELECTED</code>
+              </div>
+              <span class="forge-inspector-seal">Digest-bound · bodies hidden</span>
+            </header>
+
+            <div class="forge-inspector-grid">
+              <article class="forge-inspector-panel">
+                <span class="eyebrow">Source identity</span>
+                <h4>Exact source bindings</h4>
+                <div data-forge-inspector-sources></div>
+              </article>
+              <article class="forge-inspector-panel">
+                <span class="eyebrow">Version lineage</span>
+                <h4>Current + predecessor state</h4>
+                <div data-forge-inspector-versions></div>
+              </article>
+              <article class="forge-inspector-panel">
+                <span class="eyebrow">Compiler provenance</span>
+                <h4>How this package was produced</h4>
+                <div data-forge-inspector-provenance></div>
+              </article>
+              <article class="forge-inspector-panel">
+                <span class="eyebrow">Faithfulness</span>
+                <h4>Why the compiled knowledge passed</h4>
+                <div data-forge-inspector-faithfulness></div>
+              </article>
+            </div>
+
+            <p class="forge-inspector-boundary"><strong>Inspector boundary:</strong> P5D renders identity, lineage, provenance, validation verdicts, and cryptographic commitments only. Raw source bodies, claim bodies, and exact support text remain hidden. Inspection grants no discovery, load, execution, mutation, or activation authority.</p>
+          </section>
+
           <p class="forge-library-truth-note"><strong>Library boundary:</strong> stopped-state skills may remain visible for operator inspection. Visibility is not discovery, loading, execution authority, or current-use eligibility. This P5C fixture contains no claim bodies and no source bodies.</p>
         </section>
 
@@ -708,6 +751,7 @@
     <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
+    <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
     <script type="module" src="pond-knowledge-forge.js"></script>
     <script type="module" src="pond-shell.js"></script>
