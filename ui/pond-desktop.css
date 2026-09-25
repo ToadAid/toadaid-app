@@ -1896,3 +1896,245 @@ body.is-modal-open { overflow: hidden; }
   .forge-inspector-panel > div > dl dd,
   .forge-inspector-faith-summary dd { text-align: left; }
 }
+
+/* Knowledge Forge P5E — governed workflow preview console. */
+.forge-workflow-shell {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid rgba(255, 196, 125, 0.2);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255, 184, 99, 0.08), transparent 26%),
+    rgba(2, 17, 22, 0.62);
+}
+
+.forge-workflow-header {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.forge-workflow-header h3 {
+  margin: 5px 0 4px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 570;
+}
+
+.forge-workflow-header p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 10px;
+}
+
+.forge-workflow-seal {
+  flex: 0 0 auto;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 196, 125, 0.24);
+  border-radius: 999px;
+  color: #ffc47d;
+  font: 8px/1.2 var(--mono);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.forge-workflow-operations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.forge-workflow-operations button,
+.forge-workflow-actions button {
+  min-height: 34px;
+  border: 1px solid rgba(76, 218, 220, 0.16);
+  border-radius: 8px;
+  background: rgba(3, 28, 32, 0.66);
+  color: var(--text-soft);
+  font: 9px/1.2 var(--mono);
+  padding: 7px 10px;
+}
+
+.forge-workflow-operations button {
+  cursor: pointer;
+}
+
+.forge-workflow-operations button[aria-pressed="true"] {
+  border-color: rgba(255, 196, 125, 0.5);
+  color: #ffc47d;
+  background: rgba(66, 42, 18, 0.34);
+}
+
+.forge-workflow-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.forge-workflow-composer,
+.forge-workflow-packet {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid rgba(76, 218, 220, 0.11);
+  border-radius: 10px;
+  background: rgba(3, 24, 29, 0.42);
+}
+
+.forge-workflow-composer h4,
+.forge-workflow-packet h4 {
+  margin: 5px 0 8px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 560;
+}
+
+.forge-workflow-composer > p:not(.forge-workflow-status) {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.forge-workflow-route {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+
+.forge-workflow-route div {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.55fr) minmax(0, 1.45fr);
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(76, 218, 220, 0.08);
+}
+
+.forge-workflow-route dt {
+  color: var(--text-muted);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.forge-workflow-route dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--text-soft);
+  font: 8px/1.45 var(--mono);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.forge-workflow-route code {
+  color: var(--cyan);
+  font: inherit;
+}
+
+.forge-workflow-fields {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.forge-workflow-field {
+  display: grid;
+  gap: 5px;
+}
+
+.forge-workflow-field-label {
+  color: var(--text-muted);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.forge-workflow-field input {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid rgba(76, 218, 220, 0.15);
+  border-radius: 7px;
+  outline: none;
+  background: rgba(2, 17, 21, 0.72);
+  color: var(--text-soft);
+  font: 8px/1.35 var(--mono);
+  padding: 7px 9px;
+}
+
+.forge-workflow-field input:focus {
+  border-color: rgba(255, 196, 125, 0.44);
+  box-shadow: 0 0 0 2px rgba(255, 196, 125, 0.06);
+}
+
+.forge-workflow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.forge-workflow-actions button:first-child {
+  border-color: rgba(93, 242, 196, 0.28);
+  color: var(--green);
+  cursor: pointer;
+}
+
+.forge-workflow-actions button:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.forge-workflow-status {
+  margin: 10px 0 0;
+  color: #ffc47d;
+  font: 8px/1.45 var(--mono);
+}
+
+.forge-workflow-status[data-ready="true"] {
+  color: var(--green);
+}
+
+.forge-workflow-preview {
+  min-height: 260px;
+  max-height: 520px;
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: rgba(181, 214, 255, 0.92);
+  font: 8px/1.5 var(--mono);
+}
+
+.forge-workflow-boundary {
+  margin: 13px 0 0;
+  color: var(--text-muted);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.forge-workflow-boundary strong {
+  color: var(--text-soft);
+}
+
+@media (max-width: 980px) {
+  .forge-workflow-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .forge-workflow-header {
+    flex-direction: column;
+  }
+
+  .forge-workflow-route div {
+    grid-template-columns: 1fr;
+  }
+
+  .forge-workflow-route dd {
+    text-align: left;
+  }
+}
