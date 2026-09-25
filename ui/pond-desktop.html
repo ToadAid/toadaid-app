@@ -420,6 +420,72 @@
             <p class="forge-inspector-boundary"><strong>Inspector boundary:</strong> P5D renders identity, lineage, provenance, validation verdicts, and cryptographic commitments only. Raw source bodies, claim bodies, and exact support text remain hidden. Inspection grants no discovery, load, execution, mutation, or activation authority.</p>
           </section>
 
+          <section
+            class="forge-workflow-shell"
+            aria-labelledby="forge-workflow-heading"
+            data-forge-workflow
+            data-workflow-source="preview_only_not_live_mutation"
+            data-authority="knowledge_only"
+            data-execution-authority="none"
+            data-lifecycle-authority="external_required_not_established"
+          >
+            <header class="forge-workflow-header">
+              <div>
+                <span class="eyebrow">P5E · governed workflow console</span>
+                <h3 id="forge-workflow-heading">Lifecycle workbench</h3>
+                <p>Prepare evidence-bound workflow packets without executing lifecycle mutations.</p>
+              </div>
+              <span class="forge-workflow-seal">Preview only · authority external</span>
+            </header>
+
+            <div
+              class="forge-workflow-operations"
+              role="group"
+              aria-label="Knowledge Forge workflow operation"
+            >
+              <button type="button" data-workflow-operation="COMPILE" aria-pressed="true">Compile</button>
+              <button type="button" data-workflow-operation="VALIDATE" aria-pressed="false">Validate</button>
+              <button type="button" data-workflow-operation="PROMOTE" aria-pressed="false">Promote</button>
+              <button type="button" data-workflow-operation="DISPUTE" aria-pressed="false">Dispute</button>
+              <button type="button" data-workflow-operation="REVOKE" aria-pressed="false">Revoke</button>
+            </div>
+
+            <div class="forge-workflow-layout">
+              <article class="forge-workflow-composer">
+                <span class="eyebrow">Selected operation</span>
+                <h4 data-forge-workflow-operation-title>Compile</h4>
+                <p data-forge-workflow-note></p>
+
+                <dl class="forge-workflow-route">
+                  <div><dt>Selected skill</dt><dd><code data-forge-workflow-skill></code></dd></div>
+                  <div><dt>Allowed from</dt><dd data-forge-workflow-from></dd></div>
+                  <div><dt>Target state</dt><dd data-forge-workflow-target></dd></div>
+                </dl>
+
+                <div
+                  class="forge-workflow-fields"
+                  data-forge-workflow-fields
+                  aria-label="Required evidence preview fields"
+                ></div>
+
+                <div class="forge-workflow-actions">
+                  <button type="button" data-forge-workflow-build-preview>Build preview packet</button>
+                  <button type="button" disabled>Execute not included</button>
+                </div>
+
+                <p class="forge-workflow-status" data-forge-workflow-status></p>
+              </article>
+
+              <article class="forge-workflow-packet">
+                <span class="eyebrow">Deterministic handoff preview</span>
+                <h4>No mutation · no authority grant</h4>
+                <pre class="forge-workflow-preview" data-forge-workflow-preview></pre>
+              </article>
+            </div>
+
+            <p class="forge-workflow-boundary"><strong>Workflow boundary:</strong> this console prepares a local preview of required evidence only. Actor names and decision references are provenance labels, not authorization. No package compilation, lifecycle transition, registry write, persistence, signing, spend, deploy, push, Bridge/MCP call, Tauri invocation, or network request occurs here.</p>
+          </section>
+
           <p class="forge-library-truth-note"><strong>Library boundary:</strong> stopped-state skills may remain visible for operator inspection. Visibility is not discovery, loading, execution authority, or current-use eligibility. This P5C fixture contains no claim bodies and no source bodies.</p>
         </section>
 
@@ -752,6 +818,7 @@
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
+    <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
     <script type="module" src="pond-knowledge-forge.js"></script>
     <script type="module" src="pond-shell.js"></script>
