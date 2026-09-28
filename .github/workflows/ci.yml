@@ -74,6 +74,9 @@ jobs:
       - name: Verify Stage D-P5 local principal binding ceremony
         run: npm run test:stage-d-p5
 
+      - name: Verify Stage D-P6 local principal authentication observation
+        run: npm run test:stage-d-p6
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -146,6 +149,9 @@ jobs:
 
       - name: Verify Stage D-P5 local principal binding ceremony
         run: npm run test:stage-d-p5
+
+      - name: Verify Stage D-P6 local principal authentication observation
+        run: npm run test:stage-d-p6
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
