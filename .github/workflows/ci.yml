@@ -62,6 +62,9 @@ jobs:
       - name: Verify Stage D-P1 agents view fixture record
         run: npm run test:stage-d-p1
 
+      - name: Verify Stage D-P2 observation intake seam
+        run: npm run test:stage-d-p2
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -122,6 +125,9 @@ jobs:
 
       - name: Verify Stage D-P1 agents view fixture record
         run: npm run test:stage-d-p1
+
+      - name: Verify Stage D-P2 observation intake seam
+        run: npm run test:stage-d-p2
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
