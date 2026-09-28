@@ -59,6 +59,9 @@ jobs:
       - name: Verify Stage D-P0 agent presence projection
         run: npm run test:stage-d-p0
 
+      - name: Verify Stage D-P1 agents view fixture record
+        run: npm run test:stage-d-p1
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -116,6 +119,9 @@ jobs:
 
       - name: Verify Stage D-P0 agent presence projection
         run: npm run test:stage-d-p0
+
+      - name: Verify Stage D-P1 agents view fixture record
+        run: npm run test:stage-d-p1
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

@@ -798,6 +798,111 @@
           </section>
           <p class="cockpit-footnote">Fixture values only · current truth withheld (<span data-cockpit-value="deliveryAdmission.canonicalOutcome"></span>) · <span data-cockpit-value="authority"></span> authority.</p>
         </section>
+        <section
+          class="agents-view-panel"
+          aria-labelledby="agents-view-title"
+          data-agents-record-version="pond-stage-d-agents-record-d-p1"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D fixture projection</span>
+            <h3 id="agents-view-title">Agents view posture</h3>
+            <p>Fixture-rendered presentation only — no transport, no live observation, no authentication, no current truth.</p>
+          </header>
+          <section class="cockpit-section" aria-labelledby="agents-source-title">
+            <h4 id="agents-source-title">Trading-desk source binding</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Repository</dt><dd data-agents-value="sourceBinding.repository"></dd></div>
+              <div><dt>Bound source commit</dt><dd><code data-agents-value="sourceBinding.boundSourceCommit"></code></dd></div>
+              <div><dt>Binding state</dt><dd data-agents-value="sourceBinding.bindingState"></dd></div>
+              <div><dt>Source posture</dt><dd data-agents-value="sourceBinding.sourcePosture"></dd></div>
+              <div><dt>Live receiver verification</dt><dd data-agents-value="sourceBinding.liveSourceContractVerifiedByReceiver"></dd></div>
+              <div><dt>Records as live observation</dt><dd data-agents-value="sourceBinding.presenceRecordsAcceptedAsLiveObservation"></dd></div>
+            </dl>
+            <p class="cockpit-note">Read-only observed tools:</p>
+            <ul class="cockpit-tool-list" data-agents-list="observed-tools"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-principal-title">
+            <h4 id="agents-principal-title">Local principal binding</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Principal</dt><dd><code data-agents-value="principalBinding.principalRef"></code></dd></div>
+              <div><dt>Binding state</dt><dd data-agents-value="principalBinding.bindingState"></dd></div>
+              <div><dt>Authentication performed</dt><dd data-agents-value="principalBinding.authenticationPerformed"></dd></div>
+              <div><dt>Ceremony posture</dt><dd data-agents-value="principalBinding.ceremonyPosture"></dd></div>
+            </dl>
+            <p class="cockpit-note">Fixture projection only — Stage D stays blocked on real authentication and local principal binding.</p>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-agents-title">
+            <h4 id="agents-agents-title">Observed agents</h4>
+            <div class="agents-view-cards">
+              <article class="agent-card" data-agents-agent="0">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+                <p class="cockpit-note">Secret-free runtime facts (<span data-agents-value="sourceBinding.repository"></span>):</p>
+                <ul class="cockpit-tool-list" data-agents-facts></ul>
+              </article>
+              <article class="agent-card" data-agents-agent="1">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+              </article>
+              <article class="agent-card" data-agents-agent="2">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+              </article>
+            </div>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-admission-title">
+            <h4 id="agents-admission-title">Live-presence admission</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Admission</dt><dd data-agents-value="admission.admissionState"></dd></div>
+              <div><dt>Reason</dt><dd data-agents-value="admission.reason"></dd></div>
+              <div><dt>Presence as authentication</dt><dd data-agents-value="admission.observedPresenceAcceptedAsAuthentication"></dd></div>
+              <div><dt>Identity as PrincipalId</dt><dd data-agents-value="admission.observedIdentityAcceptedAsPrincipalId"></dd></div>
+              <div><dt>Personal memory admitted</dt><dd data-agents-value="admission.personalMemoryContentAdmitted"></dd></div>
+              <div><dt>Runtime activation</dt><dd data-agents-value="admission.runtimeActivationPosture"></dd></div>
+            </dl>
+            <p class="cockpit-note">Receiver-owned live-presence admission checks (state from the record, never inferred):</p>
+            <ul class="cockpit-checks" data-agents-list="presence-checks"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-denial-title">
+            <h4 id="agents-denial-title">Denial &amp; memory posture</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Renderer failure</dt><dd data-agents-value="denialPosture.rendererFailurePosture"></dd></div>
+              <div><dt>Fallback rendering</dt><dd data-agents-value="denialPosture.fallbackRenderingForbidden"></dd></div>
+              <div><dt>Live observation performed</dt><dd data-agents-value="denialPosture.liveObservationPerformed"></dd></div>
+              <div><dt>Desk journal lane</dt><dd data-agents-value="personalMemoryBoundary.deskJournalLaneAdmitted"></dd></div>
+              <div><dt>Desk memory lane</dt><dd data-agents-value="personalMemoryBoundary.deskMemoryLaneAdmitted"></dd></div>
+              <div><dt>Desk narrative lane</dt><dd data-agents-value="personalMemoryBoundary.deskNarrativeLaneAdmitted"></dd></div>
+              <div><dt>Desk transcript lane</dt><dd data-agents-value="personalMemoryBoundary.deskTranscriptLaneAdmitted"></dd></div>
+              <div><dt>Authority</dt><dd data-agents-value="denialPosture.authority"></dd></div>
+            </dl>
+          </section>
+          <p class="cockpit-footnote">Fixture values only · vocabulary bound, not the observation · <span data-agents-value="truthPosture"></span> · <span data-agents-value="authority"></span> authority.</p>
+        </section>
       </aside>
 
       <footer class="voice-dock" data-home-surface>
@@ -817,6 +922,7 @@
     <script type="module" src="pond-deed-lookup.js"></script>
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
+    <script type="module" src="pond-agents-view.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>

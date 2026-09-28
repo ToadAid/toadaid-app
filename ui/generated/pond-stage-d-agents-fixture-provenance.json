@@ -1,0 +1,33 @@
+{
+  "record": "src/agents/pond-stage-d-agents-record.ts",
+  "inputs": [
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/contracts/pond-agent-presence-source-binding.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-admission-d-p0",
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-binding-d-p1",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-stage-d-agents-record-d-p1"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Fixture-rendered presentation only; the record binds the canonical D-P0 observed-agent presence fixture and trading-desk source contract and admits no transport, live observation, authentication, mutation, or current truth."
+}
