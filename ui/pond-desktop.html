@@ -832,6 +832,12 @@
             </dl>
             <p class="cockpit-note">Fixture projection only — Stage D stays blocked on real authentication and local principal binding.</p>
           </section>
+          <section class="cockpit-section" aria-labelledby="agents-local-authentication-title" data-local-authentication>
+            <h4 id="agents-local-authentication-title">Local authentication — live shell observation</h4>
+            <p class="cockpit-note">Observation only — the shell records that it observed the local operator's authentication gesture. No credential requested, checked, or stored; no PrincipalId issued; no authority granted; Stage D stays blocked on the authentication mechanic and private-read activation.</p>
+            <button type="button" id="pond-local-authentication-gesture" data-local-authentication-gesture>Observe local authentication event</button>
+            <div data-local-authentication-status></div>
+          </section>
           <section class="cockpit-section" aria-labelledby="agents-agents-title">
             <h4 id="agents-agents-title">Observed agents</h4>
             <div class="agents-view-cards">
@@ -923,6 +929,7 @@
     <script type="module" src="pond-wallet-connect.js"></script>
     <script type="module" src="pond-stage-c-cockpit.js"></script>
     <script type="module" src="pond-agents-view.js"></script>
+    <script type="module" src="pond-local-authentication.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>

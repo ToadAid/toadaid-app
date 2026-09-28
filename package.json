@@ -20,6 +20,7 @@
     "test:stage-d-p4": "node scripts/pond-agent-presence-live-observation-admission-selftest.mjs",
     "test:stage-d-p5": "node scripts/pond-local-principal-binding-selftest.mjs",
     "test:stage-d-p6": "node scripts/pond-local-principal-authentication-observation-selftest.mjs",
+    "test:stage-d-p7": "node scripts/pond-stage-d-p7-shell-wiring-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
@@ -30,7 +31,8 @@
     "world:vendor": "node scripts/vendor-three.mjs",
     "wallet:vendor": "node scripts/vendor-walletconnect.mjs",
     "stage-c:render-cockpit": "node scripts/render-stage-c-cockpit-fixture.mjs",
-    "stage-d:render-agents": "node scripts/render-stage-d-agents-fixture.mjs"
+    "stage-d:render-agents": "node scripts/render-stage-d-agents-fixture.mjs",
+    "stage-d:render-local-authentication": "node scripts/render-stage-d-local-authentication.mjs"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4",
