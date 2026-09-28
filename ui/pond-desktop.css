@@ -787,6 +787,26 @@ textarea:focus-visible,
 
 .cockpit-footnote { margin: 10px 0 0; color: var(--text-muted); font-family: var(--mono); font-size: 6.5px; letter-spacing: 0.05em; }
 
+.agents-view-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(141, 247, 157, 0.18);
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(9, 46, 42, 0.26), rgba(2, 15, 18, 0.5));
+}
+
+.agents-view-panel > header p { margin: 6px 0 0; color: var(--gold); font-size: 7px; line-height: 1.45; }
+.agents-view-panel h3 { margin: 4px 0 0; color: var(--text); font-size: 13px; font-weight: 600; }
+.agents-view-panel h4 { margin: 0; color: var(--cyan); font-family: var(--mono); font-size: 8px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.agents-view-panel[data-render-posture="fail_closed"] { border-color: rgba(215, 189, 98, 0.4); }
+.agents-view-panel[data-render-posture="fail_closed"] [data-agents-value] { color: var(--gold); }
+
+.agents-view-cards { display: grid; gap: 8px; margin: 8px 0 0; }
+.agent-card { padding: 9px 10px; border: 1px solid rgba(141, 247, 157, 0.1); border-left-width: 2px; border-left-color: rgba(141, 247, 157, 0.6); border-radius: 5px; background: rgba(2, 15, 18, 0.5); }
+.agent-card header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.agent-card header strong { color: var(--text); font-size: 8px; }
+.agent-card-kicker { color: var(--text-muted); font-family: var(--mono); font-size: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+
 .world-stage {
   position: relative;
   z-index: 14;
