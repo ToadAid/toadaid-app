@@ -19,6 +19,7 @@
     "test:stage-d-p3": "node scripts/pond-agent-presence-channel-establishment-selftest.mjs",
     "test:stage-d-p4": "node scripts/pond-agent-presence-live-observation-admission-selftest.mjs",
     "test:stage-d-p5": "node scripts/pond-local-principal-binding-selftest.mjs",
+    "test:stage-d-p6": "node scripts/pond-local-principal-authentication-observation-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
