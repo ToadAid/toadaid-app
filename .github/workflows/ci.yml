@@ -56,6 +56,9 @@ jobs:
       - name: Verify Stage B2-P4B-P22 deed detail policy
         run: npm run test:stage-b2-p4b-p22
 
+      - name: Verify Stage D-P0 agent presence projection
+        run: npm run test:stage-d-p0
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -110,6 +113,9 @@ jobs:
 
       - name: Verify Stage B2-P4B-P22 deed detail policy
         run: npm run test:stage-b2-p4b-p22
+
+      - name: Verify Stage D-P0 agent presence projection
+        run: npm run test:stage-d-p0
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

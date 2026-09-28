@@ -274,6 +274,7 @@ Stage C completion posture: the first read-only truth slice is complete as gover
 
 ## Stage D — Identity-bound personal and collaborative reads — BLOCKED
 
+- **D-P0 — COMPLETE:** establish the identity-bound observed-agent read vocabulary and the first observed-agent presence projection with the locally running trading-desk Agent0 as the first fixture-observed agent — one frozen deterministic contract plus fixture and selftest record its secret-free runtime facts, Telegram transport observation, and ERC-8004 identity-claim status vocabulary as evidence-only observation — while the local principal binding stays `not_established`, observed agent identity, transport, wallet address, and onchain ERC-8004 evidence never become a PrincipalId, membership, admission, or authority, desk journal/memory/narrative lanes are structurally excluded from presence records, all eight receiver-owned live-presence admission checks remain unsatisfied, and live observation, transport, authentication, and UI presentation stay `Activation: NOT_INCLUDED` so Stage D remains blocked on real authentication and local principal binding;
 - real authentication and local principal binding before private or multi-principal live state;
 - authentication is not membership or authority;
 - read-only Living Agent presence;
