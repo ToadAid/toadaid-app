@@ -68,6 +68,9 @@ jobs:
       - name: Verify Stage D-P3 channel establishment ceremony
         run: npm run test:stage-d-p3
 
+      - name: Verify Stage D-P4 live observation admission
+        run: npm run test:stage-d-p4
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -134,6 +137,9 @@ jobs:
 
       - name: Verify Stage D-P3 channel establishment ceremony
         run: npm run test:stage-d-p3
+
+      - name: Verify Stage D-P4 live observation admission
+        run: npm run test:stage-d-p4
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
