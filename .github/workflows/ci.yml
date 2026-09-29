@@ -98,6 +98,9 @@ jobs:
       - name: Verify Stage D-P13 declared-mode advisory routing posture
         run: npm run test:stage-d-p13
 
+      - name: Verify Stage D-P14 collaborative structural-read gate
+        run: npm run test:stage-d-p14
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -194,6 +197,9 @@ jobs:
 
       - name: Verify Stage D-P13 declared-mode advisory routing posture
         run: npm run test:stage-d-p13
+
+      - name: Verify Stage D-P14 collaborative structural-read gate
+        run: npm run test:stage-d-p14
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
