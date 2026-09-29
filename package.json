@@ -22,6 +22,7 @@
     "test:stage-d-p6": "node scripts/pond-local-principal-authentication-observation-selftest.mjs",
     "test:stage-d-p7": "node scripts/pond-stage-d-p7-shell-wiring-selftest.mjs",
     "test:stage-d-p8": "node scripts/pond-local-authentication-mechanic-selftest.mjs",
+    "test:stage-d-p9": "node scripts/pond-principal-id-issuance-erc8004-mapping-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
