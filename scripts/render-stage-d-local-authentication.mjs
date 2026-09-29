@@ -1,9 +1,10 @@
 // Render ceremony for the Stage D-P7 live shell local authentication
-// surface. Bundles the frozen D-P6 authentication-observation performer
-// classifier, the D-P0 receiver-held principal ref, and the D-P2
-// declared-maximum-age constant into one committed ESM file under
-// ui/generated/, and writes a deterministic provenance stamp. Mirrors
-// scripts/render-stage-d-agents-fixture.mjs: argument-free,
+// surface and the Stage D-P8 real mechanic. Bundles the frozen D-P6
+// authentication-observation performer classifier, the D-P8
+// knowledge-factor mechanic classifiers, the D-P0 receiver-held principal
+// ref, and the D-P2 declared-maximum-age constant into one committed ESM
+// file under ui/generated/, and writes a deterministic provenance stamp.
+// Mirrors scripts/render-stage-d-agents-fixture.mjs: argument-free,
 // repository-root-relative, the produced artifacts are committed directly —
 // CI does not run this script (pass --check to byte-verify the committed
 // artifacts against a rebuild).
@@ -29,9 +30,13 @@ const buildOptions = {
   stdin: {
     contents:
       'import { assessPondLocalPrincipalAuthenticationObservation } from "./src/contracts/pond-local-principal-authentication-observation.js";\n' +
+      'import {\n' +
+      '  assessPondLocalAuthenticationChallengeProof,\n' +
+      '  assessPondLocalAuthenticationVerifierRecord,\n' +
+      "} from \"./src/contracts/pond-local-authentication-mechanic.js\";\n" +
       'import { stageDP0LocalPrincipalRef } from "./src/fixtures/stage-d-p0-agent-presence.js";\n' +
       'import { POND_STAGE_DP2_FIXTURE_MAXIMUM_AGE_MS } from "./src/contracts/pond-agent-presence-observation-intake.js";\n' +
-      "export { assessPondLocalPrincipalAuthenticationObservation, stageDP0LocalPrincipalRef, POND_STAGE_DP2_FIXTURE_MAXIMUM_AGE_MS };\n",
+      "export { assessPondLocalPrincipalAuthenticationObservation, assessPondLocalAuthenticationChallengeProof, assessPondLocalAuthenticationVerifierRecord, stageDP0LocalPrincipalRef, POND_STAGE_DP2_FIXTURE_MAXIMUM_AGE_MS };\n",
     resolveDir: repositoryRoot,
     sourcefile: "pond-stage-d-local-authentication-entry.ts",
   },
@@ -79,12 +84,13 @@ const contractVersions = [
 ].sort();
 
 const provenance = {
-  record: "src/contracts/pond-local-principal-authentication-observation.ts",
+  record: "src/contracts/pond-local-authentication-mechanic.ts",
   inputs: [
+    "src/contracts/pond-local-principal-authentication-observation.ts",
     "src/fixtures/stage-d-p0-agent-presence.ts",
     "src/contracts/pond-agent-presence-observation-intake.ts",
   ],
-  renderedStages: ["D-P0", "D-P2", "D-P6"],
+  renderedStages: ["D-P0", "D-P2", "D-P6", "D-P8"],
   contractVersions,
   bundler: { name: "esbuild", version: esbuildPackage.version },
   build: {
@@ -98,10 +104,12 @@ const provenance = {
   mutationPosture: "none_read_only",
   runtimeActivationPosture: "not_included",
   note:
-    "Live shell observation support only; the bundle carries the frozen " +
-    "D-P6 performer classifier, the receiver-held D-P0 principal ref, and " +
-    "the D-P2 declared maximum age, and performs no authentication, admits " +
-    "no credential, issues no PrincipalId, and grants no authority.",
+    "Live shell observation and real local authentication mechanic support " +
+    "only; the bundle carries the frozen D-P6 performer classifier, the " +
+    "D-P8 knowledge-factor mechanic classifiers, the receiver-held D-P0 " +
+    "principal ref, and the D-P2 declared maximum age, and performs no " +
+    "persistence, stores no secret material, issues no PrincipalId, and " +
+    "grants no authority.",
 };
 const provenanceText = JSON.stringify(provenance, null, 2) + "\n";
 

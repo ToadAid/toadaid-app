@@ -211,6 +211,313 @@ function assessPondLocalPrincipalAuthenticationObservation(input) {
 }
 __name(assessPondLocalPrincipalAuthenticationObservation, "assessPondLocalPrincipalAuthenticationObservation");
 
+// src/contracts/pond-local-authentication-mechanic.ts
+var POND_STAGE_DP8_FORBIDDEN_MECHANIC_KEYS = Object.freeze([
+  "PrincipalId",
+  "principalId",
+  "journal",
+  "memory",
+  "narrative",
+  "transcript",
+  "conversation",
+  "endpoint",
+  "transport",
+  "connect",
+  "fetch",
+  "poll",
+  "subscribe",
+  "secret",
+  "token",
+  "apiKey",
+  "password",
+  "passphrase",
+  "session",
+  "wallet",
+  "address",
+  "credential",
+  "plaintext",
+  "answer"
+]);
+var verifierChecks = Object.freeze([
+  "verifier_well_formed",
+  "verifier_bound_to_receiver_held_principal",
+  "verifier_secret_free",
+  "verifier_excludes_memory_and_lane_content",
+  "verifier_grants_no_authority"
+]);
+var challengeChecks = Object.freeze([
+  "mechanic_class_receiver_owned",
+  "challenge_bound_to_receiver_held_principal",
+  "verifier_binding_exact_match",
+  "comparison_recomputed",
+  "comparison_fresh",
+  "proof_excludes_memory_and_lane_content",
+  "challenge_grants_no_authority"
+]);
+var isSha256DigestHex = /* @__PURE__ */ __name((value) => typeof value === "string" && /^[0-9a-f]{64}$/.test(value), "isSha256DigestHex");
+var isSaltHex = /* @__PURE__ */ __name((value) => typeof value === "string" && value.length >= 32 && value.length % 2 === 0 && /^[0-9a-f]+$/.test(value), "isSaltHex");
+var isWellFormedPrincipalRef = /* @__PURE__ */ __name((value) => typeof value === "string" && value.startsWith("principal:") && value.length > "principal:".length, "isWellFormedPrincipalRef");
+var record2 = /* @__PURE__ */ __name((value) => value !== null && typeof value === "object" ? value : null, "record");
+var exactArray2 = /* @__PURE__ */ __name((value, expected) => Array.isArray(value) && value.length === expected.length && value.every((entry, index) => entry === expected[index]), "exactArray");
+var exactKeys2 = /* @__PURE__ */ __name((value, expected) => exactArray2(Object.keys(value).sort(), [...expected].sort()), "exactKeys");
+var hasForbiddenKey2 = /* @__PURE__ */ __name((value, forbidden) => {
+  const stack = [value];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    if (Array.isArray(current)) {
+      stack.push(...current);
+      continue;
+    }
+    const currentRecord = record2(current);
+    if (currentRecord === null) continue;
+    for (const key of Object.keys(currentRecord)) {
+      if (forbidden.includes(key)) return true;
+      stack.push(currentRecord[key]);
+    }
+  }
+  return false;
+}, "hasForbiddenKey");
+var safeNonNegativeInteger2 = /* @__PURE__ */ __name((value) => typeof value === "number" && Number.isSafeInteger(value) && value >= 0, "safeNonNegativeInteger");
+var diagnoseFreshness2 = /* @__PURE__ */ __name((metadata, evaluatedAtEpochMs, maximumAgeMs) => {
+  const checked = record2(metadata);
+  if (checked === null || !safeNonNegativeInteger2(checked.observed_at_epoch_ms) || checked.freshness_basis !== "source_observation_time_only" || checked.currentness_posture !== "not_established_consumer_must_evaluate")
+    return Object.freeze({
+      state: "unknown",
+      reason: "observation_metadata_missing_or_invalid",
+      observationAgeMs: null
+    });
+  if (!safeNonNegativeInteger2(evaluatedAtEpochMs))
+    return Object.freeze({
+      state: "unknown",
+      reason: "evaluation_time_invalid",
+      observationAgeMs: null
+    });
+  if (!safeNonNegativeInteger2(maximumAgeMs))
+    return Object.freeze({
+      state: "unknown",
+      reason: "maximum_age_invalid",
+      observationAgeMs: null
+    });
+  const comparisonAt = checked.observed_at_epoch_ms;
+  if (comparisonAt > evaluatedAtEpochMs)
+    return Object.freeze({
+      state: "unknown",
+      reason: "observation_time_in_future",
+      observationAgeMs: null
+    });
+  const age = evaluatedAtEpochMs - comparisonAt;
+  return Object.freeze(
+    age <= maximumAgeMs ? {
+      state: "fresh",
+      reason: "within_declared_maximum_age",
+      observationAgeMs: age
+    } : {
+      state: "stale",
+      reason: "declared_maximum_age_expired",
+      observationAgeMs: age
+    }
+  );
+}, "diagnoseFreshness");
+var validVerifierBinding = /* @__PURE__ */ __name((value) => {
+  const binding = record2(value);
+  return binding !== null && exactKeys2(binding, ["algorithm", "saltHex", "verifierDigestHex"]) && binding.algorithm === "sha256" && isSaltHex(binding.saltHex) && isSha256DigestHex(binding.verifierDigestHex);
+}, "validVerifierBinding");
+var validChallengeDigestBinding = /* @__PURE__ */ __name((value) => {
+  const binding = record2(value);
+  return binding !== null && exactKeys2(binding, [
+    "algorithm",
+    "saltHex",
+    "verifierDigestHex",
+    "responseDigestHex"
+  ]) && binding.algorithm === "sha256" && isSaltHex(binding.saltHex) && isSha256DigestHex(binding.verifierDigestHex) && isSha256DigestHex(binding.responseDigestHex);
+}, "validChallengeDigestBinding");
+var validVerifierRecord = /* @__PURE__ */ __name((value) => {
+  const verifier = record2(value);
+  if (verifier === null || !exactKeys2(verifier, [
+    "contractVersion",
+    "kind",
+    "principalRef",
+    "mechanicClass",
+    "verifierBinding",
+    "secretFreeInventoryPosture",
+    "memoryLaneExclusionPosture",
+    "authorityPosture",
+    "revocabilityPosture",
+    "authority"
+  ]) || verifier.contractVersion !== "pond-local-authentication-mechanic-d-p8" || verifier.kind !== "pond-local-authentication-verifier" || !isWellFormedPrincipalRef(verifier.principalRef) || verifier.mechanicClass !== "local_knowledge_factor_challenge_response" || !validVerifierBinding(verifier.verifierBinding) || verifier.secretFreeInventoryPosture !== "verifier_digest_only_no_secret_material" || verifier.memoryLaneExclusionPosture !== "binding_excludes_memory_narrative_transcript_lanes" || verifier.authorityPosture !== "verifier_grants_no_authority_membership_or_capability" || verifier.revocabilityPosture !== "verifier_revocable_by_re_enrollment" || verifier.authority !== "none" || hasForbiddenKey2(verifier, POND_STAGE_DP8_FORBIDDEN_MECHANIC_KEYS))
+    return false;
+  return true;
+}, "validVerifierRecord");
+var validComparisonMetadata = /* @__PURE__ */ __name((value) => {
+  const metadata = record2(value);
+  return metadata !== null && exactKeys2(metadata, [
+    "observed_at_epoch_ms",
+    "freshness_basis",
+    "currentness_posture"
+  ]) && safeNonNegativeInteger2(metadata.observed_at_epoch_ms) && metadata.freshness_basis === "source_observation_time_only" && metadata.currentness_posture === "not_established_consumer_must_evaluate";
+}, "validComparisonMetadata");
+var validProofRecord = /* @__PURE__ */ __name((value) => {
+  const proof = record2(value);
+  if (proof === null || !exactKeys2(proof, [
+    "contractVersion",
+    "kind",
+    "principalRef",
+    "mechanicClass",
+    "challengeDigestBinding",
+    "comparison",
+    "comparisonMetadata",
+    "secretFreeInventoryPosture",
+    "memoryLaneExclusionPosture",
+    "authorityPosture",
+    "authority"
+  ]) || proof.contractVersion !== "pond-local-authentication-mechanic-d-p8" || proof.kind !== "pond-local-authentication-challenge-proof" || !isWellFormedPrincipalRef(proof.principalRef) || proof.mechanicClass !== "local_knowledge_factor_challenge_response" || !validChallengeDigestBinding(proof.challengeDigestBinding) || ![
+    "not_compared",
+    "exact_digest_match",
+    "digest_mismatch"
+  ].includes(String(proof.comparison)) || !validComparisonMetadata(proof.comparisonMetadata) || proof.secretFreeInventoryPosture !== "response_digest_only_no_secret_material" || proof.memoryLaneExclusionPosture !== "proof_excludes_memory_narrative_transcript_lanes" || proof.authorityPosture !== "challenge_grants_no_authority_membership_or_capability" || proof.authority !== "none" || hasForbiddenKey2(proof, POND_STAGE_DP8_FORBIDDEN_MECHANIC_KEYS))
+    return false;
+  return true;
+}, "validProofRecord");
+var recognizedComparison = /* @__PURE__ */ __name((value) => [
+  "not_compared",
+  "exact_digest_match",
+  "digest_mismatch"
+].includes(String(value)) ? value : "not_compared", "recognizedComparison");
+var verifierAssessment = /* @__PURE__ */ __name((reason, verifierRecordVersion, secretFreeInventoryPosture, revocabilityPosture, satisfiedChecks, unsatisfiedChecks) => Object.freeze({
+  contractVersion: "pond-local-authentication-mechanic-d-p8",
+  verifierRecordVersion,
+  assessmentKind: "deterministic_supplier_verifier_record",
+  verifierState: reason === "verifier_enrolled" ? "receiver_enrolled_knowledge_verifier" : "not_established",
+  reason,
+  secretFreeInventoryPosture,
+  revocabilityPosture,
+  satisfiedChecks: Object.freeze([...satisfiedChecks]),
+  unsatisfiedChecks: Object.freeze([...unsatisfiedChecks]),
+  credentialAdmitted: false,
+  observedPresenceAcceptedAsAuthentication: false,
+  observedIdentityAcceptedAsPrincipalId: false,
+  principalIdIssued: false,
+  personalMemoryContentAdmitted: false,
+  currentTruthAdmitted: false,
+  runtimeActivationPosture: "not_included",
+  authority: "none"
+}), "verifierAssessment");
+function assessPondLocalAuthenticationVerifierRecord(input) {
+  if (!validVerifierRecord(input.verifierRecord)) {
+    return verifierAssessment(
+      "verifier_record_invalid",
+      "invalid",
+      "not_established",
+      "not_established",
+      [],
+      verifierChecks
+    );
+  }
+  const verifier = input.verifierRecord;
+  const bound = isWellFormedPrincipalRef(input.receiverHeldPrincipalRef) && verifier.principalRef === input.receiverHeldPrincipalRef;
+  const values = [
+    verifier.mechanicClass === "local_knowledge_factor_challenge_response",
+    bound,
+    verifier.secretFreeInventoryPosture === "verifier_digest_only_no_secret_material",
+    verifier.memoryLaneExclusionPosture === "binding_excludes_memory_narrative_transcript_lanes",
+    verifier.authorityPosture === "verifier_grants_no_authority_membership_or_capability"
+  ];
+  const satisfied = verifierChecks.filter((_, index) => values[index]);
+  const unsatisfied = verifierChecks.filter((_, index) => !values[index]);
+  return verifierAssessment(
+    bound ? "verifier_enrolled" : "receiver_held_principal_not_bound",
+    "pond-local-authentication-mechanic-d-p8",
+    bound ? "verifier_digest_only_no_secret_material" : "not_established",
+    bound ? "verifier_revocable_by_re_enrollment" : "not_established",
+    satisfied,
+    unsatisfied
+  );
+}
+__name(assessPondLocalAuthenticationVerifierRecord, "assessPondLocalAuthenticationVerifierRecord");
+var challengeAssessment = /* @__PURE__ */ __name((reason, proofRecordVersion, verifierRecordVersion, comparison, recomputedComparison, freshnessDiagnosis, satisfiedChecks, unsatisfiedChecks) => {
+  const allSatisfied = unsatisfiedChecks.length === 0;
+  return Object.freeze({
+    contractVersion: "pond-local-authentication-mechanic-d-p8",
+    proofRecordVersion,
+    verifierRecordVersion,
+    assessmentKind: "deterministic_supplied_challenge_round",
+    authenticationMechanicState: allSatisfied ? "receiver_verified_knowledge_factor" : "not_verified",
+    reason,
+    comparison,
+    recomputedComparison,
+    freshnessDiagnosis,
+    authenticationPosture: allSatisfied ? "receiver_verified_local_knowledge_factor" : "not_established",
+    satisfiedChecks: Object.freeze([...satisfiedChecks]),
+    unsatisfiedChecks: Object.freeze([...unsatisfiedChecks]),
+    credentialAdmitted: false,
+    observedPresenceAcceptedAsAuthentication: false,
+    observedIdentityAcceptedAsPrincipalId: false,
+    principalIdIssued: false,
+    personalMemoryContentAdmitted: false,
+    currentTruthAdmitted: false,
+    runtimeActivationPosture: "not_included",
+    authority: "none"
+  });
+}, "challengeAssessment");
+function assessPondLocalAuthenticationChallengeProof(input) {
+  const verifierIsValid = validVerifierRecord(input.verifierRecord);
+  const proofIsValid = validProofRecord(input.proofRecord);
+  const proofRecordVersion = proofIsValid ? "pond-local-authentication-mechanic-d-p8" : "invalid";
+  const verifierRecordVersion = verifierIsValid ? "pond-local-authentication-mechanic-d-p8" : "invalid";
+  const fallbackDiagnosis = diagnoseFreshness2(
+    record2(input.proofRecord)?.comparisonMetadata,
+    input.evaluatedAtEpochMs,
+    input.maximumAgeMs
+  );
+  if (!verifierIsValid || !proofIsValid) {
+    return challengeAssessment(
+      !verifierIsValid ? "verifier_record_invalid" : "proof_record_invalid",
+      proofRecordVersion,
+      verifierRecordVersion,
+      proofIsValid ? recognizedComparison(record2(input.proofRecord)?.comparison) : "not_compared",
+      "not_compared",
+      fallbackDiagnosis,
+      [],
+      challengeChecks
+    );
+  }
+  const proof = input.proofRecord;
+  const proofBinding = proof.challengeDigestBinding;
+  const verifier = input.verifierRecord;
+  const verifierBinding = verifier.verifierBinding;
+  const comparison = proof.comparison;
+  const freshnessDiagnosis = diagnoseFreshness2(
+    proof.comparisonMetadata,
+    input.evaluatedAtEpochMs,
+    input.maximumAgeMs
+  );
+  const digestMatch = proofBinding.responseDigestHex === verifierBinding.verifierDigestHex;
+  const recomputedComparison = digestMatch ? "exact_digest_match" : "digest_mismatch";
+  const claimedComparisonAgrees = comparison === recomputedComparison && digestMatch;
+  const values = [
+    proof.mechanicClass === "local_knowledge_factor_challenge_response",
+    isWellFormedPrincipalRef(input.receiverHeldPrincipalRef) && proof.principalRef === input.receiverHeldPrincipalRef,
+    proofBinding.saltHex === verifierBinding.saltHex && proofBinding.verifierDigestHex === verifierBinding.verifierDigestHex && verifier.principalRef === proof.principalRef,
+    claimedComparisonAgrees,
+    freshnessDiagnosis.state === "fresh",
+    proof.memoryLaneExclusionPosture === "proof_excludes_memory_narrative_transcript_lanes",
+    proof.authorityPosture === "challenge_grants_no_authority_membership_or_capability"
+  ];
+  const satisfied = challengeChecks.filter((_, index) => values[index]);
+  const unsatisfied = challengeChecks.filter((_, index) => !values[index]);
+  return challengeAssessment(
+    unsatisfied.length === 0 ? "all_challenge_checks_satisfied" : "receiver_challenge_proof_incomplete",
+    proofRecordVersion,
+    verifierRecordVersion,
+    comparison,
+    recomputedComparison,
+    freshnessDiagnosis,
+    satisfied,
+    unsatisfied
+  );
+}
+__name(assessPondLocalAuthenticationChallengeProof, "assessPondLocalAuthenticationChallengeProof");
+
 // src/fixtures/stage-d-p0-agent-presence.ts
 var asPrincipalRef = /* @__PURE__ */ __name((value) => value, "asPrincipalRef");
 var stageDP0LocalPrincipalRef = asPrincipalRef("principal:fixture:stage-d-p0:local-principal");
@@ -407,6 +714,8 @@ var unknownDiagnosis = Object.freeze({
 });
 export {
   POND_STAGE_DP2_FIXTURE_MAXIMUM_AGE_MS,
+  assessPondLocalAuthenticationChallengeProof,
+  assessPondLocalAuthenticationVerifierRecord,
   assessPondLocalPrincipalAuthenticationObservation,
   stageDP0LocalPrincipalRef
 };
