@@ -80,6 +80,9 @@ jobs:
       - name: Verify Stage D-P7 shell wiring
         run: npm run test:stage-d-p7
 
+      - name: Verify Stage D-P8 local authentication mechanic
+        run: npm run test:stage-d-p8
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -158,6 +161,9 @@ jobs:
 
       - name: Verify Stage D-P7 shell wiring
         run: npm run test:stage-d-p7
+
+      - name: Verify Stage D-P8 local authentication mechanic
+        run: npm run test:stage-d-p8
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

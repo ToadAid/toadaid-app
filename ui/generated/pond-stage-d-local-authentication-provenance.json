@@ -1,17 +1,20 @@
 {
-  "record": "src/contracts/pond-local-principal-authentication-observation.ts",
+  "record": "src/contracts/pond-local-authentication-mechanic.ts",
   "inputs": [
+    "src/contracts/pond-local-principal-authentication-observation.ts",
     "src/fixtures/stage-d-p0-agent-presence.ts",
     "src/contracts/pond-agent-presence-observation-intake.ts"
   ],
   "renderedStages": [
     "D-P0",
     "D-P2",
-    "D-P6"
+    "D-P6",
+    "D-P8"
   ],
   "contractVersions": [
     "pond-agent-presence-projection-d-p0",
     "pond-agent-presence-source-contract-d-p0",
+    "pond-local-authentication-mechanic-d-p8",
     "pond-local-principal-authentication-observation-d-p6"
   ],
   "bundler": {
@@ -28,5 +31,5 @@
   "authority": "none",
   "mutationPosture": "none_read_only",
   "runtimeActivationPosture": "not_included",
-  "note": "Live shell observation support only; the bundle carries the frozen D-P6 performer classifier, the receiver-held D-P0 principal ref, and the D-P2 declared maximum age, and performs no authentication, admits no credential, issues no PrincipalId, and grants no authority."
+  "note": "Live shell observation and real local authentication mechanic support only; the bundle carries the frozen D-P6 performer classifier, the D-P8 knowledge-factor mechanic classifiers, the receiver-held D-P0 principal ref, and the D-P2 declared maximum age, and performs no persistence, stores no secret material, issues no PrincipalId, and grants no authority."
 }

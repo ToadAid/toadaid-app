@@ -835,6 +835,12 @@
           <section class="cockpit-section" aria-labelledby="agents-local-authentication-title" data-local-authentication>
             <h4 id="agents-local-authentication-title">Local authentication — live shell observation</h4>
             <p class="cockpit-note">Observation only — the shell records that it observed the local operator's authentication gesture. No credential requested, checked, or stored; no PrincipalId issued; no authority granted; Stage D stays blocked on the authentication mechanic and private-read activation.</p>
+            <p class="cockpit-note">Local knowledge-factor mechanic (Stage D-P8): enroll a local verifier to turn the gesture into a real challenge-response. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest is held, in module scope for this shell session, never stored or transported. Proving control of the knowledge factor is not authorization: no PrincipalId is issued and no authority is granted.</p>
+            <div class="local-authentication-enrollment">
+              <label for="pond-local-authentication-secret">Local authentication value</label>
+              <input type="password" id="pond-local-authentication-secret" data-local-authentication-secret autocomplete="off">
+              <button type="button" data-local-authentication-enroll>Enroll local verifier</button>
+            </div>
             <button type="button" id="pond-local-authentication-gesture" data-local-authentication-gesture>Observe local authentication event</button>
             <div data-local-authentication-status></div>
           </section>
