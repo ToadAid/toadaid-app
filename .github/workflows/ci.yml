@@ -95,6 +95,9 @@ jobs:
       - name: Verify Stage D-P12 knowledge-forge surface binding and declared operational mode
         run: npm run test:stage-d-p12
 
+      - name: Verify Stage D-P13 declared-mode advisory routing posture
+        run: npm run test:stage-d-p13
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -188,6 +191,9 @@ jobs:
 
       - name: Verify Stage D-P12 knowledge-forge surface binding and declared operational mode
         run: npm run test:stage-d-p12
+
+      - name: Verify Stage D-P13 declared-mode advisory routing posture
+        run: npm run test:stage-d-p13
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
