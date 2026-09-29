@@ -92,6 +92,9 @@ jobs:
       - name: Verify Stage D-P11 ERC-8004 onchain identity verification (offline structural)
         run: npm run test:stage-d-p11
 
+      - name: Verify Stage D-P12 knowledge-forge surface binding and declared operational mode
+        run: npm run test:stage-d-p12
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -182,6 +185,9 @@ jobs:
 
       - name: Verify Stage D-P11 ERC-8004 onchain identity verification (offline structural)
         run: npm run test:stage-d-p11
+
+      - name: Verify Stage D-P12 knowledge-forge surface binding and declared operational mode
+        run: npm run test:stage-d-p12
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
