@@ -1,0 +1,32 @@
+{
+  "record": "src/contracts/pond-local-principal-authentication-observation.ts",
+  "inputs": [
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P2",
+    "D-P6"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-local-principal-authentication-observation-d-p6"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Live shell observation support only; the bundle carries the frozen D-P6 performer classifier, the receiver-held D-P0 principal ref, and the D-P2 declared maximum age, and performs no authentication, admits no credential, issues no PrincipalId, and grants no authority."
+}
