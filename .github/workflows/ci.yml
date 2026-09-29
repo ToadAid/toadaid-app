@@ -86,6 +86,9 @@ jobs:
       - name: Verify Stage D-P9 PrincipalId issuance and ERC-8004 identity mapping
         run: npm run test:stage-d-p9
 
+      - name: Verify Stage D-P10 private-read activation
+        run: npm run test:stage-d-p10
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -170,6 +173,9 @@ jobs:
 
       - name: Verify Stage D-P9 PrincipalId issuance and ERC-8004 identity mapping
         run: npm run test:stage-d-p9
+
+      - name: Verify Stage D-P10 private-read activation
+        run: npm run test:stage-d-p10
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
