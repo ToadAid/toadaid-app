@@ -89,6 +89,9 @@ jobs:
       - name: Verify Stage D-P10 private-read activation
         run: npm run test:stage-d-p10
 
+      - name: Verify Stage D-P11 ERC-8004 onchain identity verification (offline structural)
+        run: npm run test:stage-d-p11
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -176,6 +179,9 @@ jobs:
 
       - name: Verify Stage D-P10 private-read activation
         run: npm run test:stage-d-p10
+
+      - name: Verify Stage D-P11 ERC-8004 onchain identity verification (offline structural)
+        run: npm run test:stage-d-p11
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

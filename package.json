@@ -24,6 +24,7 @@
     "test:stage-d-p8": "node scripts/pond-local-authentication-mechanic-selftest.mjs",
     "test:stage-d-p9": "node scripts/pond-principal-id-issuance-erc8004-mapping-selftest.mjs",
     "test:stage-d-p10": "node scripts/pond-private-read-activation-selftest.mjs",
+    "test:stage-d-p11": "node scripts/pond-erc8004-identity-verification-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
@@ -35,7 +36,8 @@
     "wallet:vendor": "node scripts/vendor-walletconnect.mjs",
     "stage-c:render-cockpit": "node scripts/render-stage-c-cockpit-fixture.mjs",
     "stage-d:render-agents": "node scripts/render-stage-d-agents-fixture.mjs",
-    "stage-d:render-local-authentication": "node scripts/render-stage-d-local-authentication.mjs"
+    "stage-d:render-local-authentication": "node scripts/render-stage-d-local-authentication.mjs",
+    "stage-d:observe-erc8004": "node scripts/pond-erc8004-identity-observation-live.mjs"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4",
