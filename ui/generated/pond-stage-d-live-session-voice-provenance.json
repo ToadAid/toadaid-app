@@ -1,0 +1,59 @@
+{
+  "record": "src/contracts/pond-voice-input-request-decision.ts",
+  "inputs": [
+    "src/contracts/pond-voice-transcription-provider-decision.ts",
+    "src/contracts/pond-claimed-voice-refusal.ts",
+    "src/contracts/pond-reply-request-decision.ts",
+    "src/contracts/pond-conversation-record-admission.ts",
+    "src/contracts/pond-transport-policy-decision.ts",
+    "src/contracts/pond-delivery-candidate-decision.ts",
+    "src/contracts/pond-private-read-activation.ts",
+    "src/contracts/pond-live-session-establishment.ts",
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P15",
+    "D-P16",
+    "D-P17",
+    "D-P20",
+    "D-P21",
+    "D-P22"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-claimed-voice-refusal-d-p22",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10",
+    "pond-voice-input-request-decision-d-p22",
+    "pond-voice-transcription-provider-decision-d-p22"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Voice-lane support only: the bundle carries the D-P22 voice-input-request assessor — the receiver-recorded request to PROVIDE voice input over a currently live D-P15 session, re-running the frozen D-P15 read gate (and transitively the establishment chain) through its own seam — plus the D-P22 transcription-selection assessor over a currently recorded voice request (re-running the voice request through its own seam; the only performable selection is the local ASR tuple, and every cloud or community selection refuses at its dedicated performability cause), the D-P22 claimed-voice wall assessor (a standing fail-closed refusal of every claimed voice transcript — captured, synthesized, or transcribed), the receiver-held D-P0 principal ref, the D-P2 declared maximum age, and the two frozen lane templates (the hand-written ui module never restates a frozen shape). NO audio is captured (the mic stays disabled — the B2 invariant voice affordance != recording stands), no transcription inference or output exists, no model or ASR reference is carried, no credential path, no external boundary, no grant, consequence, acceptance, or authority exists here; the claimed-voice wall echoes nothing about any claim, not even text the receiver itself composed. The forbidden-inventory chain rides along inside the voice-request contract's own import (the frozen D-P21 union widened once by this lane), so the D-P16, D-P17, and D-P20 stages are rendered here too. The transcription vocabularies are MINTED by this lane (no voice provider substrate exists; the fabric input-class table has no audio row), while the custody, data-boundary, and support-tier sets are re-declared verbatim from the frozen D-P21 provider decision. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale: the leg assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam."
+}
