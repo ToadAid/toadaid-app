@@ -698,8 +698,14 @@ block("hygiene", () => {
   }
 
   // The ui surface carries no D-P9 vocabulary: the contract names and the
-  // stage tag appear nowhere under ui/.
+  // stage tag appear nowhere under ui/. Recorded deliberate exemption
+  // (D-P15 cross-cut reconciliation, owner-approved 2026-09-29): the D-P15
+  // generated bundle carries the D-P9 leg assessors as plumbing — the D-P15
+  // establishment re-runs them at every assessment (evidence-activation
+  // L109) — so its committed artifact may name them; no hand-written ui
+  // module may ever do so, and every other file under ui/ stays walked.
   for (const uiPath of uiFilePaths(join(repoRoot, "ui"))) {
+    if (uiPath.includes("pond-stage-d-live-session")) continue;
     const text = readFileSync(uiPath, "utf8");
     assert.ok(
       !text.includes("pond-local-principal-id-issuance") &&

@@ -844,6 +844,17 @@
             <button type="button" id="pond-local-authentication-gesture" data-local-authentication-gesture>Observe local authentication event</button>
             <div data-local-authentication-status></div>
           </section>
+          <section class="cockpit-section" aria-labelledby="agents-live-session-title" data-live-session>
+            <h4 id="agents-live-session-title">Live session — receiver-owned authentication gate</h4>
+            <p class="cockpit-note">Establishing the live session performs the whole receiver cycle against the frozen D-P15 assessors: enrolled local verifier, observed authentication event, and a fresh challenge round from the value below. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest enters the challenge round, and it never leaves the handler. The session stays strictly receiver-owned: the desktop is the shared presentation frame for all of our agents, and agents gain no session, no secret, and no admission. Scope: session-scoped single-principal structural reads, restart-ending, retraction-first; no write, send, sign, grant, membership, admission, memory, or current truth. Collaborative/multi-principal reads refuse here — their own later lane.</p>
+            <div class="local-authentication-enrollment">
+              <label for="pond-live-session-secret">Local authentication value</label>
+              <input type="password" id="pond-live-session-secret" data-live-session-secret autocomplete="off">
+            </div>
+            <button type="button" data-live-session-establish>Establish live session</button>
+            <button type="button" data-live-session-retract>Retract live session</button>
+            <div data-live-session-status></div>
+          </section>
           <section class="cockpit-section" aria-labelledby="agents-agents-title">
             <h4 id="agents-agents-title">Observed agents</h4>
             <div class="agents-view-cards">
@@ -936,6 +947,7 @@
     <script type="module" src="pond-stage-c-cockpit.js"></script>
     <script type="module" src="pond-agents-view.js"></script>
     <script type="module" src="pond-local-authentication.js"></script>
+    <script type="module" src="pond-live-session.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>

@@ -961,8 +961,14 @@ block("hygiene", () => {
   }
 
   // The ui surface carries no D-P10 vocabulary: the contract names and the
-  // stage tag appear nowhere under ui/.
+  // stage tag appear nowhere under ui/. Recorded deliberate exemption
+  // (D-P15 cross-cut reconciliation, owner-approved 2026-09-29): the D-P15
+  // generated bundle carries the D-P10 frozen gate as plumbing — the D-P15
+  // establishment re-runs it at every assessment (evidence-activation
+  // L109) — so its committed artifact may name it; no hand-written ui
+  // module may ever do so, and every other file under ui/ stays walked.
   for (const uiPath of uiFilePaths(join(repoRoot, "ui"))) {
+    if (uiPath.includes("pond-stage-d-live-session")) continue;
     const text = readFileSync(uiPath, "utf8");
     assert.ok(
       !text.includes("pond-private-read-activation") &&

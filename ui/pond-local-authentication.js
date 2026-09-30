@@ -177,6 +177,21 @@ const freshSaltHex = () =>
 // module, revoked by re-enrollment or by closing the shell.
 let enrolledVerifierRecord = null;
 
+// Additive D-P15 read access: a frozen snapshot of the enrolled verifier
+// record plus its freshly recomputed assessment, or null when nothing has
+// been enrolled. No behavior change here — the snapshot is a consumer's
+// read of the module-scope record, not a mutation of the enrollment flow.
+export const enrolledLocalVerifierSnapshot = () =>
+  enrolledVerifierRecord === null
+    ? null
+    : Object.freeze({
+        verifierRecord: enrolledVerifierRecord,
+        assessment: assessPondLocalAuthenticationVerifierRecord({
+          verifierRecord: enrolledVerifierRecord,
+          receiverHeldPrincipalRef: stageDP0LocalPrincipalRef,
+        }),
+      });
+
 const text = (documentRef, tag, className, value) => {
   const node = documentRef.createElement(tag);
   if (className) node.className = className;
