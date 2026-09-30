@@ -1,0 +1,54 @@
+{
+  "record": "src/contracts/pond-conversation-record-admission.ts",
+  "inputs": [
+    "src/contracts/pond-conversation-surface-posture.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p13-declared-mode-routing.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P12",
+    "D-P13",
+    "D-P15",
+    "D-P16"
+  ],
+  "contractVersions": [
+    "pond-agent-declared-operational-mode-d-p12",
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-binding-d-p1",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-conversation-record-admission-d-p16",
+    "pond-conversation-surface-posture-d-p16",
+    "pond-declared-mode-routing-d-p13",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-knowledge-forge-bound-declared-mode-composition-d-p12",
+    "pond-knowledge-forge-surface-binding-d-p12",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Conversation-lane support only: the bundle carries the two D-P16 assessors — the session-scoped composed-record admission over the live D-P15 read gate, and the conversation surface presentation posture that re-runs each held record and the addressed agents' frozen D-P13 declared-mode routing — plus the receiver-held D-P0 principal and agent refs, the D-P2 declared maximum age, the frozen D-P13 trading-complete routing leg records, and the frozen record and surface templates (the hand-written ui module never restates frozen shapes). No delivery, dispatch, agent reply composition, persistence, memory promotion, grant, membership, admission, or authority; composed prose grants nothing. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale: the leg assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam."
+}

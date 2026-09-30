@@ -934,11 +934,14 @@
           <button class="mic-button" type="button" disabled aria-label="Microphone disabled; voice is not active"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="7" width="14" height="24" rx="7"/><path d="M11 24c0 8 5 13 13 13s13-5 13-13M24 37v6m-7 0h14"/></svg></button>
           <div><strong>SPEAK TO POND</strong><p>Voice is not active in this static stage.</p></div>
         </div>
-        <form class="composer" aria-label="Disabled message composer">
-          <label for="static-message">Message Specialist Agent A</label>
-          <textarea id="static-message" rows="1" disabled>Chat is not active in this static stage.</textarea>
-          <button type="button" disabled>Send</button>
-          <p>Static fixture — no message will be sent.</p>
+        <form class="composer" data-conversation aria-label="Conversation composer">
+          <label for="pond-conversation-message">Message a specialist agent</label>
+          <select data-conversation-address></select>
+          <textarea id="pond-conversation-message" rows="1" data-conversation-composed-text placeholder="Compose into the live session…"></textarea>
+          <button type="button" data-conversation-send>Send</button>
+          <p data-conversation-status></p>
+          <div data-conversation-surface></div>
+          <p class="cockpit-note">Compositions inform only — nothing is delivered or dispatched, agents do not reply from here, nothing persists, and composed prose grants no authority.</p>
         </form>
       </footer>
     </div>
@@ -948,6 +951,7 @@
     <script type="module" src="pond-agents-view.js"></script>
     <script type="module" src="pond-local-authentication.js"></script>
     <script type="module" src="pond-live-session.js"></script>
+    <script type="module" src="pond-conversation.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
