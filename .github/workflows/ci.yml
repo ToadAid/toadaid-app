@@ -116,6 +116,9 @@ jobs:
       - name: Verify Stage D-P19 pond delivery receipt lane
         run: npm run test:stage-d-p19
 
+      - name: Verify Stage D-P20 pond message transport lane
+        run: npm run test:stage-d-p20
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -230,6 +233,9 @@ jobs:
 
       - name: Verify Stage D-P19 pond delivery receipt lane
         run: npm run test:stage-d-p19
+
+      - name: Verify Stage D-P20 pond message transport lane
+        run: npm run test:stage-d-p20
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

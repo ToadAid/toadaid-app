@@ -1,0 +1,54 @@
+{
+  "record": "src/contracts/pond-transport-policy-decision.ts",
+  "inputs": [
+    "src/contracts/pond-remote-message-refusal.ts",
+    "src/contracts/pond-delivery-candidate-decision.ts",
+    "src/contracts/pond-conversation-record-admission.ts",
+    "src/contracts/pond-live-session-establishment.ts",
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P15",
+    "D-P16",
+    "D-P17",
+    "D-P20"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-conversation-record-admission-d-p16",
+    "pond-delivery-candidate-decision-d-p17",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10",
+    "pond-remote-message-refusal-d-p20",
+    "pond-transport-policy-decision-d-p20"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Message-transport-lane support only: the bundle carries the D-P20 transport-policy assessor — the receiver-recorded in-process policy over a currently prepared D-P17 candidate, re-running the frozen D-P17 delivery-candidate decision (and transitively the D-P16 record admission, the D-P15 read gate, and the establishment) through its own seam — plus the D-P20 inbound-wall assessor (a standing fail-closed refusal of every remote external message-intake claim), the receiver-held D-P0 principal and agent refs, the D-P2 declared maximum age, and the frozen transport-policy template (the hand-written ui module never restates a frozen shape). The policy consumes no transport stage this cut; the L220 external transport list is declared verbatim and refuses everywhere; the wall echoes nothing about any claim. No endpoint, socket, queue, AgentCard, runtime schema, serialization, intake log, channel authority, grant, membership, admission, consequence, acceptance, reply, or persistence exists here. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale: the leg assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam."
+}
