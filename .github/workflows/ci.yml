@@ -104,6 +104,9 @@ jobs:
       - name: Verify Stage D-P15 live authentication session establishment
         run: npm run test:stage-d-p15
 
+      - name: Verify Stage D-P16 pond conversation lane
+        run: npm run test:stage-d-p16
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -206,6 +209,9 @@ jobs:
 
       - name: Verify Stage D-P15 live authentication session establishment
         run: npm run test:stage-d-p15
+
+      - name: Verify Stage D-P16 pond conversation lane
+        run: npm run test:stage-d-p16
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

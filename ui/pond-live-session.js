@@ -283,6 +283,27 @@ export const currentLiveReadGatePosture = ({ evaluatedAtEpochMs }) => {
   });
 };
 
+// The held session records, exposed read-only to a sibling presentation
+// module (the conversation lane). Returns the receiver-held principal ref,
+// the establishment record, the frozen leg set, the current retraction
+// record, and a gate record opened at the supplied evaluation time — the
+// same record `currentLiveReadGatePosture` builds. Nothing is copied for
+// mutation and nothing is persisted; `held` is false when no establishment
+// attempt is recorded.
+export const heldLiveSessionRecords = ({ evaluatedAtEpochMs }) => {
+  if (sessionEstablishmentRecord === null) {
+    return Object.freeze({ held: false });
+  }
+  return Object.freeze({
+    held: true,
+    principalRef: stageDP0LocalPrincipalRef,
+    establishmentRecord: sessionEstablishmentRecord,
+    legs: sessionLegs,
+    retractionRecord: sessionRetractionRecord,
+    readGateRecord: readGateRecordOf(evaluatedAtEpochMs),
+  });
+};
+
 // ---------------------------------------------------------------------------
 // Rendering: textContent only, refusal-first, verbatim assessment values.
 // The establish button performs the whole receiver cycle — enroll check,
