@@ -1217,6 +1217,21 @@ body.is-modal-open { overflow: hidden; }
 .conversation-facts dt { flex: 0 0 auto; margin: 0; color: var(--text-muted); font: 8px var(--mono); }
 .conversation-facts dd { margin: 0; color: var(--text); font: 8px var(--mono); overflow-wrap: anywhere; }
 .conversation-record-list, .conversation-posture-list { grid-column: 1 / -1; display: grid; gap: 6px; min-width: 0; }
+.delivery-note { grid-column: 1 / -1; margin-top: 8px; display: grid; gap: 6px; }
+.delivery-status { grid-column: 1 / -1; margin: 0; }
+.delivery-record { display: grid; gap: 4px; margin: 8px 0 0; padding: 9px 10px; border: 1px solid var(--line); border-radius: 7px; background: rgba(2, 13, 16, 0.55); }
+.delivery-record-address { margin: 0; color: var(--gold); font: 8px var(--mono); letter-spacing: 0.08em; }
+.delivery-record-text { margin: 0; color: var(--text); font: 9px/1.45 var(--display); overflow-wrap: anywhere; }
+.delivery-record-list { display: grid; gap: 6px; min-width: 0; }
+.delivery-facts { margin: 0; display: grid; gap: 3px; }
+.delivery-facts div { display: flex; gap: 7px; min-width: 0; }
+.delivery-facts dt { flex: 0 0 auto; margin: 0; color: var(--text-muted); font: 8px var(--mono); }
+.delivery-facts dd { margin: 0; color: var(--text); font: 8px var(--mono); overflow-wrap: anywhere; }
+.delivery-decision { display: grid; gap: 4px; margin: 8px 0 0; padding: 9px 10px; border: 1px dashed var(--line); border-radius: 7px; background: transparent; }
+.delivery-decision-verdict { margin: 0; color: var(--gold); font: 8px var(--mono); letter-spacing: 0.08em; }
+.delivery-decision-destination { margin: 0; color: var(--text); font: 8px var(--mono); overflow-wrap: anywhere; }
+.delivery-affordance { justify-self: start; margin-top: 4px; padding: 5px 10px; border: 1px solid var(--line-bright); border-radius: 6px; background: transparent; color: var(--gold); font: 8px var(--mono); letter-spacing: 0.08em; cursor: pointer; }
+.delivery-affordance:disabled { color: var(--text-muted); cursor: default; }
 
 @media (max-width: 1180px) {
   .pond-shell {
