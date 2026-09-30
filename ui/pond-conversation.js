@@ -200,6 +200,21 @@ export const currentConversationSurfacePosture = ({
   });
 };
 
+// The held conversation record entries, exposed read-only to a sibling
+// lane module (the delivery lane). Each entry carries the full frozen
+// admission input plus the composition facts — nothing is copied for
+// mutation and nothing is persisted; `held` is false when no composition
+// is recorded. A refused composition never appears here.
+export const heldConversationRecordEntries = () => {
+  if (recordedConversationEntries.length === 0) {
+    return Object.freeze({ held: false, entries: Object.freeze([]) });
+  }
+  return Object.freeze({
+    held: true,
+    entries: Object.freeze([...recordedConversationEntries]),
+  });
+};
+
 // ---------------------------------------------------------------------------
 // Rendering: textContent only, refusal-first, verbatim assessment values.
 // The Send handler reads and immediately wipes the textarea — the composed
