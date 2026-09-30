@@ -1,0 +1,58 @@
+{
+  "record": "src/contracts/pond-reply-request-decision.ts",
+  "inputs": [
+    "src/contracts/pond-cognition-provider-decision.ts",
+    "src/contracts/pond-cognition-provider.ts",
+    "src/contracts/pond-claimed-agent-reply-refusal.ts",
+    "src/contracts/pond-conversation-record-admission.ts",
+    "src/contracts/pond-transport-policy-decision.ts",
+    "src/contracts/pond-delivery-candidate-decision.ts",
+    "src/contracts/pond-live-session-establishment.ts",
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P15",
+    "D-P16",
+    "D-P17",
+    "D-P20",
+    "D-P21"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-claimed-agent-reply-refusal-d-p21",
+    "pond-cognition-provider-decision-d-p21",
+    "pond-conversation-record-admission-d-p16",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10",
+    "pond-reply-request-decision-d-p21"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Agent-reply-lane support only: the bundle carries the D-P21 reply-request assessor — the receiver-recorded reply request over a currently admitted D-P16 conversation record, re-running the frozen D-P16 record admission (and transitively the D-P15 read gate and the establishment) through its own seam — plus the D-P21 cognition-provider-selection assessor over a currently recorded reply request (re-running the reply request through its own seam, four echo depths deep into the D-P15 chain), the D-P21 claimed-reply wall assessor (a standing fail-closed refusal of every claimed agent reply), the receiver-held D-P0 principal and agent refs, the frozen D-P16 declared conversation-agent refs, the D-P2 declared maximum age, and the two frozen lane templates (the hand-written ui module never restates a frozen shape). The reply request composes nothing; the provider decision performs no inference, authentication, provider contact, routing, or fallback, the only performable selection being the local runtime, and the decision is consumed by nothing this cut; no cognition runtime, composer, reply text, credential, agent identity, admission, grant, consequence, acceptance, receipt, persistence, or authority exists here; the claimed-reply wall echoes nothing about any claim. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale: the leg assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam. The D-P20 forbidden-inventory chain rides along inside the reply-request contract's own import, so the D-P17 and D-P20 stages are rendered here too."
+}
