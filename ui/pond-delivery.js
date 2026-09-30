@@ -163,6 +163,23 @@ export const currentDeliveryPosture = ({
   });
 };
 
+// The held delivery decisions, read-only for the sibling dispatch lane
+// (the D-P15/D-P16 held-record precedent): frozen, empty when nothing was
+// prepared, and never mutated by the caller.
+export const heldDeliveryDecisions = () =>
+  Object.freeze({
+    held: recordedDeliveryDecisions.length > 0,
+    decisions: recordedDeliveryDecisions.map((decision) =>
+      Object.freeze({
+        input: decision.input,
+        composedText: decision.composedText,
+        addressedAgentRef: decision.addressedAgentRef,
+        conversationRecordIndex: decision.conversationRecordIndex,
+        recordedAtEpochMs: decision.recordedAtEpochMs,
+      }),
+    ),
+  });
+
 // ---------------------------------------------------------------------------
 // Rendering: textContent only, refusal-first, verbatim assessment values.
 // The delivered texts render beside the decisions from shell state only —
