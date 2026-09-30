@@ -1,0 +1,58 @@
+{
+  "record": "src/contracts/pond-dispatch-decision.ts",
+  "inputs": [
+    "src/contracts/pond-delivery-candidate-decision.ts",
+    "src/contracts/pond-conversation-record-admission.ts",
+    "src/contracts/pond-live-session-establishment.ts",
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p13-declared-mode-routing.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P12",
+    "D-P13",
+    "D-P15",
+    "D-P16",
+    "D-P17",
+    "D-P18"
+  ],
+  "contractVersions": [
+    "pond-agent-declared-operational-mode-d-p12",
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-conversation-record-admission-d-p16",
+    "pond-declared-mode-routing-d-p13",
+    "pond-delivery-candidate-decision-d-p17",
+    "pond-dispatch-decision-d-p18",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-knowledge-forge-surface-binding-d-p12",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Dispatch-lane support only: the bundle carries the D-P18 dispatch-decision assessor — the receiver-performed in-process dispatch over a currently prepared D-P17 delivery candidate, re-running the frozen D-P17 candidate decision (and transitively the D-P16 record admission, the D-P15 read gate, and the establishment) through its own seam — plus the receiver-held D-P0 principal and agent refs, the D-P2 declared maximum age, the frozen D-P13 trading-complete routing leg records, and the frozen dispatch-event metadata template (the hand-written ui module never restates a frozen shape). No external transport, queue, retry, receipt, consequence, agent acceptance, reply, dispatch-side send, persistence, grant, membership, admission, or authority; one dispatch per candidate, reuse refused as a replayed dispatch. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale: the leg assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam."
+}
