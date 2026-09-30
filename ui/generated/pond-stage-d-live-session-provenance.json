@@ -1,0 +1,46 @@
+{
+  "record": "src/contracts/pond-live-session-establishment.ts",
+  "inputs": [
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p9-principal-identity.ts",
+    "src/fixtures/stage-d-p10-private-reads.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P2",
+    "D-P15"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-composition-d-p10",
+    "pond-private-read-activation-d-p10",
+    "pond-private-read-admission-d-p10"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Live session-lane support only: the bundle carries the two D-P15 assessors — the receiver-performed live session establishment over the verified knowledge factor and the re-inspected frozen D-P10 activation plus its session-scoped single-principal structural-read gate — the receiver-held D-P0 principal ref and agent-0 ref, the D-P2 declared maximum age, and the frozen D-P9 issuance/mapping and D-P10 activation leg records the shell side receives verbatim (the hand-written ui module never restates frozen shapes). The session stays receiver-owned: no agent gains session, secret, or admission; no secret material is carried, stored, or transported; no persistence; no grant, membership, admission, or authority; collaborative reads refuse (their own later lane); current truth stays withheld."
+}
