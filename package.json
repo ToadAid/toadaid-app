@@ -32,6 +32,7 @@
     "test:stage-d-p16": "node scripts/pond-conversation-record-admission-selftest.mjs",
     "test:stage-d-p17": "node scripts/pond-delivery-candidate-decision-selftest.mjs",
     "test:stage-d-p18": "node scripts/pond-dispatch-decision-selftest.mjs",
+    "test:stage-d-p19": "node scripts/pond-delivery-receipt-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
@@ -48,6 +49,7 @@
     "stage-d:render-live-session-conversation": "node scripts/render-stage-d-live-session-conversation.mjs",
     "stage-d:render-live-session-delivery": "node scripts/render-stage-d-live-session-delivery.mjs",
     "stage-d:render-live-session-dispatch": "node scripts/render-stage-d-live-session-dispatch.mjs",
+    "stage-d:render-live-session-receipts": "node scripts/render-stage-d-live-session-receipts.mjs",
     "stage-d:observe-erc8004": "node scripts/pond-erc8004-identity-observation-live.mjs"
   },
   "devDependencies": {
