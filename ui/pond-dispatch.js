@@ -182,6 +182,24 @@ export const currentDispatchPosture = ({
   });
 };
 
+// The additive held-decision export: the receipt lane consumes the stored
+// dispatch entries verbatim — frozen shape, no widening, one additive
+// export in the D-P15/D-P16/D-P17-D-P18 precedent (the D-P19 receipts
+// module never restates a dispatch shape).
+export const heldDispatchDecisions = () =>
+  Object.freeze({
+    held: recordedDispatchDecisions.length > 0,
+    decisions: recordedDispatchDecisions.map((decision) =>
+      Object.freeze({
+        input: decision.input,
+        dispatchedText: decision.dispatchedText,
+        addressedAgentRef: decision.addressedAgentRef,
+        deliveryDecisionIndex: decision.deliveryDecisionIndex,
+        dispatchedAtEpochMs: decision.dispatchedAtEpochMs,
+      }),
+    ),
+  });
+
 // ---------------------------------------------------------------------------
 // Rendering: textContent only, refusal-first, verbatim assessment values.
 // The dispatched texts render beside the dispatch decisions from shell
