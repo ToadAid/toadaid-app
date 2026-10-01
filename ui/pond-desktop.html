@@ -930,6 +930,52 @@
           </section>
           <p class="cockpit-footnote">Fixture values only · vocabulary bound, not the observation · <span data-agents-value="truthPosture"></span> · <span data-agents-value="authority"></span> authority.</p>
         </section>
+        <section
+          class="agent-registry-panel"
+          aria-labelledby="agent-registry-title"
+          data-agent-registry-record-version="pond-agent-registration-evidence-d-p24"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D registration evidence</span>
+            <h3 id="agent-registry-title">Agent registry evidence</h3>
+            <p>Inspection-first derived evidence only — no admission, no channel, no authority; the registration source file is never contacted, and its exact bytes are pinned by the digest below.</p>
+          </header>
+          <section class="cockpit-section" aria-labelledby="agent-registry-evidence-title">
+            <h4 id="agent-registry-evidence-title">Presented registration (template one)</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Agent evidence ref</dt><dd><code data-agent-registry-value="agentEvidenceRef"></code></dd></div>
+              <div><dt>Registration name</dt><dd data-agent-registry-value="registrationName"></dd></div>
+              <div><dt>Type kind (vocabulary, not the URI)</dt><dd data-agent-registry-value="registrationTypeKind"></dd></div>
+              <div><dt>Active</dt><dd data-agent-registry-value="registrationActive"></dd></div>
+              <div><dt>x402 support</dt><dd data-agent-registry-value="x402Support"></dd></div>
+              <div><dt>Source ref</dt><dd><code data-agent-registry-value="registrationSourceRef"></code></dd></div>
+              <div><dt>Observed (digest basis)</dt><dd data-agent-registry-value="observedBy"></dd></div>
+              <div><dt>File-bytes digest</dt><dd><code data-agent-registry-value="registrationDigestHex"></code></dd></div>
+              <div><dt>Digest basis</dt><dd data-agent-registry-value="registrationDigestBasis"></dd></div>
+            </dl>
+            <p class="cockpit-note">Services (<span data-agent-registry-value="registrationServiceCount"></span>):</p>
+            <ul class="cockpit-tool-list" data-agent-registry-list="services"></ul>
+            <p class="cockpit-note">Supported trust:</p>
+            <ul class="cockpit-tool-list" data-agent-registry-list="trust"></ul>
+            <p class="cockpit-note">Onchain evidence slot:</p>
+            <p class="cockpit-value" data-agent-registry-onchain></p>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agent-registry-posture-title">
+            <h4 id="agent-registry-posture-title">Presentation &amp; refusal posture</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Presentation state</dt><dd data-agent-registry-value="presentationState"></dd></div>
+              <div><dt>Reason</dt><dd data-agent-registry-value="presentationReason"></dd></div>
+              <div><dt>Freshness</dt><dd data-agent-registry-value="freshnessState"></dd></div>
+              <div><dt>Authority</dt><dd data-agent-registry-value="authority"></dd></div>
+            </dl>
+            <p class="cockpit-note">Refusal postures carried verbatim (source of truth: the registration-evidence contract):</p>
+            <ul class="cockpit-checks" data-agent-registry-list="postures"></ul>
+            <p class="cockpit-note">Satisfied presentation checks (state from the record, never inferred):</p>
+            <ul class="cockpit-checks" data-agent-registry-list="checks"></ul>
+          </section>
+          <p class="cockpit-footnote">Derived evidence only · never canonical current state · <span data-agent-registry-value="registryEvidenceStandingLine"></span></p>
+        </section>
       </aside>
 
       <footer class="voice-dock" data-home-surface>
@@ -982,6 +1028,7 @@
     <script type="module" src="pond-replies.js"></script>
     <script type="module" src="pond-voice.js"></script>
     <script type="module" src="pond-collaborative-read.js"></script>
+    <script type="module" src="pond-agent-registry.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
