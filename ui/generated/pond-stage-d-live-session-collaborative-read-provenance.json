@@ -1,0 +1,65 @@
+{
+  "record": "src/contracts/pond-collaborative-read-session-request-decision.ts",
+  "inputs": [
+    "src/contracts/pond-collaborative-read-live-admission-decision.ts",
+    "src/contracts/pond-claimed-collaborative-read-refusal.ts",
+    "src/contracts/pond-collaborative-read-activation.ts",
+    "src/contracts/pond-collaborative-read-admission.ts",
+    "src/contracts/pond-collaborative-read-counterpart-declaration.ts",
+    "src/contracts/pond-private-read-activation.ts",
+    "src/contracts/pond-live-session-establishment.ts",
+    "src/contracts/pond-live-session-read-gate.ts",
+    "src/contracts/pond-agent-presence-observation-intake.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts",
+    "src/fixtures/stage-d-p14-collaborative-structural-reads.ts",
+    "src/fixtures/stage-d-p23-collaborative-live-read.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P1",
+    "D-P2",
+    "D-P14",
+    "D-P15",
+    "D-P16",
+    "D-P17",
+    "D-P20",
+    "D-P21",
+    "D-P22",
+    "D-P23"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-claimed-collaborative-read-refusal-d-p23",
+    "pond-collaborative-read-activation-d-p14",
+    "pond-collaborative-read-admission-d-p14",
+    "pond-collaborative-read-counterpart-declaration-d-p14",
+    "pond-collaborative-read-live-admission-decision-d-p23",
+    "pond-collaborative-read-session-request-decision-d-p23",
+    "pond-erc8004-identity-mapping-d-p9",
+    "pond-live-session-establishment-d-p15",
+    "pond-live-session-read-gate-d-p15",
+    "pond-live-session-retraction-d-p15",
+    "pond-local-authentication-mechanic-d-p8",
+    "pond-local-principal-authentication-observation-d-p6",
+    "pond-local-principal-binding-establishment-d-p5",
+    "pond-local-principal-id-issuance-d-p9",
+    "pond-principal-identity-readiness-composition-d-p9",
+    "pond-private-read-activation-d-p10"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Collaborative-read-lane support only: the bundle carries the D-P23 collaborative-read session-request assessor — the receiver-recorded request to read structural records jointly with the ONE declared counterpart of the D-P14 join over a currently live D-P15 session, re-running the frozen D-P15 read gate (and transitively the establishment chain) and the frozen D-P14 counterpart join through its own seam — plus the D-P23 collaborative live-read admission assessor over a currently recorded request (re-running the request through its own seam AND the frozen D-P14 collaborative activation and admission assessors unchanged over live receiver legs + the structural never-issued counterpart legs; the counterpart chain cause is this lane's own), the D-P23 claimed-collaborative wall assessor (a standing fail-closed refusal of every claimed collaborative read result — zero echo, not even text the receiver itself composed), the receiver-held D-P0 principal ref, the D-P2 declared maximum age, and the frozen lane templates plus the structural counterpart material (the hand-written ui module never restates a frozen shape). NO record content of any principal is read, no scope object or membership registry is created, no Release is recorded, no counterpart is authenticated, issued, mapped, or activated, no write, send, sign, grant, consequence, acceptance, or authority exists here; no memory, narrative, or transcript lane is read. The forbidden-inventory chain rides along inside the session-request contract's own import (the frozen D-P22 union widened once by this lane), so the D-P16, D-P17, D-P20, and D-P22 stages are rendered here too, and the D-P14 activation/admission/join assessors are carried because the law's independent inspection IS the re-run through each consumer's own seam. The lane never re-runs the D-P20 transport-policy, D-P21 reply, or D-P22 voice contracts as causes; their inventories ride along only. The bundle name rides the owner-approved Stage D-P15 exemption substring so the frozen walk sees the same re-run plumbing rationale."
+}
