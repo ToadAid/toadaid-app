@@ -1,0 +1,32 @@
+{
+  "record": "src/agents/pond-stage-d-agent-registry-record.ts",
+  "inputs": [
+    "src/fixtures/stage-d-p24-agent-identity-evidence.ts",
+    "src/contracts/pond-agent-registration-evidence.ts",
+    "src/fixtures/stage-d-p0-agent-presence.ts"
+  ],
+  "renderedStages": [
+    "D-P0",
+    "D-P24"
+  ],
+  "contractVersions": [
+    "pond-agent-presence-projection-d-p0",
+    "pond-agent-presence-source-contract-d-p0",
+    "pond-agent-registration-evidence-d-p24"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "build": {
+    "format": "esm",
+    "platform": "browser",
+    "target": "es2022",
+    "minify": false,
+    "splitting": false
+  },
+  "authority": "none",
+  "mutationPosture": "none_read_only",
+  "runtimeActivationPosture": "not_included",
+  "note": "Registration-evidence presentation only; the record presents the desk's supplied registration as digest-anchored derived evidence with honest all-null onchain slots and admits no admission, membership, channel, transport, live observation, onchain read or write, authentication, mutation, or current truth."
+}

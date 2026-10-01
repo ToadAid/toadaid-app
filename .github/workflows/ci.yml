@@ -128,6 +128,9 @@ jobs:
       - name: Verify Stage D-P23 pond collaborative live read lane
         run: npm run test:stage-d-p23
 
+      - name: Verify Stage D-P24 pond agent registry evidence
+        run: npm run test:stage-d-p24
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -254,6 +257,9 @@ jobs:
 
       - name: Verify Stage D-P23 pond collaborative live read lane
         run: npm run test:stage-d-p23
+
+      - name: Verify Stage D-P24 pond agent registry evidence
+        run: npm run test:stage-d-p24
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

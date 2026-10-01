@@ -2265,3 +2265,19 @@ body.is-modal-open { overflow: hidden; }
     text-align: left;
   }
 }
+
+/* Stage D-P24 — agent registry evidence panel (additive; inspection-first). */
+.agent-registry-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(215, 189, 98, 0.2);
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(46, 39, 9, 0.26), rgba(2, 15, 18, 0.5));
+}
+
+.agent-registry-panel > header p { margin: 6px 0 0; color: var(--gold); font-size: 7px; line-height: 1.45; }
+.agent-registry-panel h3 { margin: 4px 0 0; color: var(--text); font-size: 13px; font-weight: 600; }
+.agent-registry-panel h4 { margin: 0; color: var(--cyan); font-family: var(--mono); font-size: 8px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.agent-registry-panel[data-agent-registry-render-posture="fail_closed"] { border-color: rgba(215, 189, 98, 0.4); }
+.agent-registry-panel[data-agent-registry-render-posture="fail_closed"] [data-agent-registry-value] { color: var(--gold); }
+.agent-registry-panel[data-agent-registry-render-posture="fail_closed"] [data-agent-registry-onchain] { color: var(--gold); }
