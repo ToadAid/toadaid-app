@@ -1633,6 +1633,28 @@ body.is-modal-open { overflow: hidden; }
   text-transform: uppercase;
 }
 
+.forge-library-live-status {
+  margin: 14px 0 0;
+  border: 1px solid rgba(76, 218, 220, 0.18);
+  border-radius: 10px;
+  padding: 9px 11px;
+  color: var(--text-muted);
+  background: rgba(2, 19, 23, 0.55);
+  font: 10px/1.45 var(--mono);
+}
+
+.forge-library-live-status[data-runtime-state="LIVE_CURRENT"] {
+  border-color: rgba(93, 242, 196, 0.38);
+  color: var(--green);
+}
+
+.forge-library-live-status[data-runtime-state="STALE"],
+.forge-library-live-status[data-runtime-state="BLOCKED"],
+.forge-library-live-status[data-runtime-state="ERROR"] {
+  border-color: rgba(245, 190, 84, 0.38);
+  color: #f5be54;
+}
+
 .forge-library-toolbar {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) minmax(150px, 0.32fr) minmax(150px, 0.32fr);
@@ -1705,6 +1727,11 @@ body.is-modal-open { overflow: hidden; }
 
 .forge-skill-card[aria-pressed="true"] {
   box-shadow: inset 3px 0 0 rgba(93, 242, 196, 0.58);
+}
+
+.forge-skill-card:focus-visible {
+  outline: 3px solid #63f4e0;
+  outline-offset: 3px;
 }
 
 .forge-skill-card-head {

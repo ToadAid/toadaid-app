@@ -125,17 +125,27 @@ const fact = (documentRef, label, value) => {
   return row;
 };
 
-const emitSkillSelection = (documentRef, skillId) => {
+const emitSkillSelection = (
+  documentRef,
+  skillId,
+  sourceMode = "fixture",
+  selectionEvidence = {},
+) => {
   const EventCtor = documentRef.defaultView?.CustomEvent ?? globalThis.CustomEvent;
   if (!EventCtor || !skillId) return;
   documentRef.dispatchEvent(
-    new EventCtor("knowledge-forge-skill-selected", {
-      detail: { skillId },
-    }),
+    new EventCtor(
+      sourceMode === "live"
+        ? "knowledge-forge-live-skill-selected"
+        : "knowledge-forge-skill-selected",
+      {
+        detail: { skillId, sourceMode, ...selectionEvidence },
+      },
+    ),
   );
 };
 
-const renderSkillDetail = (documentRef, skill) => {
+const renderSkillDetail = (documentRef, skill, sourceMode) => {
   const panel = documentRef.querySelector("[data-forge-library-detail]");
   if (!panel) return;
 
@@ -153,7 +163,14 @@ const renderSkillDetail = (documentRef, skill) => {
     return;
   }
 
-  const eyebrow = text(documentRef, "span", "eyebrow", "Selected library metadata");
+  const eyebrow = text(
+    documentRef,
+    "span",
+    "eyebrow",
+    sourceMode === "live"
+      ? "Selected validated live metadata"
+      : "Selected library metadata",
+  );
   const title = text(documentRef, "h3", "", skill.title);
   const state = text(
     documentRef,
@@ -241,61 +258,202 @@ const renderSkillCards = (
 
     button.append(head, identity, meta, authority);
     button.addEventListener("click", () => onSelect(skill.skillId));
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+      const cards = [...list.querySelectorAll(".forge-skill-card")];
+      const current = cards.indexOf(button);
+      const target = event.key === "Home"
+        ? 0
+        : event.key === "End"
+          ? cards.length - 1
+          : event.key === "ArrowDown"
+            ? Math.min(cards.length - 1, current + 1)
+            : Math.max(0, current - 1);
+      event.preventDefault();
+      cards[target]?.focus();
+    });
     list.append(button);
   }
 };
 
-export const renderKnowledgeForgeLibrary = (
-  documentRef = globalThis.document,
-  fixture = KNOWLEDGE_FORGE_P5C_LIBRARY_FIXTURE,
+export const KNOWLEDGE_FORGE_LIBRARY_RUNTIME_STATES = Object.freeze([
+  "OFF",
+  "DRY_RUN",
+  "LOADING",
+  "LIVE_CURRENT",
+  "EMPTY",
+  "STALE",
+  "BLOCKED",
+  "ERROR",
+]);
+
+const runtimeStatusText = (model) => {
+  const count = model.skills.length;
+  switch (model.runtimeState) {
+    case "DRY_RUN":
+      return "DRY_RUN · live metadata may be validated, but fixture data remains the visible library.";
+    case "LOADING":
+      return "LOADING · waiting for bounded host-owned Knowledge Forge metadata.";
+    case "LIVE_CURRENT":
+      return `LIVE_CURRENT · ${count} validated promoted ${count === 1 ? "skill" : "skills"} observed from the bound Forge registry projection.`;
+    case "EMPTY":
+      return "EMPTY · the validated current projection contains no promoted skills.";
+    case "STALE":
+      return "STALE · the last projection is outside its receiver-owned freshness window and is not displayed as current.";
+    case "BLOCKED":
+      return `BLOCKED · ${model.statusDetail || "the supplied projection did not satisfy the receiver contract."}`;
+    case "ERROR":
+      return `ERROR · ${model.statusDetail || "the host reported a bounded delivery failure."}`;
+    default:
+      return "OFF · production live delivery is disabled; the historical fixture library is shown below.";
+  }
+};
+
+const fixtureModel = (fixture) => Object.freeze({
+  runtimeState: "OFF",
+  sourceMode: "fixture",
+  sourceLabel: "fixture",
+  statusDetail: "",
+  selectionEvidence: Object.freeze({}),
+  skills: fixture.skills,
+});
+
+const validLibraryModel = (model) => (
+  model
+  && typeof model === "object"
+  && KNOWLEDGE_FORGE_LIBRARY_RUNTIME_STATES.includes(model.runtimeState)
+  && ["fixture", "live", "none"].includes(model.sourceMode)
+  && Array.isArray(model.skills)
+);
+
+export const deriveKnowledgeForgeLibraryView = (
+  model,
+  filters,
+  selectedSkillId,
 ) => {
-  if (!documentRef) return false;
+  if (!validLibraryModel(model)) throw new Error("knowledge_forge_library_model_invalid");
+  const filtered = filterSkillLibrary(model.skills, filters);
+  const selected = filtered.some((skill) => skill.skillId === selectedSkillId)
+    ? selectedSkillId
+    : filtered[0]?.skillId ?? null;
+  return Object.freeze({ filtered: Object.freeze(filtered), selectedSkillId: selected });
+};
+
+const controllerKey = Symbol.for("toadaid.knowledge-forge.library-controller.p10b-p1");
+
+export const createKnowledgeForgeLibraryController = (
+  documentRef = globalThis.document,
+  initialModel = fixtureModel(KNOWLEDGE_FORGE_P5C_LIBRARY_FIXTURE),
+) => {
+  if (!documentRef) return null;
 
   const root = documentRef.querySelector("[data-forge-library]");
-  if (!root) return false;
+  if (!root) return null;
+  if (root[controllerKey]) return root[controllerKey];
 
   const search = documentRef.querySelector("[data-forge-library-search]");
   const state = documentRef.querySelector("[data-forge-library-state]");
   const kind = documentRef.querySelector("[data-forge-library-kind]");
   const count = documentRef.querySelector("[data-forge-library-count]");
+  const status = documentRef.querySelector("[data-forge-live-status]");
 
-  if (!search || !state || !kind || !count) return false;
+  if (!search || !state || !kind || !count || !status) return null;
+  if (!validLibraryModel(initialModel)) throw new Error("knowledge_forge_library_model_invalid");
 
-  let selectedSkillId = fixture.skills[0]?.skillId ?? null;
+  let model = initialModel;
+  let selectedSkillId = model.skills[0]?.skillId ?? null;
+
+  const exposeObservedKinds = () => {
+    const existing = new Set([...kind.options].map((option) => option.value));
+    const observed = [...new Set(model.skills.flatMap((skill) => skill.unitKinds))].sort();
+    for (const unitKind of observed) {
+      if (existing.has(unitKind)) continue;
+      const option = documentRef.createElement("option");
+      option.value = unitKind;
+      option.textContent = unitKind.toLowerCase().replaceAll("_", " ");
+      option.dataset.liveMetadataKind = "true";
+      kind.append(option);
+      existing.add(unitKind);
+    }
+  };
 
   const rerender = () => {
-    const filtered = filterSkillLibrary(fixture.skills, {
-      query: search.value,
-      state: state.value,
-      kind: kind.value,
-    });
+    exposeObservedKinds();
+    const view = deriveKnowledgeForgeLibraryView(
+      model,
+      { query: search.value, state: state.value, kind: kind.value },
+      selectedSkillId,
+    );
+    selectedSkillId = view.selectedSkillId;
 
-    if (!filtered.some((skill) => skill.skillId === selectedSkillId)) {
-      selectedSkillId = filtered[0]?.skillId ?? null;
-    }
-
-    count.textContent = `${filtered.length} of ${fixture.skills.length} fixture skills`;
+    const sourceLabel = model.sourceMode === "live"
+      ? "live"
+      : model.sourceMode === "fixture"
+        ? "fixture"
+        : "current";
+    count.textContent = `${view.filtered.length} of ${model.skills.length} ${sourceLabel} skills`;
+    status.textContent = runtimeStatusText(model);
+    status.dataset.runtimeState = model.runtimeState;
 
     const select = (skillId) => {
       selectedSkillId = skillId;
       rerender();
     };
 
-    renderSkillCards(documentRef, filtered, selectedSkillId, select);
+    renderSkillCards(documentRef, view.filtered, selectedSkillId, select);
     renderSkillDetail(
       documentRef,
-      filtered.find((skill) => skill.skillId === selectedSkillId) ?? null,
+      view.filtered.find((skill) => skill.skillId === selectedSkillId) ?? null,
+      model.sourceMode,
     );
-    emitSkillSelection(documentRef, selectedSkillId);
+    emitSkillSelection(
+      documentRef,
+      selectedSkillId,
+      model.sourceMode,
+      model.selectionEvidence,
+    );
+
+    root.dataset.libraryRuntimeState = model.runtimeState;
+    root.dataset.librarySource = model.sourceMode;
+    root.dataset.fixtureRendered = model.sourceMode === "fixture" ? "true" : "false";
+    root.dataset.liveRendered = model.sourceMode === "live" ? "true" : "false";
   };
 
   search.addEventListener("input", rerender);
   state.addEventListener("change", rerender);
   kind.addEventListener("change", rerender);
-  rerender();
 
-  root.dataset.fixtureRendered = "true";
-  return true;
+  const controller = Object.freeze({
+    update(nextModel) {
+      if (!validLibraryModel(nextModel)) throw new Error("knowledge_forge_library_model_invalid");
+      model = nextModel;
+      rerender();
+      return true;
+    },
+    snapshot() {
+      return Object.freeze({
+        runtimeState: model.runtimeState,
+        sourceMode: model.sourceMode,
+        selectedSkillId,
+        query: search.value,
+        state: state.value,
+        kind: kind.value,
+      });
+    },
+  });
+  root[controllerKey] = controller;
+  rerender();
+  return controller;
+};
+
+export const renderKnowledgeForgeLibrary = (
+  documentRef = globalThis.document,
+  fixture = KNOWLEDGE_FORGE_P5C_LIBRARY_FIXTURE,
+) => {
+  return createKnowledgeForgeLibraryController(
+    documentRef,
+    fixtureModel(fixture),
+  ) !== null;
 };
 
 if (typeof document !== "undefined") {
