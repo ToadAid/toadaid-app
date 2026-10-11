@@ -52,10 +52,15 @@ Mirror Core is central reusable substrate, but it does not automatically own eve
 
 ## Current state
 
-The merged foundation includes:
+The implemented foundation includes:
 
 - **Stage 0B-P1:** host-neutral Pond front-agent projection;
 - **Stage 0B-P2:** singular scope-context invariants, merged at `c02caab2d95fd9ae0741cbe29d4e53bec498f860`.
+- **Stage D-P25 (working branch):** a transport-neutral generic-agent
+  front-face fixture seam that presents Agent0, Agent1, and a non-ToadAid
+  community agent through one selector. Selection is presentation-only;
+  connection, admission acceptance, delivery, invocation, credentials, and
+  add-on activation remain absent.
 
 The implementation remains fixture/contract foundation only:
 
@@ -77,6 +82,12 @@ The repository does not currently provide or activate:
 - autonomous execution;
 - deployment.
 
+The D-P25 seam is intentionally a replaceable frontend projection source, not
+a transport API. A future trusted connection provider may supply equivalent
+projections only after its own governed channel and admission implementation
+are established. Pond will continue to consume host-neutral projections rather
+than hardcode Trading Desk, Agent0, or Mirror Desktop Bridge.
+
 Public source visibility does not create public authority or public access to private state. The `"private": true` field in `package.json` prevents accidental npm publication; it does not describe this GitHub repository's visibility.
 
 ## Contributor orientation
@@ -88,6 +99,8 @@ Read [`AGENTS.md`](AGENTS.md) first. [`BUILD_LIST.md`](BUILD_LIST.md) records cu
 ```bash
 npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
+npm run test:stage-d-p25
+npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```
 
