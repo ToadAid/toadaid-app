@@ -1,0 +1,20 @@
+{
+  "record": "src/agents/pond-stage-d-generic-agent-front-face-record.ts",
+  "inputs": [
+    "src/contracts/pond-generic-agent-front-face.ts",
+    "src/fixtures/stage-d-p25-generic-agent-front-face.ts"
+  ],
+  "renderedStages": [
+    "D-P25"
+  ],
+  "contractVersions": [
+    "pond-generic-agent-front-face-d-p25"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "authority": "none",
+  "runtimeActivationPosture": "not_included",
+  "note": "In-memory generic-agent projection only; selection changes presentation without opening a channel, accepting admission, granting capability, delivering a message, invoking an agent, or activating an add-on."
+}

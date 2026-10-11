@@ -985,6 +985,37 @@
           </section>
           <p class="cockpit-footnote">Derived evidence only · never canonical current state · <span data-agent-registry-value="registryEvidenceStandingLine"></span></p>
         </section>
+        <section
+          class="generic-agent-front-face"
+          aria-labelledby="generic-agent-front-face-title"
+          data-generic-agent-front-face
+          data-generic-agent-record-version="pond-generic-agent-front-face-d-p25"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D generic front face</span>
+            <h3 id="generic-agent-front-face-title">Choose any agent</h3>
+            <p>Frontend fixture preview — the selected agent may come from any future conforming connection provider. Selection opens no channel and grants no authority.</p>
+          </header>
+          <div class="generic-agent-picker">
+            <label for="pond-generic-agent-select">Agent target preview</label>
+            <select id="pond-generic-agent-select" data-generic-agent-select></select>
+            <p class="generic-agent-status" data-generic-agent-status aria-live="polite" aria-atomic="true"></p>
+          </div>
+          <section class="cockpit-section" aria-labelledby="generic-agent-selection-title">
+            <h4 id="generic-agent-selection-title">Selected projection</h4>
+            <dl class="cockpit-facts" data-generic-agent-facts></dl>
+          </section>
+          <section class="cockpit-section" aria-labelledby="generic-agent-capabilities-title">
+            <h4 id="generic-agent-capabilities-title">Declared capabilities</h4>
+            <ul class="cockpit-tool-list" data-generic-agent-capabilities></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="generic-agent-extensions-title">
+            <h4 id="generic-agent-extensions-title">Frontend extensions</h4>
+            <ul class="generic-agent-extensions" data-generic-agent-extensions></ul>
+          </section>
+          <p class="cockpit-footnote">Selection changes presentation only · identity is not admission · declared capability is not authority · activation not included.</p>
+        </section>
       </aside>
 
       <footer class="voice-dock" data-home-surface>
@@ -1038,6 +1069,7 @@
     <script type="module" src="pond-voice.js"></script>
     <script type="module" src="pond-collaborative-read.js"></script>
     <script type="module" src="pond-agent-registry.js"></script>
+    <script type="module" src="pond-generic-agent-front-face.js"></script>
     <script type="module" src="pond-knowledge-forge-inspector.js"></script>
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
