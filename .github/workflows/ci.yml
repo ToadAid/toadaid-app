@@ -131,6 +131,12 @@ jobs:
       - name: Verify Stage D-P24 pond agent registry evidence
         run: npm run test:stage-d-p24
 
+      - name: Verify Stage D-P25 generic agent front face
+        run: npm run test:stage-d-p25
+
+      - name: Verify Stage D-P26 agents shell view
+        run: npm run test:stage-d-p26
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -260,6 +266,12 @@ jobs:
 
       - name: Verify Stage D-P24 pond agent registry evidence
         run: npm run test:stage-d-p24
+
+      - name: Verify Stage D-P25 generic agent front face
+        run: npm run test:stage-d-p25
+
+      - name: Verify Stage D-P26 agents shell view
+        run: npm run test:stage-d-p26
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}

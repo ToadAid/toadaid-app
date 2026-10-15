@@ -62,6 +62,11 @@ The implemented foundation includes:
   community agent through one selector. Selection is presentation-only;
   connection, admission acceptance, delivery, invocation, credentials, and
   add-on activation remain absent.
+- **Stage D-P26 (stage doc:** `docs/stage-d-p26-agents-shell-view.md`**):**
+  the desktop Agents tab is a live read-only view; the Stage D agent panels
+  present there and the Home context panel keeps a slim posture summary.
+  Presentation-only shell reorganization; no admission, connection, agent
+  reply, or voice activation.
 
 The implementation remains fixture/contract foundation only:
 

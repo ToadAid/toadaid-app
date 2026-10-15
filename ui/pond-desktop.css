@@ -2411,3 +2411,34 @@ body.is-modal-open { overflow: hidden; }
 .generic-agent-extension span { color: var(--gold); font: 8px/1.4 var(--mono); }
 .generic-agent-extension small { color: var(--text-muted); font-size: 8px; line-height: 1.45; }
 .generic-agent-front-face[data-generic-agent-render-posture="fail_closed"] { border-color: rgba(215, 189, 98, 0.48); }
+
+/* Stage D-P26 agents stage — additive; the view reuses the .world-stage shell. */
+.agents-stage .agents-view-panel,
+.agents-stage .agent-registry-panel,
+.agents-stage .generic-agent-front-face { max-width: 760px; }
+
+.agents-summary-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(141, 247, 157, 0.18);
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(9, 46, 42, 0.26), rgba(2, 15, 18, 0.5));
+}
+.agents-summary-panel h3 { margin: 4px 0 0; color: var(--text); font-size: 13px; font-weight: 600; }
+.agents-summary-panel header p { margin: 6px 0 0; color: var(--gold); font-size: 7px; line-height: 1.45; }
+.agents-summary-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(141, 247, 157, 0.28);
+  border-radius: 6px;
+  color: var(--text);
+  background: rgba(2, 15, 18, 0.55);
+}
+.agents-summary-link:hover, .agents-summary-link:focus-visible { border-color: rgba(141, 247, 157, 0.55); }
+.agents-summary-link small { color: var(--text-muted); font-family: var(--mono); font-size: 6.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.agents-summary-note { margin: 8px 0 0; color: var(--text-muted); font-family: var(--mono); font-size: 6.5px; letter-spacing: 0.05em; }
