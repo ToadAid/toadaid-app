@@ -56,7 +56,8 @@ The implemented foundation includes:
 
 - **Stage 0B-P1:** host-neutral Pond front-agent projection;
 - **Stage 0B-P2:** singular scope-context invariants, merged at `c02caab2d95fd9ae0741cbe29d4e53bec498f860`.
-- **Stage D-P25 (working branch):** a transport-neutral generic-agent
+- **Stage D-P25 (merged as PR #91; stage doc:
+  `docs/stage-d-p25-generic-agent-front-face.md`):** a transport-neutral generic-agent
   front-face fixture seam that presents Agent0, Agent1, and a non-ToadAid
   community agent through one selector. Selection is presentation-only;
   connection, admission acceptance, delivery, invocation, credentials, and
