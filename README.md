@@ -113,6 +113,16 @@ The implemented foundation includes:
   interlock, the untouched consequence path, revocation/e-stop dominance).
   Nothing docks — no listener, no intake channel, no admission backend, no
   docking operation control; presentation only.
+- **Lane 3 plan (plan doc:**
+  `docs/lane-3-trusted-connection-provider-plan.md`**):** the docs-only plan
+  for the trusted connection-provider that would own admitted-agent intake
+  and feed the D-P25 seam with real projections — the provider lives
+  OUTSIDE this repository (Mirror Desktop Bridge is the Wave-2 hypothesis
+  for human reconciliation; Pond must never hardcode it), admission-first
+  intake, typed trusted channels with stated precedence, delivery without
+  consequence, and every canonical deferral surfaced as an open
+  architecture question rather than silently taken.
+  Planning cut; no code, no activation, authority none.
 
 The implementation remains fixture/contract foundation only:
 
