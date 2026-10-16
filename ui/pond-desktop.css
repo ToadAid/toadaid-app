@@ -1203,7 +1203,10 @@ body.is-modal-open { overflow: hidden; }
 .composer label { grid-column: 1 / -1; color: var(--text-muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
 .composer textarea { width: 100%; min-height: 38px; resize: none; padding: 10px 11px; border: 1px solid var(--line); border-radius: 7px; color: #7b9d9b; background: rgba(2, 13, 16, 0.75); font: 12px/1.4 var(--display); opacity: 1; }
 .composer button { min-width: 54px; border: 1px solid var(--line); border-radius: 7px; color: #759794; background: rgba(8, 40, 42, 0.6); font: 12px var(--display); cursor: not-allowed; opacity: 1; }
-.composer p { grid-column: 1 / -1; margin: 0; color: var(--text-muted); font-size: 11px; }
+/* D-P28: scoped to the form's own paragraphs — the blanket descendant rule
+   (0,1,1) was out-ranking the bubbles' class rules for head/trust colors
+   and posture-row sizes inside the transcript. */
+.composer > p { grid-column: 1 / -1; margin: 0; color: var(--text-muted); font-size: 11px; }
 .composer select { grid-column: 1 / -1; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; color: var(--text); background: rgba(2, 13, 16, 0.75); font: 11px var(--mono); cursor: pointer; }
 .composer[data-conversation] .composer-status { color: var(--gold); font-size: 10px; line-height: 1.45; }
 .composer [data-conversation-send] { color: #d8efe9; background: rgba(10, 62, 64, 0.75); cursor: pointer; }
@@ -2442,3 +2445,28 @@ body.is-modal-open { overflow: hidden; }
 .agents-summary-link:hover, .agents-summary-link:focus-visible { border-color: rgba(141, 247, 157, 0.55); }
 .agents-summary-link small { color: var(--text-muted); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
 .agents-summary-note { margin: 8px 0 0; color: var(--text-muted); font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; }
+
+/* D-P28 — the chat surface: one bubble transcript over the frozen lane
+   postures, with the seven debug lane stacks collapsed into default-closed
+   details beneath it. Presentation-only; no frozen rule is edited. */
+.chat-transcript-region { grid-column: 1 / -1; min-width: 0; }
+.chat-transcript-region[hidden] { display: none !important; }
+.chat-transcript { display: grid; gap: 7px; max-height: 300px; overflow-y: auto; padding: 10px 4px 2px 2px; border-bottom: 1px dashed var(--line); }
+.chat-transcript-header { margin: 0 0 2px; color: var(--text-muted); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; overflow-wrap: anywhere; }
+.chat-bubble { justify-self: end; display: grid; gap: 3px; width: min(100%, 82%); padding: 9px 12px; border: 1px solid rgba(141, 247, 157, 0.28); border-radius: 12px 12px 3px 12px; background: rgba(10, 62, 64, 0.5); }
+.chat-bubble-head { margin: 0; color: var(--gold); font: 10px var(--mono); letter-spacing: 0.08em; overflow-wrap: anywhere; }
+.chat-bubble-text { margin: 0; color: var(--text); font: 12px/1.45 var(--display); overflow-wrap: anywhere; }
+.chat-bubble-trust { margin: 0; color: var(--text-muted); font: 10px var(--mono); overflow-wrap: anywhere; }
+.chat-posture-rows { display: grid; gap: 2px; margin-top: 4px; padding: 6px 8px; border-left: 2px solid rgba(141, 247, 157, 0.35); background: rgba(2, 13, 16, 0.5); }
+.chat-posture-row { margin: 0; color: var(--text-muted); font: 10px var(--mono); overflow-wrap: anywhere; }
+.chat-voice-line { padding-top: 2px; border-top: 1px dashed var(--line); }
+.composer-input-row { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 7px; }
+.chat-lane-stacks { grid-column: 1 / -1; display: grid; gap: 5px; min-width: 0; }
+.lane-stack { min-width: 0; padding: 0; border: 1px solid var(--line); border-radius: 7px; background: rgba(2, 13, 16, 0.35); }
+.lane-stack > summary { display: flex; align-items: center; gap: 8px; min-height: 26px; padding: 5px 10px; color: var(--text-soft); font: 10px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; list-style: none; }
+.lane-stack > summary::-webkit-details-marker { display: none; }
+.lane-stack > summary::before { content: "▸"; color: var(--text-muted); }
+.lane-stack[open] > summary::before { content: "▾"; }
+.lane-stack > summary:hover, .lane-stack > summary:focus-visible { color: var(--gold); }
+.lane-stack > summary small { color: var(--text-muted); font: 10px var(--mono); letter-spacing: 0.05em; text-transform: none; }
+.lane-stack > *:not(summary) { min-width: 0; padding: 0 10px 9px; }
