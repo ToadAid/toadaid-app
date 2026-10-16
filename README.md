@@ -84,6 +84,13 @@ The implemented foundation includes:
   full established panels collapsed into two default-closed details.
   Presentation-only markup+CSS cut; no admission, channel, agent reply, or
   voice activation.
+- **Stage D-P30 (stage doc:** `docs/stage-d-p30-presentation-touch-ups.md`**):**
+  touch-ups from the live click-through: the floating "Active context"
+  scope beacon leaves the Home stage (the scope facts stay in the context
+  panel and topbar), and the Agents stage lifts off the 10px micro floor
+  onto the 12px reading rung with its affordances properly styled.
+  Presentation-only cut; no admission, channel, agent reply, or voice
+  activation.
 
 The implementation remains fixture/contract foundation only:
 
@@ -126,6 +133,7 @@ npm run test:stage-d-p25
 npm run test:stage-d-p27
 npm run test:stage-d-p28
 npm run test:stage-d-p29
+npm run test:stage-d-p30
 npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```
