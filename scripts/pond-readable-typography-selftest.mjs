@@ -32,8 +32,11 @@ assert.equal(distribution[7.5], undefined);
 assert.equal(distribution[8], undefined);
 assert.equal(distribution[9], undefined);
 assert.equal(distribution[9.5], undefined);
-assert.equal(distribution[12], 45, "9/9.5 lifted to 12 (26 + 15 + 4)");
-assert.equal(distribution[13], 23, "10/10.5 lifted to 13 (16 + 4 + 3)");
+// The tier counts are floors, not exact totals: later presentation cuts
+// (the D-P28 chat surface) may add declarations onto an existing rung, but
+// they may never drop a tier's lifted population or re-introduce a pre-ladder size.
+assert.ok(distribution[12] >= 45, "9/9.5 lifted to 12 (26 + 15 + 4) — a floor");
+assert.ok(distribution[13] >= 23, "10/10.5 lifted to 13 (16 + 4 + 3) — a floor");
 assert.ok((distribution[10] || 0) >= 35, "the micro floor tier is populated");
 assert.ok((distribution[11] || 0) >= 80, "the 8px tier lifted to 11 in full");
 

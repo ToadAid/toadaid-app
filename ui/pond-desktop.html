@@ -1066,30 +1066,58 @@
         </div>
         <form class="composer" data-conversation aria-label="Conversation composer">
           <label for="pond-conversation-message">Message a specialist agent</label>
-          <select data-conversation-address></select>
-          <textarea id="pond-conversation-message" rows="1" data-conversation-composed-text placeholder="Compose into the live session…"></textarea>
-          <button type="button" data-conversation-send>Send</button>
+          <div class="chat-transcript-region" data-chat-transcript-region>
+            <div class="chat-transcript" data-chat-transcript></div>
+          </div>
+          <div class="composer-input-row">
+            <select data-conversation-address></select>
+            <textarea id="pond-conversation-message" rows="1" data-conversation-composed-text placeholder="Compose into the live session…"></textarea>
+            <button type="button" data-conversation-send>Send</button>
+          </div>
           <p data-conversation-status></p>
-          <div data-conversation-surface></div>
-          <div data-delivery-note></div>
-          <div data-delivery-status></div>
-          <div data-delivery-list></div>
-          <div data-dispatch-note></div>
-          <div data-dispatch-status></div>
-          <div data-dispatch-list></div>
-          <div data-receipt-note></div>
-          <div data-receipt-status></div>
-          <div data-receipt-list></div>
-          <div data-transport-note></div>
-          <div data-transport-status></div>
-          <div data-transport-list></div>
-          <div data-reply-note></div>
-          <div data-reply-status></div>
-          <div data-reply-list></div>
-          <div data-voice-note></div>
-          <div data-voice-status></div>
-          <div data-voice-list></div>
-          <div data-voice-wall></div>
+          <div class="chat-lane-stacks">
+            <details class="lane-stack" data-lane-stack="conversation">
+              <summary>Conversation surface<small>recorded compositions · agent posture echo · D-P16</small></summary>
+              <div data-conversation-surface></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="delivery">
+              <summary>Delivery lane<small>prepare candidates · no dispatch · D-P17</small></summary>
+              <div data-delivery-note></div>
+              <div data-delivery-status></div>
+              <div data-delivery-list></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="dispatch">
+              <summary>Dispatch lane<small>in-process dispatch records · D-P18</small></summary>
+              <div data-dispatch-note></div>
+              <div data-dispatch-status></div>
+              <div data-dispatch-list></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="receipt">
+              <summary>Receipt lane<small>recorded delivered receipts · D-P19</small></summary>
+              <div data-receipt-note></div>
+              <div data-receipt-status></div>
+              <div data-receipt-list></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="transport">
+              <summary>Transport policy lane<small>in-process policy · inbound wall · D-P20</small></summary>
+              <div data-transport-note></div>
+              <div data-transport-status></div>
+              <div data-transport-list></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="reply">
+              <summary>Reply lane<small>reply requests · claimed-reply wall · D-P21</small></summary>
+              <div data-reply-note></div>
+              <div data-reply-status></div>
+              <div data-reply-list></div>
+            </details>
+            <details class="lane-stack" data-lane-stack="voice">
+              <summary>Voice lane<small>voice requests · claimed-voice wall · the mic never captures · D-P22</small></summary>
+              <div data-voice-note></div>
+              <div data-voice-status></div>
+              <div data-voice-list></div>
+              <div data-voice-wall></div>
+            </details>
+          </div>
           <p class="cockpit-note">Compositions inform only — nothing persists, agents do not reply from here, and recorded dispatches and receipts certify in-process delivery alone: no agreement, acceptance, authorization, payment, or result correctness, nothing persists, and composed prose grants no authority.</p>
         </form>
       </footer>
@@ -1114,6 +1142,7 @@
     <script type="module" src="pond-knowledge-forge-workflow.js"></script>
     <script type="module" src="pond-knowledge-forge-library.js"></script>
     <script type="module" src="pond-knowledge-forge.js"></script>
+    <script type="module" src="pond-chat-surface.js"></script>
     <script type="module" src="pond-shell.js"></script>
   </body>
 </html>

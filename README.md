@@ -71,6 +71,13 @@ The implemented foundation includes:
   the desktop's microfilm typography lifts onto a readable ladder (floor
   10px, body 11–12px, display scale preserved) across the whole shell.
   Presentation-only CSS cut; no module, contract, or panel change.
+- **Stage D-P28 (stage doc:** `docs/stage-d-p28-chat-surface.md`**):** the
+  footer voice dock reads as a chat: one bubble transcript over the frozen
+  lane postures (compositions as bubbles with honest posture rows beneath),
+  the seven debug lane stacks collapsed into default-closed details. The
+  module records nothing, mutates no lane, and owns no affordances.
+  Presentation-only projection cut; no admission, channel, agent reply, or
+  voice activation.
 
 The implementation remains fixture/contract foundation only:
 
@@ -111,6 +118,7 @@ npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
 npm run test:stage-d-p25
 npm run test:stage-d-p27
+npm run test:stage-d-p28
 npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```

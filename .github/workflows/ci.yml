@@ -140,6 +140,9 @@ jobs:
       - name: Verify Stage D-P27 readable typography
         run: npm run test:stage-d-p27
 
+      - name: Verify Stage D-P28 chat surface
+        run: npm run test:stage-d-p28
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -278,6 +281,9 @@ jobs:
 
       - name: Verify Stage D-P27 readable typography
         run: npm run test:stage-d-p27
+
+      - name: Verify Stage D-P28 chat surface
+        run: npm run test:stage-d-p28
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
