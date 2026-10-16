@@ -10,7 +10,7 @@ const walletStatus = document.querySelector("#wallet-status");
 const heroArt = document.querySelector(".imagined-world-art");
 const loreIslands = [...document.querySelectorAll(".lore-island")];
 
-const supportedViews = new Set(["home", "world", "knowledge"]);
+const supportedViews = new Set(["home", "world", "knowledge", "agents"]);
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
@@ -20,6 +20,7 @@ const viewByHash = Object.freeze({
   "#pond-home": "home",
   "#pond-world": "world",
   "#pond-knowledge": "knowledge",
+  "#pond-agents": "agents",
 });
 
 const viewFromHash = () => viewByHash[window.location.hash] || "home";
@@ -62,7 +63,9 @@ const setView = (view, { moveFocus = false } = {}) => {
       ? "Lore Land World"
       : view === "knowledge"
         ? "Knowledge Forge"
-        : "Tobyworld";
+        : view === "agents"
+          ? "Agents"
+          : "Tobyworld";
   }
 
   if (topbarContext) {
@@ -70,7 +73,9 @@ const setView = (view, { moveFocus = false } = {}) => {
       ? "<span>Public observation</span><small>Fixture · network inactive</small>"
       : view === "knowledge"
         ? "<span>Governed knowledge</span><small>Fixture projection · no runtime connection</small>"
-        : "<span>Project X</span><small>Project · static fixture</small>";
+        : view === "agents"
+          ? "<span>Governed agents</span><small>Fixture projection · authority none</small>"
+          : "<span>Project X</span><small>Project · static fixture</small>";
   }
 
   if (moveFocus) {
@@ -86,7 +91,9 @@ for (const link of viewLinks) {
       ? "#pond-world"
       : view === "knowledge"
         ? "#pond-knowledge"
-        : "#pond-home";
+        : view === "agents"
+          ? "#pond-agents"
+          : "#pond-home";
     window.history.pushState({ pondView: view }, "", hash);
     setView(view, { moveFocus: true });
   });

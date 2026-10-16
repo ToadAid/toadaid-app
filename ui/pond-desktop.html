@@ -36,7 +36,7 @@
           <li><a class="nav-item is-current" href="#pond-home" aria-current="page" data-pond-view-link="home" data-resting-label="Ready"><span class="nav-symbol" aria-hidden="true">⌂</span><span>Home</span><small>Current</small></a></li>
           <li><a class="nav-item" href="#pond-world" data-pond-view-link="world" data-resting-label="Read-only"><span class="nav-symbol" aria-hidden="true">◎</span><span>World</span><small>Read-only</small></a></li>
           <li><a class="nav-item" href="#pond-knowledge" data-pond-view-link="knowledge" data-resting-label="Projection"><span class="nav-symbol" aria-hidden="true">◇</span><span>Knowledge</span><small>Projection</small></a></li>
-          <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">♙</span><span>Agents</span><small>Later</small></span></li>
+          <li><a class="nav-item" href="#pond-agents" data-pond-view-link="agents" data-resting-label="Read-only"><span class="nav-symbol" aria-hidden="true">♙</span><span>Agents</span><small>Read-only</small></a></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◉</span><span>Scopes</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">◌</span><span>Voice</span><small>Later</small></span></li>
           <li><span class="nav-item is-later"><span class="nav-symbol" aria-hidden="true">⌁</span><span>Footprints</span><small>Later</small></span></li>
@@ -542,6 +542,242 @@
         <p class="world-boundary-note"><strong>Truth boundary:</strong> this view is a fixture-bound product projection tied to exact Forge and architecture commits. It is not a live registry, not current runtime truth, and not authority. P5C may build the library browser on this surface without changing those laws.</p>
       </main>
 
+      <main
+        class="world-stage agents-stage"
+        id="pond-agents"
+        tabindex="-1"
+        data-pond-view="agents"
+        data-authority="none"
+        data-runtime-connection="not_included"
+        hidden
+      >
+        <div class="world-stage-glow" aria-hidden="true"></div>
+        <header class="world-hero">
+          <div>
+            <span class="eyebrow">Stage D · governed agents · fixture projection</span>
+            <h1>Agents</h1>
+            <p>Inspect the agents Pond presents — posture, live session gate, registration evidence, and the generic front face. Presentation only: no admission, no channel, no authority.</p>
+          </div>
+          <div class="read-only-seal" aria-label="Agents authority posture">
+            <span>Agents</span>
+            <strong>READ ONLY</strong>
+            <small>Fixture projection</small>
+          </div>
+        </header>
+
+        <section
+          class="agents-view-panel"
+          aria-labelledby="agents-view-title"
+          data-agents-record-version="pond-stage-d-agents-record-d-p1"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D fixture projection</span>
+            <h3 id="agents-view-title">Agents view posture</h3>
+            <p>Fixture-rendered presentation only — no transport, no live observation, no authentication, no current truth.</p>
+          </header>
+          <section class="cockpit-section" aria-labelledby="agents-source-title">
+            <h4 id="agents-source-title">Trading-desk source binding</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Repository</dt><dd data-agents-value="sourceBinding.repository"></dd></div>
+              <div><dt>Bound source commit</dt><dd><code data-agents-value="sourceBinding.boundSourceCommit"></code></dd></div>
+              <div><dt>Binding state</dt><dd data-agents-value="sourceBinding.bindingState"></dd></div>
+              <div><dt>Source posture</dt><dd data-agents-value="sourceBinding.sourcePosture"></dd></div>
+              <div><dt>Live receiver verification</dt><dd data-agents-value="sourceBinding.liveSourceContractVerifiedByReceiver"></dd></div>
+              <div><dt>Records as live observation</dt><dd data-agents-value="sourceBinding.presenceRecordsAcceptedAsLiveObservation"></dd></div>
+            </dl>
+            <p class="cockpit-note">Read-only observed tools:</p>
+            <ul class="cockpit-tool-list" data-agents-list="observed-tools"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-principal-title">
+            <h4 id="agents-principal-title">Local principal binding</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Principal</dt><dd><code data-agents-value="principalBinding.principalRef"></code></dd></div>
+              <div><dt>Binding state</dt><dd data-agents-value="principalBinding.bindingState"></dd></div>
+              <div><dt>Authentication performed</dt><dd data-agents-value="principalBinding.authenticationPerformed"></dd></div>
+              <div><dt>Ceremony posture</dt><dd data-agents-value="principalBinding.ceremonyPosture"></dd></div>
+            </dl>
+            <p class="cockpit-note">Fixture projection only — Stage D stays blocked on real authentication and local principal binding.</p>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-local-authentication-title" data-local-authentication>
+            <h4 id="agents-local-authentication-title">Local authentication — live shell observation</h4>
+            <p class="cockpit-note">Observation only — the shell records that it observed the local operator's authentication gesture. No credential requested, checked, or stored; no PrincipalId issued; no authority granted; Stage D stays blocked on the authentication mechanic and private-read activation.</p>
+            <p class="cockpit-note">Local knowledge-factor mechanic (Stage D-P8): enroll a local verifier to turn the gesture into a real challenge-response. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest is held, in module scope for this shell session, never stored or transported. Proving control of the knowledge factor is not authorization: no PrincipalId is issued and no authority is granted.</p>
+            <div class="local-authentication-enrollment">
+              <label for="pond-local-authentication-secret">Local authentication value</label>
+              <input type="password" id="pond-local-authentication-secret" data-local-authentication-secret autocomplete="off">
+              <button type="button" data-local-authentication-enroll>Enroll local verifier</button>
+            </div>
+            <button type="button" id="pond-local-authentication-gesture" data-local-authentication-gesture>Observe local authentication event</button>
+            <div data-local-authentication-status></div>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-live-session-title" data-live-session>
+            <h4 id="agents-live-session-title">Live session — receiver-owned authentication gate</h4>
+            <p class="cockpit-note">Establishing the live session performs the whole receiver cycle against the frozen D-P15 assessors: enrolled local verifier, observed authentication event, and a fresh challenge round from the value below. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest enters the challenge round, and it never leaves the handler. The session stays strictly receiver-owned: the desktop is the shared presentation frame for all of our agents, and agents gain no session, no secret, and no admission. Scope: session-scoped single-principal structural reads, restart-ending, retraction-first; no write, send, sign, grant, membership, admission, memory, or current truth. Collaborative/multi-principal reads refuse here — their own later lane.</p>
+            <div class="local-authentication-enrollment">
+              <label for="pond-live-session-secret">Local authentication value</label>
+              <input type="password" id="pond-live-session-secret" data-live-session-secret autocomplete="off">
+            </div>
+            <button type="button" data-live-session-establish>Establish live session</button>
+            <button type="button" data-live-session-retract>Retract live session</button>
+            <div data-live-session-status></div>
+            <div data-collab-read-note></div>
+            <div data-collab-read-status></div>
+            <div data-collab-read-list></div>
+            <div data-collab-read-wall></div>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-agents-title">
+            <h4 id="agents-agents-title">Observed agents</h4>
+            <div class="agents-view-cards">
+              <article class="agent-card" data-agents-agent="0">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+                <p class="cockpit-note">Secret-free runtime facts (<span data-agents-value="sourceBinding.repository"></span>):</p>
+                <ul class="cockpit-tool-list" data-agents-facts></ul>
+              </article>
+              <article class="agent-card" data-agents-agent="1">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+              </article>
+              <article class="agent-card" data-agents-agent="2">
+                <header>
+                  <strong data-agents-value="label"></strong>
+                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
+                </header>
+                <dl class="cockpit-facts">
+                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
+                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
+                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
+                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
+                </dl>
+              </article>
+            </div>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-admission-title">
+            <h4 id="agents-admission-title">Live-presence admission</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Admission</dt><dd data-agents-value="admission.admissionState"></dd></div>
+              <div><dt>Reason</dt><dd data-agents-value="admission.reason"></dd></div>
+              <div><dt>Presence as authentication</dt><dd data-agents-value="admission.observedPresenceAcceptedAsAuthentication"></dd></div>
+              <div><dt>Identity as PrincipalId</dt><dd data-agents-value="admission.observedIdentityAcceptedAsPrincipalId"></dd></div>
+              <div><dt>Personal memory admitted</dt><dd data-agents-value="admission.personalMemoryContentAdmitted"></dd></div>
+              <div><dt>Runtime activation</dt><dd data-agents-value="admission.runtimeActivationPosture"></dd></div>
+            </dl>
+            <p class="cockpit-note">Receiver-owned live-presence admission checks (state from the record, never inferred):</p>
+            <ul class="cockpit-checks" data-agents-list="presence-checks"></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agents-denial-title">
+            <h4 id="agents-denial-title">Denial &amp; memory posture</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Renderer failure</dt><dd data-agents-value="denialPosture.rendererFailurePosture"></dd></div>
+              <div><dt>Fallback rendering</dt><dd data-agents-value="denialPosture.fallbackRenderingForbidden"></dd></div>
+              <div><dt>Live observation performed</dt><dd data-agents-value="denialPosture.liveObservationPerformed"></dd></div>
+              <div><dt>Desk journal lane</dt><dd data-agents-value="personalMemoryBoundary.deskJournalLaneAdmitted"></dd></div>
+              <div><dt>Desk memory lane</dt><dd data-agents-value="personalMemoryBoundary.deskMemoryLaneAdmitted"></dd></div>
+              <div><dt>Desk narrative lane</dt><dd data-agents-value="personalMemoryBoundary.deskNarrativeLaneAdmitted"></dd></div>
+              <div><dt>Desk transcript lane</dt><dd data-agents-value="personalMemoryBoundary.deskTranscriptLaneAdmitted"></dd></div>
+              <div><dt>Authority</dt><dd data-agents-value="denialPosture.authority"></dd></div>
+            </dl>
+          </section>
+          <p class="cockpit-footnote">Fixture values only · vocabulary bound, not the observation · <span data-agents-value="truthPosture"></span> · <span data-agents-value="authority"></span> authority.</p>
+        </section>
+        <section
+          class="agent-registry-panel"
+          aria-labelledby="agent-registry-title"
+          data-agent-registry-record-version="pond-agent-registration-evidence-d-p24"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D registration evidence</span>
+            <h3 id="agent-registry-title">Agent registry evidence</h3>
+            <p>Inspection-first derived evidence only — no admission, no channel, no authority; the registration source file is never contacted, and its exact bytes are pinned by the digest below.</p>
+          </header>
+          <section class="cockpit-section" aria-labelledby="agent-registry-evidence-title">
+            <h4 id="agent-registry-evidence-title">Presented registration (template one)</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Agent evidence ref</dt><dd><code data-agent-registry-value="agentEvidenceRef"></code></dd></div>
+              <div><dt>Registration name</dt><dd data-agent-registry-value="registrationName"></dd></div>
+              <div><dt>Type kind (vocabulary, not the URI)</dt><dd data-agent-registry-value="registrationTypeKind"></dd></div>
+              <div><dt>Active</dt><dd data-agent-registry-value="registrationActive"></dd></div>
+              <div><dt>x402 support</dt><dd data-agent-registry-value="x402Support"></dd></div>
+              <div><dt>Source ref</dt><dd><code data-agent-registry-value="registrationSourceRef"></code></dd></div>
+              <div><dt>Observed (digest basis)</dt><dd data-agent-registry-value="observedBy"></dd></div>
+              <div><dt>File-bytes digest</dt><dd><code data-agent-registry-value="registrationDigestHex"></code></dd></div>
+              <div><dt>Digest basis</dt><dd data-agent-registry-value="registrationDigestBasis"></dd></div>
+            </dl>
+            <p class="cockpit-note">Services (<span data-agent-registry-value="registrationServiceCount"></span>):</p>
+            <ul class="cockpit-tool-list" data-agent-registry-list="services"></ul>
+            <p class="cockpit-note">Supported trust:</p>
+            <ul class="cockpit-tool-list" data-agent-registry-list="trust"></ul>
+            <p class="cockpit-note">Onchain evidence slot:</p>
+            <p class="cockpit-value" data-agent-registry-onchain></p>
+          </section>
+          <section class="cockpit-section" aria-labelledby="agent-registry-posture-title">
+            <h4 id="agent-registry-posture-title">Presentation &amp; refusal posture</h4>
+            <dl class="cockpit-facts">
+              <div><dt>Presentation state</dt><dd data-agent-registry-value="presentationState"></dd></div>
+              <div><dt>Reason</dt><dd data-agent-registry-value="presentationReason"></dd></div>
+              <div><dt>Freshness</dt><dd data-agent-registry-value="freshnessState"></dd></div>
+              <div><dt>Authority</dt><dd data-agent-registry-value="authority"></dd></div>
+            </dl>
+            <p class="cockpit-note">Refusal postures carried verbatim (source of truth: the registration-evidence contract):</p>
+            <ul class="cockpit-checks" data-agent-registry-list="postures"></ul>
+            <p class="cockpit-note">Satisfied presentation checks (state from the record, never inferred):</p>
+            <ul class="cockpit-checks" data-agent-registry-list="checks"></ul>
+          </section>
+          <p class="cockpit-footnote">Derived evidence only · never canonical current state · <span data-agent-registry-value="registryEvidenceStandingLine"></span></p>
+        </section>
+        <section
+          class="generic-agent-front-face"
+          aria-labelledby="generic-agent-front-face-title"
+          data-generic-agent-front-face
+          data-generic-agent-record-version="pond-generic-agent-front-face-d-p25"
+          data-authority="none"
+        >
+          <header>
+            <span class="eyebrow">Stage D generic front face</span>
+            <h3 id="generic-agent-front-face-title">Choose any agent</h3>
+            <p>Frontend fixture preview — the selected agent may come from any future conforming connection provider. Selection opens no channel and grants no authority.</p>
+          </header>
+          <div class="generic-agent-picker">
+            <label for="pond-generic-agent-select">Agent target preview</label>
+            <select id="pond-generic-agent-select" data-generic-agent-select></select>
+            <p class="generic-agent-status" data-generic-agent-status aria-live="polite" aria-atomic="true"></p>
+          </div>
+          <section class="cockpit-section" aria-labelledby="generic-agent-selection-title">
+            <h4 id="generic-agent-selection-title">Selected projection</h4>
+            <dl class="cockpit-facts" data-generic-agent-facts></dl>
+          </section>
+          <section class="cockpit-section" aria-labelledby="generic-agent-capabilities-title">
+            <h4 id="generic-agent-capabilities-title">Declared capabilities</h4>
+            <ul class="cockpit-tool-list" data-generic-agent-capabilities></ul>
+          </section>
+          <section class="cockpit-section" aria-labelledby="generic-agent-extensions-title">
+            <h4 id="generic-agent-extensions-title">Frontend extensions</h4>
+            <ul class="generic-agent-extensions" data-generic-agent-extensions></ul>
+          </section>
+          <p class="cockpit-footnote">Selection changes presentation only · identity is not admission · declared capability is not authority · activation not included.</p>
+        </section>
+
+        <p class="world-boundary-note"><strong>Truth boundary:</strong> every panel on this stage is a fixture projection or a receiver-recorded posture — presentation is not admission, opens no channel, and establishes no authority. The D-P16 conversation lane stays in the Home composer; agents never reply from the desktop; voice stays inactive.</p>
+      </main>
+
       <aside class="context-panel" aria-labelledby="context-panel-title" data-home-surface>
         <div class="panel-corners" aria-hidden="true"></div>
         <header class="context-heading">
@@ -808,213 +1044,17 @@
           <p class="cockpit-footnote">Fixture values only · current truth withheld (<span data-cockpit-value="deliveryAdmission.canonicalOutcome"></span>) · <span data-cockpit-value="authority"></span> authority.</p>
         </section>
         <section
-          class="agents-view-panel"
-          aria-labelledby="agents-view-title"
-          data-agents-record-version="pond-stage-d-agents-record-d-p1"
+          class="agents-summary-panel"
+          aria-labelledby="agents-summary-title"
           data-authority="none"
         >
           <header>
-            <span class="eyebrow">Stage D fixture projection</span>
-            <h3 id="agents-view-title">Agents view posture</h3>
-            <p>Fixture-rendered presentation only — no transport, no live observation, no authentication, no current truth.</p>
+            <span class="eyebrow">Stage D agents</span>
+            <h3 id="agents-summary-title">Agents stage</h3>
+            <p>Agent posture, the live session gate, registration evidence, and the generic front face live in the Agents view now.</p>
           </header>
-          <section class="cockpit-section" aria-labelledby="agents-source-title">
-            <h4 id="agents-source-title">Trading-desk source binding</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Repository</dt><dd data-agents-value="sourceBinding.repository"></dd></div>
-              <div><dt>Bound source commit</dt><dd><code data-agents-value="sourceBinding.boundSourceCommit"></code></dd></div>
-              <div><dt>Binding state</dt><dd data-agents-value="sourceBinding.bindingState"></dd></div>
-              <div><dt>Source posture</dt><dd data-agents-value="sourceBinding.sourcePosture"></dd></div>
-              <div><dt>Live receiver verification</dt><dd data-agents-value="sourceBinding.liveSourceContractVerifiedByReceiver"></dd></div>
-              <div><dt>Records as live observation</dt><dd data-agents-value="sourceBinding.presenceRecordsAcceptedAsLiveObservation"></dd></div>
-            </dl>
-            <p class="cockpit-note">Read-only observed tools:</p>
-            <ul class="cockpit-tool-list" data-agents-list="observed-tools"></ul>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-principal-title">
-            <h4 id="agents-principal-title">Local principal binding</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Principal</dt><dd><code data-agents-value="principalBinding.principalRef"></code></dd></div>
-              <div><dt>Binding state</dt><dd data-agents-value="principalBinding.bindingState"></dd></div>
-              <div><dt>Authentication performed</dt><dd data-agents-value="principalBinding.authenticationPerformed"></dd></div>
-              <div><dt>Ceremony posture</dt><dd data-agents-value="principalBinding.ceremonyPosture"></dd></div>
-            </dl>
-            <p class="cockpit-note">Fixture projection only — Stage D stays blocked on real authentication and local principal binding.</p>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-local-authentication-title" data-local-authentication>
-            <h4 id="agents-local-authentication-title">Local authentication — live shell observation</h4>
-            <p class="cockpit-note">Observation only — the shell records that it observed the local operator's authentication gesture. No credential requested, checked, or stored; no PrincipalId issued; no authority granted; Stage D stays blocked on the authentication mechanic and private-read activation.</p>
-            <p class="cockpit-note">Local knowledge-factor mechanic (Stage D-P8): enroll a local verifier to turn the gesture into a real challenge-response. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest is held, in module scope for this shell session, never stored or transported. Proving control of the knowledge factor is not authorization: no PrincipalId is issued and no authority is granted.</p>
-            <div class="local-authentication-enrollment">
-              <label for="pond-local-authentication-secret">Local authentication value</label>
-              <input type="password" id="pond-local-authentication-secret" data-local-authentication-secret autocomplete="off">
-              <button type="button" data-local-authentication-enroll>Enroll local verifier</button>
-            </div>
-            <button type="button" id="pond-local-authentication-gesture" data-local-authentication-gesture>Observe local authentication event</button>
-            <div data-local-authentication-status></div>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-live-session-title" data-live-session>
-            <h4 id="agents-live-session-title">Live session — receiver-owned authentication gate</h4>
-            <p class="cockpit-note">Establishing the live session performs the whole receiver cycle against the frozen D-P15 assessors: enrolled local verifier, observed authentication event, and a fresh challenge round from the value below. The value is hashed with the pinned formula and discarded immediately — only its salt-bound digest enters the challenge round, and it never leaves the handler. The session stays strictly receiver-owned: the desktop is the shared presentation frame for all of our agents, and agents gain no session, no secret, and no admission. Scope: session-scoped single-principal structural reads, restart-ending, retraction-first; no write, send, sign, grant, membership, admission, memory, or current truth. Collaborative/multi-principal reads refuse here — their own later lane.</p>
-            <div class="local-authentication-enrollment">
-              <label for="pond-live-session-secret">Local authentication value</label>
-              <input type="password" id="pond-live-session-secret" data-live-session-secret autocomplete="off">
-            </div>
-            <button type="button" data-live-session-establish>Establish live session</button>
-            <button type="button" data-live-session-retract>Retract live session</button>
-            <div data-live-session-status></div>
-            <div data-collab-read-note></div>
-            <div data-collab-read-status></div>
-            <div data-collab-read-list></div>
-            <div data-collab-read-wall></div>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-agents-title">
-            <h4 id="agents-agents-title">Observed agents</h4>
-            <div class="agents-view-cards">
-              <article class="agent-card" data-agents-agent="0">
-                <header>
-                  <strong data-agents-value="label"></strong>
-                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
-                </header>
-                <dl class="cockpit-facts">
-                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
-                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
-                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
-                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
-                </dl>
-                <p class="cockpit-note">Secret-free runtime facts (<span data-agents-value="sourceBinding.repository"></span>):</p>
-                <ul class="cockpit-tool-list" data-agents-facts></ul>
-              </article>
-              <article class="agent-card" data-agents-agent="1">
-                <header>
-                  <strong data-agents-value="label"></strong>
-                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
-                </header>
-                <dl class="cockpit-facts">
-                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
-                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
-                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
-                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
-                </dl>
-              </article>
-              <article class="agent-card" data-agents-agent="2">
-                <header>
-                  <strong data-agents-value="label"></strong>
-                  <span class="agent-card-kicker" data-agents-value="profileClass"></span>
-                </header>
-                <dl class="cockpit-facts">
-                  <div><dt>Agent ref</dt><dd><code data-agents-value="agentRef"></code></dd></div>
-                  <div><dt>Presence</dt><dd data-agents-value="presenceStatus"></dd></div>
-                  <div><dt>Transport</dt><dd data-agents-value="transport"></dd></div>
-                  <div><dt>Identity claim</dt><dd data-agents-value="identityClaimStatus"></dd></div>
-                </dl>
-              </article>
-            </div>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-admission-title">
-            <h4 id="agents-admission-title">Live-presence admission</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Admission</dt><dd data-agents-value="admission.admissionState"></dd></div>
-              <div><dt>Reason</dt><dd data-agents-value="admission.reason"></dd></div>
-              <div><dt>Presence as authentication</dt><dd data-agents-value="admission.observedPresenceAcceptedAsAuthentication"></dd></div>
-              <div><dt>Identity as PrincipalId</dt><dd data-agents-value="admission.observedIdentityAcceptedAsPrincipalId"></dd></div>
-              <div><dt>Personal memory admitted</dt><dd data-agents-value="admission.personalMemoryContentAdmitted"></dd></div>
-              <div><dt>Runtime activation</dt><dd data-agents-value="admission.runtimeActivationPosture"></dd></div>
-            </dl>
-            <p class="cockpit-note">Receiver-owned live-presence admission checks (state from the record, never inferred):</p>
-            <ul class="cockpit-checks" data-agents-list="presence-checks"></ul>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agents-denial-title">
-            <h4 id="agents-denial-title">Denial &amp; memory posture</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Renderer failure</dt><dd data-agents-value="denialPosture.rendererFailurePosture"></dd></div>
-              <div><dt>Fallback rendering</dt><dd data-agents-value="denialPosture.fallbackRenderingForbidden"></dd></div>
-              <div><dt>Live observation performed</dt><dd data-agents-value="denialPosture.liveObservationPerformed"></dd></div>
-              <div><dt>Desk journal lane</dt><dd data-agents-value="personalMemoryBoundary.deskJournalLaneAdmitted"></dd></div>
-              <div><dt>Desk memory lane</dt><dd data-agents-value="personalMemoryBoundary.deskMemoryLaneAdmitted"></dd></div>
-              <div><dt>Desk narrative lane</dt><dd data-agents-value="personalMemoryBoundary.deskNarrativeLaneAdmitted"></dd></div>
-              <div><dt>Desk transcript lane</dt><dd data-agents-value="personalMemoryBoundary.deskTranscriptLaneAdmitted"></dd></div>
-              <div><dt>Authority</dt><dd data-agents-value="denialPosture.authority"></dd></div>
-            </dl>
-          </section>
-          <p class="cockpit-footnote">Fixture values only · vocabulary bound, not the observation · <span data-agents-value="truthPosture"></span> · <span data-agents-value="authority"></span> authority.</p>
-        </section>
-        <section
-          class="agent-registry-panel"
-          aria-labelledby="agent-registry-title"
-          data-agent-registry-record-version="pond-agent-registration-evidence-d-p24"
-          data-authority="none"
-        >
-          <header>
-            <span class="eyebrow">Stage D registration evidence</span>
-            <h3 id="agent-registry-title">Agent registry evidence</h3>
-            <p>Inspection-first derived evidence only — no admission, no channel, no authority; the registration source file is never contacted, and its exact bytes are pinned by the digest below.</p>
-          </header>
-          <section class="cockpit-section" aria-labelledby="agent-registry-evidence-title">
-            <h4 id="agent-registry-evidence-title">Presented registration (template one)</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Agent evidence ref</dt><dd><code data-agent-registry-value="agentEvidenceRef"></code></dd></div>
-              <div><dt>Registration name</dt><dd data-agent-registry-value="registrationName"></dd></div>
-              <div><dt>Type kind (vocabulary, not the URI)</dt><dd data-agent-registry-value="registrationTypeKind"></dd></div>
-              <div><dt>Active</dt><dd data-agent-registry-value="registrationActive"></dd></div>
-              <div><dt>x402 support</dt><dd data-agent-registry-value="x402Support"></dd></div>
-              <div><dt>Source ref</dt><dd><code data-agent-registry-value="registrationSourceRef"></code></dd></div>
-              <div><dt>Observed (digest basis)</dt><dd data-agent-registry-value="observedBy"></dd></div>
-              <div><dt>File-bytes digest</dt><dd><code data-agent-registry-value="registrationDigestHex"></code></dd></div>
-              <div><dt>Digest basis</dt><dd data-agent-registry-value="registrationDigestBasis"></dd></div>
-            </dl>
-            <p class="cockpit-note">Services (<span data-agent-registry-value="registrationServiceCount"></span>):</p>
-            <ul class="cockpit-tool-list" data-agent-registry-list="services"></ul>
-            <p class="cockpit-note">Supported trust:</p>
-            <ul class="cockpit-tool-list" data-agent-registry-list="trust"></ul>
-            <p class="cockpit-note">Onchain evidence slot:</p>
-            <p class="cockpit-value" data-agent-registry-onchain></p>
-          </section>
-          <section class="cockpit-section" aria-labelledby="agent-registry-posture-title">
-            <h4 id="agent-registry-posture-title">Presentation &amp; refusal posture</h4>
-            <dl class="cockpit-facts">
-              <div><dt>Presentation state</dt><dd data-agent-registry-value="presentationState"></dd></div>
-              <div><dt>Reason</dt><dd data-agent-registry-value="presentationReason"></dd></div>
-              <div><dt>Freshness</dt><dd data-agent-registry-value="freshnessState"></dd></div>
-              <div><dt>Authority</dt><dd data-agent-registry-value="authority"></dd></div>
-            </dl>
-            <p class="cockpit-note">Refusal postures carried verbatim (source of truth: the registration-evidence contract):</p>
-            <ul class="cockpit-checks" data-agent-registry-list="postures"></ul>
-            <p class="cockpit-note">Satisfied presentation checks (state from the record, never inferred):</p>
-            <ul class="cockpit-checks" data-agent-registry-list="checks"></ul>
-          </section>
-          <p class="cockpit-footnote">Derived evidence only · never canonical current state · <span data-agent-registry-value="registryEvidenceStandingLine"></span></p>
-        </section>
-        <section
-          class="generic-agent-front-face"
-          aria-labelledby="generic-agent-front-face-title"
-          data-generic-agent-front-face
-          data-generic-agent-record-version="pond-generic-agent-front-face-d-p25"
-          data-authority="none"
-        >
-          <header>
-            <span class="eyebrow">Stage D generic front face</span>
-            <h3 id="generic-agent-front-face-title">Choose any agent</h3>
-            <p>Frontend fixture preview — the selected agent may come from any future conforming connection provider. Selection opens no channel and grants no authority.</p>
-          </header>
-          <div class="generic-agent-picker">
-            <label for="pond-generic-agent-select">Agent target preview</label>
-            <select id="pond-generic-agent-select" data-generic-agent-select></select>
-            <p class="generic-agent-status" data-generic-agent-status aria-live="polite" aria-atomic="true"></p>
-          </div>
-          <section class="cockpit-section" aria-labelledby="generic-agent-selection-title">
-            <h4 id="generic-agent-selection-title">Selected projection</h4>
-            <dl class="cockpit-facts" data-generic-agent-facts></dl>
-          </section>
-          <section class="cockpit-section" aria-labelledby="generic-agent-capabilities-title">
-            <h4 id="generic-agent-capabilities-title">Declared capabilities</h4>
-            <ul class="cockpit-tool-list" data-generic-agent-capabilities></ul>
-          </section>
-          <section class="cockpit-section" aria-labelledby="generic-agent-extensions-title">
-            <h4 id="generic-agent-extensions-title">Frontend extensions</h4>
-            <ul class="generic-agent-extensions" data-generic-agent-extensions></ul>
-          </section>
-          <p class="cockpit-footnote">Selection changes presentation only · identity is not admission · declared capability is not authority · activation not included.</p>
+          <a class="agents-summary-link" href="#pond-agents" data-pond-view-link="agents" data-resting-label="Read-only">Open the Agents view<small>Read-only</small></a>
+          <p class="agents-summary-note">Fixture projection · read-only · no admission, channel, or authority.</p>
         </section>
       </aside>
 
