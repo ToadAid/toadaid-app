@@ -96,8 +96,8 @@ assert.ok(html.slice(asideClose, asideClose + 300).includes('class="voice-dock"'
 // and no hand-written script tags.
 assert.doesNotMatch(html, /onclick=/);
 assert.doesNotMatch(html, /onchange=/);
-assert.equal((html.match(/<script type="module"/g) || []).length, 22,
-  "the module script set is unchanged — no renderer was added by this cut");
+assert.equal((html.match(/<script type="module"/g) || []).length, 23,
+  "the module script set is unchanged — widened in D-P32: the additive docking-lane renderer joins it (frozen files untouched on disk preserved)");
 
 // 6. The stylesheet carries the posture-block rules and reuses the D-P28
 // lane-stack affordance; the pre-ladder typography ladder stays intact.
@@ -131,7 +131,10 @@ const steps = (ci.match(/Verify Stage D-P29 home posture block/g) || []).length;
 assert.equal(steps, 2, "the D-P29 step must run in both verify jobs");
 assert.match(
   ci,
-  /Verify Stage D-P28 chat surface[\s\S]{0,300}Verify Stage D-P29 home posture block[\s\S]{0,300}Check committed diff whitespace/,
+  // The D-P29→gate window is a floor, not an exact total: later
+  // presentation cuts land between D-P29 and the gate. Widened in D-P32
+  // (the additive test:stage-d-p32 step lands after D-P31).
+  /Verify Stage D-P28 chat surface[\s\S]{0,300}Verify Stage D-P29 home posture block[\s\S]{0,600}Check committed diff whitespace/,
 );
 
 // 8. Nothing outside the presentation surface moved: the frozen lane and

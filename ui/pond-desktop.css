@@ -2592,3 +2592,27 @@ body.is-modal-open { overflow: hidden; }
 @media (max-width: 540px) {
   .dock-side-rail .waveform { width: 100%; height: 42px; }
 }
+
+/* Stage D-P32 — the agent docking bay: the fifth panel on the agents stage
+   presents the canonical admission ceremony over two fixture docking briefs
+   (identity evidence, the six sequence steps, requested scope relationship)
+   plus the standing walls. Presentation-only: nothing docks, nothing is
+   verified, no intake channel opens. Scoped to .agents-stage like D-P30. */
+
+.agents-stage .agent-docking-lane > header p { font-size: 12px; }
+.agents-stage .agent-docking-lane h4 { font-size: 12px; }
+.agents-stage .agent-docking-lane h5 { font-size: 11px; margin: 0 0 4px; color: var(--text-soft); font: 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.agents-stage .agent-docking-lane .docking-briefs { display: grid; gap: 12px; margin: 10px 0; }
+.agents-stage .agent-docking-lane .docking-brief { display: grid; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(2, 13, 16, 0.5); }
+.agents-stage .agent-docking-lane .docking-brief > header { display: grid; gap: 4px; }
+.agents-stage .agent-docking-lane .docking-brief-name { font-size: 14px; }
+.agents-stage .agent-docking-lane .docking-brief-meta { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+.agents-stage .agent-docking-lane .docking-brief > section { display: grid; gap: 4px; }
+.agents-stage .agent-docking-lane .docking-brief p,
+.agents-stage .agent-docking-lane .docking-brief li { font-size: 12px; }
+.agents-stage .agent-docking-lane .docking-brief .docking-basis { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+.agents-stage .agent-docking-lane .docking-evidence-list,
+.agents-stage .agent-docking-lane .docking-sequence-list,
+.agents-stage .agent-docking-lane .docking-capability-list { display: grid; gap: 3px; margin: 0; padding: 0 0 0 20px; font-family: var(--mono); }
+.agents-stage .agent-docking-lane .docking-brief-refused { border-style: dashed; }

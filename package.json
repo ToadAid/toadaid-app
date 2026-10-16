@@ -45,6 +45,7 @@
     "test:stage-d-p29": "node scripts/pond-home-posture-block-selftest.mjs",
     "test:stage-d-p30": "node scripts/pond-agents-legibility-selftest.mjs",
     "test:stage-d-p31": "node scripts/pond-chat-surface-room-selftest.mjs",
+    "test:stage-d-p32": "node scripts/pond-agent-docking-lane-selftest.mjs",
     "test:p5b-knowledge-forge": "node scripts/pond-knowledge-forge-surface-selftest.mjs",
     "test:p5c-knowledge-forge-library": "node scripts/pond-knowledge-forge-library-selftest.mjs",
     "test:p5d-knowledge-forge-inspector": "node scripts/pond-knowledge-forge-inspector-selftest.mjs",
@@ -69,6 +70,7 @@
     "stage-d:render-live-session-collaborative-read": "node scripts/render-stage-d-live-session-collaborative-read.mjs",
     "stage-d:render-agent-registry": "node scripts/render-stage-d-agent-registry.mjs",
     "stage-d:render-generic-agent-front-face": "node scripts/render-stage-d-generic-agent-front-face.mjs",
+    "stage-d:render-agent-docking-lane": "node scripts/render-stage-d-agent-docking-lane.mjs",
     "stage-d:observe-erc8004": "node scripts/pond-erc8004-identity-observation-live.mjs"
   },
   "devDependencies": {

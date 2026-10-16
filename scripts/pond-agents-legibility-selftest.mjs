@@ -106,8 +106,8 @@ assert.match(
 // hand-written script tags — the module script set is unchanged, and the
 // frozen lane and renderer modules are untouched files on disk.
 assert.doesNotMatch(html, /onclick=/);
-assert.equal((html.match(/<script type="module"/g) || []).length, 22,
-  "the module script set is unchanged — no renderer was added by this cut");
+assert.equal((html.match(/<script type="module"/g) || []).length, 23,
+  "the module script set is unchanged — widened in D-P32: the additive docking-lane renderer joins it (frozen files untouched on disk preserved)");
 for (const untouched of [
   "ui/pond-shell.js",
   "ui/pond-agents-view.js",

@@ -70,7 +70,8 @@ assert.match(
   ci,
   // The second window is a floor, not an exact total: later presentation
   // cuts (D-P28, D-P29, D-P30) add steps between D-P27 and the gate.
-  /Verify Stage D-P26 agents shell view[\s\S]{0,300}Verify Stage D-P27 readable typography[\s\S]{0,500}Check committed diff whitespace/,
+  // Widened in D-P32: the additive test:stage-d-p32 step lands after D-P31.
+  /Verify Stage D-P26 agents shell view[\s\S]{0,300}Verify Stage D-P27 readable typography[\s\S]{0,800}Check committed diff whitespace/,
 );
 
 // 7. The cut is CSS-only: the D-P27 record lists every touched file and the
