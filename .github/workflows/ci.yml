@@ -143,6 +143,9 @@ jobs:
       - name: Verify Stage D-P28 chat surface
         run: npm run test:stage-d-p28
 
+      - name: Verify Stage D-P29 home posture block
+        run: npm run test:stage-d-p29
+
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
         env:
@@ -284,6 +287,9 @@ jobs:
 
       - name: Verify Stage D-P28 chat surface
         run: npm run test:stage-d-p28
+
+      - name: Verify Stage D-P29 home posture block
+        run: npm run test:stage-d-p29
 
       - name: Check committed diff whitespace
         shell: bash --noprofile --norc {0}
