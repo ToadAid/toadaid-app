@@ -195,7 +195,8 @@ assert.match(
 );
 assert.match(
   ci,
-  /Verify Stage D-P26 agents shell view[\s\S]{0,400}Check committed diff whitespace/,
+  // Widened in D-P30: the additive test:stage-d-p30 step lands after D-P29.
+  /Verify Stage D-P26 agents shell view[\s\S]{0,500}Check committed diff whitespace/,
   "the D-P26 order pin survives with the D-P27 and D-P28 steps inserted",
 );
 

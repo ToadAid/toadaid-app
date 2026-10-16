@@ -68,7 +68,9 @@ const steps = (ci.match(/Verify Stage D-P27 readable typography/g) || []).length
 assert.equal(steps, 2, "the D-P27 step must run in both verify jobs");
 assert.match(
   ci,
-  /Verify Stage D-P26 agents shell view[\s\S]{0,300}Verify Stage D-P27 readable typography[\s\S]{0,300}Check committed diff whitespace/,
+  // The second window is a floor, not an exact total: later presentation
+  // cuts (D-P28, D-P29, D-P30) add steps between D-P27 and the gate.
+  /Verify Stage D-P26 agents shell view[\s\S]{0,300}Verify Stage D-P27 readable typography[\s\S]{0,500}Check committed diff whitespace/,
 );
 
 // 7. The cut is CSS-only: the D-P27 record lists every touched file and the
