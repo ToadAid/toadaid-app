@@ -67,6 +67,10 @@ The implemented foundation includes:
   present there and the Home context panel keeps a slim posture summary.
   Presentation-only shell reorganization; no admission, connection, agent
   reply, or voice activation.
+- **Stage D-P27 (stage doc:** `docs/stage-d-p27-readable-typography.md`**):**
+  the desktop's microfilm typography lifts onto a readable ladder (floor
+  10px, body 11–12px, display scale preserved) across the whole shell.
+  Presentation-only CSS cut; no module, contract, or panel change.
 
 The implementation remains fixture/contract foundation only:
 
@@ -106,6 +110,7 @@ Read [`AGENTS.md`](AGENTS.md) first. [`BUILD_LIST.md`](BUILD_LIST.md) records cu
 npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
 npm run test:stage-d-p25
+npm run test:stage-d-p27
 npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```
