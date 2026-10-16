@@ -1345,7 +1345,7 @@ body.is-modal-open { overflow: hidden; }
   .fixture-context { margin-top: 0; }
   .authority-seal { margin-top: 10px; }
   .gate-panel { grid-column: 3; grid-row: 1; }
-  .inventory-panel { grid-column: 1 / -1; }
+  .posture-block { grid-column: 1 / -1; }
   .voice-dock { grid-template-columns: 0.7fr 1fr 1.1fr; margin: 0; border-right: 0; border-bottom: 0; border-left: 0; border-radius: 0; }
   .world-stage { grid-column: 2; grid-row: 2 / -1; }
   .world-stage::before { left: 132px; }
@@ -2470,3 +2470,57 @@ body.is-modal-open { overflow: hidden; }
 .lane-stack > summary:hover, .lane-stack > summary:focus-visible { color: var(--gold); }
 .lane-stack > summary small { color: var(--text-muted); font: 10px var(--mono); letter-spacing: 0.05em; text-transform: none; }
 .lane-stack > *:not(summary) { min-width: 0; padding: 0 10px 9px; }
+
+/* Stage D-P29 — the Home posture block: the A7/A8/B3/C fixture stock
+   presents as one coherent posture section — an honest one-line roster up
+   front and the full established panels collapsed into two default-closed
+   details (reusing the D-P28 lane-stack affordance). Presentation-only;
+   every established panel is carried verbatim and gains no behavior. */
+
+.posture-block {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.posture-block header h3 {
+  margin: 5px 0 6px;
+  color: var(--cyan);
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.posture-block header p { margin: 0; color: var(--text-muted); font-size: 12px; line-height: 1.45; }
+
+.posture-roster { display: grid; gap: 0; margin: 10px 0 12px; padding: 0; list-style: none; }
+
+.posture-roster li {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 4px 0;
+  border-top: 1px solid rgba(67, 232, 242, 0.09);
+}
+
+.posture-lane {
+  min-width: 52px;
+  color: var(--gold);
+  font: 10px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.posture-roster li > span:not(.posture-lane) { color: var(--text-soft); font-size: 12px; }
+
+.posture-roster li small {
+  margin-left: auto;
+  color: var(--text-muted);
+  font: 10px var(--mono);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.home-posture-stacks { display: grid; gap: 5px; min-width: 0; }
+.home-lane-stack > summary small { text-transform: none; }

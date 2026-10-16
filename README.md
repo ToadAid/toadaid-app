@@ -78,6 +78,12 @@ The implemented foundation includes:
   module records nothing, mutates no lane, and owns no affordances.
   Presentation-only projection cut; no admission, channel, agent reply, or
   voice activation.
+- **Stage D-P29 (stage doc:** `docs/stage-d-p29-home-posture-block.md`**):**
+  the Home side panel's A7/A8/B3/C fixture stock slims into one coherent
+  posture block — a one-line honest roster per fixture projection with the
+  full established panels collapsed into two default-closed details.
+  Presentation-only markup+CSS cut; no admission, channel, agent reply, or
+  voice activation.
 
 The implementation remains fixture/contract foundation only:
 
@@ -119,6 +125,7 @@ npm run typecheck
 npm run test:stage-d-p25
 npm run test:stage-d-p27
 npm run test:stage-d-p28
+npm run test:stage-d-p29
 npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```
