@@ -113,9 +113,9 @@ assert.match(
 );
 assert.match(
   ci,
-  // The window to the whitespace gate widened again in D-P30 (the additive
-  // test:stage-d-p30 step lands after D-P29 in both verify jobs).
-  /Verify Stage D-P24[\s\S]{0,160}Verify Stage D-P25[\s\S]{0,120}Verify Stage D-P26[\s\S]{0,500}Check committed diff whitespace/,
+  // The window to the whitespace gate widened again in D-P31 (the additive
+  // test:stage-d-p31 step lands after D-P30 in both verify jobs).
+  /Verify Stage D-P24[\s\S]{0,160}Verify Stage D-P25[\s\S]{0,120}Verify Stage D-P26[\s\S]{0,800}Check committed diff whitespace/,
   "the Stage D steps must keep their lane order (the D-P27 steps land after D-P26)",
 );
 

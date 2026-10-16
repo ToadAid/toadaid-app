@@ -62,8 +62,11 @@ assert.match(css, /\.cockpit-facts dt \{ color: var\(--text-muted\); font-family
 assert.match(css, /\.cockpit-facts dd \{ margin: 0; color: var\(--text-soft\); font-size: 10px;/);
 assert.match(css, /\.cockpit-tool-list,[\s\S]{0,80}\.cockpit-checks \{[^}]*font: 10px\/1\.7 var\(--mono\);/);
 assert.match(css, /\.cockpit-note \{ margin: 8px 0 0; color: var\(--gold\); font-size: 10px;/);
-// Every override line in the lift section is .agents-stage prefixed.
-const liftRegion = css.slice(css.indexOf("Stage D-P30"));
+// Every override line in the lift section is .agents-stage prefixed. The
+// region is bounded at the D-P31 marker (recorded seam): later presentation
+// cuts append their own scoped sections after this one — including the
+// D-P31 dock rules, which are voice-dock-scoped, not .agents-stage.
+const liftRegion = css.slice(css.indexOf("Stage D-P30"), css.indexOf("Stage D-P31"));
 for (const selector of [...liftRegion.matchAll(/^\.(\S[\s\S]*?)\{/gm)].map((m) => m[1])) {
   if (selector.startsWith("/")) continue; // comment lines
   assert.match(selector.replace(/[\s,].*/s, ""), /^agents-stage$|agents-stage$/,

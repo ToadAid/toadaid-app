@@ -191,12 +191,14 @@ const chatSteps = (ci.match(/Verify Stage D-P28 chat surface/g) || []).length;
 assert.equal(chatSteps, 2, "the D-P28 step must run in both verify jobs");
 assert.match(
   ci,
-  /Verify Stage D-P27 readable typography[\s\S]{0,300}Verify Stage D-P28 chat surface[\s\S]{0,300}Check committed diff whitespace/,
+  // Widened in D-P31: the additive test:stage-d-p31 step lands after D-P30
+  // in both verify jobs.
+  /Verify Stage D-P27 readable typography[\s\S]{0,300}Verify Stage D-P28 chat surface[\s\S]{0,600}Check committed diff whitespace/,
 );
 assert.match(
   ci,
-  // Widened in D-P30: the additive test:stage-d-p30 step lands after D-P29.
-  /Verify Stage D-P26 agents shell view[\s\S]{0,500}Check committed diff whitespace/,
+  // Widened again in D-P31: the additive test:stage-d-p31 step lands after D-P30.
+  /Verify Stage D-P26 agents shell view[\s\S]{0,800}Check committed diff whitespace/,
   "the D-P26 order pin survives with the D-P27 and D-P28 steps inserted",
 );
 
