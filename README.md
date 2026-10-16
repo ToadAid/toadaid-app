@@ -91,6 +91,16 @@ The implemented foundation includes:
   onto the 12px reading rung with its affordances properly styled.
   Presentation-only cut; no admission, channel, agent reply, or voice
   activation.
+- **Stage D-P31 (stage doc:** `docs/stage-d-p31-chat-surface-room.md`**):**
+  follow-up from the click-through verdict "the chat surface is not there
+  yet": the Home voice dock folds to two columns (a centered voice rail,
+  then the wide chat column), the bubble transcript reads as a bordered
+  panel even when nothing is composed (218‑320px scroll region with chrome,
+  meta text lifted to the 11px rung), and the shell's voice row stops
+  clipping the composer (`auto` instead of a one-line bar, so the full chat
+  surface is presentable by scrolling).
+  Presentation-only cut; no admission, channel, agent reply, or voice
+  activation.
 
 The implementation remains fixture/contract foundation only:
 
@@ -134,6 +144,7 @@ npm run test:stage-d-p27
 npm run test:stage-d-p28
 npm run test:stage-d-p29
 npm run test:stage-d-p30
+npm run test:stage-d-p31
 npm run stage-d:render-generic-agent-front-face -- --check
 git diff --check
 ```
