@@ -113,7 +113,8 @@ assert.match(
 );
 assert.match(
   ci,
-  /Verify Stage D-P24[\s\S]{0,160}Verify Stage D-P25[\s\S]{0,120}Verify Stage D-P26[\s\S]{0,120}Check committed diff whitespace/,
+  /Verify Stage D-P24[\s\S]{0,160}Verify Stage D-P25[\s\S]{0,120}Verify Stage D-P26[\s\S]{0,400}Check committed diff whitespace/,
+  "the Stage D steps must keep their lane order (the D-P27 steps land after D-P26)",
 );
 
 // 8. Hygiene: no transport or storage primitive enters the new shell code.

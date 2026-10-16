@@ -65,7 +65,9 @@ assert.match(html, /data-runtime-connection="not_included"/);
 assert.match(html, /data-authority="none"/);
 assert.match(html, /pond-knowledge-forge\.js/);
 
-assert.match(shell, /new Set\(\["home", "world", "knowledge"\]\)/);
+// The supported-view set is additive in later cuts (the D-P26 agents view);
+// the knowledge view's own membership is what this pin guards.
+assert.match(shell, /new Set\(\["home", "world", "knowledge"[^\]]*\]\)/);
 assert.match(shell, /"#pond-knowledge": "knowledge"/);
 assert.match(shell, /view === "knowledge"/);
 assert.match(css, /\.knowledge-stage/);
