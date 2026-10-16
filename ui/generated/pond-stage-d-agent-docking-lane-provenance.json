@@ -1,0 +1,20 @@
+{
+  "record": "src/agents/pond-stage-d-agent-docking-lane-record.ts",
+  "inputs": [
+    "src/contracts/pond-agent-docking-lane.ts",
+    "src/fixtures/stage-d-p32-agent-docking-lane.ts"
+  ],
+  "renderedStages": [
+    "D-P32"
+  ],
+  "contractVersions": [
+    "pond-agent-docking-lane-d-p32"
+  ],
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.28.2"
+  },
+  "authority": "none",
+  "runtimeActivationPosture": "not_included",
+  "note": "In-memory docking-brief presentation only; the lane presents the canonical admission ceremony without performing any step, verifying evidence, making an admission decision, issuing an AgentId, establishing a scope relationship, opening a standing intake channel, granting capability, delivering a message, or invoking an agent."
+}

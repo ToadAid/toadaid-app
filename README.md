@@ -101,6 +101,18 @@ The implemented foundation includes:
   surface is presentable by scrolling).
   Presentation-only cut; no admission, channel, agent reply, or voice
   activation.
+- **Stage D-P32 (stage doc:**
+  `docs/stage-d-p32-agent-docking-lane.md`**):** the docking bay — a fifth
+  additive panel on the Agents view presenting the canonical admission
+  ceremony over two fixture docking briefs (Community Scout, Lore Mason):
+  the identity evidence they present (`declared, not verified`), the six
+  canonical admission-sequence steps (`declared, not performed`), the
+  requested scope relationship and declared capabilities (`declared, not
+  granted`), and the standing walls (who may admit, no decision here, the
+  unadmitted-sender standing-intake refusal as the default, the profile
+  interlock, the untouched consequence path, revocation/e-stop dominance).
+  Nothing docks — no listener, no intake channel, no admission backend, no
+  docking operation control; presentation only.
 
 The implementation remains fixture/contract foundation only:
 
@@ -145,7 +157,9 @@ npm run test:stage-d-p28
 npm run test:stage-d-p29
 npm run test:stage-d-p30
 npm run test:stage-d-p31
+npm run test:stage-d-p32
 npm run stage-d:render-generic-agent-front-face -- --check
+npm run stage-d:render-agent-docking-lane -- --check
 git diff --check
 ```
 
