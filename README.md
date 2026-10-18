@@ -123,6 +123,16 @@ The implemented foundation includes:
   consequence, and every canonical deferral surfaced as an open
   architecture question rather than silently taken.
   Planning cut; no code, no activation, authority none.
+- **L3-P1 plan (plan doc:**
+  `docs/lane-3-p1-admission-posture-projection-plan.md`**):** the docs-only
+  plan for Pond's first consumption stage — once the assigned provider
+  (ADR-0001, Bridge) exists, the D-P25/D-P32 seam accepts real projections
+  through one additive host-identified source kind and presents live
+  admission posture against the frozen vocabulary, with real projections
+  arriving only as committed records (Pond never opens a transport) and
+  every ceiling still all-false. Gated on the provider boundary; display
+  only, provider-neutral, no admission decision in Pond.
+  Planning cut; no code, no activation, authority none.
 
 The implementation remains fixture/contract foundation only:
 
